@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F80 / BENCH IMPLEMENTATION — S6 SIMULATED ADAPTERS IN PROGRESS`
+`F80 / BENCH IMPLEMENTATION — S7 BENCH MVP INTEGRATION / ACCEPTANCE IN PROGRESS`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -22,42 +22,42 @@
 - S2 Durable persistence PR #10 → `c5f60dbf11b04b680c6f51f2e610d33906b08637`.
 - S3 Local HMI-edge contract PR #11 → `003c8d5d0ab9e026a76e4a519e8b1c246458bc8a`.
 - S4 HMI prototype workflow PR #12 → `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34`.
-- S5 Local canonical PDF reporting PR #13 approved head `c3a2117126ee44e3811441ee3fc0f2c494ed93ab`, merged as `30acc2d9a0833844e7279c68d9884cf9dd124cea`.
+- S5 Local canonical PDF reporting PR #13 → `30acc2d9a0833844e7279c68d9884cf9dd124cea`.
+- S6 Simulated RFID/KVK observation adapters PR #14 approved head `93baa983f7619e6d7464847cc0fa6674d31c0f36`, merged as `56da4eaf1316c930ca6095cd068e90bd66e2f624`.
 
 ## Governance state
 - Foundation through REQ-HC-001: `BASELINED`.
 - `IMP-HC-001`: `APPROVED / BASELINED`.
 - `IA-HC-001`: `ACTIVE` for bounded local bench MVP only.
 - Runtime implementation authority: `ESTABLISHED — BOUNDED BENCH ONLY`.
-- `HC-S1-001`: `MERGED / VERIFIED`.
-- `HC-S2-001`: `MERGED / VERIFIED`.
-- `HC-S3-001`: `MERGED / VERIFIED`.
-- `HC-S4-001`: `MERGED / VERIFIED`.
-- `HC-S5-001`: `MERGED / VERIFIED`.
-- `HC-S6-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
+- `HC-S1-001` through `HC-S6-001`: `MERGED / VERIFIED`.
+- `HC-S7-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
 
 ## Active authority boundaries
-Authorized: synthetic/test data, domain/session core, local persistence/recovery, local HMI↔edge contract, HMI prototype workflow, local PDF reporting, simulated RFID/KVK observations, tests.
+Authorized: synthetic/test data, domain/session core, local persistence/recovery, local HMI↔edge contract, HMI prototype workflow, local PDF reporting, simulated RFID/KVK observations, bench integration and automated verification.
 
-Not authorized: live RFID hardware; live KVK I/O of any kind; KVK commands/writes/configuration; hydraulics or actuation; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data without separate authority; network/cloud delivery; deployment/signing/release/public distribution.
+Not authorized: live RFID hardware; live KVK I/O of any kind; KVK commands/writes/configuration; CAN/RS-485/Modbus/serial connection to the machine; hydraulics or actuation; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data without separate authority; network/cloud delivery; deployment/signing/release/public distribution.
 
 ## Current workstream
-`HC-S6-001 — Simulated RFID and KVK observation adapters`
+`HC-S7-001 — Bench MVP integration and acceptance/negative verification`
 
 TDD lineage:
-- RED head `5e62980786207d6caad78dfb82f1921f11d1bfd5` — simulated adapter tests failed before adapter implementation existed;
-- GREEN head `ec4771b867831cbc95ef62e08894c8b34c57cff2` — runtime CI succeeded; docs verification follows on the reconciled PR head.
+- initial test-harness attempt `ce9bbb1a2502529014ba7a829484079402282c8d` failed for an invalid reason (`pytest` was not part of the canonical unittest runtime); it is retained as diagnostic history, not canonical RED evidence;
+- corrected RED head `5791b86e8bb469d0a4c090880adca2939665ff03` — canonical `unittest` acceptance test failed because `acceptance_summary` did not yet exist;
+- GREEN head `cc4626182cca558a3939db46f656858c48f3a03a` — `runtime-ci` and `docs-ci` both succeeded.
 
-## S6 invariants
-- RFID input is scripted and explicitly marked simulated;
-- empty RFID input produces explicit `RFID_UNAVAILABLE` rather than an inferred identity;
-- KVK data are scripted observation events only;
-- absence of a KVK event produces explicit `KVK_UNKNOWN`;
-- simulated KVK adapter exposes no command/write/configuration/actuation surface;
+## S7 invariants
+- synthetic workflow traverses identity → HMI selection → lesion/treatment context → counters → report → simulated KVK observation;
+- dashboard retains exact banner `Paweł Humięcki the best zootechnik`;
+- ambiguous identity fails closed before treatment history commit;
+- reference media remain explicitly `REF:` labeled in report provenance;
+- report remains local and synthetic/test-only;
+- acceptance summary explicitly records end-to-end/local/no-actuation checks;
+- integration surface exposes no KVK command/write/configuration/actuation methods;
 - no live hardware, serial, CAN, RS-485, Modbus, network or machine connection is introduced.
 
 ## Next dependency-ordered step
-After controlled merge and repository verification of S6, begin `S7 — bench MVP integration and acceptance/negative verification` under active `IA-HC-001`.
+After controlled merge and repository verification of S7, perform bench MVP closure/reconciliation and prepare the next authority decision for physical prototype/HMI hardware work. Live KVK integration remains blocked pending site audit.
 
 ## Explicit blockers
 - Physical KVK integration remains blocked until the actual 2013-generation KVK 801-1 is inspected and photographed.

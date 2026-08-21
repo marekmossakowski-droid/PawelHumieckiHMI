@@ -25,10 +25,11 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F80 / BENCH IMPLEMENTATION — S6 SIMULATED ADAPTERS IN PROGRESS",
-    "30acc2d9a0833844e7279c68d9884cf9dd124cea",
+    "F80 / BENCH IMPLEMENTATION — S7 BENCH MVP INTEGRATION / ACCEPTANCE IN PROGRESS",
+    "56da4eaf1316c930ca6095cd068e90bd66e2f624",
     "IA-HC-001`: `ACTIVE`",
-    "HC-S6-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
+    "HC-S7-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
+    "Paweł Humięcki the best zootechnik",
     "live KVK I/O of any kind",
     "live RFID hardware",
 ]:
@@ -37,13 +38,12 @@ for marker in [
 
 trace_text = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "HC-S5-CANON-001",
-    "HC-S6-RED-001",
-    "HC-S6-RFID-001",
-    "HC-S6-RFID-UNAVAIL-001",
-    "HC-S6-KVK-OBS-001",
-    "HC-S6-KVK-UNKNOWN-001",
-    "HC-S6-NOACT-001",
+    "HC-S6-ADAPTER-001",
+    "HC-S7-RED-001",
+    "HC-S7-E2E-001",
+    "HC-S7-IDNEG-001",
+    "HC-S7-MEDIA-001",
+    "HC-S7-NOACT-001",
 ]:
     if marker not in trace_text:
         errors.append(f"traceability missing marker: {marker}")
@@ -53,4 +53,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("governance, S5 checkpoint and S6 simulated adapter traceability checks passed")
+print("governance, S6 checkpoint and S7 bench MVP integration traceability checks passed")
