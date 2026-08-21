@@ -42,8 +42,9 @@ Not authorized: live RFID hardware; live KVK I/O of any kind; KVK commands/write
 `HC-S7-001 — Bench MVP integration and acceptance/negative verification`
 
 TDD lineage:
-- RED head `ce9bbb1a2502529014ba7a829484079402282c8d` — end-to-end acceptance tests failed before integration harness existed;
-- GREEN implementation head `020c9b78476809329ca9d0cd3460915004568887` — integration harness implemented over S1-S6 and verified on PR branch.
+- initial test-harness attempt `ce9bbb1a2502529014ba7a829484079402282c8d` failed for an invalid reason (`pytest` was not part of the canonical unittest runtime); it is retained as diagnostic history, not canonical RED evidence;
+- corrected RED head `5791b86e8bb469d0a4c090880adca2939665ff03` — canonical `unittest` acceptance test failed because `acceptance_summary` did not yet exist;
+- GREEN head `cc4626182cca558a3939db46f656858c48f3a03a` — `runtime-ci` and `docs-ci` both succeeded.
 
 ## S7 invariants
 - synthetic workflow traverses identity → HMI selection → lesion/treatment context → counters → report → simulated KVK observation;
@@ -51,6 +52,7 @@ TDD lineage:
 - ambiguous identity fails closed before treatment history commit;
 - reference media remain explicitly `REF:` labeled in report provenance;
 - report remains local and synthetic/test-only;
+- acceptance summary explicitly records end-to-end/local/no-actuation checks;
 - integration surface exposes no KVK command/write/configuration/actuation methods;
 - no live hardware, serial, CAN, RS-485, Modbus, network or machine connection is introduced.
 
