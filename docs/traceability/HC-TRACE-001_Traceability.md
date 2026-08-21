@@ -34,17 +34,19 @@
 | P3 Bench wiring BOM / isolated I/O profile | `a7f0e9168d6987b9ef0fa642a0d7ec27fddb8375` | GREEN `87e5d5e5da8f491d930375d7bbeed7966e157ddb`; PR #20 `e26af73899a363543cf889a80a69f076cb370836` | MERGED / VERIFIED |
 | P4 Physical screen realization/widget mapping | `8c4ca015c2bdaf0983dbb3d9a388b2dd1f48b301` | GREEN `2ef612affa98add3b48f9f43b3df0332916e7c17`; PR #22 `53b0f718892eaba1e9478cce76c5369a1b173794` | MERGED / VERIFIED |
 | P5 Physical navigation/state binding | `5995068062bd21b15702f8bc5a192fb74ca3438b` | GREEN `a00ca743a58ae15b1f95eded4cb94ca50a387c2f`; PR #23 `ce452c747be020075c7d447d004948040675cd63` | MERGED / VERIFIED |
-| P6 Physical persistence/reporting validation | `3c541bb308a4ff1ad68cec0198323fbc6ca2696a` | GREEN `41dac94a62e0aecf946b60cd6bd1dfa39442c4ef` | IMPLEMENTED / GREEN |
+| P6 Physical persistence/reporting validation | `3c541bb308a4ff1ad68cec0198323fbc6ca2696a` | GREEN `41dac94a62e0aecf946b60cd6bd1dfa39442c4ef`; PR #24 `38122539e9b81f93025b0d88592244152988a676` | MERGED / VERIFIED |
+| P7 Physical prototype acceptance / closure readiness | `74ad0ed8833eb686085c21d1470756eb922487a6` | GREEN `dc54408931605e5bfac95ebeb056b669d0f50563` | IMPLEMENTED / GREEN |
 
-## P6 verified invariants
-- local committed synthetic session survives reload/restart validation;
-- report is generated from reloaded committed canonical session data;
-- missing/uncommitted session fails closed;
-- report preserves source-session provenance and synthetic-test-only marking;
-- real KVK connection, real-farm data, cloud upload and actuation surfaces remain absent.
+## P7 verified invariants
+- acceptance requires completed synthetic session with confirmed identity;
+- committed session is recovered unchanged after restart boundary;
+- canonical local PDF preserves `source_session_id` and synthetic-test-only provenance;
+- unresolved/incomplete sessions fail closed;
+- machine-control-like actions are rejected;
+- real KVK connection and real-farm data remain disabled.
 
 ## Canonical checkpoints
-PR #17 `36ffda3b2363597b8a8aae3746e9d555450c625c`; PR #18 `3425b2be7e581fcb079c8b3688b48533b780a06b`; PR #19 `0404c45bf7adbdc9e6063501ce5adb7651dd5019`; PR #20 `e26af73899a363543cf889a80a69f076cb370836`; PR #22 `53b0f718892eaba1e9478cce76c5369a1b173794`; PR #23 `ce452c747be020075c7d447d004948040675cd63`.
+PR #17 `36ffda3b2363597b8a8aae3746e9d555450c625c`; PR #18 `3425b2be7e581fcb079c8b3688b48533b780a06b`; PR #19 `0404c45bf7adbdc9e6063501ce5adb7651dd5019`; PR #20 `e26af73899a363543cf889a80a69f076cb370836`; PR #22 `53b0f718892eaba1e9478cce76c5369a1b173794`; PR #23 `ce452c747be020075c7d447d004948040675cd63`; PR #24 `38122539e9b81f93025b0d88592244152988a676`.
 
 ## Closure rule
-No physical-prototype row becomes Closed without fresh verification evidence and controlled merge on the exact Project Owner-approved head. Live KVK integration remains outside `IA-HC-002`.
+No physical-prototype row becomes Closed without fresh verification evidence and controlled merge on the exact Project Owner-approved head. P7 merge plus post-merge verification may establish physical-prototype closure readiness only. Live KVK integration remains outside `IA-HC-002`.
