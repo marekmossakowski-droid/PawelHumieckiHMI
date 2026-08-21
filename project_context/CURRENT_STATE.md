@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F90 / PHYSICAL PROTOTYPE — P2 HMI LAYOUT IN PROGRESS`
+`F90 / PHYSICAL PROTOTYPE — P3 BENCH WIRING/BOM IN PROGRESS`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -26,7 +26,8 @@
 - S6 PR #14 → `56da4eaf1316c930ca6095cd068e90bd66e2f624`.
 - S7 PR #16 → `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`.
 - Bench MVP closure + IA-HC-002 activation PR #17 → `36ffda3b2363597b8a8aae3746e9d555450c625c`.
-- P1 Physical prototype hardware profile PR #18 approved head `452666bfbb5d50d5b3d78bd27f44b739a69e6569` → merge `3425b2be7e581fcb079c8b3688b48533b780a06b`.
+- P1 PR #18 → `3425b2be7e581fcb079c8b3688b48533b780a06b`.
+- P2 PR #19 approved head `94b30f3b569f94c389014a9dcc02ac2fa21929a7` → merge `0404c45bf7adbdc9e6063501ce5adb7651dd5019`.
 
 ## Governance state
 - `BENCH MVP`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
@@ -34,7 +35,8 @@
 - `IA-HC-001`: `FULFILLED FOR AUTHORIZED BENCH SCOPE`.
 - `IA-HC-002`: `ACTIVE` for isolated physical HMI prototype work only.
 - `HC-P1-001`: `MERGED / VERIFIED`.
-- `HC-P2-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
+- `HC-P2-001`: `MERGED / VERIFIED`.
+- `HC-P3-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
 
 ## Active authority boundaries
 Authorized: isolated synthetic/test-only physical HMI prototype work, 10-inch-class panel profile, low-voltage bench power/wiring isolated from KVK, physical HMI screen/ergonomics work, local persistence/reporting tests, simulator-only serial/RS-485/Modbus tests, BOM and mounting mock-ups.
@@ -42,22 +44,23 @@ Authorized: isolated synthetic/test-only physical HMI prototype work, 10-inch-cl
 Not authorized: any electrical/logical connection to real KVK 801-1; live RFID with real farm data; live KVK I/O; CAN/RS-485/Modbus/serial to the machine; KVK commands/writes/configuration/actuation; hydraulics; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data; network/cloud service exposure; deployment/signing/release/public distribution.
 
 ## Current workstream
-`HC-P2-001 — Physical HMI layout and touch mapping`
+`HC-P3-001 — Bench wiring BOM and isolated I/O profile`
 
 TDD lineage:
-- RED head `8c243af4b136ac7eb5abe30d4dd326f977302a92` — layout tests failed before `hoofcare.physical.layout` existed;
-- GREEN head `153a449903ffbb1a66cb237a4454437362f6fe80` — runtime-ci and docs-ci succeeded before reconciliation.
+- RED head `a7f0e9168d6987b9ef0fa642a0d7ec27fddb8375` — bench wiring/BOM tests failed before `hoofcare.hardware.bench_wiring` existed;
+- GREEN head `87e5d5e5da8f491d930375d7bbeed7966e157ddb` — runtime-ci and docs-ci both succeeded before reconciliation.
 
-## P2 invariants
-- target panel profile is 10.1 inch at 1024×600;
-- primary touch targets are at least 48×48 px;
-- mapped screens cover dashboard, animal session, limb/claw, zone/lesion, treatment and report summary;
-- dashboard preserves `Paweł Humięcki the best zootechnik`, completed-animal counter and consumed-dressings counter;
-- layout is isolated synthetic/test-only;
-- no machine-control affordance or KVK actuation surface is present.
+## P3 invariants
+- nominal bench profile is 24 VDC;
+- 10.1-inch HMI and 8DI/8DO simulator I/O are represented;
+- fuse protection, DIN terminals, momentary switches and indicator lamps are included;
+- USB/RS-485 is simulator/test-equipment only;
+- real KVK connection is explicitly forbidden;
+- real-farm data are explicitly forbidden;
+- no machine-bus or actuation surface exists.
 
 ## Next dependency-ordered step
-After controlled merge and repository verification of P2, continue with isolated physical-prototype screen realization and local bench wiring/BOM work under active `IA-HC-002`.
+After controlled merge and repository verification of P3, continue isolated physical-prototype realization and operator-flow validation under active `IA-HC-002`.
 
 ## Explicit blockers
 - Physical/live KVK integration remains blocked until the actual circa-2013 KVK 801-1 is inspected and photographed and a separate live observation authority is approved.
