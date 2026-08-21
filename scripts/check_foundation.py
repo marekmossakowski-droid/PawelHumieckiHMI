@@ -27,13 +27,12 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F90 / PHYSICAL PROTOTYPE — P2 HMI LAYOUT IMPLEMENTED / MERGE APPROVAL PENDING",
-    "4228a1f0346480221d0afb779907537a50c65e70",
+    "F90 / PHYSICAL PROTOTYPE — P2 MERGED / VERIFIED / P3 NEXT",
+    "047e5bba348eaea0b52103230ec589df6f857036",
     "IA-HC-002`: `APPROVED / ACTIVE`",
     "HC-P1-001`: `MERGED / VERIFIED`",
-    "HC-P2-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
-    "8e199b0f9ea398ab21d8ad6e6062bf7291ae6df2",
-    "d2fa2a91b957362b0367d9f0b30f267ddcd1b784",
+    "HC-P2-001`: `MERGED / VERIFIED`",
+    "HC-P3-001 — Bench wiring BOM and isolated I/O profile",
     "Any live KVK integration remains blocked",
 ]:
     if marker not in current:
@@ -41,10 +40,12 @@ for marker in [
 
 trace = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "P2 IMPLEMENTED / MERGE APPROVAL PENDING",
+    "P2 MERGED / VERIFIED / P3 NEXT",
     "8e199b0f9ea398ab21d8ad6e6062bf7291ae6df2",
     "d2fa2a91b957362b0367d9f0b30f267ddcd1b784",
-    "10.1-inch, 1024×600 target layout",
+    "5ea083ad0ac9ed0b2c965af167a6db821429c9fb",
+    "047e5bba348eaea0b52103230ec589df6f857036",
+    "HC-P3-001 — Bench wiring BOM and isolated I/O profile",
 ]:
     if marker not in trace:
         errors.append(f"traceability missing marker: {marker}")
@@ -68,4 +69,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("bench MVP closure, active IA-HC-002 and HC-P2 governance checks passed")
+print("bench MVP closure, active IA-HC-002 and merged HC-P2 governance checks passed")
