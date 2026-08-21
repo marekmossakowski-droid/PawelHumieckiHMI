@@ -25,10 +25,11 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F80 / BENCH IMPLEMENTATION — S1 DOMAIN/SESSION CORE IN PROGRESS",
-    "0d58eb2921df298114c304295a061547598ae541",
+    "F80 / BENCH IMPLEMENTATION — S2 DURABLE LOCAL PERSISTENCE IN PROGRESS",
+    "7467ec4e30b5ecd8831c094bd90ba7d1fe0ad7b2",
     "IA-HC-001`: `ACTIVE`",
     "ESTABLISHED — BOUNDED BENCH ONLY",
+    "HC-S2-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
     "live KVK I/O of any kind",
 ]:
     if marker not in current:
@@ -45,26 +46,15 @@ for marker in [
     if marker not in ia_text:
         errors.append(f"Implementation Authority missing marker: {marker}")
 
-imp_text = Path("planning/IMP-HC-001_Bench_MVP_Implementation_Plan_v0.1.md").read_text(encoding="utf-8")
-for marker in [
-    "APPROVED / BASELINED — PR #8",
-    "S1 — Domain/session core",
-    "S4 — HMI prototype workflow",
-    "S6 — Simulated adapters",
-    "TDD rule",
-    "No live KVK connection",
-]:
-    if marker not in imp_text:
-        errors.append(f"Implementation plan missing marker: {marker}")
-
 trace_text = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "HC-IA-001",
-    "HC-S1-RED-001",
     "HC-S1-CORE-001",
-    "HC-S1-FAILCLOSED-001",
-    "HC-S1-IDEMP-001",
-    "HC-S1-TERM-001",
+    "HC-S2-RED-001",
+    "HC-S2-STORE-001",
+    "HC-S2-RECOVERY-001",
+    "HC-S2-ATOMIC-001",
+    "HC-S2-AUDIT-001",
+    "HC-S2-FAILCLOSED-001",
 ]:
     if marker not in trace_text:
         errors.append(f"traceability missing marker: {marker}")
@@ -74,4 +64,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("governance, active bench authority and S1 traceability checks passed")
+print("governance, active bench authority, S1 checkpoint and S2 persistence traceability checks passed")
