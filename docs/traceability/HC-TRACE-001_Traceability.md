@@ -61,11 +61,11 @@
 | HC-S4-LESION-001 | Controlled lesion options include approved bench catalogue | src/hoofcare/hmi/workflow.py, tests | MERGED / VERIFIED PR #12 |
 | HC-S4-NOACT-001 | HMI model exposes no KVK machine-control affordance | src/hoofcare/hmi/workflow.py, tests | MERGED / VERIFIED PR #12 |
 | HC-S5-RED-001 | Reporting tests fail before report implementation exists | tests/test_reporting.py | Verified RED @ `1581c6393319e6ab3905e3132f8ead55c6f4bfb9` |
-| HC-S5-CANON-001 | Report generation requires committed canonical source | src/hoofcare/reporting/report.py, tests | Implemented / GREEN |
-| HC-S5-PROV-001 | Report carries report ID, generated timestamp and source session ID | reporting + tests | Implemented / GREEN |
-| HC-S5-AUDIENCE-001 | Required audience sections are present | reporting + tests | Implemented / GREEN |
-| HC-S5-DISCLAIMER-001 | Output is synthetic/test-only and explicitly non-diagnostic | reporting + tests | Implemented / GREEN |
-| HC-S5-LOCALPDF-001 | Bench report emits local PDF-signature document bytes with no network/cloud delivery | reporting + tests | Implemented / GREEN |
+| HC-S5-CANON-001 | Report generation requires committed canonical source | src/hoofcare/reporting/report.py, tests | MERGED / VERIFIED PR #13 |
+| HC-S5-PROV-001 | Report carries report ID, generated timestamp and source session ID | reporting + tests | MERGED / VERIFIED PR #13 |
+| HC-S5-AUDIENCE-001 | Required audience sections are present | reporting + tests | MERGED / VERIFIED PR #13 |
+| HC-S5-DISCLAIMER-001 | Output is synthetic/test-only and explicitly non-diagnostic | reporting + tests | MERGED / VERIFIED PR #13 |
+| HC-S5-LOCALPDF-001 | Bench report emits local PDF-signature document bytes with no network/cloud delivery | reporting + tests | MERGED / VERIFIED PR #13 |
 
 ## Canonical checkpoints
 - PR #1 Foundation → `de68522e4851f645d65dee7dda08ef8fed6af955`.
@@ -80,6 +80,7 @@
 - PR #10 S2 → `c5f60dbf11b04b680c6f51f2e610d33906b08637`.
 - PR #11 S3 → `003c8d5d0ab9e026a76e4a519e8b1c246458bc8a`.
 - PR #12 S4 approved head `c0c925a8a5f8b52ad2eac6cb307f7304959f4229` → merge `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34`.
+- PR #13 S5 approved head `c3a2117126ee44e3811441ee3fc0f2c494ed93ab` → merge `30acc2d9a0833844e7279c68d9884cf9dd124cea`.
 
 ## Closure rule
 No runtime row becomes Closed without fresh verification evidence and controlled merge on the exact approved head.
