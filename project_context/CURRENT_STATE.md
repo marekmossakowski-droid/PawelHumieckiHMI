@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F80 / BENCH IMPLEMENTATION — S5 LOCAL CANONICAL PDF REPORTING IN PROGRESS`
+`F80 / BENCH IMPLEMENTATION — S6 SIMULATED ADAPTERS IN PROGRESS`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -21,7 +21,8 @@
 - S1 Domain/session core PR #9 → `7467ec4e30b5ecd8831c094bd90ba7d1fe0ad7b2`.
 - S2 Durable persistence PR #10 → `c5f60dbf11b04b680c6f51f2e610d33906b08637`.
 - S3 Local HMI-edge contract PR #11 → `003c8d5d0ab9e026a76e4a519e8b1c246458bc8a`.
-- S4 HMI prototype workflow PR #12 approved head `c0c925a8a5f8b52ad2eac6cb307f7304959f4229`, merged as `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34`.
+- S4 HMI prototype workflow PR #12 → `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34`.
+- S5 Local canonical PDF reporting PR #13 approved head `c3a2117126ee44e3811441ee3fc0f2c494ed93ab`, merged as `30acc2d9a0833844e7279c68d9884cf9dd124cea`.
 
 ## Governance state
 - Foundation through REQ-HC-001: `BASELINED`.
@@ -32,31 +33,31 @@
 - `HC-S2-001`: `MERGED / VERIFIED`.
 - `HC-S3-001`: `MERGED / VERIFIED`.
 - `HC-S4-001`: `MERGED / VERIFIED`.
-- `HC-S5-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
+- `HC-S5-001`: `MERGED / VERIFIED`.
+- `HC-S6-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
 
 ## Active authority boundaries
 Authorized: synthetic/test data, domain/session core, local persistence/recovery, local HMI↔edge contract, HMI prototype workflow, local PDF reporting, simulated RFID/KVK observations, tests.
 
-Not authorized: live KVK I/O of any kind; KVK commands/writes/configuration; hydraulics or actuation; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data without separate authority; network/cloud delivery; deployment/signing/release/public distribution.
+Not authorized: live RFID hardware; live KVK I/O of any kind; KVK commands/writes/configuration; hydraulics or actuation; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data without separate authority; network/cloud delivery; deployment/signing/release/public distribution.
 
 ## Current workstream
-`HC-S5-001 — Local canonical PDF reporting`
+`HC-S6-001 — Simulated RFID and KVK observation adapters`
 
 TDD lineage:
-- RED head `1581c6393319e6ab3905e3132f8ead55c6f4bfb9` — report contract/PDF tests failed before reporting implementation existed;
-- GREEN implementation head `6e9597a8b834f5b80a2ab55bfd931bd6d4b5dc01` — runtime/docs verification executed on the PR branch.
+- RED head `5e62980786207d6caad78dfb82f1921f11d1bfd5` — simulated adapter tests failed before adapter implementation existed;
+- GREEN head `ec4771b867831cbc95ef62e08894c8b34c57cff2` — runtime CI succeeded; docs verification follows on the reconciled PR head.
 
-## S5 invariants
-- reports are generated only from committed canonical records;
-- report provenance includes report ID, generation timestamp and source session ID;
-- audience sections exist for farmer, veterinarian, zootechnician, nutritionist and technical service;
-- report output carries an explicit non-diagnostic veterinary disclaimer;
-- bench output is marked synthetic/test-only;
-- media references are carried as explicit provenance references;
-- output remains local; no email/cloud/network delivery is introduced.
+## S6 invariants
+- RFID input is scripted and explicitly marked simulated;
+- empty RFID input produces explicit `RFID_UNAVAILABLE` rather than an inferred identity;
+- KVK data are scripted observation events only;
+- absence of a KVK event produces explicit `KVK_UNKNOWN`;
+- simulated KVK adapter exposes no command/write/configuration/actuation surface;
+- no live hardware, serial, CAN, RS-485, Modbus, network or machine connection is introduced.
 
 ## Next dependency-ordered step
-After controlled merge and repository verification of S5, begin `S6 — simulated RFID and simulated KVK observation adapters` under active `IA-HC-001`.
+After controlled merge and repository verification of S6, begin `S7 — bench MVP integration and acceptance/negative verification` under active `IA-HC-001`.
 
 ## Explicit blockers
 - Physical KVK integration remains blocked until the actual 2013-generation KVK 801-1 is inspected and photographed.
