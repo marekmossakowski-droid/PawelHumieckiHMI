@@ -13,7 +13,6 @@ REQUIRED = [
     Path("docs/closure/HC-BENCH-MVP-CLOSURE-001.md"),
     Path("docs/prototype/HC-P3-001_Bench_Wiring_BOM.md"),
     Path("docs/reconciliation/HC-P3-POST-MERGE-RECON-001.md"),
-    Path("docs/reconciliation/HC-P4-POST-MERGE-RECON-001.md"),
     Path("project_context/CURRENT_STATE.md"),
     Path("docs/traceability/HC-TRACE-001_Traceability.md"),
 ]
@@ -30,11 +29,11 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F90 / PHYSICAL PROTOTYPE — P4 MERGED / VERIFIED / P5 NEXT",
-    "c5101eb15933bc76b76a86dd3e8ed4f78141875f",
+    "F90 / PHYSICAL PROTOTYPE — P3 MERGED / VERIFIED / P4 NEXT",
+    "16f26ae8909e0d40037e163c90ccabf154070599",
     "IA-HC-002`: `APPROVED / ACTIVE`",
-    "HC-P1-001` through `HC-P4-001`: `MERGED / VERIFIED`",
-    "HC-P5-001 — Physical navigation and state binding",
+    "HC-P4-001`: `NEXT / NOT YET IMPLEMENTED`",
+    "HC-P4-001 — Physical screen realization",
     "Any live KVK integration remains blocked",
 ]:
     if marker not in current:
@@ -42,23 +41,24 @@ for marker in [
 
 trace = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "P1-P4 MERGED / VERIFIED / P5 NEXT",
-    "13bccf1dafe1d2ebccc509bd0ab4a4f96e4fc0d7",
-    "5575eabe0543a72e046a4d8bb7425e2ca1f1587d",
-    "c5101eb15933bc76b76a86dd3e8ed4f78141875f",
-    "HC-P5-001 — Physical navigation and state binding",
+    "P1-P3 MERGED / VERIFIED / P4 NEXT",
+    "2de9b10aab518ac8e92cfbaf84dbc64c728d9300",
+    "a48eb7a8b1de94758e6c74945f710ff5084a4b8f",
+    "16f26ae8909e0d40037e163c90ccabf154070599",
+    "NEXT / NOT YET IMPLEMENTED",
+    "HC-P4-001 — Physical screen realization",
 ]:
     if marker not in trace:
         errors.append(f"traceability missing marker: {marker}")
 
-recon = Path("docs/reconciliation/HC-P4-POST-MERGE-RECON-001.md").read_text(encoding="utf-8")
+recon = Path("docs/reconciliation/HC-P3-POST-MERGE-RECON-001.md").read_text(encoding="utf-8")
 for marker in [
-    "HC-P4-001 = MERGED / VERIFIED",
-    "c5101eb15933bc76b76a86dd3e8ed4f78141875f",
-    "HC-P5-001 — Physical navigation and state binding",
+    "HC-P3-001 = MERGED / VERIFIED",
+    "a48eb7a8b1de94758e6c74945f710ff5084a4b8f",
+    "HC-P4-001 — Physical screen realization",
 ]:
     if marker not in recon:
-        errors.append(f"P4 reconciliation missing marker: {marker}")
+        errors.append(f"P3 reconciliation missing marker: {marker}")
 
 closure = Path("docs/closure/HC-BENCH-MVP-CLOSURE-001.md").read_text(encoding="utf-8")
 if "CLOSED / IMPLEMENTED / VERIFIED / RECONCILED" not in closure:
@@ -79,4 +79,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("bench MVP closure, active IA-HC-002 and merged HC-P4 governance checks passed")
+print("bench MVP closure, active IA-HC-002, merged HC-P3 and pending HC-P4 governance checks passed")
