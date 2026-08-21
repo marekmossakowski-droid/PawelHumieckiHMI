@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F90 / PHYSICAL PROTOTYPE — P3 MERGED / VERIFIED / P4 NEXT`
+`F90 / PHYSICAL PROTOTYPE — P3 BENCH WIRING/BOM IMPLEMENTED / MERGE APPROVAL PENDING`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -33,7 +33,6 @@
 - HC-P1 post-merge reconciliation PR #30 → `4228a1f0346480221d0afb779907537a50c65e70`.
 - HC-P2-001 PR #31 approved head `5ea083ad0ac9ed0b2c965af167a6db821429c9fb` → merge `047e5bba348eaea0b52103230ec589df6f857036`.
 - HC-P2 post-merge reconciliation PR #32 → `6b05f283c8e9e280ca0c91e26947cac8b149d24b`.
-- HC-P3-001 PR #33 approved head `2de9b10aab518ac8e92cfbaf84dbc64c728d9300` → merge `a48eb7a8b1de94758e6c74945f710ff5084a4b8f`.
 
 ## Governance state
 - Foundation through REQ-HC-001: `BASELINED`.
@@ -44,14 +43,21 @@
 - `IA-HC-002`: `APPROVED / ACTIVE` only for its literal isolated off-machine / non-actuating / synthetic-test physical-prototype scope.
 - `HC-P1-001`: `MERGED / VERIFIED`.
 - `HC-P2-001`: `MERGED / VERIFIED`.
-- `HC-P3-001`: `MERGED / VERIFIED`.
+- `HC-P3-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
 
 ## Active authority boundaries
 Authorized: isolated physical HMI prototype work, low-voltage bench work, synthetic/test data, simulated RFID/KVK sources, local persistence/reporting/navigation, and serial/RS-485/Modbus only against dedicated simulators/test equipment.
 
 Not authorized: any electrical or logical connection to real KVK 801-1; live RFID with real-farm data; live KVK I/O; CAN/RS-485/Modbus/serial to the machine; KVK commands/writes/configuration/actuation; hydraulics; PLC/safety mutation; autonomous veterinary diagnosis; real-farm data; network/cloud exposure; deployment/signing/release/public distribution.
 
-## P3 verified invariants
+## Current workstream
+`HC-P3-001 — Bench wiring BOM and isolated I/O profile`
+
+Fresh authorized TDD lineage:
+- RED head `65e62602e75d6f76c3f93824048ee02baf0beac1` — 47 existing tests passed; new bench-wiring suite failed only because `hoofcare.hardware.bench_wiring` did not exist;
+- GREEN implementation head `506cdb249836401786e4899308f0bc5749382700` — `runtime-ci #229` and `docs-ci #152` succeeded.
+
+## P3 invariants
 - nominal bench supply is 24 VDC;
 - BOM includes 10.1-inch HMI, 8DI/8DO simulator I/O, terminal blocks, fuse protection, test switches and lamps;
 - USB/RS-485 is permitted only against dedicated simulator/test equipment;
@@ -59,10 +65,8 @@ Not authorized: any electrical or logical connection to real KVK 801-1; live RFI
 - real-farm data are explicitly forbidden;
 - no live machine-bus or actuation surface exists.
 
-## Current / next workstream
-`HC-P4-001 — Physical screen realization`
-
-P4 may realize the already-approved 10.1-inch/1024×600 screen model as isolated synthetic/test-only physical-prototype widgets and bindings. It must preserve >=48×48 px primary touch targets, fail-closed identity states and the existing dashboard/workflow semantics, and must not add any KVK control affordance or machine I/O surface.
+## Next dependency-ordered step
+After controlled merge and Repository Verification of P3, continue with `HC-P4-001 — Physical screen realization` under active `IA-HC-002`; live KVK integration remains separately blocked.
 
 ## Explicit blockers
 - Any live KVK integration remains blocked until the actual circa-2013 KVK 801-1 is inspected and photographed and a separate live observation authority is approved.
