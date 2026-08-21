@@ -13,6 +13,7 @@ REQUIRED = [
 ARS = Path("docs/requirements/ARS-HC-001_Application_and_Stakeholder_Requirements_v0.1.md")
 ARB = Path("docs/architecture/ARB-HC-001_System_Boundaries_v0.1.md")
 SA = Path("docs/architecture/SA-HC-001_System_Architecture_v0.1.md")
+LEL = Path("docs/architecture/LEL-HC-001_Logical_Event_Lifecycle_v0.1.md")
 ADR_FILES = [Path(f"docs/architecture/ADR-HC-00{i}_{name}_v0.1.md") for i, name in [
     (1, "HMI_Edge_Responsibility_Split"),
     (2, "KVK_Read_Only_Integration"),
@@ -40,8 +41,8 @@ if current.is_file():
         errors.append("CURRENT_STATE must keep IA-HC-001 proposed and NOT ACTIVE")
     if "Runtime implementation authority: `NOT ESTABLISHED`" not in text and "Runtime implementation authority: NOT ESTABLISHED" not in text:
         errors.append("CURRENT_STATE must state runtime implementation authority is not established")
-    if "HC-ADR-SET-001" not in text or "c2493ef39a1b45b934cd2dc001279db110a17fc0" not in text:
-        errors.append("CURRENT_STATE must record canonical ADR merge checkpoint")
+    if "HC-SYSTEM-ARCH-001" not in text or "5a0761dec9dbbca538be787839d93017f5c501df" not in text:
+        errors.append("CURRENT_STATE must record canonical System Architecture merge checkpoint")
 
 if ARS.is_file():
     ars_text = ARS.read_text(encoding="utf-8")
@@ -67,21 +68,30 @@ for path in ADR_FILES:
 
 if SA.is_file():
     sa_text = SA.read_text(encoding="utf-8")
-    for marker in [
-        "SA-HC-C01",
-        "SA-HC-C02",
-        "SA-HC-C06",
-        "no write path",
-        "IDENTITY_PENDING",
-        "PROJECT OWNER APPROVAL REQUIRED",
-    ]:
+    for marker in ["SA-HC-C01", "SA-HC-C02", "SA-HC-C06", "no write path", "IDENTITY_PENDING"]:
         if marker not in sa_text:
             errors.append(f"System Architecture missing marker: {marker}")
+
+if LEL.is_file():
+    lel_text = LEL.read_text(encoding="utf-8")
+    for marker in [
+        "LEL-HC-I01",
+        "LEL-HC-C01",
+        "LEL-HC-T02",
+        "LEL-HC-KVK-001",
+        "LEL-HC-D02",
+        "LEL-HC-D03",
+        "IDENTITY_PENDING",
+        "SESSION_COMPLETED",
+        "PROJECT OWNER APPROVAL REQUIRED",
+    ]:
+        if marker not in lel_text:
+            errors.append(f"LEL missing marker: {marker}")
 
 trace = Path("docs/traceability/HC-TRACE-001_Traceability.md")
 if trace.is_file():
     trace_text = trace.read_text(encoding="utf-8")
-    for marker in ["HC-ADR-001", "HC-ADR-007", "HC-SA-001", "HC-SA-003", "HC-SA-006"]:
+    for marker in ["HC-SA-001", "HC-SA-006", "HC-LEL-001", "HC-LEL-002", "HC-LEL-004", "HC-LEL-005"]:
         if marker not in trace_text:
             errors.append(f"traceability missing marker: {marker}")
 
@@ -90,4 +100,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("governance, requirements, boundaries, ADR and system architecture documentation checks passed")
+print("governance, requirements, boundaries, ADR, system architecture and LEL documentation checks passed")
