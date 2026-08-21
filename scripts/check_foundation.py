@@ -10,6 +10,7 @@ REQUIRED = [
     Path("governance/IA-HC-002_Physical_Prototype_Authority_v0.1.md"),
     Path("planning/IMP-HC-001_Bench_MVP_Implementation_Plan_v0.1.md"),
     Path("docs/closure/HC-BENCH-MVP-CLOSURE-001.md"),
+    Path("docs/prototype/HC-P3-001_Bench_Wiring_BOM.md"),
     Path("project_context/CURRENT_STATE.md"),
     Path("docs/traceability/HC-TRACE-001_Traceability.md"),
 ]
@@ -26,42 +27,35 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F90 / PHYSICAL PROTOTYPE — P2 HMI LAYOUT IN PROGRESS",
-    "3425b2be7e581fcb079c8b3688b48533b780a06b",
-    "BENCH MVP`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`",
+    "F90 / PHYSICAL PROTOTYPE — P3 BENCH WIRING/BOM IN PROGRESS",
+    "0404c45bf7adbdc9e6063501ce5adb7651dd5019",
+    "HC-P2-001`: `MERGED / VERIFIED`",
+    "HC-P3-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
     "IA-HC-002`: `ACTIVE`",
-    "HC-P1-001`: `MERGED / VERIFIED`",
-    "HC-P2-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
-    "Paweł Humięcki the best zootechnik",
     "Physical/live KVK integration remains blocked",
 ]:
     if marker not in current:
         errors.append(f"CURRENT_STATE missing marker: {marker}")
 
-ia2 = Path("governance/IA-HC-002_Physical_Prototype_Authority_v0.1.md").read_text(encoding="utf-8")
-for marker in [
-    "ACTIVE — PROJECT OWNER APPROVED VIA PR #17",
-    "36ffda3b2363597b8a8aae3746e9d555450c625c",
-    "any electrical connection to the real KVK 801-1",
-    "Fail-closed rule",
-]:
-    if marker not in ia2:
-        errors.append(f"IA-HC-002 missing marker: {marker}")
-
 trace = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "P1 Physical hardware profile",
-    "3425b2be7e581fcb079c8b3688b48533b780a06b",
     "P2 HMI layout/touch mapping",
-    "8c243af4b136ac7eb5abe30d4dd326f977302a92",
-    "153a449903ffbb1a66cb237a4454437362f6fe80",
+    "0404c45bf7adbdc9e6063501ce5adb7651dd5019",
+    "P3 Bench wiring BOM / isolated I/O profile",
+    "a7f0e9168d6987b9ef0fa642a0d7ec27fddb8375",
+    "87e5d5e5da8f491d930375d7bbeed7966e157ddb",
 ]:
     if marker not in trace:
         errors.append(f"traceability missing marker: {marker}")
+
+p3 = Path("docs/prototype/HC-P3-001_Bench_Wiring_BOM.md").read_text(encoding="utf-8")
+for marker in ["24 VDC", "8DI/8DO", "no electrical or logical connection to the real KVK 801-1"]:
+    if marker not in p3:
+        errors.append(f"P3 BOM missing marker: {marker}")
 
 if errors:
     for error in errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("active IA-HC-002, P1 merge and P2 physical HMI layout checks passed")
+print("active IA-HC-002, P2 merge and P3 isolated bench wiring/BOM checks passed")
