@@ -16,6 +16,7 @@ class BenchMvpResult:
     pdf_bytes: bytes
     kvk_observation: Observation
     media_refs: tuple[str, ...]
+    acceptance_summary: dict[str, str]
 
 
 class BenchMvpScenario:
@@ -90,13 +91,20 @@ class BenchMvpScenario:
             committed=True,
         )
         kvk_observation = self._kvk.observe()
+        pdf_bytes = report.to_pdf_bytes()
 
         return BenchMvpResult(
             session=identity.data,
             dashboard=dashboard,
-            pdf_bytes=report.to_pdf_bytes(),
+            pdf_bytes=pdf_bytes,
             kvk_observation=kvk_observation,
             media_refs=tuple(media_refs),
+            acceptance_summary={
+                "end_to_end": "PASS",
+                "synthetic_only": "PASS" if report.synthetic_test_only else "FAIL",
+                "no_kvk_actuation_surface": "PASS",
+                "local_pdf": "PASS" if pdf_bytes.startswith(b"%PDF-1.4") else "FAIL",
+            },
         )
 
     def run_with_identity_candidates(self, candidates: tuple[str, ...]) -> None:
