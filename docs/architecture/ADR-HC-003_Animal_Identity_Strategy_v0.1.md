@@ -1,7 +1,10 @@
 # ADR-HC-003 — Animal Identity Strategy v0.1
 
 ## Status
-`PROPOSED — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / BASELINED — PR #4`
+
+Approved PR head: `26c66a0e2ada0348c7204516c02f4c8b0581f38f`  
+Canonical merge SHA: `c2493ef39a1b45b934cd2dc001279db110a17fc0`
 
 ## Decision
 Animal identity SHALL be represented by an internal immutable animal identifier plus one or more external identifiers. RFID is the preferred acquisition method for field operation, but the core model SHALL NOT depend on one RFID technology or vendor.

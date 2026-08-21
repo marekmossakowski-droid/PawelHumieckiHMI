@@ -1,7 +1,10 @@
 # ADR-HC-001 — HMI / Edge Responsibility Split v0.1
 
 ## Status
-`PROPOSED — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / BASELINED — PR #4`
+
+Approved PR head: `26c66a0e2ada0348c7204516c02f4c8b0581f38f`  
+Canonical merge SHA: `c2493ef39a1b45b934cd2dc001279db110a17fc0`
 
 ## Decision
 HMI SHALL be the operator interaction surface, not the sole system-of-record. Persistent session data, media indexing, report generation, backup/recovery and future external integrations SHALL reside in a separate local edge/controller service or equivalent non-HMI persistence layer.
