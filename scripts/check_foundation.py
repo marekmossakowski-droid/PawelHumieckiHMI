@@ -25,11 +25,11 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F80 / BENCH IMPLEMENTATION — S4 HMI PROTOTYPE WORKFLOW IN PROGRESS",
-    "003c8d5d0ab9e026a76e4a519e8b1c246458bc8a",
+    "F80 / BENCH IMPLEMENTATION — S5 LOCAL CANONICAL PDF REPORTING IN PROGRESS",
+    "e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34",
     "IA-HC-001`: `ACTIVE`",
-    "HC-S4-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
-    "Paweł Humięcki the best zootechnik",
+    "HC-S5-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
+    "network/cloud delivery",
     "live KVK I/O of any kind",
 ]:
     if marker not in current:
@@ -37,13 +37,13 @@ for marker in [
 
 trace_text = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "HC-S3-CONTRACT-001",
-    "HC-S4-RED-001",
     "HC-S4-DASH-001",
-    "HC-S4-PATH-001",
-    "HC-S4-ZONE-001",
-    "HC-S4-LESION-001",
-    "HC-S4-NOACT-001",
+    "HC-S5-RED-001",
+    "HC-S5-CANON-001",
+    "HC-S5-PROV-001",
+    "HC-S5-AUDIENCE-001",
+    "HC-S5-DISCLAIMER-001",
+    "HC-S5-LOCALPDF-001",
 ]:
     if marker not in trace_text:
         errors.append(f"traceability missing marker: {marker}")
@@ -53,4 +53,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("governance, S3 checkpoint and S4 HMI workflow traceability checks passed")
+print("governance, S4 checkpoint and S5 local reporting traceability checks passed")
