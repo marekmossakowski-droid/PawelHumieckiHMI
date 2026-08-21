@@ -1,7 +1,7 @@
 # HC-TRACE-001 — Traceability
 
 ## Status
-`ACTIVE — BENCH MVP CLOSED / IA-HC-002 ACTIVE / P1 MERGED / VERIFIED / P2 MERGED / VERIFIED / P3 NEXT`
+`ACTIVE — BENCH MVP CLOSED / IA-HC-002 ACTIVE / P1-P2 MERGED / VERIFIED / P3 IMPLEMENTED / MERGE APPROVAL PENDING`
 
 ## Baselined upstream lineage
 
@@ -26,25 +26,26 @@
 | S2 Persistence/recovery | `cbb35f593173aea2bb2fc1d77e1c6f267217eb01` | PR #10 `c5f60dbf11b04b680c6f51f2e610d33906b08637` | MERGED / VERIFIED |
 | S3 HMI↔edge contract | `882afd05b9cbb94bc3265652becc245992998271` | PR #11 `003c8d5d0ab9e026a76e4a519e8b1c246458bc8a` | MERGED / VERIFIED |
 | S4 HMI workflow/dashboard | `36608bfcdf02ef4585ee177519d8966ca143dd4b` | PR #12 `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34` | MERGED / VERIFIED |
-| S5 Local canonical PDF | `1581c6393319e6ab3905e3132f8ead55c6f4bfb9` | PR #13 `30acc2d9a0833844e7279c68d9884cf9dd124cea` | MERGED / VERIFIED |
+| S5 Local canonical PDF | `1581c6393313319e6ab3905e3132f8ead55c6f4bfb9` | PR #13 `30acc2d9a0833844e7279c68d9884cf9dd124cea` | MERGED / VERIFIED |
 | S6 Simulated adapters | `5e62980786207d6caad78dfb82f1921f11d1bfd5` | PR #14 `56da4eaf1316c930ca6095cd068e90bd66e2f624` | MERGED / VERIFIED |
 | S7 Bench integration/acceptance | `5791b86e8bb469d0a4c090880adca2939665ff03` | PR #16 `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5` | MERGED / VERIFIED |
 | P1 Physical prototype hardware profile | `87a9f6329e1ade0b1add79b4469ebb1b14393b40` | GREEN `601ae9fa2fab0bd9a3f72481bbc9ef3f77e7f452`; final `39678f0ca691001d56e60a91bd30b8235ff3f30e`; PR #29 merge `ec2cea9b144256baca29cd1ea2f03bf0dfcf6def` | MERGED / VERIFIED |
 | P2 HMI layout/touch mapping | `8e199b0f9ea398ab21d8ad6e6062bf7291ae6df2` | GREEN `d2fa2a91b957362b0367d9f0b30f267ddcd1b784`; final `5ea083ad0ac9ed0b2c965af167a6db821429c9fb`; PR #31 merge `047e5bba348eaea0b52103230ec589df6f857036` | MERGED / VERIFIED |
+| P3 Bench wiring BOM / isolated I/O | `65e62602e75d6f76c3f93824048ee02baf0beac1` | GREEN `506cdb249836401786e4899308f0bc5749382700`; final head pending final reconciliation CI | IMPLEMENTED / MERGE APPROVAL PENDING |
 
-## P2 verified invariants
-- 10.1-inch, 1024×600 target layout;
-- primary touch targets >= 48×48 px;
-- mapped dashboard, animal-session, limb/claw, zone/lesion, treatment and report-summary screens;
-- required banner and counters preserved;
-- isolated synthetic/test-only layout model;
-- no KVK command/write/configuration/actuation surface or machine-control affordance.
+## P3 verified invariants
+- nominal 24 VDC bench profile;
+- 10.1-inch HMI and 8DI/8DO simulator I/O included;
+- DIN terminal/protection/test accessories included;
+- USB/RS-485 limited to dedicated simulator/test equipment;
+- no real KVK connection or real-farm data;
+- no machine bus, command, write, configuration or actuation surface.
 
 ## Canonical checkpoints
-PR #27 `3eb278f7a480734045027393a53a76f6cdc03f03`; PR #28 `ce72bc01f6ccbe671a5293bde8c0f19ef3ac3ee8`; PR #29 `ec2cea9b144256baca29cd1ea2f03bf0dfcf6def`; PR #30 `4228a1f0346480221d0afb779907537a50c65e70`; PR #31 `047e5bba348eaea0b52103230ec589df6f857036`.
+PR #27 `3eb278f7a480734045027393a53a76f6cdc03f03`; PR #28 `ce72bc01f6ccbe671a5293bde8c0f19ef3ac3ee8`; PR #29 `ec2cea9b144256baca29cd1ea2f03bf0dfcf6def`; PR #30 `4228a1f0346480221d0afb779907537a50c65e70`; PR #31 `047e5bba348eaea0b52103230ec589df6f857036`; PR #32 `6b05f283c8e9e280ca0c91e26947cac8b149d24b`.
 
 ## Next slice
-`HC-P3-001 — Bench wiring BOM and isolated I/O profile` under the existing isolated synthetic/test-only `IA-HC-002` boundary.
+After controlled merge and Repository Verification of P3: `HC-P4-001 — Physical screen realization` under the existing isolated synthetic/test-only `IA-HC-002` boundary.
 
 ## Authority boundary
 `IA-HC-002` is active only for its literal isolated off-machine / non-actuating / synthetic-test physical-prototype scope. Any live KVK connection, machine I/O/control path, real-farm data, network/cloud exposure or deployment remains separately blocked.
