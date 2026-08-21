@@ -11,6 +11,7 @@ REQUIRED = [
     Path("governance/HC-IA-HC-002-ACTIVATION-001.md"),
     Path("planning/IMP-HC-001_Bench_MVP_Implementation_Plan_v0.1.md"),
     Path("docs/closure/HC-BENCH-MVP-CLOSURE-001.md"),
+    Path("docs/prototype/HC-P3-001_Bench_Wiring_BOM.md"),
     Path("project_context/CURRENT_STATE.md"),
     Path("docs/traceability/HC-TRACE-001_Traceability.md"),
 ]
@@ -27,12 +28,14 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F90 / PHYSICAL PROTOTYPE — P2 MERGED / VERIFIED / P3 NEXT",
-    "047e5bba348eaea0b52103230ec589df6f857036",
+    "F90 / PHYSICAL PROTOTYPE — P3 BENCH WIRING/BOM IMPLEMENTED / MERGE APPROVAL PENDING",
+    "6b05f283c8e9e280ca0c91e26947cac8b149d24b",
     "IA-HC-002`: `APPROVED / ACTIVE`",
-    "HC-P1-001`: `MERGED / VERIFIED`",
     "HC-P2-001`: `MERGED / VERIFIED`",
-    "HC-P3-001 — Bench wiring BOM and isolated I/O profile",
+    "HC-P3-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
+    "65e62602e75d6f76c3f93824048ee02baf0beac1",
+    "506cdb249836401786e4899308f0bc5749382700",
+    "HC-P4-001 — Physical screen realization",
     "Any live KVK integration remains blocked",
 ]:
     if marker not in current:
@@ -40,15 +43,24 @@ for marker in [
 
 trace = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "P2 MERGED / VERIFIED / P3 NEXT",
-    "8e199b0f9ea398ab21d8ad6e6062bf7291ae6df2",
-    "d2fa2a91b957362b0367d9f0b30f267ddcd1b784",
-    "5ea083ad0ac9ed0b2c965af167a6db821429c9fb",
-    "047e5bba348eaea0b52103230ec589df6f857036",
-    "HC-P3-001 — Bench wiring BOM and isolated I/O profile",
+    "P3 IMPLEMENTED / MERGE APPROVAL PENDING",
+    "65e62602e75d6f76c3f93824048ee02baf0beac1",
+    "506cdb249836401786e4899308f0bc5749382700",
+    "nominal 24 VDC bench profile",
+    "HC-P4-001 — Physical screen realization",
 ]:
     if marker not in trace:
         errors.append(f"traceability missing marker: {marker}")
+
+bom = Path("docs/prototype/HC-P3-001_Bench_Wiring_BOM.md").read_text(encoding="utf-8")
+for marker in [
+    "IMPLEMENTED / GREEN — MERGE APPROVAL PENDING",
+    "24 VDC",
+    "8DI/8DO simulator I/O",
+    "no electrical or logical connection to the real KVK 801-1",
+]:
+    if marker not in bom:
+        errors.append(f"P3 BOM missing marker: {marker}")
 
 closure = Path("docs/closure/HC-BENCH-MVP-CLOSURE-001.md").read_text(encoding="utf-8")
 if "CLOSED / IMPLEMENTED / VERIFIED / RECONCILED" not in closure:
@@ -69,4 +81,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("bench MVP closure, active IA-HC-002 and merged HC-P2 governance checks passed")
+print("bench MVP closure, active IA-HC-002 and HC-P3 governance checks passed")
