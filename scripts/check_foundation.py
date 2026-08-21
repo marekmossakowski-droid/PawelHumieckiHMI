@@ -50,3 +50,5 @@ if errors:
     raise SystemExit(1)
 
 print("active IA-HC-002, P6 merge and P7 physical prototype acceptance checks passed")
+
+# P7 final reconciliation checkpoint.
