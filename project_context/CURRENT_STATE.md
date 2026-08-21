@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F80 / BENCH MVP — CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`
+`F90 / PHYSICAL PROTOTYPE — IA-HC-002 ACTIVE / P1 NEXT`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -24,9 +24,10 @@
 - S4 PR #12 → `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34`.
 - S5 PR #13 → `30acc2d9a0833844e7279c68d9884cf9dd124cea`.
 - S6 PR #14 → `56da4eaf1316c930ca6095cd068e90bd66e2f624`.
-- S7 PR #16 approved head `419e513c9fad7f90b52744f811707ca154568362`, merged as `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`.
+- S7 PR #16 → `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`.
 - Bench MVP closure PR #17 → `36ffda3b2363597b8a8aae3746e9d555450c625c`.
 - Corrective authority rollback PR #21 → `ce58dd3e5ab9346442456736b646eacbc4309a8a`.
+- IA-HC-002 activation PR #27 approved head `3a3623d82a879c2b1b4ac3ce70f3d687b8e13710` → merge `3eb278f7a480734045027393a53a76f6cdc03f03`.
 
 ## Governance state
 - Foundation through REQ-HC-001: `BASELINED`.
@@ -34,33 +35,19 @@
 - `IA-HC-001`: `FULFILLED FOR AUTHORIZED BENCH SCOPE`.
 - `HC-S1-001` through `HC-S7-001`: `MERGED / VERIFIED`.
 - `HC-BENCH-MVP-CLOSURE-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
-- `IA-HC-002`: remains `PROPOSED / NOT ACTIVE` on canonical `main` until explicit Project Owner approval and controlled merge of the final exact activation head containing `HC-IA-HC-002-ACTIVATION-001`.
-
-## Activation effect after approved exact-head merge
-Only after explicit Project Owner approval of the final activation head, controlled merge and Repository Verification:
-- `IA-HC-002 = APPROVED / ACTIVE`;
-- physical prototype work may proceed only inside the literal off-machine / non-actuating / synthetic-test scope of `IA-HC-002`;
-- any live KVK connection remains separately blocked.
+- `IA-HC-002`: `APPROVED / ACTIVE` only for its literal isolated off-machine / non-actuating / synthetic-test physical-prototype scope.
 
 ## Active authority boundaries
-Before activation merge, no physical prototype implementation authority is active beyond the fulfilled bench scope.
+Authorized: isolated physical HMI prototype work, low-voltage bench work, synthetic/test data, simulated RFID/KVK sources, local persistence/reporting/navigation, and serial/RS-485/Modbus only against dedicated simulators/test equipment.
 
-Even after `IA-HC-002` activation, not authorized: live RFID hardware with real farm identity data; live KVK I/O; KVK commands/writes/configuration; CAN/RS-485/Modbus/serial connection to the machine; hydraulics or actuation; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data; network/cloud service exposure; deployment/signing/release/public distribution.
+Not authorized: any electrical or logical connection to real KVK 801-1; live RFID with real-farm data; live KVK I/O; CAN/RS-485/Modbus/serial to the machine; KVK commands/writes/configuration/actuation; hydraulics; PLC/safety mutation; autonomous veterinary diagnosis; real-farm data; network/cloud exposure; deployment/signing/release/public distribution.
 
 ## Bench MVP result
-The synthetic local bench MVP covers:
-- session/identity lifecycle and fail-closed ambiguity;
-- local durable persistence and restart recovery;
-- local HMI↔edge contract;
-- HMI dashboard/workflow;
-- local canonical PDF reporting;
-- simulated RFID and KVK observation-only adapters;
-- integrated acceptance/negative verification;
-- explicit proof that no KVK actuation surface exists.
+The synthetic local bench MVP is closed and verified across S1-S7, including session/identity lifecycle, persistence/recovery, HMI-edge contract, dashboard/workflow, local canonical PDF reporting, simulated RFID/KVK observations and end-to-end acceptance with no KVK actuation surface.
 
 ## Next dependency-ordered step
-Current gate: Project Owner exact-head decision on `HC-IA-HC-002-ACTIVATION-001`. No P1 physical-prototype implementation may start before controlled activation merge and Repository Verification.
+`HC-P1-001` — physical prototype hardware profile and isolated bench baseline under active `IA-HC-002`.
 
 ## Explicit blockers
-- Physical/live KVK integration remains blocked until the actual circa-2013 KVK 801-1 is inspected and photographed and a separate live observation authority is approved.
+- Any live KVK integration remains blocked until the actual circa-2013 KVK 801-1 is inspected and photographed and a separate live observation authority is approved.
 - Commercial/product naming remains undecided.
