@@ -1,7 +1,7 @@
 # HC-TRACE-001 — Traceability
 
 ## Status
-`ACTIVE — BENCH MVP CLOSED / IA-HC-002 ACTIVE / P1-P2 MERGED / VERIFIED / P3 IMPLEMENTED / MERGE APPROVAL PENDING`
+`ACTIVE — BENCH MVP CLOSED / IA-HC-002 ACTIVE / P1-P3 MERGED / VERIFIED / P4 NEXT`
 
 ## Baselined upstream lineage
 
@@ -31,7 +31,7 @@
 | S7 Bench integration/acceptance | `5791b86e8bb469d0a4c090880adca2939665ff03` | PR #16 `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5` | MERGED / VERIFIED |
 | P1 Physical prototype hardware profile | `87a9f6329e1ade0b1add79b4469ebb1b14393b40` | GREEN `601ae9fa2fab0bd9a3f72481bbc9ef3f77e7f452`; final `39678f0ca691001d56e60a91bd30b8235ff3f30e`; PR #29 merge `ec2cea9b144256baca29cd1ea2f03bf0dfcf6def` | MERGED / VERIFIED |
 | P2 HMI layout/touch mapping | `8e199b0f9ea398ab21d8ad6e6062bf7291ae6df2` | GREEN `d2fa2a91b957362b0367d9f0b30f267ddcd1b784`; final `5ea083ad0ac9ed0b2c965af167a6db821429c9fb`; PR #31 merge `047e5bba348eaea0b52103230ec589df6f857036` | MERGED / VERIFIED |
-| P3 Bench wiring BOM / isolated I/O | `65e62602e75d6f76c3f93824048ee02baf0beac1` | GREEN `506cdb249836401786e4899308f0bc5749382700`; final head pending final reconciliation CI | IMPLEMENTED / MERGE APPROVAL PENDING |
+| P3 Bench wiring BOM / isolated I/O | `65e62602e75d6f76c3f93824048ee02baf0beac1` | GREEN `506cdb249836401786e4899308f0bc5749382700`; final `2de9b10aab518ac8e92cfbaf84dbc64c728d9300`; PR #33 merge `a48eb7a8b1de94758e6c74945f710ff5084a4b8f` | MERGED / VERIFIED |
 
 ## P3 verified invariants
 - nominal 24 VDC bench profile;
@@ -42,10 +42,10 @@
 - no machine bus, command, write, configuration or actuation surface.
 
 ## Canonical checkpoints
-PR #27 `3eb278f7a480734045027393a53a76f6cdc03f03`; PR #28 `ce72bc01f6ccbe671a5293bde8c0f19ef3ac3ee8`; PR #29 `ec2cea9b144256baca29cd1ea2f03bf0dfcf6def`; PR #30 `4228a1f0346480221d0afb779907537a50c65e70`; PR #31 `047e5bba348eaea0b52103230ec589df6f857036`; PR #32 `6b05f283c8e9e280ca0c91e26947cac8b149d24b`.
+PR #27 `3eb278f7a480734045027393a53a76f6cdc03f03`; PR #28 `ce72bc01f6ccbe671a5293bde8c0f19ef3ac3ee8`; PR #29 `ec2cea9b144256baca29cd1ea2f03bf0dfcf6def`; PR #30 `4228a1f0346480221d0afb779907537a50c65e70`; PR #31 `047e5bba348eaea0b52103230ec589df6f857036`; PR #32 `6b05f283c8e9e280ca0c91e26947cac8b149d24b`; PR #33 `a48eb7a8b1de94758e6c74945f710ff5084a4b8f`.
 
 ## Next slice
-After controlled merge and Repository Verification of P3: `HC-P4-001 — Physical screen realization` under the existing isolated synthetic/test-only `IA-HC-002` boundary.
+`HC-P4-001 — Physical screen realization` under the existing isolated synthetic/test-only `IA-HC-002` boundary.
 
 ## Authority boundary
 `IA-HC-002` is active only for its literal isolated off-machine / non-actuating / synthetic-test physical-prototype scope. Any live KVK connection, machine I/O/control path, real-farm data, network/cloud exposure or deployment remains separately blocked.
