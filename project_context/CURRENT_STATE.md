@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F80 / BENCH MVP — CLOSED / IMPLEMENTED / VERIFIED / RECONCILED PENDING CLOSURE MERGE`
+`F90 / PHYSICAL PROTOTYPE — P1 HARDWARE PROFILE IN PROGRESS`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -24,34 +24,39 @@
 - S4 PR #12 → `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34`.
 - S5 PR #13 → `30acc2d9a0833844e7279c68d9884cf9dd124cea`.
 - S6 PR #14 → `56da4eaf1316c930ca6095cd068e90bd66e2f624`.
-- S7 PR #16 approved head `419e513c9fad7f90b52744f811707ca154568362`, merged as `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`.
+- S7 PR #16 → `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`.
+- Bench MVP closure + IA-HC-002 activation PR #17 → `36ffda3b2363597b8a8aae3746e9d555450c625c`.
 
 ## Governance state
-- Foundation through REQ-HC-001: `BASELINED`.
-- `IMP-HC-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED` upon controlled merge of closure record.
-- `IA-HC-001`: `FULFILLED FOR AUTHORIZED BENCH SCOPE` upon controlled merge of closure record.
-- `HC-S1-001` through `HC-S7-001`: `MERGED / VERIFIED`.
-- `HC-BENCH-MVP-CLOSURE-001`: `PROPOSED — PROJECT OWNER APPROVAL REQUIRED`.
-- `IA-HC-002`: `PROPOSED / NOT ACTIVE` for bounded physical prototype work only.
+- `BENCH MVP`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
+- `IMP-HC-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
+- `IA-HC-001`: `FULFILLED FOR AUTHORIZED BENCH SCOPE`.
+- `IA-HC-002`: `ACTIVE` for isolated physical HMI prototype work only.
+- `HC-P1-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
 
 ## Active authority boundaries
-Until `IA-HC-002` is explicitly approved, no new physical prototype authority exists beyond the already fulfilled bench scope.
+Authorized: isolated synthetic/test-only physical HMI prototype work, 10-inch-class panel profile, low-voltage bench power/wiring isolated from KVK, bench DI/DO capability description, physical HMI screen/ergonomics work, local persistence/reporting tests, simulator-only serial/RS-485/Modbus tests, BOM and mounting mock-ups.
 
-Not authorized: live RFID hardware with real farm identity data; live KVK I/O; KVK commands/writes/configuration; CAN/RS-485/Modbus/serial connection to the machine; hydraulics or actuation; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data; network/cloud service exposure; deployment/signing/release/public distribution.
+Not authorized: any electrical/logical connection to real KVK 801-1; live RFID with real farm data; live KVK I/O; CAN/RS-485/Modbus/serial to the machine; KVK commands/writes/configuration/actuation; hydraulics; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data; network/cloud service exposure; deployment/signing/release/public distribution.
 
-## Bench MVP result
-The synthetic local bench MVP now covers:
-- session/identity lifecycle and fail-closed ambiguity;
-- local durable persistence and restart recovery;
-- local HMI↔edge contract;
-- HMI dashboard/workflow;
-- local canonical PDF reporting;
-- simulated RFID and KVK observation-only adapters;
-- integrated acceptance/negative verification;
-- explicit proof that no KVK actuation surface exists.
+## Current workstream
+`HC-P1-001 — Physical prototype hardware profile`
+
+TDD lineage:
+- RED head `c274137e90f0da24898a1863de86b8b4fa4002cd` — hardware profile tests failed before implementation existed;
+- GREEN head `05dbd79b25f23ed3b5e578700add6c9dcf139886` — runtime-ci and docs-ci succeeded before reconciliation.
+
+## P1 invariants
+- prototype mode is explicitly `ISOLATED_SYNTHETIC`;
+- nominal bench supply profile is 24 VDC;
+- panel class is approximately 10.1 inch;
+- DI/DO counts are descriptive bench capabilities only;
+- KVK connection is explicitly forbidden;
+- real-farm data are explicitly forbidden;
+- no live machine-bus enable or actuation method exists.
 
 ## Next dependency-ordered step
-After controlled merge of the closure package and explicit Project Owner approval, `IA-HC-002` may activate bounded physical HMI prototype work. Any live connection to the KVK remains separately blocked.
+After controlled merge and repository verification of P1, continue physical-prototype work under active `IA-HC-002`, prioritizing HMI screen realization and bench wiring/BOM while remaining isolated from the real KVK.
 
 ## Explicit blockers
 - Physical/live KVK integration remains blocked until the actual circa-2013 KVK 801-1 is inspected and photographed and a separate live observation authority is approved.
