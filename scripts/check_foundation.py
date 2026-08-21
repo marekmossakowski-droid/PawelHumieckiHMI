@@ -27,11 +27,13 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F90 / PHYSICAL PROTOTYPE — P1 MERGED / VERIFIED / P2 NEXT",
-    "ec2cea9b144256baca29cd1ea2f03bf0dfcf6def",
+    "F90 / PHYSICAL PROTOTYPE — P2 HMI LAYOUT IMPLEMENTED / MERGE APPROVAL PENDING",
+    "4228a1f0346480221d0afb779907537a50c65e70",
     "IA-HC-002`: `APPROVED / ACTIVE`",
     "HC-P1-001`: `MERGED / VERIFIED`",
-    "HC-P2-001 — Physical HMI layout and touch mapping",
+    "HC-P2-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
+    "8e199b0f9ea398ab21d8ad6e6062bf7291ae6df2",
+    "d2fa2a91b957362b0367d9f0b30f267ddcd1b784",
     "Any live KVK integration remains blocked",
 ]:
     if marker not in current:
@@ -39,12 +41,10 @@ for marker in [
 
 trace = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "P1 MERGED / VERIFIED / P2 NEXT",
-    "87a9f6329e1ade0b1add79b4469ebb1b14393b40",
-    "601ae9fa2fab0bd9a3f72481bbc9ef3f77e7f452",
-    "39678f0ca691001d56e60a91bd30b8235ff3f30e",
-    "ec2cea9b144256baca29cd1ea2f03bf0dfcf6def",
-    "HC-P2-001 — Physical HMI layout and touch mapping",
+    "P2 IMPLEMENTED / MERGE APPROVAL PENDING",
+    "8e199b0f9ea398ab21d8ad6e6062bf7291ae6df2",
+    "d2fa2a91b957362b0367d9f0b30f267ddcd1b784",
+    "10.1-inch, 1024×600 target layout",
 ]:
     if marker not in trace:
         errors.append(f"traceability missing marker: {marker}")
@@ -68,4 +68,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("bench MVP closure, active IA-HC-002 and merged HC-P1 governance checks passed")
+print("bench MVP closure, active IA-HC-002 and HC-P2 governance checks passed")
