@@ -2,13 +2,16 @@
 
 ## Status
 
-`PROPOSED — PROJECT OWNER APPROVAL REQUIRED`
+`ACTIVE — APPROVED BY PROJECT OWNER / PR #8`
+
+Approved exact head: `9c939abea6794e2b5a4815c826410eb0166ab535`  
+Canonical merge SHA: `0d58eb2921df298114c304295a061547598ae541`
 
 ## 1. Purpose
 
-This authority defines the maximum implementation scope that may be activated after explicit Project Owner approval for the first HoofCare bench prototype.
+This authority defines the maximum implementation scope for the first HoofCare bench prototype.
 
-## 2. Authorized scope after approval
+## 2. Authorized scope
 
 The authority permits implementation of a local, non-production bench prototype covering:
 
@@ -30,6 +33,7 @@ The authority permits implementation of a local, non-production bench prototype 
 
 This authority does not permit:
 
+- live KVK I/O of any kind;
 - live hydraulic control;
 - live valve output;
 - gate, strap, winch or lift control;
@@ -44,7 +48,7 @@ This authority does not permit:
 
 ## 4. Read-only KVK boundary
 
-Any future physical integration under this authority requires a separate verified interface record demonstrating that the connection is observational and electrically/logically isolated as appropriate. Physical connection to KVK remains blocked until the actual 2013-generation KVK 801-1 has been inspected.
+Any future physical integration requires a separate verified interface record demonstrating that the connection is observational and electrically/logically isolated as appropriate. Physical connection to KVK remains blocked until the actual 2013-generation KVK 801-1 has been inspected.
 
 ## 5. Engineering constraints
 
@@ -56,6 +60,6 @@ Any future physical integration under this authority requires a separate verifie
 - branch + Draft PR workflow;
 - exact-head approval before merge.
 
-## 6. Activation
+## 6. Activation record
 
-This document becomes `ACTIVE` only after explicit Project Owner approval of the exact baselined content. Until then it is documentation-only and grants no runtime implementation authority.
+Project Owner explicitly approved activation in PR #8 on exact head `9c939abea6794e2b5a4815c826410eb0166ab535`. Authority became active only after controlled merge to `main` as `0d58eb2921df298114c304295a061547598ae541`.
