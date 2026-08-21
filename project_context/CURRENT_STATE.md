@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F90 / PHYSICAL PROTOTYPE — P3 MERGED / VERIFIED / P4 NEXT`
+`F90 / PHYSICAL PROTOTYPE — P4 MERGED / VERIFIED / P5 NEXT`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -34,8 +34,8 @@
 - HC-P2-001 PR #31 approved head `5ea083ad0ac9ed0b2c965af167a6db821429c9fb` → merge `047e5bba348eaea0b52103230ec589df6f857036`.
 - HC-P2 post-merge reconciliation PR #32 → `6b05f283c8e9e280ca0c91e26947cac8b149d24b`.
 - HC-P3-001 PR #33 approved head `2de9b10aab518ac8e92cfbaf84dbc64c728d9300` → merge `a48eb7a8b1de94758e6c74945f710ff5084a4b8f`.
-- Approved post-P3 reconciliation PR #39 → `ae871dd8a06f1854482c94b1241253df98d2689c`.
-- Corrective removal PR #41 approved head `d38f89ccd0ded0daa9fc0ee30d7d0dbcb919a014` → merge `16f26ae8909e0d40037e163c90ccabf154070599`.
+- HC-P3 post-merge reconciliation PR #34 → `7a415b27d6b9d2deb60d99d541e98bdc8b6e0804`.
+- HC-P4-001 PR #35 approved head `5575eabe0543a72e046a4d8bb7425e2ca1f1587d` → merge `c5101eb15933bc76b76a86dd3e8ed4f78141875f`.
 
 ## Governance state
 - Foundation through REQ-HC-001: `BASELINED`.
@@ -44,26 +44,24 @@
 - `HC-S1-001` through `HC-S7-001`: `MERGED / VERIFIED`.
 - `HC-BENCH-MVP-CLOSURE-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
 - `IA-HC-002`: `APPROVED / ACTIVE` only for its literal isolated off-machine / non-actuating / synthetic-test physical-prototype scope.
-- `HC-P1-001` through `HC-P3-001`: `MERGED / VERIFIED`.
-- `HC-P4-001`: `NEXT / NOT YET IMPLEMENTED`.
+- `HC-P1-001` through `HC-P4-001`: `MERGED / VERIFIED`.
 
 ## Active authority boundaries
 Authorized: isolated physical HMI prototype work, low-voltage bench work, synthetic/test data, simulated RFID/KVK sources, local persistence/reporting/navigation, and serial/RS-485/Modbus only against dedicated simulators/test equipment.
 
 Not authorized: any electrical or logical connection to real KVK 801-1; live RFID with real-farm data; live KVK I/O; CAN/RS-485/Modbus/serial to the machine; KVK commands/writes/configuration/actuation; hydraulics; PLC/safety mutation; autonomous veterinary diagnosis; real-farm data; network/cloud exposure; deployment/signing/release/public distribution.
 
-## P3 verified invariants
-- nominal bench supply is 24 VDC;
-- BOM includes 10.1-inch HMI, 8DI/8DO simulator I/O, terminal blocks, fuse protection, test switches and lamps;
-- USB/RS-485 is permitted only against dedicated simulator/test equipment;
-- KVK connection is explicitly forbidden;
-- real-farm data are explicitly forbidden;
-- no live machine-bus or actuation surface exists.
+## P4 verified invariants
+- 10.1-inch / 1024×600 screen realization remains synthetic/test-only;
+- dashboard, animal-session, limb/claw, zone/lesion, treatment and report-summary widget mappings are realized;
+- required banner and counters are preserved;
+- primary touch controls remain at least 48×48 px;
+- no KVK command/write/configuration/actuation or machine-control surface exists.
 
 ## Current / next workstream
-`HC-P4-001 — Physical screen realization`
+`HC-P5-001 — Physical navigation and state binding`
 
-P4 may realize the already-approved 10.1-inch/1024×600 screen model as isolated synthetic/test-only physical-prototype widgets and bindings. It must preserve >=48×48 px primary touch targets, fail-closed identity states and the existing dashboard/workflow semantics, and must not add any KVK control affordance or machine I/O surface.
+P5 may bind the already-realized synthetic/test-only physical screens into a local operator navigation/state model. It must remain fail-closed for invalid order/state and must not add any KVK control affordance or machine I/O surface.
 
 ## Explicit blockers
 - Any live KVK integration remains blocked until the actual circa-2013 KVK 801-1 is inspected and photographed and a separate live observation authority is approved.
