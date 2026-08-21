@@ -1,95 +1,59 @@
 # HoofCare — CURRENT STATE
 
 ## Naming status
-
-`PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. They are not an approved commercial/product name. Final product name: `TBD — PROJECT OWNER DECISION REQUIRED`.
+`PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-
-`F80 / BENCH IMPLEMENTATION — S2 DURABLE LOCAL PERSISTENCE IN PROGRESS`
+`F80 / BENCH IMPLEMENTATION — S3 LOCAL HMI-EDGE CONTRACT IN PROGRESS`
 
 ## Canonical repository
-
 `marekmossakowski-droid/PawelHumieckiHMI`
 
 ## Canonical main checkpoints
-
-- `HC-FOUNDATION-001`: PR #1 merged as `de68522e4851f645d65dee7dda08ef8fed6af955`.
-- `HC-ARS-001`: PR #2 merged as `b0286b73b90c95f05b1d99ef58ac9a9fae197880`.
-- `HC-ARB-001`: PR #3 merged as `9144a6a003f58ea12c5a6c3d4ff26c26527d0292`.
-- `HC-ADR-SET-001`: PR #4 merged as `c2493ef39a1b45b934cd2dc001279db110a17fc0`.
-- `HC-SYSTEM-ARCH-001`: PR #5 merged as `5a0761dec9dbbca538be787839d93017f5c501df`.
-- `HC-LEL-001`: PR #6 merged as `a7d031317cf25934218cd09a4916449f2bf5b634`.
-- `HC-REQ-001`: PR #7 merged as `e34e2a2ae3f709d83c24d528f8930b1b72060961`.
-- `HC-IMP-001` + `IA-HC-001` activation: PR #8 approved head `9c939abea6794e2b5a4815c826410eb0166ab535`, merged as `0d58eb2921df298114c304295a061547598ae541`.
-- `HC-S1-001 — Domain/session core`: PR #9 approved head `5f6015bc2fd8e949851fac4e1e9d61184e8da4ff`, merged as `7467ec4e30b5ecd8831c094bd90ba7d1fe0ad7b2`.
-
-## Current branch
-
-`implementation/hc-s2-persistence`
-
-## Product baseline
-
-- Product identity: not commercially named; current identifiers are codenames only.
-- First target machine: KVK 801-1, generation circa 2013, older green construction.
-- Current hardware candidate for bench MVP: Kinco GL100E 10.1"; candidate only, not baseline.
-- Physical machine audit: `BLOCKED_BY_SITE_ACCESS` until access to the actual chute is available.
+- Foundation PR #1 → `de68522e4851f645d65dee7dda08ef8fed6af955`.
+- ARS PR #2 → `b0286b73b90c95f05b1d99ef58ac9a9fae197880`.
+- ARB PR #3 → `9144a6a003f58ea12c5a6c3d4ff26c26527d0292`.
+- ADR PR #4 → `c2493ef39a1b45b934cd2dc001279db110a17fc0`.
+- System Architecture PR #5 → `5a0761dec9dbbca538be787839d93017f5c501df`.
+- LEL PR #6 → `a7d031317cf25934218cd09a4916449f2bf5b634`.
+- Requirements PR #7 → `e34e2a2ae3f709d83c24d528f8930b1b72060961`.
+- IMP + IA activation PR #8 → `0d58eb2921df298114c304295a061547598ae541`.
+- S1 Domain/session core PR #9 → `7467ec4e30b5ecd8831c094bd90ba7d1fe0ad7b2`.
+- S2 Durable persistence PR #10 approved head `fca836ca9b4f99ea059b5f79f0dd8eef402e3ecb`, merged as `c5f60dbf11b04b680c6f51f2e610d33906b08637`.
 
 ## Governance state
-
 - Foundation through REQ-HC-001: `BASELINED`.
-- `IMP-HC-001`: `APPROVED / BASELINED` by PR #8.
+- `IMP-HC-001`: `APPROVED / BASELINED`.
 - `IA-HC-001`: `ACTIVE` for bounded local bench MVP only.
 - Runtime implementation authority: `ESTABLISHED — BOUNDED BENCH ONLY`.
 - `HC-S1-001`: `MERGED / VERIFIED`.
-- `HC-S2-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
+- `HC-S2-001`: `MERGED / VERIFIED`.
+- `HC-S3-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
 
 ## Active authority boundaries
+Authorized: synthetic/test data, domain/session core, local persistence/recovery, local HMI↔edge contract, HMI prototype workflow, local PDF, simulated RFID/KVK observations, tests.
 
-Authorized:
-- synthetic/test data;
-- domain/session core;
-- local persistence and restart recovery;
-- local HMI↔edge contract;
-- HMI prototype workflow;
-- local PDF reporting;
-- simulated RFID;
-- simulated KVK observation events;
-- automated tests and verification.
-
-Not authorized:
-- live KVK I/O of any kind;
-- KVK commands/writes/configuration;
-- hydraulics or actuation;
-- PLC or safety mutation;
-- autonomous veterinary diagnosis;
-- medication dosing;
-- production deployment/signing/release/public distribution;
-- real farm data without separate data/privacy authority.
+Not authorized: live KVK I/O of any kind; KVK commands/writes/configuration; hydraulics or actuation; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data without separate authority; deployment/signing/release/public distribution.
 
 ## Current workstream
-
-`HC-S2-001 — Durable local persistence and restart recovery`
+`HC-S3-001 — Local HMI↔edge contract`
 
 TDD lineage:
-- RED head: `cbb35f593173aea2bb2fc1d77e1c6f267217eb01` — persistence/recovery tests precede the store implementation and `runtime-ci` failed;
-- GREEN head: `6a1a6c205ce486fcf397ce2c5a2c239873a3154b` — `runtime-ci` and `docs-ci` both succeeded.
+- RED head `882afd05b9cbb94bc3265652becc245992998271` — runtime contract tests failed before application contract existed;
+- GREEN head `f58a1a9a79896ccf3fc45471c45caa4106fea383` — `runtime-ci` and `docs-ci` succeeded.
 
-## S2 invariants
-
-- canonical session snapshots are stored outside HMI state;
-- non-terminal sessions can be reconstructed after process restart;
-- snapshot replacement is atomic within the local filesystem boundary;
-- amendment records are append-only and ordered;
-- corrupt snapshots fail closed rather than producing a partial session;
-- missing sessions are explicit errors;
-- persistence remains local and synthetic/test-only under current authority.
+## S3 invariants
+- contract is local/in-process only;
+- result and error states are explicit and serializable;
+- session creation/read and identity resolution are exposed through bounded operations;
+- request IDs are idempotent for repeated requests;
+- ambiguous identity remains fail-closed;
+- no KVK actuation or command surface exists;
+- no network service exposure is introduced.
 
 ## Next dependency-ordered step
-
-After controlled merge and repository verification of `HC-S2-001`, begin `S3 — local bench API / HMI contract` autonomously under active `IA-HC-001`.
+After controlled merge and repository verification of S3, begin `S4 — HMI prototype workflow and counters` under active `IA-HC-001`.
 
 ## Explicit blockers
-
-- Physical KVK integration remains blocked until the actual machine is inspected and photographed.
+- Physical KVK integration remains blocked until the actual 2013-generation KVK 801-1 is inspected and photographed.
 - Commercial/product naming remains undecided.
