@@ -1,6 +1,8 @@
 # PawelHumieckiHMI / HoofCare
 
-HoofCare to projekt przemysłowego systemu HMI i rejestracji zabiegów korekcji racic, rozwijany początkowo jako retrofit dla poskromu KVK 801-1 generacji około 2013 r.
+> **Naming status:** `PawelHumieckiHMI` and `HoofCare` are internal project codenames used for engineering continuity. They are not an approved commercial/product brand. The final product name remains `TBD` and requires a separate Project Owner decision.
+
+Under the current codename, the project develops an industrial HMI and hoof-treatment record system, initially as a retrofit for a KVK 801-1 chute from approximately the 2013 generation.
 
 ## Cel
 
@@ -12,7 +14,7 @@ Docelowo system ma dostarczać użyteczne dane dla rolnika, zootechnika, lekarza
 
 ## Granica bezpieczeństwa
 
-HoofCare nie zastępuje i nie omija fabrycznych funkcji bezpieczeństwa KVK. Pierwsza generacja integracji z poskromem ma charakter `READ_ONLY`: odczyt i rejestracja stanów bez sterowania hydrauliką, bramami, wciągarkami, E-STOP ani innymi funkcjami wykonawczymi.
+System nie zastępuje i nie omija fabrycznych funkcji bezpieczeństwa KVK. Pierwsza generacja integracji z poskromem ma charakter `READ_ONLY`: odczyt i rejestracja stanów bez sterowania hydrauliką, bramami, wciągarkami, E-STOP ani innymi funkcjami wykonawczymi.
 
 ## Metodyka
 
