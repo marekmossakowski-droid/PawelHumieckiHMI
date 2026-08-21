@@ -1,18 +1,17 @@
 # HC-IA-HC-002-ACTIVATION-001 — Physical Prototype Authority Activation Decision
 
 ## Status
-`PROPOSED — PROJECT OWNER EXACT-HEAD APPROVAL REQUIRED`
+`APPROVED / MERGED / REPOSITORY VERIFIED`
 
-## Purpose
-Materialize the explicit Project Owner decision required to activate `IA-HC-002 — Physical Prototype Authority v0.1` after verified Bench MVP closure.
+Project Owner approved exact head `3a3623d82a879c2b1b4ac3ce70f3d687b8e13710`; controlled merge completed as `3eb278f7a480734045027393a53a76f6cdc03f03`.
 
-## Effect upon controlled merge of the exact Project Owner-approved head
+## Effect
 - `HC-BENCH-MVP-CLOSURE-001 = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`;
 - `IMP-HC-001 = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`;
 - `IA-HC-001 = FULFILLED FOR AUTHORIZED BENCH SCOPE`;
 - `IA-HC-002 = APPROVED / ACTIVE` only for the literal bounded physical-prototype scope defined in `governance/IA-HC-002_Physical_Prototype_Authority_v0.1.md`.
 
-## Authorized bounded physical-prototype scope after activation
+## Authorized bounded physical-prototype scope
 - off-machine or non-actuating mock-up work only;
 - selected 10-inch-class HMI and associated low-voltage bench accessories;
 - synthetic/test data and simulated RFID/KVK observation sources;
@@ -38,6 +37,3 @@ Activation does not authorize:
 
 ## Fail-closed rule
 If any task could create an electrical, logical or mechanical path capable of influencing the real KVK machine, or would use real-farm data, it remains outside `IA-HC-002` and must not proceed without a new explicit authority decision.
-
-## Activation rule
-This document does not activate `IA-HC-002` merely by existing on a branch or in an open PR. Activation occurs only after explicit Project Owner approval of the final exact head and controlled merge of that exact approved head to `main`, followed by Repository Verification.
