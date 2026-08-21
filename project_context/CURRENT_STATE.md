@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F90 / PHYSICAL PROTOTYPE — IA-HC-002 ACTIVE / P1 NEXT`
+`F90 / PHYSICAL PROTOTYPE — P1 HARDWARE PROFILE IMPLEMENTED / MERGE APPROVAL PENDING`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -27,7 +27,8 @@
 - S7 PR #16 → `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`.
 - Bench MVP closure PR #17 → `36ffda3b2363597b8a8aae3746e9d555450c625c`.
 - Corrective authority rollback PR #21 → `ce58dd3e5ab9346442456736b646eacbc4309a8a`.
-- IA-HC-002 activation PR #27 approved head `3a3623d82a879c2b1b4ac3ce70f3d687b8e13710` → merge `3eb278f7a480734045027393a53a76f6cdc03f03`.
+- IA-HC-002 activation PR #27 → `3eb278f7a480734045027393a53a76f6cdc03f03`.
+- IA-HC-002 post-activation reconciliation PR #28 → `ce72bc01f6ccbe671a5293bde8c0f19ef3ac3ee8`.
 
 ## Governance state
 - Foundation through REQ-HC-001: `BASELINED`.
@@ -36,17 +37,31 @@
 - `HC-S1-001` through `HC-S7-001`: `MERGED / VERIFIED`.
 - `HC-BENCH-MVP-CLOSURE-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
 - `IA-HC-002`: `APPROVED / ACTIVE` only for its literal isolated off-machine / non-actuating / synthetic-test physical-prototype scope.
+- `HC-P1-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
 
 ## Active authority boundaries
 Authorized: isolated physical HMI prototype work, low-voltage bench work, synthetic/test data, simulated RFID/KVK sources, local persistence/reporting/navigation, and serial/RS-485/Modbus only against dedicated simulators/test equipment.
 
 Not authorized: any electrical or logical connection to real KVK 801-1; live RFID with real-farm data; live KVK I/O; CAN/RS-485/Modbus/serial to the machine; KVK commands/writes/configuration/actuation; hydraulics; PLC/safety mutation; autonomous veterinary diagnosis; real-farm data; network/cloud exposure; deployment/signing/release/public distribution.
 
-## Bench MVP result
-The synthetic local bench MVP is closed and verified across S1-S7, including session/identity lifecycle, persistence/recovery, HMI-edge contract, dashboard/workflow, local canonical PDF reporting, simulated RFID/KVK observations and end-to-end acceptance with no KVK actuation surface.
+## Current workstream
+`HC-P1-001 — Physical prototype hardware profile`
+
+Fresh authorized TDD lineage:
+- RED head `87a9f6329e1ade0b1add79b4469ebb1b14393b40` — existing 39 tests passed and the new hardware-profile suite failed only because `hoofcare.hardware` did not exist;
+- GREEN implementation head `601ae9fa2fab0bd9a3f72481bbc9ef3f77e7f452` — `runtime-ci #203` and `docs-ci #135` succeeded.
+
+## P1 invariants
+- prototype mode is exactly `ISOLATED_SYNTHETIC`;
+- panel class is 10.1 inch;
+- nominal bench supply is 24 VDC;
+- DI/DO counts are descriptive bench capabilities only;
+- KVK connection is forbidden;
+- real-farm data are forbidden;
+- no live machine-bus enable or actuation method exists.
 
 ## Next dependency-ordered step
-`HC-P1-001` — physical prototype hardware profile and isolated bench baseline under active `IA-HC-002`.
+After controlled merge and Repository Verification of P1, continue to the next bounded physical-prototype slice under `IA-HC-002`; live KVK integration remains separately blocked.
 
 ## Explicit blockers
 - Any live KVK integration remains blocked until the actual circa-2013 KVK 801-1 is inspected and photographed and a separate live observation authority is approved.
