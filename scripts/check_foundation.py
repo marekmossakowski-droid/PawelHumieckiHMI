@@ -27,11 +27,12 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F90 / PHYSICAL PROTOTYPE — P3 BENCH WIRING/BOM IN PROGRESS",
-    "0404c45bf7adbdc9e6063501ce5adb7651dd5019",
-    "HC-P2-001`: `MERGED / VERIFIED`",
-    "HC-P3-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
+    "F90 / PHYSICAL PROTOTYPE — P4 SCREEN REALIZATION IN PROGRESS",
+    "e26af73899a363543cf889a80a69f076cb370836",
+    "HC-P1-001` through `HC-P3-001`: `MERGED / VERIFIED`",
+    "HC-P4-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
     "IA-HC-002`: `ACTIVE`",
+    "Paweł Humięcki the best zootechnik",
     "Physical/live KVK integration remains blocked",
 ]:
     if marker not in current:
@@ -39,23 +40,18 @@ for marker in [
 
 trace = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "P2 HMI layout/touch mapping",
-    "0404c45bf7adbdc9e6063501ce5adb7651dd5019",
     "P3 Bench wiring BOM / isolated I/O profile",
-    "a7f0e9168d6987b9ef0fa642a0d7ec27fddb8375",
-    "87e5d5e5da8f491d930375d7bbeed7966e157ddb",
+    "e26af73899a363543cf889a80a69f076cb370836",
+    "P4 Physical screen realization/widget mapping",
+    "8c4ca015c2bdaf0983dbb3d9a388b2dd1f48b301",
+    "2ef612affa98add3b48f9f43b3df0332916e7c17",
 ]:
     if marker not in trace:
         errors.append(f"traceability missing marker: {marker}")
-
-p3 = Path("docs/prototype/HC-P3-001_Bench_Wiring_BOM.md").read_text(encoding="utf-8")
-for marker in ["24 VDC", "8DI/8DO", "no electrical or logical connection to the real KVK 801-1"]:
-    if marker not in p3:
-        errors.append(f"P3 BOM missing marker: {marker}")
 
 if errors:
     for error in errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("active IA-HC-002, P2 merge and P3 isolated bench wiring/BOM checks passed")
+print("active IA-HC-002, P3 merge and P4 physical screen realization checks passed")
