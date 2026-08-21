@@ -12,7 +12,6 @@ REQUIRED = [
     Path("planning/IMP-HC-001_Bench_MVP_Implementation_Plan_v0.1.md"),
     Path("docs/closure/HC-BENCH-MVP-CLOSURE-001.md"),
     Path("docs/prototype/HC-P3-001_Bench_Wiring_BOM.md"),
-    Path("docs/reconciliation/HC-P3-POST-MERGE-RECON-001.md"),
     Path("project_context/CURRENT_STATE.md"),
     Path("docs/traceability/HC-TRACE-001_Traceability.md"),
 ]
@@ -29,10 +28,13 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F90 / PHYSICAL PROTOTYPE — P3 MERGED / VERIFIED / P4 NEXT",
-    "a48eb7a8b1de94758e6c74945f710ff5084a4b8f",
+    "F90 / PHYSICAL PROTOTYPE — P3 BENCH WIRING/BOM IMPLEMENTED / MERGE APPROVAL PENDING",
+    "6b05f283c8e9e280ca0c91e26947cac8b149d24b",
     "IA-HC-002`: `APPROVED / ACTIVE`",
-    "HC-P3-001`: `MERGED / VERIFIED`",
+    "HC-P2-001`: `MERGED / VERIFIED`",
+    "HC-P3-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
+    "65e62602e75d6f76c3f93824048ee02baf0beac1",
+    "506cdb249836401786e4899308f0bc5749382700",
     "HC-P4-001 — Physical screen realization",
     "Any live KVK integration remains blocked",
 ]:
@@ -41,27 +43,18 @@ for marker in [
 
 trace = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "P1-P3 MERGED / VERIFIED / P4 NEXT",
+    "P3 IMPLEMENTED / MERGE APPROVAL PENDING",
     "65e62602e75d6f76c3f93824048ee02baf0beac1",
     "506cdb249836401786e4899308f0bc5749382700",
-    "2de9b10aab518ac8e92cfbaf84dbc64c728d9300",
-    "a48eb7a8b1de94758e6c74945f710ff5084a4b8f",
+    "nominal 24 VDC bench profile",
     "HC-P4-001 — Physical screen realization",
 ]:
     if marker not in trace:
         errors.append(f"traceability missing marker: {marker}")
 
-recon = Path("docs/reconciliation/HC-P3-POST-MERGE-RECON-001.md").read_text(encoding="utf-8")
-for marker in [
-    "HC-P3-001 = MERGED / VERIFIED",
-    "a48eb7a8b1de94758e6c74945f710ff5084a4b8f",
-    "HC-P4-001 — Physical screen realization",
-]:
-    if marker not in recon:
-        errors.append(f"P3 reconciliation missing marker: {marker}")
-
 bom = Path("docs/prototype/HC-P3-001_Bench_Wiring_BOM.md").read_text(encoding="utf-8")
 for marker in [
+    "IMPLEMENTED / GREEN — MERGE APPROVAL PENDING",
     "24 VDC",
     "8DI/8DO simulator I/O",
     "no electrical or logical connection to the real KVK 801-1",
@@ -88,4 +81,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("bench MVP closure, active IA-HC-002 and merged HC-P3 governance checks passed")
+print("bench MVP closure, active IA-HC-002 and HC-P3 governance checks passed")
