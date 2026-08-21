@@ -6,7 +6,7 @@
 
 ## Status
 
-`F50 / LEL — IN PROGRESS`
+`F60 / REQUIREMENTS — IN PROGRESS`
 
 ## Canonical repository
 
@@ -19,10 +19,11 @@
 - `HC-ARB-001`: PR #3 approved head `59bfe6c6eb643ac16b49c84b10b1e6ecd0f2a130`, merged as `9144a6a003f58ea12c5a6c3d4ff26c26527d0292`.
 - `HC-ADR-SET-001`: PR #4 approved head `26c66a0e2ada0348c7204516c02f4c8b0581f38f`, merged as `c2493ef39a1b45b934cd2dc001279db110a17fc0`.
 - `HC-SYSTEM-ARCH-001`: PR #5 approved head `147877cf370f348a04d0b5fd923a641efb5b72fe`, merged as `5a0761dec9dbbca538be787839d93017f5c501df`.
+- `HC-LEL-001`: PR #6 approved head `25d66772cf7459e4f12a3cb806de9567ad46b567`, merged as `a7d031317cf25934218cd09a4916449f2bf5b634`.
 
 ## Current branch
 
-`architecture/hc-lel-001`
+`requirements/hc-req-001`
 
 ## Product baseline
 
@@ -37,8 +38,9 @@
 - `ARS-HC-001`: `BASELINED`.
 - `ARB-HC-001`: `BASELINED`.
 - `ADR-HC-001` through `ADR-HC-007`: `APPROVED / BASELINED`.
-- `SA-HC-001`: `BASELINED` by approved and merged PR #5.
-- `LEL-HC-001`: `PROPOSED — PROJECT OWNER APPROVAL REQUIRED`.
+- `SA-HC-001`: `BASELINED`.
+- `LEL-HC-001`: `BASELINED` by approved and merged PR #6.
+- `REQ-HC-001`: `PROPOSED — PROJECT OWNER APPROVAL REQUIRED`.
 - `HC-TRACE-001`: active.
 - `IA-HC-001`: proposed; `NOT ACTIVE`.
 - Runtime implementation authority: `NOT ESTABLISHED`.
@@ -53,28 +55,31 @@
 
 ## Current workstream
 
-`HC-LEL-001`
+`HC-REQ-001`
 
-Purpose: establish session lifecycle, event vocabulary, identity resolution, clinical recording semantics, media lifecycle, KVK observation semantics, durable completion, failure/recovery and audit behavior before implementable requirements.
+Purpose: translate the baselined architecture and lifecycle into implementable, testable requirements without activating implementation authority.
 
-## Current LEL invariants
+## Current requirements coverage
 
-- ambiguous or conflicting animal identity cannot be committed to animal history;
-- clinical classification remains human-entered;
-- KVK events are observational only and cannot imply actuation;
-- edge/application layer owns canonical state transitions;
-- HMI state is not durable proof of completion;
-- repeated events must not create duplicate logical records where idempotency can be established;
-- reports derive from committed canonical data;
-- failures degrade workflow without affecting original KVK safety.
+- session lifecycle and durable completion;
+- animal identity and fail-closed ambiguity;
+- HMI workflow and glove-oriented interaction;
+- clinical recording and taxonomy provenance;
+- treatment/material accounting;
+- media provenance;
+- KVK read-only boundary and physical-integration block;
+- local persistence and audit;
+- PDF reporting;
+- diagnostics and recovery;
+- end-to-end bench MVP acceptance tests.
 
 ## Next dependency-ordered steps
 
-1. Complete LEL traceability and docs-ci checks.
-2. Publish `HC-LEL-001` through Draft PR.
+1. Complete Requirements traceability and docs-ci checks.
+2. Publish `HC-REQ-001` through Draft PR.
 3. Final reconciliation and exact-head Project Owner approval for merge.
-4. After merge, begin F60 / implementable Requirements autonomously.
-5. Runtime implementation remains blocked until `IA-HC-001` is explicitly activated.
+4. After merge, prepare implementation planning and authority activation decision.
+5. Runtime implementation remains blocked until `IA-HC-001` is explicitly approved and activated.
 
 ## Explicit blockers
 
