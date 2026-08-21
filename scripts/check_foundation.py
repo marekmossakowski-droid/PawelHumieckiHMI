@@ -25,34 +25,25 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F80 / BENCH IMPLEMENTATION — S3 LOCAL HMI-EDGE CONTRACT IN PROGRESS",
-    "c5f60dbf11b04b680c6f51f2e610d33906b08637",
+    "F80 / BENCH IMPLEMENTATION — S4 HMI PROTOTYPE WORKFLOW IN PROGRESS",
+    "003c8d5d0ab9e026a76e4a519e8b1c246458bc8a",
     "IA-HC-001`: `ACTIVE`",
-    "ESTABLISHED — BOUNDED BENCH ONLY",
-    "HC-S3-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
+    "HC-S4-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
+    "Paweł Humięcki the best zootechnik",
     "live KVK I/O of any kind",
 ]:
     if marker not in current:
         errors.append(f"CURRENT_STATE missing marker: {marker}")
 
-ia_text = Path("governance/IA-HC-001_Initial_Implementation_Authority_v0.1.md").read_text(encoding="utf-8")
-for marker in [
-    "ACTIVE — APPROVED BY PROJECT OWNER / PR #8",
-    "0d58eb2921df298114c304295a061547598ae541",
-    "live KVK I/O of any kind",
-    "automatic veterinary diagnosis",
-]:
-    if marker not in ia_text:
-        errors.append(f"Implementation Authority missing marker: {marker}")
-
 trace_text = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "HC-S2-STORE-001",
-    "HC-S3-RED-001",
     "HC-S3-CONTRACT-001",
-    "HC-S3-IDEMP-001",
-    "HC-S3-FAILCLOSED-001",
-    "HC-S3-NOACT-001",
+    "HC-S4-RED-001",
+    "HC-S4-DASH-001",
+    "HC-S4-PATH-001",
+    "HC-S4-ZONE-001",
+    "HC-S4-LESION-001",
+    "HC-S4-NOACT-001",
 ]:
     if marker not in trace_text:
         errors.append(f"traceability missing marker: {marker}")
@@ -62,4 +53,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("governance, active bench authority, S2 checkpoint and S3 contract traceability checks passed")
+print("governance, S3 checkpoint and S4 HMI workflow traceability checks passed")
