@@ -37,10 +37,12 @@
 | HC-S5-CANON-001 | Local synthetic PDF from committed canonical report input | src/hoofcare/reporting/report.py | MERGED / VERIFIED PR #13 |
 | HC-S6-RED-001 | Simulated adapter tests fail before adapters exist | tests/test_simulated_adapters.py | Verified RED @ `5e62980786207d6caad78dfb82f1921f11d1bfd5` |
 | HC-S6-ADAPTER-001 | Deterministic simulated RFID/KVK observations with explicit unavailable/unknown and no actuation surface | src/hoofcare/adapters/simulated.py | MERGED / VERIFIED PR #14 |
-| HC-S7-RED-001 | End-to-end integration tests fail before integration harness exists | tests/test_bench_mvp_integration.py | Verified RED @ `ce9bbb1a2502529014ba7a829484079402282c8d` |
-| HC-S7-E2E-001 | Synthetic identity→HMI→lesion/treatment→counters→PDF→simulated KVK observation path | src/hoofcare/integration/bench_mvp.py, tests | Implemented / GREEN |
+| HC-S7-HARNESS-001 | Initial test harness used non-canonical pytest and failed for invalid harness reason | tests/test_bench_mvp_integration.py | Diagnostic only @ `ce9bbb1a2502529014ba7a829484079402282c8d` |
+| HC-S7-RED-001 | Corrected canonical unittest acceptance test fails before explicit acceptance summary exists | tests/test_bench_mvp_integration.py | Verified RED @ `5791b86e8bb469d0a4c090880adca2939665ff03` |
+| HC-S7-E2E-001 | Synthetic identity→HMI→lesion/treatment→counters→PDF→simulated KVK observation path | src/hoofcare/integration/bench_mvp.py, tests | Implemented / GREEN @ `cc4626182cca558a3939db46f656858c48f3a03a` |
 | HC-S7-IDNEG-001 | Ambiguous identity fails closed before treatment history commit | integration harness + tests | Implemented / GREEN |
 | HC-S7-MEDIA-001 | Reference media remain explicit `REF:` provenance references | integration harness + report + tests | Implemented / GREEN |
+| HC-S7-ACCEPT-001 | Result exposes explicit acceptance summary for end-to-end, synthetic-only, local PDF and no-actuation checks | integration harness + tests | Implemented / GREEN |
 | HC-S7-NOACT-001 | Public bench integration surface exposes no KVK command/write/configuration/actuation methods | integration harness + tests | Implemented / GREEN |
 
 ## Canonical checkpoints
