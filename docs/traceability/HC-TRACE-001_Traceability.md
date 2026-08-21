@@ -1,7 +1,7 @@
 # HC-TRACE-001 — Traceability
 
 ## Status
-`ACTIVE — BENCH MVP CLOSED / IA-HC-002 ACTIVE / P1-P4 MERGED / VERIFIED / P5 IMPLEMENTED / GREEN`
+`ACTIVE — BENCH MVP CLOSED / IA-HC-002 ACTIVE / P1-P5 MERGED / VERIFIED / P6 IMPLEMENTED / GREEN`
 
 ## Baselined upstream lineage
 
@@ -33,21 +33,23 @@
 | P2 HMI layout/touch mapping | `8e199b0f9ea398ab21d8ad6e6062bf7291ae6df2` | PR #31 | MERGED / VERIFIED |
 | P3 Bench wiring BOM / isolated I/O | `65e62602e75d6f76c3f93824048ee02baf0beac1` | PR #33 | MERGED / VERIFIED |
 | P4 Physical screen realization | `13bccf1dafe1d2ebccc509bd0ab4a4f96e4fc0d7` | GREEN/final `5575eabe0543a72e046a4d8bb7425e2ca1f1587d`; PR #35 merge `c5101eb15933bc76b76a86dd3e8ed4f78141875f` | MERGED / VERIFIED |
-| P5 Physical navigation/state binding | `3f4db8258a85b6e2cc6349a5bb03d982066db732` | GREEN `de8dec19bc820b90bfebe4df669eb661e0af2add` | IMPLEMENTED / GREEN / NOT YET MERGED |
+| P5 Physical navigation/state binding | `3f4db8258a85b6e2cc6349a5bb03d982066db732` | GREEN `de8dec19bc820b90bfebe4df669eb661e0af2add`; final `c1d01f66c17be44c07cf3bf3c26e935fd6e368f1`; PR #52 merge `4484ed4a00c7a756e0663c3cb03c329a6d7dd2c5` | MERGED / VERIFIED |
+| P6 Physical persistence/reporting validation | `d78cd81c7bd35e3b2fe632febca104f074214900` | GREEN `bc3f9301c9e4743b93ec1d3d25970ea8127ba617` | IMPLEMENTED / GREEN / NOT YET MERGED |
 
-## P5 verified invariants
-- navigation follows dashboard → animal session → limb/claw → zone/lesion → treatment → report summary;
-- identity gate advances only when status is exactly `CONFIRMED`;
-- operator selections are order constrained and invalid transitions fail closed;
-- explicit machine-control-like actions are rejected;
-- isolated synthetic/test-only remains true;
-- KVK connection and real-farm data remain false.
+## P6 verified invariants
+- committed synthetic sessions persist through the existing local durable store and recover after restart;
+- report generation resolves the committed session first and fails closed on missing session;
+- report provenance preserves exact source session ID and confirmed animal ID;
+- canonical local report builder is reused rather than duplicated;
+- synthetic-test-only remains true;
+- KVK connection and real-farm data remain false;
+- no network/cloud or external delivery path is introduced.
 
-## Canonical approved checkpoint before P5
-PR #43 merge `e6b62b4ffaf73103d57af24b8b60b5886643bb1c`; tree `c3bb64e394df8bb287fef5108dffa9210d8d4cb6`; PR #51 restored that exact tree before fresh P5 work.
+## Canonical P5 checkpoint
+PR #52 approved head `c1d01f66c17be44c07cf3bf3c26e935fd6e368f1` → merge `4484ed4a00c7a756e0663c3cb03c329a6d7dd2c5`.
 
 ## Next slice
-`HC-P6-001 — Physical persistence and reporting validation` may become NEXT only after Project Owner-approved P5 merge and Repository Verification.
+Physical-prototype integration / acceptance and closure-readiness may become NEXT only after Project Owner-approved P6 merge and Repository Verification.
 
 ## Authority boundary
 `IA-HC-002` is active only for its literal isolated off-machine / non-actuating / synthetic-test physical-prototype scope. Any live KVK connection, machine I/O/control path, real-farm data, network/cloud exposure or deployment remains separately blocked.
