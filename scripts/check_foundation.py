@@ -25,10 +25,11 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F80 / BENCH IMPLEMENTATION — S5 LOCAL CANONICAL PDF REPORTING IN PROGRESS",
-    "e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34",
+    "F80 / BENCH IMPLEMENTATION — S5 LOCAL CANONICAL PDF REPORTING MERGED / VERIFIED; S6 NEXT",
+    "30acc2d9a0833844e7279c68d9884cf9dd124cea",
     "IA-HC-001`: `ACTIVE`",
-    "HC-S5-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
+    "HC-S5-001`: `MERGED / VERIFIED`",
+    "S6 — simulated RFID and simulated KVK observation adapters",
     "network/cloud delivery",
     "live KVK I/O of any kind",
 ]:
@@ -37,13 +38,14 @@ for marker in [
 
 trace_text = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "HC-S4-DASH-001",
     "HC-S5-RED-001",
     "HC-S5-CANON-001",
     "HC-S5-PROV-001",
     "HC-S5-AUDIENCE-001",
     "HC-S5-DISCLAIMER-001",
     "HC-S5-LOCALPDF-001",
+    "MERGED / VERIFIED PR #13",
+    "30acc2d9a0833844e7279c68d9884cf9dd124cea",
 ]:
     if marker not in trace_text:
         errors.append(f"traceability missing marker: {marker}")
@@ -53,4 +55,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("governance, S4 checkpoint and S5 local reporting traceability checks passed")
+print("governance and post-S5 reporting reconciliation checks passed")
