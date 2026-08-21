@@ -27,10 +27,12 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F90 / PHYSICAL PROTOTYPE — IA-HC-002 ACTIVE / P1 NEXT",
-    "3eb278f7a480734045027393a53a76f6cdc03f03",
+    "F90 / PHYSICAL PROTOTYPE — P1 HARDWARE PROFILE IMPLEMENTED / MERGE APPROVAL PENDING",
+    "ce72bc01f6ccbe671a5293bde8c0f19ef3ac3ee8",
     "IA-HC-002`: `APPROVED / ACTIVE`",
-    "HC-P1-001",
+    "HC-P1-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
+    "87a9f6329e1ade0b1add79b4469ebb1b14393b40",
+    "601ae9fa2fab0bd9a3f72481bbc9ef3f77e7f452",
     "Any live KVK integration remains blocked",
 ]:
     if marker not in current:
@@ -38,10 +40,11 @@ for marker in [
 
 trace = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "IA-HC-002 ACTIVE / PHYSICAL PROTOTYPE P1 NEXT",
+    "P1 IMPLEMENTED / MERGE APPROVAL PENDING",
     "HC-IA-002-ACT-001",
     "APPROVED / MERGED / REPOSITORY VERIFIED",
-    "3eb278f7a480734045027393a53a76f6cdc03f03",
+    "87a9f6329e1ade0b1add79b4469ebb1b14393b40",
+    "601ae9fa2fab0bd9a3f72481bbc9ef3f77e7f452",
 ]:
     if marker not in trace:
         errors.append(f"traceability missing marker: {marker}")
@@ -75,4 +78,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("bench MVP closure and IA-HC-002 post-activation governance checks passed")
+print("bench MVP closure, active IA-HC-002 and HC-P1 governance checks passed")
