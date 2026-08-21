@@ -6,7 +6,10 @@
 
 ## 1. Tożsamość projektu
 
-- Nazwa robocza: `HoofCare`.
+- Wewnętrzna nazwa kodowa repozytorium: `PawelHumieckiHMI`.
+- Wewnętrzna nazwa kodowa używana w dokumentacji produktowej: `HoofCare`.
+- Obie powyższe nazwy są wyłącznie codenames i nie stanowią zatwierdzonej nazwy handlowej ani marki produktu.
+- Docelowa nazwa produktu: `TBD — SEPARATE PROJECT OWNER DECISION REQUIRED`.
 - Repozytorium SSOT: `marekmossakowski-droid/PawelHumieckiHMI`.
 - Pierwsza platforma docelowa: poskrom `KVK 801-1`, generacja około 2013 r., starsza zielona konstrukcja.
 - Project Owner: właściciel repozytorium.
@@ -17,7 +20,7 @@ Proces korekcji i diagnostyki racic jest wykonywany fizycznie przy poskromie, na
 
 ## 3. Cel produktu
 
-HoofCare ma zapewnić operatorowi jednoznaczny, szybki i audytowalny workflow HMI dla pojedynczego zabiegu oraz tworzyć struktury danych i raporty użyteczne dla:
+System rozwijany pod aktualnymi nazwami kodowymi ma zapewnić operatorowi jednoznaczny, szybki i audytowalny workflow HMI dla pojedynczego zabiegu oraz tworzyć struktury danych i raporty użyteczne dla:
 
 - rolnika;
 - zootechnika;
@@ -56,7 +59,7 @@ Bez osobnej decyzji i Implementation Authority poza zakresem pozostają:
 
 ### FND-HC-I01 — Safety independence
 
-HoofCare SHALL NOT być wymagany do działania podstawowych funkcji bezpieczeństwa poskromu.
+System SHALL NOT być wymagany do działania podstawowych funkcji bezpieczeństwa poskromu.
 
 ### FND-HC-I02 — Read-only first
 
@@ -73,6 +76,10 @@ Każdy rekord zabiegu i zdjęcie SHALL mieć możliwe do audytu pochodzenie, ide
 ### FND-HC-I05 — Fail closed
 
 Brak wiarygodnej identyfikacji zwierzęcia, konflikt danych lub utrata integralności sesji SHALL blokować automatyczne przypisanie danych do historii zwierzęcia.
+
+### FND-HC-I06 — Codename separation
+
+Engineering identifiers i codenames SHALL NOT być automatycznie traktowane jako marka, nazwa handlowa ani publiczna nazwa produktu. Ustanowienie nazwy handlowej wymaga oddzielnej decyzji Project Ownera.
 
 ## 7. Pierwszy sprzęt prototypowy
 
