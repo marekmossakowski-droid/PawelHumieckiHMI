@@ -8,6 +8,7 @@
 |---|---|---|---|---|
 | HC-FND-001 | Project Owner direction | HoofCare project starts as managed engineering program | FND-HC-001 | Proposed |
 | HC-FND-002 | Project Owner direction | First target machine is KVK 801-1, generation circa 2013 | FND-HC-001, ROADMAP-HC-001 | Proposed |
+| HC-FND-003 | Project Owner direction | Current project/repository names are internal codenames only; commercial/product name remains TBD | README, FND-HC-001, CURRENT_STATE | Proposed |
 | HC-SAF-001 | VoltOps-derived governance | No implementation may bypass machine safety | AGENTS.md, FND-HC-001, IA-HC-001 | Proposed |
 | HC-SAF-002 | Project architecture intent | First KVK integration is read-only | FND-HC-001, IA-HC-001 | Proposed |
 | HC-UX-001 | Existing concept work | HMI workflow covers animal → limb → claw → zone → lesion → treatment → materials → media → report | FND-HC-001, ROADMAP-HC-001 | Proposed |
