@@ -1,7 +1,10 @@
 # IMP-HC-001 — Bench MVP Implementation Plan v0.1
 
 ## Status
-`PROPOSED — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / BASELINED — PR #8`
+
+Approved exact head: `9c939abea6794e2b5a4815c826410eb0166ab535`  
+Canonical merge SHA: `0d58eb2921df298114c304295a061547598ae541`
 
 ## Purpose
 Define the smallest authorized implementation sequence for a bench-only HoofCare MVP derived from the baselined Foundation, ARS, ARB, ADR set, System Architecture, LEL and REQ-HC-001.
@@ -74,4 +77,4 @@ Each runtime slice SHALL begin with failing tests derived from REQ-HC-001 and LE
 Every implementation slice SHALL use branch → Draft PR → CI/review → final exact-head Project Owner approval → controlled merge → post-merge verification.
 
 ## Entry gate
-Runtime work may begin only after `IA-HC-001` is explicitly activated by the Project Owner and the authority record is baselined.
+Satisfied by Project Owner approval and controlled merge of PR #8. `IA-HC-001` is active only within the bounded bench scope defined in that authority.
