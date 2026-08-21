@@ -1,7 +1,10 @@
 # ADR-HC-005 — Local Persistence and Backup v0.1
 
 ## Status
-`PROPOSED — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / BASELINED — PR #4`
+
+Approved PR head: `26c66a0e2ada0348c7204516c02f4c8b0581f38f`  
+Canonical merge SHA: `c2493ef39a1b45b934cd2dc001279db110a17fc0`
 
 ## Decision
 The target system SHALL be local-first and SHALL continue core treatment-session operation without Internet connectivity. Durable structured data SHALL be stored outside the HMI in a local persistence layer with explicit backup and recovery semantics.
