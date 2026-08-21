@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F90 / PHYSICAL PROTOTYPE — P1 MERGED / VERIFIED / P2 NEXT`
+`F90 / PHYSICAL PROTOTYPE — P2 HMI LAYOUT IMPLEMENTED / MERGE APPROVAL PENDING`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -29,7 +29,8 @@
 - Corrective authority rollback PR #21 → `ce58dd3e5ab9346442456736b646eacbc4309a8a`.
 - IA-HC-002 activation PR #27 → `3eb278f7a480734045027393a53a76f6cdc03f03`.
 - IA-HC-002 post-activation reconciliation PR #28 → `ce72bc01f6ccbe671a5293bde8c0f19ef3ac3ee8`.
-- HC-P1-001 PR #29 approved head `39678f0ca691001d56e60a91bd30b8235ff3f30e` → merge `ec2cea9b144256baca29cd1ea2f03bf0dfcf6def`.
+- HC-P1-001 PR #29 → `ec2cea9b144256baca29cd1ea2f03bf0dfcf6def`.
+- HC-P1 post-merge reconciliation PR #30 → `4228a1f0346480221d0afb779907537a50c65e70`.
 
 ## Governance state
 - Foundation through REQ-HC-001: `BASELINED`.
@@ -39,23 +40,30 @@
 - `HC-BENCH-MVP-CLOSURE-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
 - `IA-HC-002`: `APPROVED / ACTIVE` only for its literal isolated off-machine / non-actuating / synthetic-test physical-prototype scope.
 - `HC-P1-001`: `MERGED / VERIFIED`.
+- `HC-P2-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
 
 ## Active authority boundaries
 Authorized: isolated physical HMI prototype work, low-voltage bench work, synthetic/test data, simulated RFID/KVK sources, local persistence/reporting/navigation, and serial/RS-485/Modbus only against dedicated simulators/test equipment.
 
 Not authorized: any electrical or logical connection to real KVK 801-1; live RFID with real-farm data; live KVK I/O; CAN/RS-485/Modbus/serial to the machine; KVK commands/writes/configuration/actuation; hydraulics; PLC/safety mutation; autonomous veterinary diagnosis; real-farm data; network/cloud exposure; deployment/signing/release/public distribution.
 
-## P1 verified invariants
-- prototype mode is exactly `ISOLATED_SYNTHETIC`;
-- panel class is 10.1 inch;
-- nominal bench supply is 24 VDC;
-- DI/DO counts are descriptive bench capabilities only;
-- KVK connection is forbidden;
-- real-farm data are forbidden;
-- no live machine-bus enable or actuation method exists.
+## Current workstream
+`HC-P2-001 — Physical HMI layout and touch mapping`
+
+Fresh authorized TDD lineage:
+- RED head `8e199b0f9ea398ab21d8ad6e6062bf7291ae6df2` — 42 existing tests passed; new layout suite failed only because `hoofcare.physical` did not exist;
+- GREEN implementation head `d2fa2a91b957362b0367d9f0b30f267ddcd1b784` — `runtime-ci #217` and `docs-ci #144` succeeded.
+
+## P2 invariants
+- target panel profile is 10.1 inch at 1024×600;
+- primary touch targets are at least 48×48 px;
+- mapped screens cover dashboard, animal session, limb/claw, zone/lesion, treatment and report summary;
+- dashboard preserves `Paweł Humięcki the best zootechnik`, completed-animal counter and consumed-dressings counter;
+- layout is isolated synthetic/test-only;
+- no machine-control affordance or KVK actuation surface is present.
 
 ## Next dependency-ordered step
-`HC-P2-001 — Physical HMI layout and touch mapping`: isolated synthetic/test-only 10.1-inch / 1024x600 layout model, minimum primary touch-target sizing, dashboard/session/limb-claw/zone-lesion/treatment/report-summary mapping and no machine-control affordances.
+After controlled merge and Repository Verification of P2, continue to the next bounded physical-prototype slice under `IA-HC-002`; live KVK integration remains separately blocked.
 
 ## Explicit blockers
 - Any live KVK integration remains blocked until the actual circa-2013 KVK 801-1 is inspected and photographed and a separate live observation authority is approved.
