@@ -25,9 +25,10 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "P5 IMPLEMENTED / GREEN / AWAITING PROJECT OWNER APPROVAL",
-    "3f4db8258a85b6e2cc6349a5bb03d982066db732",
-    "de8dec19bc820b90bfebe4df669eb661e0af2add",
+    "P5 MERGED / VERIFIED / P6 IMPLEMENTED / GREEN / AWAITING PROJECT OWNER APPROVAL",
+    "4484ed4a00c7a756e0663c3cb03c329a6d7dd2c5",
+    "d78cd81c7bd35e3b2fe632febca104f074214900",
+    "bc3f9301c9e4743b93ec1d3d25970ea8127ba617",
     "IA-HC-002`: `APPROVED / ACTIVE`",
     "Any live KVK integration remains blocked",
 ]:
@@ -35,10 +36,10 @@ for marker in [
 
 trace = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "P5 IMPLEMENTED / GREEN",
-    "3f4db8258a85b6e2cc6349a5bb03d982066db732",
-    "de8dec19bc820b90bfebe4df669eb661e0af2add",
-    "HC-P6-001 — Physical persistence and reporting validation",
+    "P1-P5 MERGED / VERIFIED / P6 IMPLEMENTED / GREEN",
+    "d78cd81c7bd35e3b2fe632febca104f074214900",
+    "bc3f9301c9e4743b93ec1d3d25970ea8127ba617",
+    "Physical-prototype integration / acceptance and closure-readiness",
 ]:
     if marker not in trace: errors.append(f"traceability missing marker: {marker}")
 
@@ -51,4 +52,4 @@ for marker in ["APPROVED / ACTIVE", "Fail-closed rule"]:
 if errors:
     for error in errors: print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
-print("bench MVP closure, active IA-HC-002 and HC-P5 GREEN governance checks passed")
+print("bench MVP closure, active IA-HC-002 and HC-P6 GREEN governance checks passed")
