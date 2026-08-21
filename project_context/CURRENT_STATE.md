@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F80 / BENCH IMPLEMENTATION — S7 BENCH MVP INTEGRATION / ACCEPTANCE IN PROGRESS`
+`F80 / BENCH MVP — CLOSED / IMPLEMENTED / VERIFIED / RECONCILED PENDING CLOSURE MERGE`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -18,47 +18,41 @@
 - LEL PR #6 → `a7d031317cf25934218cd09a4916449f2bf5b634`.
 - Requirements PR #7 → `e34e2a2ae3f709d83c24d528f8930b1b72060961`.
 - IMP + IA activation PR #8 → `0d58eb2921df298114c304295a061547598ae541`.
-- S1 Domain/session core PR #9 → `7467ec4e30b5ecd8831c094bd90ba7d1fe0ad7b2`.
-- S2 Durable persistence PR #10 → `c5f60dbf11b04b680c6f51f2e610d33906b08637`.
-- S3 Local HMI-edge contract PR #11 → `003c8d5d0ab9e026a76e4a519e8b1c246458bc8a`.
-- S4 HMI prototype workflow PR #12 → `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34`.
-- S5 Local canonical PDF reporting PR #13 → `30acc2d9a0833844e7279c68d9884cf9dd124cea`.
-- S6 Simulated RFID/KVK observation adapters PR #14 approved head `93baa983f7619e6d7464847cc0fa6674d31c0f36`, merged as `56da4eaf1316c930ca6095cd068e90bd66e2f624`.
+- S1 PR #9 → `7467ec4e30b5ecd8831c094bd90ba7d1fe0ad7b2`.
+- S2 PR #10 → `c5f60dbf11b04b680c6f51f2e610d33906b08637`.
+- S3 PR #11 → `003c8d5d0ab9e026a76e4a519e8b1c246458bc8a`.
+- S4 PR #12 → `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34`.
+- S5 PR #13 → `30acc2d9a0833844e7279c68d9884cf9dd124cea`.
+- S6 PR #14 → `56da4eaf1316c930ca6095cd068e90bd66e2f624`.
+- S7 PR #16 approved head `419e513c9fad7f90b52744f811707ca154568362`, merged as `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`.
 
 ## Governance state
 - Foundation through REQ-HC-001: `BASELINED`.
-- `IMP-HC-001`: `APPROVED / BASELINED`.
-- `IA-HC-001`: `ACTIVE` for bounded local bench MVP only.
-- Runtime implementation authority: `ESTABLISHED — BOUNDED BENCH ONLY`.
-- `HC-S1-001` through `HC-S6-001`: `MERGED / VERIFIED`.
-- `HC-S7-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
+- `IMP-HC-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED` upon controlled merge of closure record.
+- `IA-HC-001`: `FULFILLED FOR AUTHORIZED BENCH SCOPE` upon controlled merge of closure record.
+- `HC-S1-001` through `HC-S7-001`: `MERGED / VERIFIED`.
+- `HC-BENCH-MVP-CLOSURE-001`: `PROPOSED — PROJECT OWNER APPROVAL REQUIRED`.
+- `IA-HC-002`: `PROPOSED / NOT ACTIVE` for bounded physical prototype work only.
 
 ## Active authority boundaries
-Authorized: synthetic/test data, domain/session core, local persistence/recovery, local HMI↔edge contract, HMI prototype workflow, local PDF reporting, simulated RFID/KVK observations, bench integration and automated verification.
+Until `IA-HC-002` is explicitly approved, no new physical prototype authority exists beyond the already fulfilled bench scope.
 
-Not authorized: live RFID hardware; live KVK I/O of any kind; KVK commands/writes/configuration; CAN/RS-485/Modbus/serial connection to the machine; hydraulics or actuation; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data without separate authority; network/cloud delivery; deployment/signing/release/public distribution.
+Not authorized: live RFID hardware with real farm identity data; live KVK I/O; KVK commands/writes/configuration; CAN/RS-485/Modbus/serial connection to the machine; hydraulics or actuation; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data; network/cloud service exposure; deployment/signing/release/public distribution.
 
-## Current workstream
-`HC-S7-001 — Bench MVP integration and acceptance/negative verification`
-
-TDD lineage:
-- initial test-harness attempt `ce9bbb1a2502529014ba7a829484079402282c8d` failed for an invalid reason (`pytest` was not part of the canonical unittest runtime); it is retained as diagnostic history, not canonical RED evidence;
-- corrected RED head `5791b86e8bb469d0a4c090880adca2939665ff03` — canonical `unittest` acceptance test failed because `acceptance_summary` did not yet exist;
-- GREEN head `cc4626182cca558a3939db46f656858c48f3a03a` — `runtime-ci` and `docs-ci` both succeeded.
-
-## S7 invariants
-- synthetic workflow traverses identity → HMI selection → lesion/treatment context → counters → report → simulated KVK observation;
-- dashboard retains exact banner `Paweł Humięcki the best zootechnik`;
-- ambiguous identity fails closed before treatment history commit;
-- reference media remain explicitly `REF:` labeled in report provenance;
-- report remains local and synthetic/test-only;
-- acceptance summary explicitly records end-to-end/local/no-actuation checks;
-- integration surface exposes no KVK command/write/configuration/actuation methods;
-- no live hardware, serial, CAN, RS-485, Modbus, network or machine connection is introduced.
+## Bench MVP result
+The synthetic local bench MVP now covers:
+- session/identity lifecycle and fail-closed ambiguity;
+- local durable persistence and restart recovery;
+- local HMI↔edge contract;
+- HMI dashboard/workflow;
+- local canonical PDF reporting;
+- simulated RFID and KVK observation-only adapters;
+- integrated acceptance/negative verification;
+- explicit proof that no KVK actuation surface exists.
 
 ## Next dependency-ordered step
-After controlled merge and repository verification of S7, perform bench MVP closure/reconciliation and prepare the next authority decision for physical prototype/HMI hardware work. Live KVK integration remains blocked pending site audit.
+After controlled merge of the closure package and explicit Project Owner approval, `IA-HC-002` may activate bounded physical HMI prototype work. Any live connection to the KVK remains separately blocked.
 
 ## Explicit blockers
-- Physical KVK integration remains blocked until the actual 2013-generation KVK 801-1 is inspected and photographed.
+- Physical/live KVK integration remains blocked until the actual circa-2013 KVK 801-1 is inspected and photographed and a separate live observation authority is approved.
 - Commercial/product naming remains undecided.
