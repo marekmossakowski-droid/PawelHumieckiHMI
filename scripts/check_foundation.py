@@ -12,6 +12,7 @@ REQUIRED = [
 ]
 
 ARS = Path("docs/requirements/ARS-HC-001_Application_and_Stakeholder_Requirements_v0.1.md")
+ARB = Path("docs/architecture/ARB-HC-001_System_Boundaries_v0.1.md")
 
 errors: list[str] = []
 
@@ -34,29 +35,26 @@ if current.is_file():
 
 if ARS.is_file():
     ars_text = ARS.read_text(encoding="utf-8")
-    required_ars_markers = [
-        "ARS-HC-OP-002",
-        "ARS-HC-VET-002",
-        "ARS-HC-NUT-002",
-        "ARS-HC-TECH-001",
-        "ARS-HC-SAF-001",
-        "ARS-HC-SAF-002",
-        "PROJECT OWNER APPROVAL REQUIRED",
-    ]
-    for marker in required_ars_markers:
+    for marker in ["ARS-HC-OP-002", "ARS-HC-VET-002", "ARS-HC-NUT-002", "ARS-HC-TECH-001", "ARS-HC-SAF-001", "ARS-HC-SAF-002", "PROJECT OWNER APPROVAL REQUIRED"]:
         if marker not in ars_text:
             errors.append(f"ARS missing required marker: {marker}")
 
-    trace = Path("docs/traceability/HC-TRACE-001_Traceability.md")
-    if trace.is_file():
-        trace_text = trace.read_text(encoding="utf-8")
-        for marker in ["HC-ARS-OP-001", "HC-ARS-VET-001", "HC-ARS-TECH-001"]:
-            if marker not in trace_text:
-                errors.append(f"traceability missing ARS marker: {marker}")
+if ARB.is_file():
+    arb_text = ARB.read_text(encoding="utf-8")
+    for marker in ["ARB-HC-KVK-001", "ARB-HC-KVK-003", "ARB-HC-CLIN-001", "ARB-HC-DATA-003", "PROJECT OWNER APPROVAL REQUIRED"]:
+        if marker not in arb_text:
+            errors.append(f"ARB missing required marker: {marker}")
+
+trace = Path("docs/traceability/HC-TRACE-001_Traceability.md")
+if trace.is_file():
+    trace_text = trace.read_text(encoding="utf-8")
+    for marker in ["HC-ARS-OP-001", "HC-ARS-VET-001", "HC-ARS-TECH-001", "HC-ARB-KVK-001", "HC-ARB-SAF-001", "HC-ARB-DATA-001"]:
+        if marker not in trace_text:
+            errors.append(f"traceability missing marker: {marker}")
 
 if errors:
     for error in errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("governance and requirements documentation checks passed")
+print("governance, requirements and boundary documentation checks passed")
