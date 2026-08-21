@@ -26,7 +26,7 @@
 | S2 Persistence/recovery | `cbb35f593173aea2bb2fc1d77e1c6f267217eb01` | PR #10 `c5f60dbf11b04b680c6f51f2e610d33906b08637` | MERGED / VERIFIED |
 | S3 HMI↔edge contract | `882afd05b9cbb94bc3265652becc245992998271` | PR #11 `003c8d5d0ab9e026a76e4a519e8b1c246458bc8a` | MERGED / VERIFIED |
 | S4 HMI workflow/dashboard | `36608bfcdf02ef4585ee177519d8966ca143dd4b` | PR #12 `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34` | MERGED / VERIFIED |
-| S5 Local canonical PDF | `1581c6393313319e6ab3905e3132f8ead55c6f4bfb9` | PR #13 `30acc2d9a0833844e7279c68d9884cf9dd124cea` | MERGED / VERIFIED |
+| S5 Local canonical PDF | `1581c6393319e6ab3905e3132f8ead55c6f4bfb9` | PR #13 `30acc2d9a0833844e7279c68d9884cf9dd124cea` | MERGED / VERIFIED |
 | S6 Simulated adapters | `5e62980786207d6caad78dfb82f1921f11d1bfd5` | PR #14 `56da4eaf1316c930ca6095cd068e90bd66e2f624` | MERGED / VERIFIED |
 | S7 Bench integration/acceptance | `5791b86e8bb469d0a4c090880adca2939665ff03` | PR #16 `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5` | MERGED / VERIFIED |
 | P1 Physical prototype hardware profile | `87a9f6329e1ade0b1add79b4469ebb1b14393b40` | GREEN `601ae9fa2fab0bd9a3f72481bbc9ef3f77e7f452`; final `39678f0ca691001d56e60a91bd30b8235ff3f30e`; PR #29 merge `ec2cea9b144256baca29cd1ea2f03bf0dfcf6def` | MERGED / VERIFIED |
