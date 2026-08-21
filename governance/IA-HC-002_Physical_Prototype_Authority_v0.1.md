@@ -1,12 +1,14 @@
 # IA-HC-002 — Physical Prototype Authority v0.1
 
 ## Status
-`PROPOSED — NOT ACTIVE — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / ACTIVE ONLY UPON CONTROLLED MERGE OF PROJECT OWNER-APPROVED HC-IA-HC-002-ACTIVATION-001 EXACT HEAD`
+
+Until that controlled merge and Repository Verification occur, the authority remains `PROPOSED / NOT ACTIVE` on canonical `main`.
 
 ## Purpose
 Authorize the next bounded phase after bench MVP closure: physical HMI prototype work performed off-machine or on a non-actuating mock-up using synthetic/test data.
 
-## Authorized only after explicit Project Owner approval
+## Authorized only after explicit Project Owner approval and controlled activation merge
 - procure and bench-power the selected 10-inch-class HMI and associated low-voltage bench accessories;
 - implement and test the approved dashboard/workflow on physical HMI hardware or a directly attached local edge controller;
 - use synthetic/test data and simulated RFID/KVK observation sources;
