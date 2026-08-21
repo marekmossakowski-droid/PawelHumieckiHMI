@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F90 / PHYSICAL PROTOTYPE — P3 BENCH WIRING/BOM IN PROGRESS`
+`F90 / PHYSICAL PROTOTYPE — P4 SCREEN REALIZATION IN PROGRESS`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -27,16 +27,16 @@
 - S7 PR #16 → `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`.
 - Bench MVP closure + IA-HC-002 activation PR #17 → `36ffda3b2363597b8a8aae3746e9d555450c625c`.
 - P1 PR #18 → `3425b2be7e581fcb079c8b3688b48533b780a06b`.
-- P2 PR #19 approved head `94b30f3b569f94c389014a9dcc02ac2fa21929a7` → merge `0404c45bf7adbdc9e6063501ce5adb7651dd5019`.
+- P2 PR #19 → `0404c45bf7adbdc9e6063501ce5adb7651dd5019`.
+- P3 PR #20 approved head `cfd4b45e3334de65b3fda1d5103e47e067e0b25e` → merge `e26af73899a363543cf889a80a69f076cb370836`.
 
 ## Governance state
 - `BENCH MVP`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
 - `IMP-HC-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
 - `IA-HC-001`: `FULFILLED FOR AUTHORIZED BENCH SCOPE`.
 - `IA-HC-002`: `ACTIVE` for isolated physical HMI prototype work only.
-- `HC-P1-001`: `MERGED / VERIFIED`.
-- `HC-P2-001`: `MERGED / VERIFIED`.
-- `HC-P3-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
+- `HC-P1-001` through `HC-P3-001`: `MERGED / VERIFIED`.
+- `HC-P4-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
 
 ## Active authority boundaries
 Authorized: isolated synthetic/test-only physical HMI prototype work, 10-inch-class panel profile, low-voltage bench power/wiring isolated from KVK, physical HMI screen/ergonomics work, local persistence/reporting tests, simulator-only serial/RS-485/Modbus tests, BOM and mounting mock-ups.
@@ -44,23 +44,22 @@ Authorized: isolated synthetic/test-only physical HMI prototype work, 10-inch-cl
 Not authorized: any electrical/logical connection to real KVK 801-1; live RFID with real farm data; live KVK I/O; CAN/RS-485/Modbus/serial to the machine; KVK commands/writes/configuration/actuation; hydraulics; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data; network/cloud service exposure; deployment/signing/release/public distribution.
 
 ## Current workstream
-`HC-P3-001 — Bench wiring BOM and isolated I/O profile`
+`HC-P4-001 — Physical screen realization and widget mapping`
 
 TDD lineage:
-- RED head `a7f0e9168d6987b9ef0fa642a0d7ec27fddb8375` — bench wiring/BOM tests failed before `hoofcare.hardware.bench_wiring` existed;
-- GREEN head `87e5d5e5da8f491d930375d7bbeed7966e157ddb` — runtime-ci and docs-ci both succeeded before reconciliation.
+- RED head `8c4ca015c2bdaf0983dbb3d9a388b2dd1f48b301` — physical realization tests failed before `hoofcare.physical.screen_realization` existed;
+- GREEN head `2ef612affa98add3b48f9f43b3df0332916e7c17` — minimal declarative widget realization implemented.
 
-## P3 invariants
-- nominal bench profile is 24 VDC;
-- 10.1-inch HMI and 8DI/8DO simulator I/O are represented;
-- fuse protection, DIN terminals, momentary switches and indicator lamps are included;
-- USB/RS-485 is simulator/test-equipment only;
-- real KVK connection is explicitly forbidden;
-- real-farm data are explicitly forbidden;
-- no machine-bus or actuation surface exists.
+## P4 invariants
+- all P2 screens are realized as declarative widget sets;
+- dashboard preserves `Paweł Humięcki the best zootechnik`, completed-animal and consumed-dressings bindings;
+- primary interactive controls retain at least 48×48 px touch targets;
+- ambiguous/conflicting/unknown identity disables `confirm_identity` fail-closed;
+- realization remains isolated synthetic/test-only;
+- no KVK, hydraulic, PLC, valve, motor, gate, winch, command/write or actuation widget/API exists.
 
 ## Next dependency-ordered step
-After controlled merge and repository verification of P3, continue isolated physical-prototype realization and operator-flow validation under active `IA-HC-002`.
+After controlled merge and repository verification of P4, continue isolated operator-flow validation and physical-panel realization under active `IA-HC-002`.
 
 ## Explicit blockers
 - Physical/live KVK integration remains blocked until the actual circa-2013 KVK 801-1 is inspected and photographed and a separate live observation authority is approved.
