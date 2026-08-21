@@ -6,7 +6,7 @@
 
 ## Status
 
-`F60 / REQUIREMENTS — IN PROGRESS`
+`F70 / IMPLEMENTATION PLAN + AUTHORITY GATE — IN PROGRESS`
 
 ## Canonical repository
 
@@ -20,10 +20,11 @@
 - `HC-ADR-SET-001`: PR #4 approved head `26c66a0e2ada0348c7204516c02f4c8b0581f38f`, merged as `c2493ef39a1b45b934cd2dc001279db110a17fc0`.
 - `HC-SYSTEM-ARCH-001`: PR #5 approved head `147877cf370f348a04d0b5fd923a641efb5b72fe`, merged as `5a0761dec9dbbca538be787839d93017f5c501df`.
 - `HC-LEL-001`: PR #6 approved head `25d66772cf7459e4f12a3cb806de9567ad46b567`, merged as `a7d031317cf25934218cd09a4916449f2bf5b634`.
+- `HC-REQ-001`: PR #7 approved head `c8608b35aefc815a74a20f443de679ac0db40e13`, merged as `e34e2a2ae3f709d83c24d528f8930b1b72060961`.
 
 ## Current branch
 
-`requirements/hc-req-001`
+`planning/hc-imp-001`
 
 ## Product baseline
 
@@ -39,9 +40,9 @@
 - `ARB-HC-001`: `BASELINED`.
 - `ADR-HC-001` through `ADR-HC-007`: `APPROVED / BASELINED`.
 - `SA-HC-001`: `BASELINED`.
-- `LEL-HC-001`: `BASELINED` by approved and merged PR #6.
-- `REQ-HC-001`: `PROPOSED — PROJECT OWNER APPROVAL REQUIRED`.
-- `HC-TRACE-001`: active.
+- `LEL-HC-001`: `BASELINED`.
+- `REQ-HC-001`: `BASELINED` by approved and merged PR #7.
+- `IMP-HC-001`: `PROPOSED — PROJECT OWNER APPROVAL REQUIRED`.
 - `IA-HC-001`: proposed; `NOT ACTIVE`.
 - Runtime implementation authority: `NOT ESTABLISHED`.
 
@@ -55,34 +56,22 @@
 
 ## Current workstream
 
-`HC-REQ-001`
+`HC-IMP-001`
 
-Purpose: translate the baselined architecture and lifecycle into implementable, testable requirements without activating implementation authority.
+Purpose: establish the smallest test-first bench MVP implementation plan and present `IA-HC-001` for explicit Project Owner activation without expanding authority beyond synthetic/test-only local runtime work.
 
-## Current requirements coverage
+## Planned implementation sequence after authority activation
 
-- session lifecycle and durable completion;
-- animal identity and fail-closed ambiguity;
-- HMI workflow and glove-oriented interaction;
-- clinical recording and taxonomy provenance;
-- treatment/material accounting;
-- media provenance;
-- KVK read-only boundary and physical-integration block;
-- local persistence and audit;
-- PDF reporting;
-- diagnostics and recovery;
-- end-to-end bench MVP acceptance tests.
-
-## Next dependency-ordered steps
-
-1. Complete Requirements traceability and docs-ci checks.
-2. Publish `HC-REQ-001` through Draft PR.
-3. Final reconciliation and exact-head Project Owner approval for merge.
-4. After merge, prepare implementation planning and authority activation decision.
-5. Runtime implementation remains blocked until `IA-HC-001` is explicitly approved and activated.
+1. Domain/session core with failing tests first.
+2. Durable local persistence and restart recovery.
+3. Local bench API / HMI contract.
+4. HMI prototype workflow and counters.
+5. Local PDF reporting from canonical records.
+6. Simulated RFID and KVK observation adapters only.
+7. Bench verification against REQ-HC-001.
 
 ## Explicit blockers
 
+- Runtime implementation remains blocked until `IA-HC-001` is explicitly approved and activated.
 - Physical KVK-specific hardware integration remains blocked until the actual machine can be inspected and photographed.
-- Bench software implementation remains blocked until `IA-HC-001` is explicitly approved and activated.
 - Commercial/product naming remains undecided.
