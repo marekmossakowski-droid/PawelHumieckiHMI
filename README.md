@@ -1,8 +1,8 @@
 # PawelHumieckiHMI / HoofCare
 
-> **Naming status:** `PawelHumieckiHMI` and `HoofCare` are internal project codenames used for engineering continuity. They are not an approved commercial/product brand. The final product name remains `TBD` and requires a separate Project Owner decision.
+> **Status nazewnictwa:** `PawelHumieckiHMI` i `HoofCare` są wewnętrznymi nazwami kodowymi używanymi dla ciągłości prac inżynierskich. Nie stanowią zatwierdzonej nazwy handlowej ani marki produktu. Docelowa nazwa produktu pozostaje `TBD` i wymaga osobnej decyzji Project Ownera.
 
-Under the current codename, the project develops an industrial HMI and hoof-treatment record system, initially as a retrofit for a KVK 801-1 chute from approximately the 2013 generation.
+Pod aktualną nazwą kodową rozwijany jest przemysłowy system HMI i rejestracji zabiegów korekcji racic, początkowo jako retrofit dla poskromu KVK 801-1 generacji około 2013 r.
 
 ## Cel
 
