@@ -31,7 +31,11 @@
 | HC-LEL-002 | Ambiguous identity fails closed | LEL → REQ → S1/S3 | Baselined |
 | HC-LEL-004 | KVK events are observation-only | LEL → REQ → IMP | Baselined |
 | HC-LEL-005 | Durable/idempotent canonical transitions | LEL → REQ → S1/S2/S3 | Baselined |
-| HC-REQ-HMI-001 | Structured HMI workflow has no KVK actuation affordance | REQ → IMP → S3/S4 | Baselined |
+| HC-REQ-HMI-001 | Dashboard + structured HMI workflow with no KVK actuation affordance | REQ → IMP → S3/S4 | Baselined |
+| HC-REQ-HMI-003 | Unambiguous four-limb selection | REQ → S4 | Baselined |
+| HC-REQ-HMI-004 | Structured claw selection | REQ → S4 | Baselined |
+| HC-REQ-HMI-005 | Selectable verified anatomical zones | REQ → S4 | Baselined |
+| HC-REQ-HMI-007 | No machine-control affordance | REQ → S3/S4 | Baselined |
 | HC-REQ-ID-001 | Identity ambiguity fails closed | REQ → S1/S3 | Baselined |
 | HC-REQ-DATA-001 | Durable local store/audit/synthetic bench boundary | REQ → S2 | Baselined |
 | HC-REQ-KVK-001 | KVK remains observation-only; physical integration blocked pending audit | REQ → IMP | Baselined |
@@ -55,10 +59,16 @@
 | HC-S2-AUDIT-001 | Append-only ordered amendments | persistence + tests | MERGED / VERIFIED PR #10 |
 | HC-S2-FAILCLOSED-001 | Corrupt snapshot fails closed | persistence + tests | MERGED / VERIFIED PR #10 |
 | HC-S3-RED-001 | HMI-edge contract tests fail before contract exists | tests/test_hmi_edge_contract.py | Verified RED @ `882afd05b9cbb94bc3265652becc245992998271` |
-| HC-S3-CONTRACT-001 | Local in-process result/error contract | src/hoofcare/application/contract.py | Implemented / GREEN |
-| HC-S3-IDEMP-001 | Repeated request_id returns idempotent result | contract + tests | Implemented / GREEN |
-| HC-S3-FAILCLOSED-001 | Ambiguous/invalid identity stays explicit and fail-closed | contract + domain + tests | Implemented / GREEN |
-| HC-S3-NOACT-001 | No KVK actuation/command surface is exposed | contract + tests | Implemented / GREEN |
+| HC-S3-CONTRACT-001 | Local in-process result/error contract | src/hoofcare/application/contract.py | MERGED / VERIFIED PR #11 |
+| HC-S3-IDEMP-001 | Repeated request_id returns idempotent result | contract + tests | MERGED / VERIFIED PR #11 |
+| HC-S3-FAILCLOSED-001 | Ambiguous/invalid identity stays explicit and fail-closed | contract + domain + tests | MERGED / VERIFIED PR #11 |
+| HC-S3-NOACT-001 | No KVK actuation/command surface is exposed | contract + tests | MERGED / VERIFIED PR #11 |
+| HC-S4-RED-001 | HMI workflow tests fail before workflow model exists | tests/test_hmi_workflow.py | Verified RED @ `36608bfcdf02ef4585ee177519d8966ca143dd4b` |
+| HC-S4-DASH-001 | Dashboard exposes completed-animal and dressing counters plus approved operator banner | src/hoofcare/hmi/workflow.py, tests | Implemented / GREEN |
+| HC-S4-PATH-001 | Workflow is ordered limb → claw → zone → lesion → treatment and fails closed out of order | src/hoofcare/hmi/workflow.py, tests | Implemented / GREEN |
+| HC-S4-ZONE-001 | Required anatomical zones include toe, sole, white line, axial/abaxial wall, heel/bulb, soft heel and interdigital space | src/hoofcare/hmi/workflow.py, tests | Implemented / GREEN |
+| HC-S4-LESION-001 | Controlled lesion options include digital/interdigital dermatitis, interdigital phlegmon and heel horn erosion | src/hoofcare/hmi/workflow.py, tests | Implemented / GREEN |
+| HC-S4-NOACT-001 | HMI model exposes no KVK machine-control affordance | src/hoofcare/hmi/workflow.py, tests | Implemented / GREEN |
 
 ## Canonical checkpoints
 - PR #1 Foundation → `de68522e4851f645d65dee7dda08ef8fed6af955`.
@@ -70,7 +80,8 @@
 - PR #7 Requirements → `e34e2a2ae3f709d83c24d528f8930b1b72060961`.
 - PR #8 IMP + IA activation → `0d58eb2921df298114c304295a061547598ae541`.
 - PR #9 S1 → `7467ec4e30b5ecd8831c094bd90ba7d1fe0ad7b2`.
-- PR #10 S2 approved head `fca836ca9b4f99ea059b5f79f0dd8eef402e3ecb` → merge `c5f60dbf11b04b680c6f51f2e610d33906b08637`.
+- PR #10 S2 → `c5f60dbf11b04b680c6f51f2e610d33906b08637`.
+- PR #11 S3 approved head `707c42cc23fbff1193971db5960e0e216402faa2` → merge `003c8d5d0ab9e026a76e4a519e8b1c246458bc8a`.
 
 ## Closure rule
 No runtime row becomes Closed without fresh verification evidence and controlled merge on the exact approved head.
