@@ -1,7 +1,7 @@
 # HC-BENCH-MVP-CLOSURE-001 — Bench MVP Closure Record
 
 ## Status
-`PROPOSED — PROJECT OWNER APPROVAL REQUIRED`
+`CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`
 
 ## Scope
 This record closes only the bounded local synthetic/test-only bench MVP implemented under `IA-HC-001` and `IMP-HC-001`.
@@ -13,14 +13,12 @@ This record closes only the bounded local synthetic/test-only bench MVP implemen
 - S4 HMI prototype workflow/dashboard — PR #12 → `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34`;
 - S5 local canonical PDF reporting — PR #13 → `30acc2d9a0833844e7279c68d9884cf9dd124cea`;
 - S6 simulated RFID/KVK observation adapters — PR #14 → `56da4eaf1316c930ca6095cd068e90bd66e2f624`;
-- S7 bench MVP integration/acceptance verification — PR #16 → `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`.
+- S7 bench MVP integration/acceptance verification — PR #16 → `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`;
+- Bench MVP closure — PR #17 → `36ffda3b2363597b8a8aae3746e9d555450c625c`;
+- corrective authority rollback/repository restoration — PR #21 → `ce58dd3e5ab9346442456736b646eacbc4309a8a`.
 
 ## Closure assertions
-Upon controlled merge of the exact approved head containing this record:
-
 `BENCH MVP = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`
-
-and:
 
 `IMP-HC-001 = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`
 
@@ -49,4 +47,4 @@ Closure does not establish:
 - autonomous veterinary diagnosis capability.
 
 ## Remaining prerequisites
-Physical prototype work may proceed only under separately approved authority. Any future live KVK integration additionally requires inspection and photographic/audit evidence for the actual circa-2013 KVK 801-1 and a separately approved integration boundary.
+Physical prototype work may proceed only under separately approved authority. `IA-HC-002` remains inactive on canonical `main` until the exact activation head containing `HC-IA-HC-002-ACTIVATION-001` receives explicit Project Owner approval and is controlled-merged and Repository-Verified. Any future live KVK integration additionally requires inspection and photographic/audit evidence for the actual circa-2013 KVK 801-1 and a separately approved integration boundary.

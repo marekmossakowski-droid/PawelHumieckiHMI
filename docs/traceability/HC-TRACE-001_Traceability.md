@@ -1,7 +1,7 @@
 # HC-TRACE-001 — Traceability
 
 ## Status
-`ACTIVE — BENCH MVP CLOSURE / PHYSICAL PROTOTYPE AUTHORITY GATE`
+`ACTIVE — BENCH MVP CLOSED / IA-HC-002 ACTIVATION GATE`
 
 ## Baselined upstream lineage
 
@@ -18,10 +18,11 @@
 | HC-REQ-MVP-004 | Duplicate events must not duplicate logical records | REQ → S1/S3 | Verified |
 | HC-REQ-MVP-005 | Reference/example media must remain visibly distinguished | REQ → S5/S7 | Verified |
 | HC-REQ-MVP-006 | Bench public interfaces expose no KVK write/command API | REQ → S3/S4/S6/S7 | Verified |
-| HC-IMP-001 | Seven test-first bench slices; no live KVK integration | IMP-HC-001 | Closure pending exact-head merge |
-| HC-IA-001 | Runtime authority limited to local synthetic/test-only bench implementation | IA-HC-001 | Fulfilled for authorized scope pending closure merge |
-| HC-CLOSURE-001 | Bench MVP closure record | HC-BENCH-MVP-CLOSURE-001 | Proposed — PO approval required |
-| HC-IA-002 | Physical prototype authority | IA-HC-002 | Proposed / NOT ACTIVE |
+| HC-IMP-001 | Seven test-first bench slices; no live KVK integration | IMP-HC-001 | CLOSED / IMPLEMENTED / VERIFIED / RECONCILED |
+| HC-IA-001 | Runtime authority limited to local synthetic/test-only bench implementation | IA-HC-001 | FULFILLED FOR AUTHORIZED BENCH SCOPE |
+| HC-CLOSURE-001 | Bench MVP closure record | HC-BENCH-MVP-CLOSURE-001 | CLOSED / IMPLEMENTED / VERIFIED / RECONCILED |
+| HC-IA-002 | Physical prototype authority | IA-HC-002 | PROPOSED / NOT ACTIVE on canonical main until activation merge |
+| HC-IA-002-ACT-001 | Explicit Project Owner activation gate | HC-IA-HC-002-ACTIVATION-001 | PROPOSED — EXACT-HEAD APPROVAL REQUIRED |
 
 ## Runtime slice lineage
 
@@ -47,7 +48,7 @@
 - no live KVK, RFID, CAN, RS-485, Modbus, serial, hydraulics, PLC or safety integration.
 
 ## Canonical checkpoints
-PR #1 `de68522e4851f645d65dee7dda08ef8fed6af955`; PR #2 `b0286b73b90c95f05b1d99ef58ac9a9fae197880`; PR #3 `9144a6a003f58ea12c5a6c3d4ff26c26527d0292`; PR #4 `c2493ef39a1b45b934cd2dc001279db110a17fc0`; PR #5 `5a0761dec9dbbca538be787839d93017f5c501df`; PR #6 `a7d031317cf25934218cd09a4916449f2bf5b634`; PR #7 `e34e2a2ae3f709d83c24d528f8930b1b72060961`; PR #8 `0d58eb2921df298114c304295a061547598ae541`; PR #9 `7467ec4e30b5ecd8831c094bd90ba7d1fe0ad7b2`; PR #10 `c5f60dbf11b04b680c6f51f2e610d33906b08637`; PR #11 `003c8d5d0ab9e026a76e4a519e8b1c246458bc8a`; PR #12 `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34`; PR #13 `30acc2d9a0833844e7279c68d9884cf9dd124cea`; PR #14 `56da4eaf1316c930ca6095cd068e90bd66e2f624`; PR #16 `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`.
+PR #1 `de68522e4851f645d65dee7dda08ef8fed6af955`; PR #2 `b0286b73b90c95f05b1d99ef58ac9a9fae197880`; PR #3 `9144a6a003f58ea12c5a6c3d4ff26c26527d0292`; PR #4 `c2493ef39a1b45b934cd2dc001279db110a17fc0`; PR #5 `5a0761dec9dbbca538be787839d93017f5c501df`; PR #6 `a7d031317cf25934218cd09a4916449f2bf5b634`; PR #7 `e34e2a2ae3f709d83c24d528f8930b1b72060961`; PR #8 `0d58eb2921df298114c304295a061547598ae541`; PR #9 `7467ec4e30b5ecd8831c094bd90ba7d1fe0ad7b2`; PR #10 `c5f60dbf11b04b680c6f51f2e610d33906b08637`; PR #11 `003c8d5d0ab9e026a76e4a519e8b1c246458bc8a`; PR #12 `e4d7d3b21e8baa17c239c6008fdac17a7cbe2e34`; PR #13 `30acc2d9a0833844e7279c68d9884cf9dd124cea`; PR #14 `56da4eaf1316c930ca6095cd068e90bd66e2f624`; PR #16 `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`; PR #17 `36ffda3b2363597b8a8aae3746e9d555450c625c`; PR #21 `ce58dd3e5ab9346442456736b646eacbc4309a8a`.
 
-## Closure rule
-Bench MVP becomes formally `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED` only after controlled merge of the exact Project Owner-approved closure head. `IA-HC-002` becomes ACTIVE only by explicit Project Owner approval; closure alone must not silently activate it.
+## Activation rule
+`IA-HC-002` becomes `APPROVED / ACTIVE` only after explicit Project Owner approval of the final exact activation head containing `HC-IA-HC-002-ACTIVATION-001`, controlled merge of that exact head and Repository Verification. Closure alone, an open PR, or historical implementation commits do not activate authority.

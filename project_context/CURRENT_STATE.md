@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F80 / BENCH MVP — CLOSED / IMPLEMENTED / VERIFIED / RECONCILED PENDING CLOSURE MERGE`
+`F80 / BENCH MVP — CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -25,22 +25,30 @@
 - S5 PR #13 → `30acc2d9a0833844e7279c68d9884cf9dd124cea`.
 - S6 PR #14 → `56da4eaf1316c930ca6095cd068e90bd66e2f624`.
 - S7 PR #16 approved head `419e513c9fad7f90b52744f811707ca154568362`, merged as `0827d0d4b51a0a63c773a1f8ce178d7954dc25a5`.
+- Bench MVP closure PR #17 → `36ffda3b2363597b8a8aae3746e9d555450c625c`.
+- Corrective authority rollback PR #21 → `ce58dd3e5ab9346442456736b646eacbc4309a8a`.
 
 ## Governance state
 - Foundation through REQ-HC-001: `BASELINED`.
-- `IMP-HC-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED` upon controlled merge of closure record.
-- `IA-HC-001`: `FULFILLED FOR AUTHORIZED BENCH SCOPE` upon controlled merge of closure record.
+- `IMP-HC-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
+- `IA-HC-001`: `FULFILLED FOR AUTHORIZED BENCH SCOPE`.
 - `HC-S1-001` through `HC-S7-001`: `MERGED / VERIFIED`.
-- `HC-BENCH-MVP-CLOSURE-001`: `PROPOSED — PROJECT OWNER APPROVAL REQUIRED`.
-- `IA-HC-002`: `PROPOSED / NOT ACTIVE` for bounded physical prototype work only.
+- `HC-BENCH-MVP-CLOSURE-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
+- `IA-HC-002`: remains `PROPOSED / NOT ACTIVE` on canonical `main` until explicit Project Owner approval and controlled merge of the final exact activation head containing `HC-IA-HC-002-ACTIVATION-001`.
+
+## Activation effect after approved exact-head merge
+Only after explicit Project Owner approval of the final activation head, controlled merge and Repository Verification:
+- `IA-HC-002 = APPROVED / ACTIVE`;
+- physical prototype work may proceed only inside the literal off-machine / non-actuating / synthetic-test scope of `IA-HC-002`;
+- any live KVK connection remains separately blocked.
 
 ## Active authority boundaries
-Until `IA-HC-002` is explicitly approved, no new physical prototype authority exists beyond the already fulfilled bench scope.
+Before activation merge, no physical prototype implementation authority is active beyond the fulfilled bench scope.
 
-Not authorized: live RFID hardware with real farm identity data; live KVK I/O; KVK commands/writes/configuration; CAN/RS-485/Modbus/serial connection to the machine; hydraulics or actuation; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data; network/cloud service exposure; deployment/signing/release/public distribution.
+Even after `IA-HC-002` activation, not authorized: live RFID hardware with real farm identity data; live KVK I/O; KVK commands/writes/configuration; CAN/RS-485/Modbus/serial connection to the machine; hydraulics or actuation; PLC/safety mutation; autonomous veterinary diagnosis; medication dosing; real farm data; network/cloud service exposure; deployment/signing/release/public distribution.
 
 ## Bench MVP result
-The synthetic local bench MVP now covers:
+The synthetic local bench MVP covers:
 - session/identity lifecycle and fail-closed ambiguity;
 - local durable persistence and restart recovery;
 - local HMI↔edge contract;
@@ -51,7 +59,7 @@ The synthetic local bench MVP now covers:
 - explicit proof that no KVK actuation surface exists.
 
 ## Next dependency-ordered step
-After controlled merge of the closure package and explicit Project Owner approval, `IA-HC-002` may activate bounded physical HMI prototype work. Any live connection to the KVK remains separately blocked.
+Current gate: Project Owner exact-head decision on `HC-IA-HC-002-ACTIVATION-001`. No P1 physical-prototype implementation may start before controlled activation merge and Repository Verification.
 
 ## Explicit blockers
 - Physical/live KVK integration remains blocked until the actual circa-2013 KVK 801-1 is inspected and photographed and a separate live observation authority is approved.
