@@ -6,21 +6,20 @@
 
 ## Status
 
-`F10 / ARS — IN PROGRESS`
+`F20 / ARB — IN PROGRESS`
 
 ## Canonical repository
 
 `marekmossakowski-droid/PawelHumieckiHMI`
 
-## Canonical main checkpoint
+## Canonical main checkpoints
 
-- `HC-FOUNDATION-001`: merged via PR #1.
-- approved PR head: `dd71ddac5cfc655a55263e2e28346e43f4df5044`.
-- canonical merge SHA: `de68522e4851f645d65dee7dda08ef8fed6af955`.
+- `HC-FOUNDATION-001`: PR #1 approved head `dd71ddac5cfc655a55263e2e28346e43f4df5044`, merged as `de68522e4851f645d65dee7dda08ef8fed6af955`.
+- `HC-ARS-001`: PR #2 approved head `650f2957c5b57a070108beb710724c59d07db2ad`, merged as `b0286b73b90c95f05b1d99ef58ac9a9fae197880`.
 
 ## Current branch
 
-`requirements/hc-ars-001`
+`architecture/hc-arb-001`
 
 ## Product baseline
 
@@ -32,9 +31,10 @@
 ## Governance state
 
 - `AGENTS.md`: established.
-- `FND-HC-001`: `BASELINED` by approved and merged `HC-FOUNDATION-001`.
-- `ROADMAP-HC-001`: established by the same foundation change set.
-- `HC-TRACE-001`: established; actively maintained.
+- `FND-HC-001`: `BASELINED`.
+- `ARS-HC-001`: `BASELINED` by approved and merged `HC-ARS-001`.
+- `ROADMAP-HC-001`: established.
+- `HC-TRACE-001`: active.
 - `IA-HC-001`: proposed; `NOT ACTIVE`.
 - Runtime implementation authority: `NOT ESTABLISHED`.
 
@@ -47,29 +47,17 @@
 
 ## Current workstream
 
-`HC-ARS-001`
+`HC-ARB-001`
 
-Purpose: define application and stakeholder requirements before ARB, ADR, system architecture, LEL and implementable requirements.
-
-## Current ARS coverage
-
-- operator workflow;
-- farmer/herd-owner reporting;
-- veterinary requirements and human clinical authority;
-- zootechnical requirements;
-- nutritionist trend context;
-- technical-service requirements;
-- data/audit/reporting requirements;
-- HMI/environmental constraints;
-- explicit safety and non-goal boundaries.
+Purpose: establish explicit system, KVK, safety, clinical, data, HMI, peripheral, network and failure boundaries before ADR and System Architecture.
 
 ## Next dependency-ordered steps
 
-1. Complete ARS traceability and consistency review.
-2. Publish `HC-ARS-001` through Draft PR and CI.
-3. Final reconciliation and exact-head Project Owner approval for merge.
-4. After ARS merge, begin `F20 / ARB` autonomously.
-5. Continue ADR → System Architecture → LEL → Requirements without runtime implementation until authority is explicitly active.
+1. Complete ARB traceability and CI checks.
+2. Publish and reconcile `HC-ARB-001` through Draft PR.
+3. Final exact-head Project Owner approval for merge.
+4. After merge, begin F30 / ADR set autonomously.
+5. Continue System Architecture → LEL → Requirements without runtime implementation until authority is explicitly active.
 
 ## Explicit blockers
 
