@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` and `HoofCare` are internal engineering codenames only. Final commercial/product name remains `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F90 / PHYSICAL PROTOTYPE — P2 MERGED / VERIFIED / P3 NEXT`
+`F90 / PHYSICAL PROTOTYPE — P3 BENCH WIRING/BOM IMPLEMENTED / MERGE APPROVAL PENDING`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -32,6 +32,7 @@
 - HC-P1-001 PR #29 → `ec2cea9b144256baca29cd1ea2f03bf0dfcf6def`.
 - HC-P1 post-merge reconciliation PR #30 → `4228a1f0346480221d0afb779907537a50c65e70`.
 - HC-P2-001 PR #31 approved head `5ea083ad0ac9ed0b2c965af167a6db821429c9fb` → merge `047e5bba348eaea0b52103230ec589df6f857036`.
+- HC-P2 post-merge reconciliation PR #32 → `6b05f283c8e9e280ca0c91e26947cac8b149d24b`.
 
 ## Governance state
 - Foundation through REQ-HC-001: `BASELINED`.
@@ -42,22 +43,30 @@
 - `IA-HC-002`: `APPROVED / ACTIVE` only for its literal isolated off-machine / non-actuating / synthetic-test physical-prototype scope.
 - `HC-P1-001`: `MERGED / VERIFIED`.
 - `HC-P2-001`: `MERGED / VERIFIED`.
+- `HC-P3-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
 
 ## Active authority boundaries
 Authorized: isolated physical HMI prototype work, low-voltage bench work, synthetic/test data, simulated RFID/KVK sources, local persistence/reporting/navigation, and serial/RS-485/Modbus only against dedicated simulators/test equipment.
 
 Not authorized: any electrical or logical connection to real KVK 801-1; live RFID with real-farm data; live KVK I/O; CAN/RS-485/Modbus/serial to the machine; KVK commands/writes/configuration/actuation; hydraulics; PLC/safety mutation; autonomous veterinary diagnosis; real-farm data; network/cloud exposure; deployment/signing/release/public distribution.
 
-## P2 verified invariants
-- target panel profile is 10.1 inch at 1024×600;
-- primary touch targets are at least 48×48 px;
-- mapped screens cover dashboard, animal session, limb/claw, zone/lesion, treatment and report summary;
-- dashboard preserves `Paweł Humięcki the best zootechnik`, completed-animal counter and consumed-dressings counter;
-- layout is isolated synthetic/test-only;
-- no machine-control affordance or KVK actuation surface is present.
+## Current workstream
+`HC-P3-001 — Bench wiring BOM and isolated I/O profile`
+
+Fresh authorized TDD lineage:
+- RED head `65e62602e75d6f76c3f93824048ee02baf0beac1` — 47 existing tests passed; new bench-wiring suite failed only because `hoofcare.hardware.bench_wiring` did not exist;
+- GREEN implementation head `506cdb249836401786e4899308f0bc5749382700` — `runtime-ci #229` and `docs-ci #152` succeeded.
+
+## P3 invariants
+- nominal bench supply is 24 VDC;
+- BOM includes 10.1-inch HMI, 8DI/8DO simulator I/O, terminal blocks, fuse protection, test switches and lamps;
+- USB/RS-485 is permitted only against dedicated simulator/test equipment;
+- KVK connection is explicitly forbidden;
+- real-farm data are explicitly forbidden;
+- no live machine-bus or actuation surface exists.
 
 ## Next dependency-ordered step
-`HC-P3-001 — Bench wiring BOM and isolated I/O profile`: synthetic/test-only 24 VDC bench wiring profile, HMI power/protection/terminal accessories, isolated simulator DI/DO and optional USB/RS-485 only against dedicated simulator/test equipment. No real KVK connection or real-farm data.
+After controlled merge and Repository Verification of P3, continue with `HC-P4-001 — Physical screen realization` under active `IA-HC-002`; live KVK integration remains separately blocked.
 
 ## Explicit blockers
 - Any live KVK integration remains blocked until the actual circa-2013 KVK 801-1 is inspected and photographed and a separate live observation authority is approved.
