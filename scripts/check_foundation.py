@@ -29,11 +29,13 @@ for path in Path(".").rglob("*.md"):
 
 current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
 for marker in [
-    "F90 / PHYSICAL PROTOTYPE — P3 MERGED / VERIFIED / P4 NEXT",
-    "16f26ae8909e0d40037e163c90ccabf154070599",
+    "F90 / PHYSICAL PROTOTYPE — P4 PHYSICAL SCREEN REALIZATION IMPLEMENTED / MERGE APPROVAL PENDING",
+    "b47916aa23bae79008554d616b64a7f81cbde821",
     "IA-HC-002`: `APPROVED / ACTIVE`",
-    "HC-P4-001`: `NEXT / NOT YET IMPLEMENTED`",
-    "HC-P4-001 — Physical screen realization",
+    "HC-P4-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`",
+    "fc475d55cfcc457ef0e8f885d5484589f4b9e0b6",
+    "13e0ca8bba90f71287230a6234f5e00cfdc5c36e",
+    "HC-P5-001` and later slices: `NOT ACTIVE`",
     "Any live KVK integration remains blocked",
 ]:
     if marker not in current:
@@ -41,12 +43,11 @@ for marker in [
 
 trace = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
 for marker in [
-    "P1-P3 MERGED / VERIFIED / P4 NEXT",
-    "2de9b10aab518ac8e92cfbaf84dbc64c728d9300",
-    "a48eb7a8b1de94758e6c74945f710ff5084a4b8f",
-    "16f26ae8909e0d40037e163c90ccabf154070599",
-    "NEXT / NOT YET IMPLEMENTED",
-    "HC-P4-001 — Physical screen realization",
+    "P4 IMPLEMENTED / MERGE APPROVAL PENDING",
+    "fc475d55cfcc457ef0e8f885d5484589f4b9e0b6",
+    "13e0ca8bba90f71287230a6234f5e00cfdc5c36e",
+    "isolated synthetic/test-only screen realization",
+    "b47916aa23bae79008554d616b64a7f81cbde821",
 ]:
     if marker not in trace:
         errors.append(f"traceability missing marker: {marker}")
@@ -79,4 +80,4 @@ if errors:
         print(f"ERROR: {error}", file=sys.stderr)
     raise SystemExit(1)
 
-print("bench MVP closure, active IA-HC-002, merged HC-P3 and pending HC-P4 governance checks passed")
+print("bench MVP closure, active IA-HC-002 and HC-P4 implementation approval-pending governance checks passed")
