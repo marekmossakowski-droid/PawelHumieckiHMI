@@ -22,35 +22,42 @@
 | HC-ADR-002 | ADR | KVK integration strategy is observational/read-only | ADR → SA → LEL → REQ → IMP | Baselined |
 | HC-ADR-003 | ADR | Animal identity uses internal immutable identity with pluggable external identifiers | ADR → SA → LEL → REQ → IMP | Baselined |
 | HC-ADR-004 | ADR | Media are immutable provenance-linked evidence objects | ADR → SA → LEL → REQ → IMP | Baselined |
-| HC-ADR-005 | ADR | Persistence is local-first with explicit backup/recovery | ADR → SA → LEL → REQ → IMP | Baselined |
+| HC-ADR-005 | ADR | Persistence is local-first with explicit backup/recovery | ADR → SA → LEL → REQ → IMP → HC-S2-001 | Baselined |
 | HC-ADR-006 | ADR | Veterinary nomenclature is controlled/versioned; human authority remains final | ADR → SA → LEL → REQ | Baselined |
 | HC-ADR-007 | ADR | Reports derive from canonical structured records | ADR → SA → LEL → REQ → IMP | Baselined |
 | HC-SA-001 | System Architecture | Edge/application layer owns canonical session lifecycle | SA → LEL → REQ → IMP → HC-S1-001 | Baselined |
+| HC-SA-002 | System Architecture | Durable local store and media store are independent of HMI replacement | SA → LEL → REQ → IMP → HC-S2-001 | Baselined |
 | HC-SA-003 | System Architecture | KVK Observation Adapter has no write/actuation route | SA → LEL → REQ → IMP | Baselined |
 | HC-SA-006 | System Architecture | Failures degrade workflow without affecting KVK safety | SA → LEL → REQ → IMP | Baselined |
 | HC-LEL-001 | LEL | Session lifecycle has explicit non-terminal and terminal states | LEL → REQ → IMP → HC-S1-001 | Baselined |
 | HC-LEL-002 | LEL | Ambiguous identity fails closed | LEL → REQ → IMP → HC-S1-001 | Baselined |
 | HC-LEL-003 | LEL | Clinical classification remains human-entered and taxonomy-versioned | LEL → REQ | Baselined |
 | HC-LEL-004 | LEL | KVK events are observation-only | LEL → REQ → IMP | Baselined |
-| HC-LEL-005 | LEL | Edge owns durable/idempotent canonical transitions | LEL → REQ → IMP → HC-S1-001 | Baselined |
-| HC-REQ-SES-001 | Requirements | Session lifecycle/completion/recovery/idempotency are testable runtime requirements | REQ → IMP → HC-S1-001 | Baselined |
+| HC-LEL-005 | LEL | Edge owns durable/idempotent canonical transitions | LEL → REQ → IMP → HC-S1-001 → HC-S2-001 | Baselined |
+| HC-REQ-SES-001 | Requirements | Session lifecycle/completion/recovery/idempotency are testable runtime requirements | REQ → IMP → HC-S1-001 → HC-S2-001 | Baselined |
 | HC-REQ-ID-001 | Requirements | Animal identity is immutable internally and ambiguity fails closed | REQ → IMP → HC-S1-001 | Baselined |
 | HC-REQ-HMI-001 | Requirements | Structured 10-inch HMI workflow has no KVK actuation affordance | REQ → IMP | Baselined |
 | HC-REQ-CLIN-001 | Requirements | Clinical recording is human-confirmed and taxonomy-versioned | REQ → IMP | Baselined |
 | HC-REQ-TX-001 | Requirements | Treatment/material counters derive from committed data | REQ → IMP | Baselined |
 | HC-REQ-MED-001 | Requirements | Media carry identity, provenance and session linkage | REQ → IMP | Baselined |
 | HC-REQ-KVK-001 | Requirements | KVK adapter is observation-only and blocked pending site audit | REQ → IMP | Baselined |
-| HC-REQ-DATA-001 | Requirements | Durable local store/audit/synthetic bench boundary required | REQ → IMP | Baselined |
+| HC-REQ-DATA-001 | Requirements | Durable local store/audit/synthetic bench boundary required | REQ → IMP → HC-S2-001 | Baselined |
 | HC-REQ-REP-001 | Requirements | PDF reports derive from canonical records | REQ → IMP | Baselined |
-| HC-REQ-DIAG-001 | Requirements | Diagnostics/recovery cannot couple into KVK safety | REQ → IMP | Baselined |
+| HC-REQ-DIAG-001 | Requirements | Diagnostics/recovery cannot couple into KVK safety | REQ → IMP → HC-S2-001 | Baselined |
 | HC-REQ-MVP-001 | Requirements | Bench MVP has explicit acceptance/negative tests | REQ → IMP | Baselined |
 | HC-IMP-001 | Implementation plan | Bench MVP split into seven test-first slices, no live KVK integration | IMP-HC-001 | Approved / Baselined PR #8 |
 | HC-IA-001 | Governance | Runtime authority limited to local synthetic/test-only bench implementation | IA-HC-001 | ACTIVE — PR #8 |
 | HC-S1-RED-001 | TDD | Domain/session tests fail before implementation exists | tests/test_session_core.py, runtime-ci | Verified RED @ `52b4fca3ca719b035d2cc7c5091447c607b6fd83` |
-| HC-S1-CORE-001 | S1 | New session begins IDENTITY_PENDING; confirmed identity enters IN_PROGRESS | src/hoofcare/domain/session.py | Implemented / GREEN |
-| HC-S1-FAILCLOSED-001 | S1 | Ambiguous identity cannot bind animal_id or advance workflow | src/hoofcare/domain/session.py, tests | Implemented / GREEN |
-| HC-S1-IDEMP-001 | S1 | Duplicate event IDs are idempotent | src/hoofcare/domain/session.py, tests | Implemented / GREEN |
-| HC-S1-TERM-001 | S1 | Completion requires confirmed identity and terminal sessions reject new events | src/hoofcare/domain/session.py, tests | Implemented / GREEN |
+| HC-S1-CORE-001 | S1 | New session begins IDENTITY_PENDING; confirmed identity enters IN_PROGRESS | src/hoofcare/domain/session.py | MERGED / VERIFIED PR #9 |
+| HC-S1-FAILCLOSED-001 | S1 | Ambiguous identity cannot bind animal_id or advance workflow | src/hoofcare/domain/session.py, tests | MERGED / VERIFIED PR #9 |
+| HC-S1-IDEMP-001 | S1 | Duplicate event IDs are idempotent | src/hoofcare/domain/session.py, tests | MERGED / VERIFIED PR #9 |
+| HC-S1-TERM-001 | S1 | Completion requires confirmed identity and terminal sessions reject new events | src/hoofcare/domain/session.py, tests | MERGED / VERIFIED PR #9 |
+| HC-S2-RED-001 | TDD | Persistence/recovery tests fail before persistence implementation exists | tests/test_persistence.py, runtime-ci | Verified RED @ `cbb35f593173aea2bb2fc1d77e1c6f267217eb01` |
+| HC-S2-STORE-001 | S2 | Canonical session snapshots are persisted outside HMI state | src/hoofcare/persistence/local_store.py, tests | Implemented / GREEN |
+| HC-S2-RECOVERY-001 | S2 | Non-terminal sessions restore after process restart | src/hoofcare/persistence/local_store.py, tests | Implemented / GREEN |
+| HC-S2-ATOMIC-001 | S2 | Snapshot replacement is atomic within local filesystem boundary | src/hoofcare/persistence/local_store.py, tests | Implemented / GREEN |
+| HC-S2-AUDIT-001 | S2 | Amendments append in ordered audit records | src/hoofcare/persistence/local_store.py, tests | Implemented / GREEN |
+| HC-S2-FAILCLOSED-001 | S2 | Corrupt persisted snapshots fail closed | src/hoofcare/persistence/local_store.py, tests | Implemented / GREEN |
 | HC-HW-001 | Prototype concept | Kinco GL100E 10.1" remains bench MVP candidate, not baseline | CURRENT_STATE | Candidate |
 | HC-PROC-001 | Governance | Draft PR → CI/review → exact-head approval → merge → verification | AGENTS.md | Established |
 
@@ -64,6 +71,7 @@
 - PR #6 LEL → `a7d031317cf25934218cd09a4916449f2bf5b634`.
 - PR #7 Requirements → `e34e2a2ae3f709d83c24d528f8930b1b72060961`.
 - PR #8 IMP + IA activation: approved head `9c939abea6794e2b5a4815c826410eb0166ab535`, merged `0d58eb2921df298114c304295a061547598ae541`.
+- PR #9 S1 Domain/session core: approved head `5f6015bc2fd8e949851fac4e1e9d61184e8da4ff`, merged `7467ec4e30b5ecd8831c094bd90ba7d1fe0ad7b2`.
 
 ## Closure rule
 

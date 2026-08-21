@@ -6,7 +6,7 @@
 
 ## Status
 
-`F80 / BENCH IMPLEMENTATION — S1 DOMAIN/SESSION CORE IN PROGRESS`
+`F80 / BENCH IMPLEMENTATION — S2 DURABLE LOCAL PERSISTENCE IN PROGRESS`
 
 ## Canonical repository
 
@@ -22,10 +22,11 @@
 - `HC-LEL-001`: PR #6 merged as `a7d031317cf25934218cd09a4916449f2bf5b634`.
 - `HC-REQ-001`: PR #7 merged as `e34e2a2ae3f709d83c24d528f8930b1b72060961`.
 - `HC-IMP-001` + `IA-HC-001` activation: PR #8 approved head `9c939abea6794e2b5a4815c826410eb0166ab535`, merged as `0d58eb2921df298114c304295a061547598ae541`.
+- `HC-S1-001 — Domain/session core`: PR #9 approved head `5f6015bc2fd8e949851fac4e1e9d61184e8da4ff`, merged as `7467ec4e30b5ecd8831c094bd90ba7d1fe0ad7b2`.
 
 ## Current branch
 
-`implementation/hc-s1-session-core`
+`implementation/hc-s2-persistence`
 
 ## Product baseline
 
@@ -40,6 +41,8 @@
 - `IMP-HC-001`: `APPROVED / BASELINED` by PR #8.
 - `IA-HC-001`: `ACTIVE` for bounded local bench MVP only.
 - Runtime implementation authority: `ESTABLISHED — BOUNDED BENCH ONLY`.
+- `HC-S1-001`: `MERGED / VERIFIED`.
+- `HC-S2-001`: `IMPLEMENTED / GREEN — MERGE APPROVAL PENDING`.
 
 ## Active authority boundaries
 
@@ -66,20 +69,25 @@ Not authorized:
 
 ## Current workstream
 
-`HC-S1-001 — Domain/session core`
+`HC-S2-001 — Durable local persistence and restart recovery`
 
 TDD lineage:
-- RED head: `52b4fca3ca719b035d2cc7c5091447c607b6fd83` — `runtime-ci` failed because `hoofcare` implementation did not yet exist;
-- GREEN implementation introduced after RED and is verified by runtime CI on the active PR branch.
+- RED head: `cbb35f593173aea2bb2fc1d77e1c6f267217eb01` — persistence/recovery tests precede the store implementation and `runtime-ci` failed;
+- GREEN head: `6a1a6c205ce486fcf397ce2c5a2c239873a3154b` — `runtime-ci` and `docs-ci` both succeeded.
 
-## S1 invariants
+## S2 invariants
 
-- new sessions start in `IDENTITY_PENDING`;
-- ambiguous identity remains fail-closed and cannot bind animal history;
-- confirmed identity moves the session to `IN_PROGRESS`;
-- duplicate event IDs are idempotent;
-- completion requires confirmed identity;
-- completed/unresolved/cancelled sessions are terminal.
+- canonical session snapshots are stored outside HMI state;
+- non-terminal sessions can be reconstructed after process restart;
+- snapshot replacement is atomic within the local filesystem boundary;
+- amendment records are append-only and ordered;
+- corrupt snapshots fail closed rather than producing a partial session;
+- missing sessions are explicit errors;
+- persistence remains local and synthetic/test-only under current authority.
+
+## Next dependency-ordered step
+
+After controlled merge and repository verification of `HC-S2-001`, begin `S3 — local bench API / HMI contract` autonomously under active `IA-HC-001`.
 
 ## Explicit blockers
 
