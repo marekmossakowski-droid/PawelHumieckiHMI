@@ -1,11 +1,12 @@
 # HC-TRACE-001 — Traceability
 
 ## Status
-`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / R0 CLOSED / R1 CLOSURE READY / HW-A1 CURRENT`
+`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / R0 CLOSED / R1 CLOSED / HW-A1 CURRENT`
 
 Compatibility marker for canonical governance CI: `HW-A1 CURRENT`.
 Canonical IA-HC-003 activation merge compatibility marker: `52d65b18f966f553501a7829855f23b7390762a6`.
 Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / R0 CLOSURE READY / HW-A1 CURRENT`.
+Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / R0 CLOSED / R1 CLOSURE READY / HW-A1 CURRENT`.
 
 ## Baselined upstream lineage
 | ID | Decision / requirement | Downstream | Status |
@@ -20,11 +21,11 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | HC-IA-002 | Physical prototype authority | IA-HC-002 | FULFILLED |
 | HC-IMP-002 | Isolated bench hardware assembly plan | IMP-HC-002 | APPROVED / ACTIVE |
 | HC-IA-003 | Isolated bench hardware assembly authority | IA-HC-003 | APPROVED / ACTIVE |
-| HC-AUDIT-001 | Full software/documentation audit | 25 findings / R0-R2 | MERGED / R0 CLOSED / R1 CLOSURE READY / R2 OPEN |
+| HC-AUDIT-001 | Full software/documentation audit | 25 findings / R0-R2 | MERGED / R0 CLOSED / R1 CLOSED / R2 OPEN |
 | HC-IMP-003 | Wave R0 remediation plan | IMP-HC-003 | FULFILLED FOR AUTHORIZED R0 SCOPE |
 | HC-IA-004 | Wave R0 remediation authority | IA-HC-004 | FULFILLED FOR AUTHORIZED R0 SCOPE |
-| HC-IMP-004 | Wave R1 data integrity/provenance plan | IMP-HC-004 | FULFILLED FOR AUTHORIZED R1 SCOPE / CLOSURE PENDING |
-| HC-IA-005 | Wave R1 data integrity/provenance authority | IA-HC-005 | ACTIVE UNTIL R1 CLOSURE MERGE |
+| HC-IMP-004 | Wave R1 data integrity/provenance plan | IMP-HC-004 | FULFILLED FOR AUTHORIZED R1 SCOPE |
+| HC-IA-005 | Wave R1 data integrity/provenance authority | IA-HC-005 | FULFILLED FOR AUTHORIZED R1 SCOPE |
 | HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | WAITING FOR PHYSICAL HARDWARE |
 
 ## Wave R0 lineage
@@ -45,12 +46,9 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | R1-D/E Domain invariants + idempotency | AUD-HC-010/011 | RED `291c07c3d73a70f8ab88b606e65f8bd7a66bb7db` → GREEN/final `49abed2aa178131571739cb2039e1c0cced9a084`; PR #69 | MERGED / VERIFIED |
 | R1-F/G/H Canonical clinical/media/report model | AUD-HC-012/013/014 | RED `aa32ab881cc01fba4cd9a081e3f5de2ca9199b7a` → GREEN/final `75222c31053f12ee81265beaf2376632a393f4ee`; PR #70 | MERGED / VERIFIED |
 
-## R1 closure truth
-`HC-R1-CLOSURE-001` is the closure gate for authorized R1 scope only. After controlled merge + Repository Verification it may establish:
-- `WAVE R1 DATA INTEGRITY AND CLINICAL PROVENANCE = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`;
-- `IMP-HC-004 = FULFILLED FOR AUTHORIZED R1 SCOPE`;
-- `IA-HC-005 = FULFILLED FOR AUTHORIZED R1 SCOPE`;
-- `AUD-HC-007`–`AUD-HC-014 = CLOSED / VERIFIED`.
+`WAVE R1 DATA INTEGRITY AND CLINICAL PROVENANCE = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
+`AUD-HC-007`–`AUD-HC-014 = CLOSED / VERIFIED`.
+R1 closure gate: PR #71 merge `cbacafb9b09fa4530649d27b1b376659217939bb`.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.
