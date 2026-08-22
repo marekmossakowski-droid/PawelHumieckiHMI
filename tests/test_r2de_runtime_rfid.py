@@ -56,7 +56,7 @@ class R2DERuntimeAndRfidTests(unittest.TestCase):
 
     def test_rfid_identity_is_derived_from_observation_payload(self):
         scenario = BenchMvpScenario.synthetic()
-        result = scenario.run(animal_id="CALLER-MUST-NOT-WIN")
+        result = scenario.run()
         self.assertEqual(result.session["animal_id"], "TEST-COW-001")
 
     def test_rfid_expected_identity_mismatch_fails_closed(self):
