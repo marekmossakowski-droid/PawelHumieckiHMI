@@ -39,7 +39,7 @@ def main() -> int:
     require(authority, "AUD-HC-018", "IA-HC-006", errors)
     require(authority, "AUD-HC-025", "IA-HC-006", errors)
     for forbidden_boundary in (
-        "No real-farm data",
+        "real-farm data",
         "real KVK I/O",
         "PLC/safety mutation",
         "network/cloud",
