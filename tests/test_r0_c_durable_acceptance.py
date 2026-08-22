@@ -3,7 +3,7 @@ from tempfile import TemporaryDirectory
 import unittest
 
 from hoofcare.domain.session import AnimalIdentityResolution, Session, SessionEvent, SessionEventType, SessionState
-from hoofcare.physical.acceptance import PhysicalPrototypeAcceptance
+from hoofcare.physical.durable_acceptance import DurablePhysicalPrototypeAcceptance
 from hoofcare.physical.persistence_reporting import PhysicalPersistenceReportingValidator
 
 
@@ -42,7 +42,7 @@ class DurableCompletionTests(unittest.TestCase):
 
     def test_acceptance_checks_are_evidence_derived(self):
         with TemporaryDirectory() as tmp:
-            result = PhysicalPrototypeAcceptance.synthetic(Path(tmp)).run()
+            result = DurablePhysicalPrototypeAcceptance.synthetic(Path(tmp)).run()
 
         self.assertEqual(result.checks["durable_completion"], "PASS")
         self.assertEqual(result.checks["persistence_restart"], "PASS")
