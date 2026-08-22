@@ -6,7 +6,9 @@
 ## Status
 `PHYSICAL PROTOTYPE = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`
 
-`NEXT = F75 / ISOLATED BENCH HARDWARE ASSEMBLY READINESS — PROPOSED / NOT ACTIVE`
+`F75 / ISOLATED BENCH HARDWARE ASSEMBLY = ACTIVE`
+
+`CURRENT STEP = HW-A1 — GOODS-IN VERIFICATION / WAITING FOR PHYSICAL HARDWARE`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -20,45 +22,36 @@
 - `HC-P1-001` through `HC-P7-001`: `MERGED / VERIFIED`.
 - `HC-PHYSICAL-PROTOTYPE-CLOSURE-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
 - `IA-HC-002`: `FULFILLED FOR AUTHORIZED PHYSICAL-PROTOTYPE SCOPE`.
-- `IMP-HC-002 — Isolated Bench Hardware Assembly Plan`: `PROPOSED / NOT ACTIVE`.
-- `IA-HC-003 — Isolated Bench Hardware Assembly Authority`: `PROPOSED / NOT ACTIVE`.
+- `IMP-HC-002 — Isolated Bench Hardware Assembly Plan`: `APPROVED / ACTIVE`.
+- `IA-HC-003 — Isolated Bench Hardware Assembly Authority`: `APPROVED / ACTIVE`.
 
-## Kanoniczne closure
-PR #55 approved head `f7faea3620560ac409e23c0399a7f7f1c26a17dc` → merge `ad8b164ce3517064a1de92c986b27a8bfd024b8b` → Repository Verification.
-
-## Zweryfikowany physical-prototype scope
-- 10.1-inch / 1024×600 HMI layout i touch targets;
-- dashboard oraz workflow operatora;
-- fail-closed navigation/state binding;
-- lokalna persistence i restart recovery;
-- lokalny canonical PDF wraz z provenance;
-- synthetic/test-only acceptance harness;
-- brak machine-control surface.
+## Canonical activation checkpoint
+PR #57 approved head `15aea194107cebc2fada2c857f90227fd0a8a1e6` → merge `52d65b18f966f553501a7829855f23b7390762a6` → Repository Verification.
 
 ## Selected bench hardware target
-Project Owner wybrał do zakupu/uruchomienia bench:
 - `Kinco GL100E` HMI;
 - `Kinco KS123-14DR` I/O;
-- istniejące zasilanie 24 VDC;
-- RFID pozostaje odłożone na później.
+- istniejące izolowane zasilanie 24 VDC;
+- RFID pozostaje odłożone.
 
-Planowany bench link: `GL100E ↔ RS485 / Modbus RTU ↔ KS123-14DR`, wyłącznie z dedykowanymi przyciskami/lampkami/test load.
+Bench architecture: `24 VDC → GL100E ↔ RS485 / Modbus RTU ↔ KS123-14DR → dedicated test buttons/lamps/test loads`.
 
-## Authority boundaries po closure
-Brak aktywnego authority dla nowego hardware assembly ani dla live KVK integration. `IA-HC-003` jest wyłącznie proposed i wymaga osobnej Project Owner activation decision.
+## Current execution state
+`HW-A1 — Goods-in verification` jest aktywnym krokiem, ale nie może być oznaczony jako wykonany do czasu fizycznego otrzymania GL100E i KS123-14DR oraz zebrania evidence z rzeczywistych urządzeń.
 
-Not authorized: jakiekolwiek elektryczne lub logiczne połączenie z realnym KVK 801-1; live RFID z real-farm data; live KVK I/O; CAN/RS-485/Modbus/serial do maszyny; KVK commands/writes/configuration/actuation; hydraulika; PLC/safety mutation; autonomous veterinary diagnosis; real-farm data; network/cloud exposure; external report delivery; deployment/signing/release/public distribution.
+Po pozytywnym HW-A1 następny krok to `HW-A2 — Isolated 24 VDC bench wiring`.
 
-## Next phase
-Po aktywacji `IA-HC-003` można wykonać wyłącznie izolowany bench hardware assembly zgodnie z `IMP-HC-002`: goods-in verification → 24 VDC bench wiring → GL100E commissioning → RS485/Modbus link do KS123-14DR → operator workflow → restart/reporting → bench acceptance.
+## Active authority boundaries
+Authorized: wyłącznie izolowany off-machine bench w granicach `IA-HC-003`, synthetic/test data, GL100E, KS123-14DR, local RS485/Modbus między tymi dwoma urządzeniami, testowe DI/DO i dedicated non-machine test loads.
 
-F80, czyli audyt realnego KVK 801-1 generacji około 2013, pozostaje `BLOCKED_BY_SITE_ACCESS` do czasu zdjęć i dostępu do maszyny.
+Not authorized: jakiekolwiek elektryczne/logiczne połączenie z KVK 801-1; KVK PLC/safety/sensors/actuators/cabinet/machine buses; CAN/RS485/Modbus/serial do KVK; commands/writes/configuration/actuation do KVK; hydraulika; PLC/safety mutation; live RFID/real-farm data; network/cloud; external report delivery; deployment/signing/release/public distribution.
 
-## Explicit blockers
-- `IA-HC-003 = PROPOSED / NOT ACTIVE`;
-- `field_kvk_verified = false`;
-- `real_farm_data_used = false`;
-- `deployment_ready = false`;
-- dostęp do fizycznego KVK 801-1 jest wymagany przed F80;
-- osobne implementation plan i Project Owner authority są wymagane przed jakąkolwiek observation-only integracją;
-- commercial/product naming pozostaje nierozstrzygnięte.
+## Next external dependency
+Do zamknięcia `HW-A1` Project Owner musi dostarczyć rzeczywiste urządzenia lub zdjęcia po dostawie:
+- GL100E front/back + tabliczka/model/serial;
+- KS123-14DR front/terminals + tabliczka/model/serial;
+- widoczne zaciski zasilania i komunikacji;
+- zdjęcie stanu opakowania/akcesoriów.
+
+## F80
+Audyt realnego KVK 801-1 generacji około 2013 pozostaje `BLOCKED_BY_SITE_ACCESS`. Żadna live integration authority nie jest aktywna.
