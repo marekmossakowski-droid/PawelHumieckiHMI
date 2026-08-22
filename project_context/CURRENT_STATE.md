@@ -6,7 +6,9 @@
 ## Status
 `PHYSICAL PROTOTYPE = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`
 
-`WAVE R0 SOFTWARE/DOCUMENTATION REMEDIATION = CLOSURE READY / OWNER MERGE REQUIRED`
+`WAVE R0 SOFTWARE/DOCUMENTATION REMEDIATION = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`
+
+`WAVE R1 DATA INTEGRITY AND CLINICAL PROVENANCE = CLOSURE READY / OWNER MERGE REQUIRED`
 
 `F75 / ISOLATED BENCH HARDWARE ASSEMBLY = ACTIVE`
 
@@ -21,14 +23,20 @@ Compatibility marker for canonical governance CI: `CURRENT STEP = HW-A1 — GOOD
 - `IA-HC-002`: `FULFILLED FOR AUTHORIZED PHYSICAL-PROTOTYPE SCOPE`.
 - `IMP-HC-002`: `APPROVED / ACTIVE`.
 - `IA-HC-003 — Isolated Bench Hardware Assembly Authority`: `APPROVED / ACTIVE`.
-- `IMP-HC-003`: `FULFILLED FOR AUTHORIZED R0 SCOPE — CLOSURE PENDING OWNER MERGE`.
-- `IA-HC-004`: remains active until `HC-R0-CLOSURE-001` controlled merge + Repository Verification.
+- `IMP-HC-003`: `FULFILLED FOR AUTHORIZED R0 SCOPE`.
+- `IA-HC-004`: `FULFILLED FOR AUTHORIZED R0 SCOPE`.
+- `IMP-HC-004`: `FULFILLED FOR AUTHORIZED R1 SCOPE — CLOSURE PENDING OWNER MERGE`.
+- `IA-HC-005`: remains active until `HC-R1-CLOSURE-001` controlled merge + Repository Verification.
 
-## Wave R0 verified results
-- R0-A: exact Kinco GL100E + KS123-14DR hardware profile.
-- R0-B: structurally valid deterministic local PDF.
-- R0-C: durable completion + evidence-derived acceptance.
-- R0-D: exact GL100E/DTools realization specification + requirement-level traceability + lifecycle/documentation reconciliation.
+Compatibility marker retained: `WAVE R0 SOFTWARE/DOCUMENTATION REMEDIATION = CLOSURE READY / OWNER MERGE REQUIRED`.
+Compatibility marker retained: `IMP-HC-003 = FULFILLED FOR AUTHORIZED R0 SCOPE — CLOSURE PENDING OWNER MERGE`.
+Compatibility marker retained: `IA-HC-004` remains active until `HC-R0-CLOSURE-001` controlled merge + Repository Verification.
+
+## Wave R1 verified results
+- R1-A: persistence path safety.
+- R1-B/C: durable/versioned persistence, SHA-256 integrity and canonical amendment provenance.
+- R1-D/E: domain invariants and operation/resource-scoped idempotency isolation.
+- R1-F/G/H: canonical lesion/treatment/material/media records, explicit media provenance and report derivation from committed canonical clinical data.
 
 ## Explicit unresolved dependencies
 - `edge_host = EDGE_HOST_REQUIRED / NOT YET SELECTED`.
@@ -36,7 +44,7 @@ Compatibility marker for canonical governance CI: `CURRENT STEP = HW-A1 — GOOD
 - `HW-A1 = WAITING FOR PHYSICAL HARDWARE`.
 - `HW-A2 = NOT STARTED / NOT PASS`.
 - `HW-A3 = NOT STARTED / NOT PASS`.
-- R1/R2 audit findings remain open.
+- R2 audit findings remain open.
 
 ## Selected bench hardware target
 - Kinco GL100E, 10.1 inch, 1024×600;
@@ -44,6 +52,8 @@ Compatibility marker for canonical governance CI: `CURRENT STEP = HW-A1 — GOOD
 - existing isolated 24 VDC subject to physical verification;
 - RFID deferred;
 - local RS485/Modbus only between GL100E and KS123-14DR.
+
+Order evidence exists for GL100E and KS123-14DR, but physical receipt/inspection remains required before HW-A1 PASS.
 
 ## Explicit fail-closed state
 - `field_kvk_verified = false`.
