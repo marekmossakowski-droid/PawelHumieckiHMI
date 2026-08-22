@@ -1,0 +1,7 @@
+{
+  "mode": "SYNTHETIC_TEST_ONLY",
+  "data_dir": "./var/hoofcare/data",
+  "report_dir": "./var/hoofcare/reports",
+  "network_enabled": false,
+  "kvk_connected": false
+}
