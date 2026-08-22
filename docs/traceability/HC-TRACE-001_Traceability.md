@@ -1,7 +1,7 @@
 # HC-TRACE-001 — Traceability
 
 ## Status
-`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / IA-HC-004 ACTIVE / R0-D CURRENT / HW-A1 WAITING`
+`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / IA-HC-004 ACTIVE / R0-D CURRENT / HW-A1 CURRENT`
 
 ## Baselined upstream lineage
 | ID | Decision / requirement | Downstream | Status |
@@ -32,6 +32,9 @@
 | S6 Simulated adapters | `5e62980786207d6caad78dfb82f1921f11d1bfd5` | PR #14 | MERGED / VERIFIED |
 | S7 Bench integration/acceptance | `5791b86e8bb469d0a4c090880adca2939665ff03` | PR #16 | historical baseline; corrected by R0-C |
 | P1-P7 Physical prototype | see prior PR lineage | PR #29–#54 | MERGED / VERIFIED FOR SYNTHETIC PHYSICAL-PROTOTYPE SCOPE |
+
+## Canonical IA-HC-003 activation lineage
+PR #57 approved head `15aea194107cebc2fada2c857f90227fd0a8a1e6` → merge `52d65b18f966f553501a7829855f23b7390762a6` → Repository Verification.
 
 ## Wave R0 lineage
 | Slice | Audit findings | TDD / evidence | Status |
