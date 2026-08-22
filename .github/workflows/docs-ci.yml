@@ -23,3 +23,6 @@ jobs:
 
       - name: Verify foundation governance
         run: python scripts/check_foundation.py
+
+      - name: Verify semantic governance consistency
+        run: python scripts/check_semantic_governance.py
