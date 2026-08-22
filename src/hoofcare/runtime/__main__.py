@@ -1,0 +1,21 @@
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+from hoofcare.runtime.bench import BenchRuntimeConfig, launch_bench_runtime
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = list(sys.argv[1:] if argv is None else argv)
+    if len(args) != 1:
+        raise SystemExit("usage: hoofcare-bench <bench-runtime.json>")
+    config = BenchRuntimeConfig.from_json_file(Path(args[0]))
+    status = launch_bench_runtime(config)
+    print(json.dumps(status, sort_keys=True))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
