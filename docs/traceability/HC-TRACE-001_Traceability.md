@@ -1,7 +1,7 @@
 # HC-TRACE-001 — Traceability
 
 ## Status
-`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / R0 CLOSED / R1 CLOSED / HW-A1 CURRENT`
+`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / R0 CLOSED / R1 CLOSED / R2 REMEDIATED / HW-A1 CURRENT`
 
 Compatibility marker for canonical governance CI: `HW-A1 CURRENT`.
 Canonical IA-HC-003 activation merge compatibility marker: `52d65b18f966f553501a7829855f23b7390762a6`.
@@ -21,11 +21,13 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | HC-IA-002 | Physical prototype authority | IA-HC-002 | FULFILLED |
 | HC-IMP-002 | Isolated bench hardware assembly plan | IMP-HC-002 | APPROVED / ACTIVE |
 | HC-IA-003 | Isolated bench hardware assembly authority | IA-HC-003 | APPROVED / ACTIVE |
-| HC-AUDIT-001 | Full software/documentation audit | 25 findings / R0-R2 | MERGED / R0 CLOSED / R1 CLOSED / R2 OPEN |
+| HC-AUDIT-001 | Full software/documentation audit | 25 findings / R0-R2 | MERGED / R0 CLOSED / R1 CLOSED / R2 REMEDIATED / CLOSURE PENDING |
 | HC-IMP-003 | Wave R0 remediation plan | IMP-HC-003 | FULFILLED FOR AUTHORIZED R0 SCOPE |
 | HC-IA-004 | Wave R0 remediation authority | IA-HC-004 | FULFILLED FOR AUTHORIZED R0 SCOPE |
 | HC-IMP-004 | Wave R1 data integrity/provenance plan | IMP-HC-004 | FULFILLED FOR AUTHORIZED R1 SCOPE |
 | HC-IA-005 | Wave R1 data integrity/provenance authority | IA-HC-005 | FULFILLED FOR AUTHORIZED R1 SCOPE |
+| HC-IMP-005 | Wave R2 UX/observability/engineering quality plan | IMP-HC-005 | APPROVED / ACTIVE — CLOSURE PENDING |
+| HC-IA-006 | Wave R2 UX/observability/engineering quality authority | IA-HC-006 | APPROVED / ACTIVE — CLOSURE PENDING |
 | HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | WAITING FOR PHYSICAL HARDWARE |
 
 ## Wave R0 lineage
@@ -50,12 +52,22 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 `AUD-HC-007`–`AUD-HC-014 = CLOSED / VERIFIED`.
 R1 closure gate: PR #71 merge `cbacafb9b09fa4530649d27b1b376659217939bb`.
 
+## Wave R2 lineage
+| Slice | Audit findings | Evidence | Status |
+|---|---|---|---|
+| R2-A HMI navigation + geometry | AUD-HC-018/019 | PR #74 | MERGED / VERIFIED |
+| R2-B Observation provenance + capability allowlist | AUD-HC-020/021 | PR #75 | MERGED / VERIFIED |
+| R2-C CI + semantic documentation quality | AUD-HC-022/023 | RED `a9923079d5911dd9811dd7d6f0fe81bcdd27aa04` → GREEN/final `f9a3c59f6590250d1a2b73a56e6b9dfbed315088`; PR #76 | MERGED / VERIFIED |
+| R2-D/E Reproducible bench runtime + RFID observation identity | AUD-HC-024/025 | RED `ec2733e6aaa1423f9316c212406d8e79603d0cc0`; package/entrypoint RED `ccdaa857548de71e60fed1a1dbca4a2cdca2febb`; GREEN verification pending final PR head | IMPLEMENTED / FINAL VERIFICATION PENDING |
+
+`AUD-HC-018`–`AUD-HC-025 = REMEDIATED / FORMAL R2 CLOSURE PENDING` after final verification of R2-D/E.
+
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.
 A native DTools project/export remains `NATIVE_DTOOLS_ARTIFACT_REQUIRED / NOT YET EVIDENCED` until generated with the real Kinco toolchain and evidenced before HW-A3 PASS.
 
 ## Edge/application host truth
-Architecture still requires HMI-independent canonical persistence/reporting. Concrete physical edge/application host remains `EDGE_HOST_REQUIRED / NOT YET SELECTED`.
+Architecture still requires HMI-independent canonical persistence/reporting. The R2 local synthetic runtime package establishes a reproducible software entrypoint only; concrete physical edge/application host remains `EDGE_HOST_REQUIRED / NOT YET SELECTED`.
 
 ## Physical execution state
 Selected/order-confirmed hardware boundary:
