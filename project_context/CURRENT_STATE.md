@@ -46,6 +46,12 @@ Authorized: wyłącznie izolowany off-machine bench w granicach `IA-HC-003`, syn
 
 Not authorized: jakiekolwiek elektryczne/logiczne połączenie z KVK 801-1; KVK PLC/safety/sensors/actuators/cabinet/machine buses; CAN/RS485/Modbus/serial do KVK; commands/writes/configuration/actuation do KVK; hydraulika; PLC/safety mutation; live RFID/real-farm data; network/cloud; external report delivery; deployment/signing/release/public distribution.
 
+## Explicit fail-closed state
+- `field_kvk_verified = false`.
+- `real_farm_data_used = false`.
+- `deployment_ready = false`.
+- `kvk_connected = false`.
+
 ## Next external dependency
 Do zamknięcia `HW-A1` Project Owner musi dostarczyć rzeczywiste urządzenia lub zdjęcia po dostawie:
 - GL100E front/back + tabliczka/model/serial;
