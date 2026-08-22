@@ -4,13 +4,20 @@ from hoofcare.hardware.bench_wiring import build_isolated_bench_bom
 
 
 class BenchWiringBomTests(unittest.TestCase):
-    def test_bom_is_24vdc_isolated_and_contains_required_items(self):
+    def test_bom_matches_selected_gl100e_and_ks123_14dr_hardware(self):
         bom = build_isolated_bench_bom()
         self.assertEqual(bom.nominal_voltage_vdc, 24)
         self.assertTrue(bom.isolated_from_kvk)
-        self.assertIn("10.1-inch HMI", bom.items)
-        self.assertIn("24 VDC DIN power supply", bom.items)
-        self.assertIn("8DI/8DO simulator I/O", bom.items)
+        self.assertTrue(bom.uses_existing_24v_supply)
+        self.assertIn("Kinco GL100E", bom.items)
+        self.assertIn("Kinco KS123-14DR (8DI/6 relay DO)", bom.items)
+        self.assertNotIn("24 VDC DIN power supply", bom.items)
+        self.assertNotIn("8DI/8DO simulator I/O", bom.items)
+
+    def test_bom_limits_rs485_to_hmi_io_bench_link(self):
+        bom = build_isolated_bench_bom()
+        self.assertEqual(bom.bench_bus, "RS485_MODBUS_RTU")
+        self.assertEqual(bom.bench_bus_scope, "GL100E_TO_KS123_14DR_ONLY")
 
     def test_real_kvk_and_real_farm_data_are_forbidden(self):
         bom = build_isolated_bench_bom()
