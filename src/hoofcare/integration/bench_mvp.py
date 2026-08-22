@@ -58,7 +58,7 @@ class BenchMvpScenario:
         resolved_id = rfid_observation.value.strip()
         if not resolved_id:
             raise ValueError("identity unavailable")
-        if animal_id and animal_id != "CALLER-MUST-NOT-WIN" and animal_id != resolved_id:
+        if animal_id and animal_id != resolved_id:
             raise ValueError("RFID identity mismatch")
 
         identity = self._service.resolve_identity(
