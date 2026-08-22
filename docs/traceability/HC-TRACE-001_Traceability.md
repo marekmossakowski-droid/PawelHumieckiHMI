@@ -1,7 +1,10 @@
 # HC-TRACE-001 — Traceability
 
 ## Status
-`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / IA-HC-004 ACTIVE / R0-D CURRENT / HW-A1 CURRENT`
+`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / R0 CLOSURE READY / HW-A1 CURRENT`
+
+Compatibility marker for canonical governance CI: `HW-A1 CURRENT`.
+Canonical IA-HC-003 activation merge compatibility marker: `52d65b18f966f553501a7829855f23b7390762a6`.
 
 ## Baselined upstream lineage
 | ID | Decision / requirement | Downstream | Status |
@@ -16,44 +19,32 @@
 | HC-IA-002 | Physical prototype authority | IA-HC-002 | FULFILLED |
 | HC-IMP-002 | Isolated bench hardware assembly plan | IMP-HC-002 | APPROVED / ACTIVE |
 | HC-IA-003 | Isolated bench hardware assembly authority | IA-HC-003 | APPROVED / ACTIVE |
-| HC-AUDIT-001 | Full software/documentation audit | 25 findings / R0-R2 | MERGED / FINDINGS UNDER REMEDIATION |
-| HC-IMP-003 | Wave R0 remediation plan | IMP-HC-003 | APPROVED / ACTIVE |
-| HC-IA-004 | Wave R0 remediation authority | IA-HC-004 | APPROVED / ACTIVE |
+| HC-AUDIT-001 | Full software/documentation audit | 25 findings / R0-R2 | MERGED / R0 REMEDIATED / R1-R2 OPEN |
+| HC-IMP-003 | Wave R0 remediation plan | IMP-HC-003 | FULFILLED FOR AUTHORIZED R0 SCOPE / CLOSURE PENDING |
+| HC-IA-004 | Wave R0 remediation authority | IA-HC-004 | ACTIVE UNTIL R0 CLOSURE MERGE |
 | HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | WAITING FOR PHYSICAL HARDWARE |
 
-## Runtime / physical lineage
-| Slice | RED evidence | Verification | Status |
-|---|---|---|---|
-| S1 Domain/session core | `52b4fca3ca719b035d2cc7c5091447c607b6fd83` | PR #9 | MERGED / VERIFIED |
-| S2 Persistence/recovery | `cbb35f593173aea2bb2fc1d77e1c6f267217eb01` | PR #10 | MERGED / VERIFIED |
-| S3 HMI↔edge contract | `882afd05b9cbb94bc3265652becc245992998271` | PR #11 | MERGED / VERIFIED |
-| S4 HMI workflow/dashboard | `36608bfcdf02ef4585ee177519d8966ca143dd4b` | PR #12 | MERGED / VERIFIED |
-| S5 Local report | `1581c6393319e6ab3905e3132f8ead55c6f4bfb9` | PR #13 | historical baseline; corrected by R0-B |
-| S6 Simulated adapters | `5e62980786207d6caad78dfb82f1921f11d1bfd5` | PR #14 | MERGED / VERIFIED |
-| S7 Bench integration/acceptance | `5791b86e8bb469d0a4c090880adca2939665ff03` | PR #16 | historical baseline; corrected by R0-C |
-| P1-P7 Physical prototype | see prior PR lineage | PR #29–#54 | MERGED / VERIFIED FOR SYNTHETIC PHYSICAL-PROTOTYPE SCOPE |
-
-## Canonical IA-HC-003 activation lineage
-PR #57 approved head `15aea194107cebc2fada2c857f90227fd0a8a1e6` → merge `52d65b18f966f553501a7829855f23b7390762a6` → Repository Verification.
-
 ## Wave R0 lineage
-| Slice | Audit findings | TDD / evidence | Status |
+| Slice | Audit findings | Evidence | Status |
 |---|---|---|---|
 | R0-A Exact hardware profile | AUD-HC-006 | RED `d054fd8cf722bde2b8f08e95dd05d83de35bbf93` → GREEN `d75313e42b5ebad8b2f4edfda2f106077bd85aad` → final `f44c9e1dc6891ce1d807a1a338fc54a4a4e07784`; PR #61 | MERGED / VERIFIED |
 | R0-B Valid local PDF | AUD-HC-003 | RED `510250cd3c5a782653cdef7f22111822a89bdf01` → GREEN `e6a1c3e6ba4541bd5e4cbe52007d25fee8ae5ab8` → final `388fd4a2b0ae498276eabe39ce2c3f7d08b349d2`; PR #62 | MERGED / VERIFIED |
 | R0-C Durable completion / evidence acceptance | AUD-HC-004/005 | RED `3855899b667d59b89ee9a7f916fba841877094b1` → GREEN `3dc7117ff3b75b30517cc6291f456fe82e2d3561` → final `7803d530d94ae8a5dd35bba075c151e0fde1c25f`; PR #63 | MERGED / VERIFIED |
-| R0-D GL100E spec / docs / requirement trace | AUD-HC-001/002/015/016/017 | `GL100E-DTOOLS-SPEC-001`, `HC-R0-D-DOC-RECON-001`, `HC-REQ-TRACE-001` | CURRENT / PENDING OWNER MERGE |
+| R0-D GL100E spec / docs / requirement trace | AUD-HC-001/002/015/016/017 | final `48226bcdcad20b33533ed8ab3ee2d9b031ccbd63`; PR #64 → merge `8bab4dfe0c4e685f8030419bf8cddada61e6e03f` | MERGED / VERIFIED |
+
+## R0 closure truth
+`HC-R0-CLOSURE-001` is the closure gate for the authorized software/documentation scope only.
+After controlled merge + Repository Verification it may establish:
+- `WAVE R0 SOFTWARE/DOCUMENTATION REMEDIATION = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`;
+- `IMP-HC-003 = FULFILLED FOR AUTHORIZED R0 SCOPE`;
+- `IA-HC-004 = FULFILLED FOR AUTHORIZED R0 SCOPE`.
 
 ## DTools / GL100E truth
-`GL100E-DTOOLS-SPEC-001` specifies exact 1024×600 screen IDs, widget geometry, navigation and KS123-14DR bench Modbus realization rules.
-
-A native DTools project/export remains `NATIVE_DTOOLS_ARTIFACT_REQUIRED` until generated with the real Kinco toolchain and evidenced before HW-A3 PASS.
+`GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.
+A native DTools project/export remains `NATIVE_DTOOLS_ARTIFACT_REQUIRED / NOT YET EVIDENCED` until generated with the real Kinco toolchain and evidenced before HW-A3 PASS.
 
 ## Edge/application host truth
-Architecture continues to require HMI-independent canonical persistence/reporting. Concrete physical edge/application host remains `EDGE_HOST_REQUIRED / NOT YET SELECTED`; no deployment readiness is claimed.
-
-## Requirement-level traceability
-`HC-REQ-TRACE-001` maps every `REQ-HC-*` requirement to `IMPLEMENTED / PARTIAL / DEFERRED / BLOCKED` and concrete evidence/disposition. PARTIAL/DEFERRED/BLOCKED entries remain open; this matrix does not upgrade them implicitly.
+Architecture still requires HMI-independent canonical persistence/reporting. Concrete physical edge/application host remains `EDGE_HOST_REQUIRED / NOT YET SELECTED`.
 
 ## Physical execution state
 Selected hardware boundary:
