@@ -62,11 +62,25 @@ class LocalSessionStore:
             records.append(record)
         return records
 
+    @staticmethod
+    def _validate_session_id(session_id: str) -> str:
+        if not isinstance(session_id, str):
+            raise ValueError("invalid session_id")
+        if not session_id or session_id in {".", ".."}:
+            raise ValueError("invalid session_id")
+        if "/" in session_id or "\\" in session_id:
+            raise ValueError("invalid session_id")
+        if Path(session_id).name != session_id:
+            raise ValueError("invalid session_id")
+        return session_id
+
     def _snapshot_path(self, session_id: str) -> Path:
-        return self.root / f"{session_id}.json"
+        safe_id = self._validate_session_id(session_id)
+        return self.root / f"{safe_id}.json"
 
     def _amendment_path(self, session_id: str) -> Path:
-        return self.root / f"{session_id}.amendments.jsonl"
+        safe_id = self._validate_session_id(session_id)
+        return self.root / f"{safe_id}.amendments.jsonl"
 
     @staticmethod
     def _serialize_session(session: Session) -> dict[str, Any]:
