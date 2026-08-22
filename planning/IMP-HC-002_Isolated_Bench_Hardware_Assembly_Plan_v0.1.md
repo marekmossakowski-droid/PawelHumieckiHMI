@@ -1,7 +1,7 @@
 # IMP-HC-002 — Isolated Bench Hardware Assembly Plan v0.1
 
 ## Status
-`PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA PR #57`
 
 ## Cel
 Zmontować i zweryfikować rzeczywisty, izolowany bench prototype HMI bez jakiegokolwiek elektrycznego, logicznego lub mechanicznego połączenia z realnym KVK 801-1.
@@ -75,8 +75,8 @@ Plan nie obejmuje:
 - external report delivery;
 - deployment, signing, release ani public distribution.
 
-## TDD / verification model
-Każdy etap ma powstać jako najmniejszy niezależny inkrement z testem/verification evidence przed przejściem do kolejnego. Runtime/software changes, jeśli będą konieczne do fizycznego sprzętu, wymagają zachowania obecnych fail-closed invariants i osobnego RED → GREEN lineage.
+## Verification model
+Każdy etap ma powstać jako najmniejszy niezależny inkrement z verification evidence przed przejściem do kolejnego. Runtime/software changes, jeśli będą konieczne do fizycznego sprzętu, wymagają zachowania obecnych fail-closed invariants i osobnego RED → GREEN lineage.
 
 ## Exit
 `ISOLATED BENCH HARDWARE = ASSEMBLED / VERIFIED / RECONCILED`

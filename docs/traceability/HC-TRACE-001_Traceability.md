@@ -1,7 +1,7 @@
 # HC-TRACE-001 — Traceability
 
 ## Status
-`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-002 FULFILLED / BENCH HARDWARE ASSEMBLY READINESS NEXT`
+`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-002 FULFILLED / IA-HC-003 ACTIVE / HW-A1 CURRENT`
 
 ## Baselined upstream lineage
 
@@ -18,8 +18,9 @@
 | HC-CLOSURE-001 | Bench MVP closure record | HC-BENCH-MVP-CLOSURE-001 | CLOSED / IMPLEMENTED / VERIFIED / RECONCILED |
 | HC-IA-002 | Physical prototype authority | IA-HC-002 | FULFILLED FOR AUTHORIZED PHYSICAL-PROTOTYPE SCOPE |
 | HC-CLOSURE-002 | Physical prototype closure record | HC-PHYSICAL-PROTOTYPE-CLOSURE-001 | CLOSED / IMPLEMENTED / VERIFIED / RECONCILED |
-| HC-IMP-002 | Isolated bench hardware assembly plan | IMP-HC-002 | PROPOSED / NOT ACTIVE |
-| HC-IA-003 | Isolated bench hardware assembly authority | IA-HC-003 | PROPOSED / NOT ACTIVE |
+| HC-IMP-002 | Isolated bench hardware assembly plan | IMP-HC-002 | APPROVED / ACTIVE |
+| HC-IA-003 | Isolated bench hardware assembly authority | IA-HC-003 | APPROVED / ACTIVE — PR #57 |
+| HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | ACTIVE / WAITING FOR PHYSICAL HARDWARE |
 
 ## Runtime / physical prototype lineage
 
@@ -46,15 +47,22 @@
 - `PHYSICAL PROTOTYPE = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
 - `IA-HC-002 = FULFILLED FOR AUTHORIZED PHYSICAL-PROTOTYPE SCOPE`.
 
-## Next bounded workstream — proposed only
-`IMP-HC-002` and `IA-HC-003` prepare isolated bench hardware assembly using the selected procurement target:
-- HMI: Kinco GL100E, 10.1-inch, 1024×600, DC 10–28 V, RS232/RS485/RS422 and Ethernet;
-- I/O: Kinco KS123-14DR, 24 VDC, 8 DI + 6 relay DO, usable as a Modbus slave station;
-- existing 24 VDC source;
-- RFID explicitly deferred;
-- RS485/Modbus tests only between HMI and dedicated bench I/O/test equipment.
+## Canonical IA-HC-003 activation
+- PR #57 approved head `15aea194107cebc2fada2c857f90227fd0a8a1e6` → merge `52d65b18f966f553501a7829855f23b7390762a6`.
+- `IMP-HC-002 = APPROVED / ACTIVE`.
+- `IA-HC-003 = APPROVED / ACTIVE`.
+- current executable slice: `HW-A1 — Goods-in verification`.
 
-These documents do not activate hardware assembly authority by themselves.
+## Active bounded workstream
+Selected hardware boundary:
+- Kinco GL100E;
+- Kinco KS123-14DR;
+- existing isolated 24 VDC;
+- passive/test wiring and dedicated non-machine loads;
+- RFID deferred;
+- local RS485/Modbus only between GL100E and KS123-14DR.
+
+HW-A1 remains `WAITING FOR PHYSICAL HARDWARE`; no goods-in evidence has yet been accepted and no power-up is claimed.
 
 ## Authority boundary
-No active authority exists for live KVK integration. No real KVK I/O, machine CAN/RS-485/Modbus/serial, commands/writes/configuration/actuation, hydraulics, PLC/safety mutation, real-farm data, network/cloud exposure, external report delivery, deployment, signing, release or public distribution is authorized.
+No authority exists for live KVK integration. No real KVK I/O, machine CAN/RS-485/Modbus/serial, commands/writes/configuration/actuation, hydraulics, PLC/safety mutation, real-farm data, network/cloud exposure, external report delivery, deployment, signing, release or public distribution is authorized.
