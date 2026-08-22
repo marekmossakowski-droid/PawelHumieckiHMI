@@ -1,14 +1,14 @@
 # IA-HC-002 — Physical Prototype Authority v0.1
 
 ## Status
-`APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-002-ACTIVATION-001 / PR #27`
+`FULFILLED FOR AUTHORIZED PHYSICAL-PROTOTYPE SCOPE`
 
-Activation was established by controlled merge of Project Owner-approved exact head `3a3623d82a879c2b1b4ac3ce70f3d687b8e13710` as merge `3eb278f7a480734045027393a53a76f6cdc03f03`, followed by Repository Verification.
+Activation was established by controlled merge of Project Owner-approved exact head `3a3623d82a879c2b1b4ac3ce70f3d687b8e13710` as merge `3eb278f7a480734045027393a53a76f6cdc03f03`, followed by Repository Verification. Authorized work was completed through `HC-P1-001`–`HC-P7-001`, and closure was approved in PR #55, merged as `ad8b164ce3517064a1de92c986b27a8bfd024b8b`.
 
 ## Purpose
-Authorize the next bounded phase after bench MVP closure: physical HMI prototype work performed off-machine or on a non-actuating mock-up using synthetic/test data.
+Authorize the bounded physical HMI prototype phase performed off-machine or on a non-actuating mock-up using synthetic/test data.
 
-## Authorized bounded scope
+## Authorized bounded scope — completed
 - procure and bench-power the selected 10-inch-class HMI and associated low-voltage bench accessories;
 - implement and test the approved dashboard/workflow on physical HMI hardware or a directly attached local edge controller;
 - use synthetic/test data and simulated RFID/KVK observation sources;
@@ -43,4 +43,4 @@ A future live observation-only authority cannot be proposed as active until all 
 7. a separately approved implementation plan and Project Owner authority.
 
 ## Fail-closed rule
-If a prototype task could create an electrical, logical or mechanical path capable of influencing the real KVK machine, it is outside `IA-HC-002` and must not proceed without a new explicit authority decision.
+If a future task could create an electrical, logical or mechanical path capable of influencing the real KVK machine, it is outside fulfilled `IA-HC-002` and must not proceed without a new explicit authority decision.
