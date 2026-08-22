@@ -112,6 +112,30 @@ class LocalSessionStoreTests(unittest.TestCase):
             self.assertEqual(len({item["record_id"] for item in amendments}), 2)
             self.assertTrue(all(item["timestamp_utc"].endswith("Z") for item in amendments))
             self.assertEqual(amendments[0]["context"], {"reason": "synthetic-test"})
+            self.assertTrue(all(item["schema_version"] == 1 for item in amendments))
+            self.assertTrue(all(item["integrity"]["algorithm"] == "sha256" for item in amendments))
+            self.assertTrue(all(len(item["integrity"]["digest"]) == 64 for item in amendments))
+
+    def test_amendment_integrity_mismatch_fails_closed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "sessions"
+            store = LocalSessionStore(root)
+            session = Session.new()
+            store.append_amendment(
+                session.session_id,
+                "operator-note",
+                {"text": "original"},
+                actor_id="operator-test",
+                source="bench-hmi",
+                context={"reason": "synthetic-test"},
+            )
+            path = root / f"{session.session_id}.amendments.jsonl"
+            record = json.loads(path.read_text(encoding="utf-8").strip())
+            record["payload"]["text"] = "tampered"
+            path.write_text(json.dumps(record, sort_keys=True) + "\n", encoding="utf-8")
+
+            with self.assertRaises(ValueError):
+                store.read_amendments(session.session_id)
 
     def test_concurrent_amendments_receive_unique_contiguous_sequences(self):
         with tempfile.TemporaryDirectory() as tmp:
