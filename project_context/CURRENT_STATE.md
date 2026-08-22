@@ -4,7 +4,7 @@
 `PawelHumieckiHMI` i `HoofCare` są wyłącznie wewnętrznymi nazwami kodowymi. Finalna nazwa komercyjna pozostaje `TBD — PROJECT OWNER DECISION REQUIRED`.
 
 ## Status
-`F90 / PHYSICAL PROTOTYPE — P1-P7 MERGED / VERIFIED / CLOSURE READY`
+`PHYSICAL PROTOTYPE = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`
 
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
@@ -16,17 +16,11 @@
 - `HC-S1-001` through `HC-S7-001`: `MERGED / VERIFIED`.
 - `HC-BENCH-MVP-CLOSURE-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
 - `HC-P1-001` through `HC-P7-001`: `MERGED / VERIFIED`.
-- `IA-HC-002`: nadal `APPROVED / ACTIVE` do czasu zatwierdzenia osobnego closure record; zakres pozostaje wyłącznie izolowany, off-machine, non-actuating, synthetic/test-only.
-- `HC-PHYSICAL-PROTOTYPE-CLOSURE-001`: `PROPOSED — PROJECT OWNER APPROVAL REQUIRED`.
+- `HC-PHYSICAL-PROTOTYPE-CLOSURE-001`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
+- `IA-HC-002`: `FULFILLED FOR AUTHORIZED PHYSICAL-PROTOTYPE SCOPE`.
 
-## Kanoniczny checkpoint P7
-PR #54 approved head `c6083495296a59835a427f035a11ecd859f5be6f` → merge `7e3f4e573bead9664e39422a97ab6cc3ddbb2c41`.
-
-## P7 TDD lineage
-- RED `db7b91525cc59a38207db8b8eb40320355ab8c12`.
-- implementation attempt `28a97276bf3eb43c977711b7670e6600db87f4fb` — zakres poprawny, lecz test używał niedeklarowanego `pytest`.
-- corrected GREEN `17bb4d430fdc96fea7a108b1e5b3152cc5be117a` — projektowy `unittest`, runtime-ci i docs-ci zielone.
-- final `c6083495296a59835a427f035a11ecd859f5be6f` — reconciliation + acceptance/closure-readiness.
+## Kanoniczne closure
+PR #55 approved head `f7faea3620560ac409e23c0399a7f7f1c26a17dc` → merge `ad8b164ce3517064a1de92c986b27a8bfd024b8b` → Repository Verification.
 
 ## Zweryfikowany physical-prototype scope
 - 10.1-inch / 1024×600 HMI layout i touch targets;
@@ -37,22 +31,18 @@ PR #54 approved head `c6083495296a59835a427f035a11ecd859f5be6f` → merge `7e3f4
 - synthetic/test-only acceptance harness;
 - brak machine-control surface.
 
-## Active authority boundaries
-Authorized w ramach nadal aktywnego `IA-HC-002`: izolowany physical HMI prototype, low-voltage bench, synthetic/test data, simulated RFID/KVK sources, local persistence/reporting/navigation oraz serial/RS-485/Modbus wyłącznie do dedykowanych simulatorów/test equipment.
+## Authority boundaries po closure
+Brak aktywnego authority dla live KVK integration. `IA-HC-002` jest fulfilled, nie rozszerza się na kolejną fazę.
 
 Not authorized: jakiekolwiek elektryczne lub logiczne połączenie z realnym KVK 801-1; live RFID z real-farm data; live KVK I/O; CAN/RS-485/Modbus/serial do maszyny; KVK commands/writes/configuration/actuation; hydraulika; PLC/safety mutation; autonomous veterinary diagnosis; real-farm data; network/cloud exposure; external report delivery; deployment/signing/release/public distribution.
 
-## Closure state
-Po osobnej zgodzie Project Ownera na `HC-PHYSICAL-PROTOTYPE-CLOSURE-001` i kontrolowanym merge:
-- `PHYSICAL PROTOTYPE = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`;
-- `IA-HC-002 = FULFILLED FOR AUTHORIZED PHYSICAL-PROTOTYPE SCOPE`.
-
 ## Next phase
-Następny etap wymaga dostępu do realnego KVK 801-1 generacji około 2013: zdjęcia, identyfikacja szafy/sterowania/zasilania/sensorów/interfejsów i przygotowanie izolowanego observation-only boundary. Żadna live integracja nie jest obecnie autoryzowana.
+Następny realny etap to fizyczny audyt KVK 801-1 generacji około 2013: zdjęcia, identyfikacja szafy/sterowania/zasilania/sensorów/interfejsów, punkty montażowe i przygotowanie izolowanego observation-only boundary. Żadna live integracja nie jest obecnie autoryzowana.
 
 ## Explicit blockers
 - `field_kvk_verified = false`.
 - `real_farm_data_used = false`.
 - `deployment_ready = false`.
-- Dostęp do fizycznego KVK 801-1 i osobne live-observation authority są wymagane przed kolejną fazą integracji.
-- Commercial/product naming pozostaje nierozstrzygnięte.
+- dostęp do fizycznego KVK 801-1 jest wymagany przed audytem;
+- osobne implementation plan i Project Owner authority są wymagane przed jakąkolwiek observation-only integracją;
+- commercial/product naming pozostaje nierozstrzygnięte.
