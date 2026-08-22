@@ -45,12 +45,33 @@ class ReportingTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             build_report_document(self.make_input(), committed=False)
 
-    def test_pdf_bytes_are_local_and_valid_pdf_signature(self):
+    def test_pdf_bytes_are_structurally_valid_minimal_pdf(self):
         doc = build_report_document(self.make_input())
         pdf = doc.to_pdf_bytes()
-        self.assertTrue(pdf.startswith(b"%PDF-"))
+
+        self.assertTrue(pdf.startswith(b"%PDF-1.4\n"))
+        self.assertTrue(pdf.rstrip().endswith(b"%%EOF"))
+        self.assertIn(b"1 0 obj", pdf)
+        self.assertIn(b"/Type /Catalog", pdf)
+        self.assertIn(b"/Type /Pages", pdf)
+        self.assertIn(b"/Type /Page", pdf)
+        self.assertIn(b"stream\n", pdf)
+        self.assertIn(b"\nendstream", pdf)
+        self.assertIn(b"xref\n", pdf)
+        self.assertIn(b"trailer\n", pdf)
+        self.assertIn(b"/Root 1 0 R", pdf)
+
+        startxref_marker = b"startxref\n"
+        startxref_pos = pdf.rfind(startxref_marker)
+        self.assertGreater(startxref_pos, 0)
+        xref_offset_text = pdf[startxref_pos + len(startxref_marker):].splitlines()[0]
+        xref_offset = int(xref_offset_text)
+        self.assertEqual(pdf[xref_offset:xref_offset + 5], b"xref\n")
+
         self.assertIn(b"RPT-001", pdf)
         self.assertIn(b"session-123", pdf)
+        self.assertIn(b"Synthetic-Test-Only: true", pdf)
+        self.assertIn(b"does not replace veterinary examination", pdf)
 
 
 if __name__ == "__main__":
