@@ -1,12 +1,14 @@
 # IA-HC-003 — Isolated Bench Hardware Assembly Authority v0.1
 
 ## Status
-`PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-003-ACTIVATION-001 / PR #57`
+
+Activation was established by Project Owner approval of exact head `15aea194107cebc2fada2c857f90227fd0a8a1e6`, controlled merge as `52d65b18f966f553501a7829855f23b7390762a6`, followed by Repository Verification.
 
 ## Purpose
 Authorize only the isolated physical assembly and bench verification described by `IMP-HC-002`, using dedicated test equipment and synthetic/test data, with no electrical, logical or mechanical path to the real KVK 801-1.
 
-## Authorized bounded scope if activated
+## Authorized bounded scope
 - receive and inspect the selected Kinco GL100E HMI and Kinco KS123-14DR I/O module;
 - use the Project Owner's existing 24 VDC supply for isolated bench work after polarity/voltage verification;
 - power and configure GL100E on the bench;
@@ -46,6 +48,3 @@ If any planned wire, protocol endpoint, test load, software action or physical s
 
 ## Completion condition
 `IA-HC-003` is fulfilled only after `HW-A1` through `HW-A7` of `IMP-HC-002` are completed, evidence is reconciled, and the isolated bench hardware is verified with `kvk_connected = false` and `real_farm_data_used = false`.
-
-## Activation rule
-Publication or merge of this document does not activate the authority unless the Project Owner's exact-head approval explicitly states that `IA-HC-003` is activated after controlled merge and Repository Verification.
