@@ -70,10 +70,11 @@ class LocalSessionStore:
         kind: str,
         payload: dict[str, Any],
         *,
-        actor_id: str,
-        source: str,
-        context: dict[str, Any],
+        actor_id: str | None = None,
+        source: str | None = None,
+        context: dict[str, Any] | None = None,
     ) -> None:
+        self._validate_session_id(session_id)
         if not actor_id or not source:
             raise ValueError("audit provenance requires actor_id and source")
         if not isinstance(context, dict):
