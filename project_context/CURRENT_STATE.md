@@ -12,6 +12,8 @@
 
 `CURRENT PHYSICAL STEP = HW-A1 — GOODS-IN VERIFICATION / WAITING FOR PHYSICAL HARDWARE`
 
+Compatibility marker for canonical governance CI: `CURRENT STEP = HW-A1 — GOODS-IN VERIFICATION / WAITING FOR PHYSICAL HARDWARE`.
+
 ## Canonical repository
 `marekmossakowski-droid/PawelHumieckiHMI`
 
