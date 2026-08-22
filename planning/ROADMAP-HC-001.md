@@ -1,140 +1,107 @@
 # ROADMAP-HC-001 — HoofCare KVK Retrofit Roadmap
 
 ## Status
-
-`PROPOSED — PROJECT OWNER APPROVAL REQUIRED`
+`BASELINED / ACTIVE`
 
 ## Roadmap
 
 ### F0 — Foundation / Governance
-
-- Foundation.
-- AGENTS.md.
-- Current State.
-- Traceability.
-- Initial Implementation Authority.
-
-Exit: `FOUNDATION BASELINED`.
+Status: `CLOSED / BASELINED`.
 
 ### F10 — ARS / problem and stakeholder requirements
-
-- operator workflow;
-- farmer reporting;
-- veterinary reporting;
-- zootechnical reporting;
-- nutritionist reporting;
-- technical-service requirements;
-- environmental and usability constraints.
-
-Exit: `ARS BASELINED`.
+Status: `CLOSED / BASELINED`.
 
 ### F20 — ARB / boundaries
-
-- KVK boundary;
-- safety boundary;
-- clinical decision boundary;
-- local data boundary;
-- external integration boundary.
-
-Exit: `ARB BASELINED`.
+Status: `CLOSED / BASELINED`.
 
 ### F30 — ADR set
-
-Required material decisions include at least:
-
-- HMI/edge architecture;
-- KVK read-only integration strategy;
-- animal identification strategy;
-- image acquisition and storage;
-- local persistence and backup;
-- veterinary nomenclature source;
-- report generation architecture.
-
-Exit: required ADRs `APPROVED`.
+Status: `CLOSED / BASELINED`.
 
 ### F40 — System Architecture
-
-- component model;
-- data flows;
-- hardware topology;
-- trust boundaries;
-- failure modes;
-- recovery;
-- deployment model.
-
-Exit: `SYSTEM ARCHITECTURE BASELINED`.
+Status: `CLOSED / BASELINED`.
 
 ### F50 — LEL / logical and electrical layer
-
-- HMI;
-- 24 VDC supply;
-- remote I/O;
-- galvanic isolation;
-- Ethernet/RS485;
-- RFID;
-- cameras;
-- KVK signal observation;
-- enclosure and mounting assumptions.
-
-Exit: `LEL BASELINED`.
+Status: `CLOSED / BASELINED`.
 
 ### F60 — Requirements
-
-- functional requirements;
-- safety requirements;
-- data requirements;
-- UI requirements;
-- reporting requirements;
-- audit requirements;
-- performance and recovery requirements.
-
-Exit: `REQUIREMENTS BASELINED`.
+Status: `CLOSED / BASELINED`.
 
 ### F70 — Bench MVP implementation
+Canonical vertical slice:
+`animal → limb → claw → zone → lesion → treatment → material → media → close session → report`.
 
-First vertical slice:
+Status: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`.
 
-`animal → limb → claw → zone → lesion → treatment → material → before/after media → close session → report`
+### F75 — Isolated physical prototype / bench hardware
+Software and physical-prototype definition P1–P7 are closed and verified. The next bounded subphase is actual isolated bench hardware assembly.
 
-KVK integration remains simulated/read-only.
+Selected procurement target:
+- Kinco GL100E HMI 10.1-inch / 1024×600;
+- Kinco KS123-14DR I/O, 8 DI + 6 relay DO;
+- existing 24 VDC supply;
+- RFID deferred to a later phase.
 
-Exit: `BENCH MVP IMPLEMENTED`.
+Planned isolated bench path:
+`24 VDC → GL100E ↔ RS485/Modbus RTU ↔ KS123-14DR → test buttons / test lamps only`.
 
-### F80 — Physical KVK 801-1 audit and retrofit integration
+No electrical or logical connection to the real KVK 801-1 is allowed in this phase.
 
-Blocked until access to the physical 2013-generation KVK 801-1 is available.
+Status: `SOFTWARE/PROFILE CLOSED; HARDWARE ASSEMBLY READINESS = NEXT / AUTHORITY REQUIRED`.
 
-- machine photos;
-- PLC/HMI identification;
-- cabinet and I/O inventory;
-- safe signal interface;
-- mounting point;
-- electrical verification.
+Exit: `ISOLATED BENCH HARDWARE ASSEMBLED / VERIFIED`.
 
-Exit: `KVK INTERFACE VERIFIED`.
+### F80 — Physical KVK 801-1 audit and read-only retrofit design
+Blocked until access to the actual circa-2013 KVK 801-1 is available.
+
+Required evidence:
+- machine photographs;
+- cabinet / controls / supply identification;
+- PLC/HMI and I/O inventory where present;
+- wiring/schematic evidence where available;
+- mounting points and dimensions;
+- source-of-truth signal inventory;
+- galvanic/electrical isolation concept;
+- risk review preserving original machine safety.
+
+F80 audit itself does not authorize live machine connection. A separate observation-only implementation plan and Project Owner authority are required before any live KVK signal acquisition.
+
+Status: `BLOCKED_BY_SITE_ACCESS / NOT ACTIVE`.
+
+Exit: `KVK READ-ONLY INTERFACE DESIGN VERIFIED`.
 
 ### F90 — Field pilot
-
 - 10 animals;
 - 50 animals;
 - full working shift;
 - usability and error analysis;
 - workflow reconciliation.
 
+Status: `NOT ACTIVE`.
+
 Exit: `FIELD PILOT PASSED`.
 
 ### F100 — Product hardening / v1.0
-
 - enclosure/environmental hardening;
 - recovery and backup;
 - operator/service documentation;
 - installation package;
 - release evidence.
 
+Status: `NOT ACTIVE`.
+
 Exit: `HOOFCARE KVK RETROFIT v1.0`.
 
 ## Current roadmap position
+`F75 — ISOLATED BENCH HARDWARE ASSEMBLY READINESS`
 
-`F0 — FOUNDATION / GOVERNANCE`
+Completed:
+- Bench MVP = CLOSED;
+- P1–P7 = MERGED / VERIFIED;
+- Physical Prototype = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED;
+- IA-HC-002 = FULFILLED.
 
-Physical KVK-dependent work is explicitly `BLOCKED_BY_SITE_ACCESS`, not a blocker for Foundation, ARS, ARB, ADR preparation or bench-prototype design.
+Next Project Owner gate:
+- `IMP-HC-002 — Isolated Bench Hardware Assembly Plan`;
+- `IA-HC-003 — Isolated Bench Hardware Assembly Authority`.
+
+Physical KVK-dependent work remains `BLOCKED_BY_SITE_ACCESS` and outside current authority.
