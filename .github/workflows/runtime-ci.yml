@@ -4,17 +4,27 @@ on:
   pull_request:
   push:
     branches:
+      - main
       - implementation/**
 
+permissions:
+  contents: read
+
 jobs:
-  unit-tests:
+  runtime-quality:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Static Python compilation check
+        run: python -m compileall -q src tests scripts
       - name: Run unit tests
         env:
           PYTHONPATH: src
         run: python -m unittest discover -s tests -v
+      - name: Generate local coverage report
+        env:
+          PYTHONPATH: src
+        run: python scripts/run_coverage.py
