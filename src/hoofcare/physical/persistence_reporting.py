@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from pathlib import Path
 
-from hoofcare.domain.session import Session
+from hoofcare.domain.session import Session, SessionEvent, SessionEventType
 from hoofcare.persistence.local_store import LocalSessionStore
 from hoofcare.reporting.report import ReportDocument, ReportInput, build_report_document
 
@@ -18,6 +18,11 @@ class PhysicalPersistenceReportingValidator:
 
     def commit_session(self, session: Session) -> None:
         self.store.save(session)
+
+    def complete_and_commit(self, session: Session, *, event_id: str) -> Session:
+        completed = session.apply(SessionEvent(event_id=event_id, event_type=SessionEventType.COMPLETE))
+        self.store.save(completed)
+        return completed
 
     def recover_session(self, session_id: str) -> Session:
         return self.store.load(session_id)
