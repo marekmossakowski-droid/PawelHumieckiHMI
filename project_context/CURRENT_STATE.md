@@ -10,6 +10,8 @@
 
 `WAVE R1 DATA INTEGRITY AND CLINICAL PROVENANCE = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`
 
+`WAVE R2 UX, OBSERVABILITY AND ENGINEERING QUALITY = REMEDIATED / CLOSURE PENDING`
+
 `F75 / ISOLATED BENCH HARDWARE ASSEMBLY = ACTIVE`
 
 `CURRENT PHYSICAL STEP = HW-A1 — GOODS-IN VERIFICATION / WAITING FOR PHYSICAL HARDWARE`
@@ -27,7 +29,10 @@ Compatibility marker for canonical governance CI: `CURRENT STEP = HW-A1 — GOOD
 - `IA-HC-004`: `FULFILLED FOR AUTHORIZED R0 SCOPE`.
 - `IMP-HC-004`: `FULFILLED FOR AUTHORIZED R1 SCOPE`.
 - `IA-HC-005`: `FULFILLED FOR AUTHORIZED R1 SCOPE`.
+- `IMP-HC-005 — Wave R2 UX, Observability and Engineering Quality`: `APPROVED / ACTIVE — CLOSURE PENDING`.
+- `IA-HC-006`: `APPROVED / ACTIVE — CLOSURE PENDING`.
 - `AUD-HC-007`–`AUD-HC-014`: `CLOSED / VERIFIED`.
+- `AUD-HC-018`–`AUD-HC-025`: `REMEDIATED / CLOSURE PENDING`.
 
 Compatibility marker retained: `WAVE R0 SOFTWARE/DOCUMENTATION REMEDIATION = CLOSURE READY / OWNER MERGE REQUIRED`.
 Compatibility marker retained: `IMP-HC-003 = FULFILLED FOR AUTHORIZED R0 SCOPE — CLOSURE PENDING OWNER MERGE`.
@@ -36,19 +41,19 @@ Compatibility marker retained: `WAVE R1 DATA INTEGRITY AND CLINICAL PROVENANCE =
 Compatibility marker retained: `IMP-HC-004 = FULFILLED FOR AUTHORIZED R1 SCOPE — CLOSURE PENDING OWNER MERGE`.
 Compatibility marker retained: `IA-HC-005` remains active until `HC-R1-CLOSURE-001` controlled merge + Repository Verification.
 
-## Wave R1 verified results
-- R1-A: persistence path safety.
-- R1-B/C: durable/versioned persistence, SHA-256 integrity and canonical amendment provenance.
-- R1-D/E: domain invariants and operation/resource-scoped idempotency isolation.
-- R1-F/G/H: canonical lesion/treatment/material/media records, explicit media provenance and report derivation from committed canonical clinical data.
+## Wave R2 verified results
+- R2-A: complete local HMI navigation semantics and concrete GL100E 1024×600 geometry checks.
+- R2-B: typed observation provenance/quality/staleness and allowlisted local bench capabilities.
+- R2-C: runtime regression on `main`, bounded static/coverage checks and stronger semantic documentation CI.
+- R2-D/E: reproducible synthetic-only local runtime package/config/entrypoint/restart procedure and RFID identity derived from observation payload with fail-closed mismatch behavior.
 
 ## Explicit unresolved dependencies
-- `edge_host = EDGE_HOST_REQUIRED / NOT YET SELECTED`.
+- `edge_host = EDGE_HOST_REQUIRED / NOT YET SELECTED` for physical deployment; the R2 local runtime package does not select a physical host.
 - `native_dtools_artifact = REQUIRED / NOT YET EVIDENCED`.
 - `HW-A1 = WAITING FOR PHYSICAL HARDWARE`.
 - `HW-A2 = NOT STARTED / NOT PASS`.
 - `HW-A3 = NOT STARTED / NOT PASS`.
-- R2 audit findings remain open.
+- R2 formal closure/reconciliation remains pending Project Owner approval after final diff.
 
 ## Selected bench hardware target
 - Kinco GL100E, 10.1 inch, 1024×600;
