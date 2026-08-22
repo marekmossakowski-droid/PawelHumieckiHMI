@@ -42,20 +42,21 @@ class BenchApplicationService:
 
     def __init__(self) -> None:
         self._sessions: dict[str, Session] = {}
-        self._request_results: dict[str, ContractResult] = {}
+        self._request_results: dict[tuple[str, str | None, str], ContractResult] = {}
 
     @classmethod
     def in_memory(cls) -> "BenchApplicationService":
         return cls()
 
     def create_session(self, *, request_id: str) -> ContractResult:
-        cached = self._request_results.get(request_id)
+        key = ("create_session", None, request_id)
+        cached = self._request_results.get(key)
         if cached is not None:
             return cached
         session = Session.new()
         self._sessions[session.session_id] = session
         result = ContractResult.success(self._view(session))
-        self._request_results[request_id] = result
+        self._request_results[key] = result
         return result
 
     def get_session(self, session_id: str) -> ContractResult:
@@ -72,7 +73,8 @@ class BenchApplicationService:
         confirmed_animal_id: str | None = None,
         candidates: tuple[str, ...] = (),
     ) -> ContractResult:
-        cached = self._request_results.get(request_id)
+        key = ("resolve_identity", session_id, request_id)
+        cached = self._request_results.get(key)
         if cached is not None:
             return cached
         session = self._sessions.get(session_id)
@@ -98,7 +100,7 @@ class BenchApplicationService:
             return ContractResult.failure(ErrorCode.INVALID_REQUEST, str(exc))
         self._sessions[session_id] = updated
         result = ContractResult.success(self._view(updated))
-        self._request_results[request_id] = result
+        self._request_results[key] = result
         return result
 
     @staticmethod
