@@ -32,11 +32,14 @@ class PhysicalNavigationController:
 
     def activate(self, action: str) -> None:
         if action in {"open_valve", "kvk_command", "plc_write", "motor_start"}:
-            raise NavigationError("machine-control actions are outside IA-HC-002")
+            raise NavigationError("machine-control actions are outside authorized scope")
 
         if self.current_screen is ScreenId.DASHBOARD:
             if action == "start_session":
                 self.current_screen = ScreenId.ANIMAL_SESSION
+                return
+            if action == "open_reports":
+                self.current_screen = ScreenId.REPORT_SUMMARY
                 return
             self._reject(action)
 
@@ -52,6 +55,14 @@ class PhysicalNavigationController:
             self._reject(action)
 
         if self.current_screen is ScreenId.LIMB_CLAW:
+            if action == "back":
+                self._limb_selected = False
+                self._claw_selected = False
+                self._zone_selected = False
+                self._lesion_selected = False
+                self._treatment_selected = False
+                self.current_screen = ScreenId.ANIMAL_SESSION
+                return
             if action == "select_limb":
                 self._limb_selected = True
                 return
@@ -64,6 +75,12 @@ class PhysicalNavigationController:
             self._reject(action)
 
         if self.current_screen is ScreenId.ZONE_LESION:
+            if action == "back":
+                self._zone_selected = False
+                self._lesion_selected = False
+                self._treatment_selected = False
+                self.current_screen = ScreenId.LIMB_CLAW
+                return
             if action == "select_zone":
                 self._zone_selected = True
                 return
@@ -76,6 +93,10 @@ class PhysicalNavigationController:
             self._reject(action)
 
         if self.current_screen is ScreenId.TREATMENT:
+            if action == "back":
+                self._treatment_selected = False
+                self.current_screen = ScreenId.ZONE_LESION
+                return
             if action == "select_treatment":
                 if not self._lesion_selected:
                     raise NavigationError("lesion selection is required before treatment")
