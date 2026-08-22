@@ -20,7 +20,7 @@ Compatibility marker for canonical governance CI: `CURRENT STEP = HW-A1 — GOOD
 - `IA-HC-001`: `FULFILLED FOR AUTHORIZED BENCH SCOPE`.
 - `IA-HC-002`: `FULFILLED FOR AUTHORIZED PHYSICAL-PROTOTYPE SCOPE`.
 - `IMP-HC-002`: `APPROVED / ACTIVE`.
-- `IA-HC-003`: `APPROVED / ACTIVE`.
+- `IA-HC-003 — Isolated Bench Hardware Assembly Authority`: `APPROVED / ACTIVE`.
 - `IMP-HC-003`: `FULFILLED FOR AUTHORIZED R0 SCOPE — CLOSURE PENDING OWNER MERGE`.
 - `IA-HC-004`: remains active until `HC-R0-CLOSURE-001` controlled merge + Repository Verification.
 
@@ -44,6 +44,12 @@ Compatibility marker for canonical governance CI: `CURRENT STEP = HW-A1 — GOOD
 - existing isolated 24 VDC subject to physical verification;
 - RFID deferred;
 - local RS485/Modbus only between GL100E and KS123-14DR.
+
+## Explicit fail-closed state
+- `field_kvk_verified = false`.
+- `deployment_ready = false`.
+- `kvk_connected = false`.
+- `real_farm_data_used = false`.
 
 ## Next physical dependency
 For HW-A1 Project Owner must provide real-device evidence after delivery:
