@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hoofcare:bench-runtime:0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["mode", "data_dir", "report_dir", "network_enabled", "kvk_connected"],
+  "properties": {
+    "mode": {"const": "SYNTHETIC_TEST_ONLY"},
+    "data_dir": {"type": "string", "minLength": 1},
+    "report_dir": {"type": "string", "minLength": 1},
+    "network_enabled": {"const": false},
+    "kvk_connected": {"const": false}
+  }
+}
