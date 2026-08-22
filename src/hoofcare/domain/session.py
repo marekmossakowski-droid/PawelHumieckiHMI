@@ -27,6 +27,21 @@ class AnimalIdentityResolution:
     animal_id: str | None = None
     candidates: tuple[str, ...] = ()
 
+    def __post_init__(self) -> None:
+        if self.status is IdentityStatus.CONFIRMED:
+            if self.animal_id is None or not self.animal_id.strip():
+                raise ValueError("confirmed identity requires a non-empty animal_id")
+            if self.candidates:
+                raise ValueError("confirmed identity cannot carry candidates")
+            return
+        if self.animal_id is not None:
+            raise ValueError("non-confirmed identity cannot carry animal_id")
+        if self.status is IdentityStatus.AMBIGUOUS:
+            if len(tuple(dict.fromkeys(self.candidates))) < 2:
+                raise ValueError("ambiguous identity requires at least two candidates")
+        elif self.candidates:
+            raise ValueError("unresolved identity cannot carry candidates")
+
     @classmethod
     def unresolved(cls) -> "AnimalIdentityResolution":
         return cls(status=IdentityStatus.UNRESOLVED)
@@ -34,15 +49,11 @@ class AnimalIdentityResolution:
     @classmethod
     def ambiguous(cls, candidates: list[str] | tuple[str, ...]) -> "AnimalIdentityResolution":
         normalized = tuple(dict.fromkeys(candidates))
-        if len(normalized) < 2:
-            raise ValueError("ambiguous identity requires at least two candidates")
         return cls(status=IdentityStatus.AMBIGUOUS, candidates=normalized)
 
     @classmethod
     def confirmed(cls, animal_id: str) -> "AnimalIdentityResolution":
         animal_id = animal_id.strip()
-        if not animal_id:
-            raise ValueError("confirmed identity requires a non-empty animal_id")
         return cls(status=IdentityStatus.CONFIRMED, animal_id=animal_id)
 
 
@@ -82,6 +93,18 @@ class Session:
     treatment_refs: tuple[str, ...] = ()
     material_refs: tuple[str, ...] = ()
     media_refs: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        if not self.session_id.strip():
+            raise ValueError("session_id must be non-empty")
+        if self.identity.status is IdentityStatus.CONFIRMED:
+            if self.animal_id != self.identity.animal_id:
+                raise ValueError("confirmed identity must match session animal_id")
+        elif self.animal_id is not None:
+            raise ValueError("non-confirmed identity cannot carry session animal_id")
+        if self.state in {SessionState.IN_PROGRESS, SessionState.FOLLOW_UP_REQUIRED, SessionState.COMPLETED}:
+            if self.identity.status is not IdentityStatus.CONFIRMED or not self.animal_id:
+                raise ValueError(f"{self.state.value} requires confirmed identity")
 
     @classmethod
     def new(cls) -> "Session":
