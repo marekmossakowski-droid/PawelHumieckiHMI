@@ -15,7 +15,10 @@ class ScreenId(str, Enum):
 
 @dataclass(frozen=True)
 class TouchTarget:
+    screen_id: ScreenId
     control_id: str
+    x_px: int
+    y_px: int
     width_px: int
     height_px: int
 
@@ -74,12 +77,29 @@ class PhysicalHmiLayout:
                 control_ids=("generate_local_pdf", "back_to_dashboard"),
             ),
         }
-        control_ids = tuple(control for screen in screens.values() for control in screen.control_ids)
-        targets = tuple(TouchTarget(control_id=control, width_px=64, height_px=64) for control in control_ids)
+
+        # Concrete GL100E 1024x600 bottom action bar geometry.
+        # Four 180x64 targets fit with 40 px gaps and 62 px side margins.
+        x_positions = (62, 282, 502, 722)
+        y_px = 500
+        targets: list[TouchTarget] = []
+        for screen_id, screen in screens.items():
+            for index, control_id in enumerate(screen.control_ids):
+                targets.append(
+                    TouchTarget(
+                        screen_id=screen_id,
+                        control_id=control_id,
+                        x_px=x_positions[index],
+                        y_px=y_px,
+                        width_px=180,
+                        height_px=64,
+                    )
+                )
+
         return cls(
             panel_class_inch=10.1,
             width_px=1024,
             height_px=600,
             screens=screens,
-            touch_targets=targets,
+            touch_targets=tuple(targets),
         )
