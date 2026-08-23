@@ -1,7 +1,9 @@
 # IA-HC-006 — Wave R2 UX, Observability and Engineering Quality Authority v0.1
 
 ## Status
-`PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001`
+
+Aktywacja jest prospektywna. Nie nadaje authority retroaktywnie PR #74–#76; ich treść podlega świeżej weryfikacji w ramach recovery.
 
 ## Authorized scope if activated
 Bounded local synthetic/test-only remediation of `AUD-HC-018` through `AUD-HC-025` according to `IMP-HC-005`.

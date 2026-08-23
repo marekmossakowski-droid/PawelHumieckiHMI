@@ -10,7 +10,9 @@
 
 `WAVE R1 DATA INTEGRITY AND CLINICAL PROVENANCE = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`
 
-`WAVE R2 UX, OBSERVABILITY AND ENGINEERING QUALITY = REMEDIATED / CLOSURE PENDING`
+`WAVE R2 GOVERNANCE RECOVERY = CLOSED / MERGED / VERIFIED`
+
+`WAVE R2 REMEDIATION = ACTIVE / R2-D/E REBASE AND REVERIFICATION REQUIRED`
 
 `F75 / ISOLATED BENCH HARDWARE ASSEMBLY = ACTIVE`
 
@@ -32,7 +34,8 @@ Compatibility marker for canonical governance CI: `CURRENT STEP = HW-A1 — GOOD
 - `IMP-HC-005 — Wave R2 UX, Observability and Engineering Quality`: `APPROVED / ACTIVE — CLOSURE PENDING`.
 - `IA-HC-006`: `APPROVED / ACTIVE — CLOSURE PENDING`.
 - `AUD-HC-007`–`AUD-HC-014`: `CLOSED / VERIFIED`.
-- `AUD-HC-018`–`AUD-HC-025`: `REMEDIATED / CLOSURE PENDING`.
+- `IMP-HC-005`: `APPROVED / RECOVERY ACTIVE`.
+- `IA-HC-006`: `APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001`.
 
 Compatibility marker retained: `WAVE R0 SOFTWARE/DOCUMENTATION REMEDIATION = CLOSURE READY / OWNER MERGE REQUIRED`.
 Compatibility marker retained: `IMP-HC-003 = FULFILLED FOR AUTHORIZED R0 SCOPE — CLOSURE PENDING OWNER MERGE`.
@@ -47,13 +50,21 @@ Compatibility marker retained: `IA-HC-005` remains active until `HC-R1-CLOSURE-0
 - R2-C: runtime regression on `main`, bounded static/coverage checks and stronger semantic documentation CI.
 - R2-D/E: reproducible synthetic-only local runtime package/config/entrypoint/restart procedure and RFID identity derived from observation payload with fail-closed mismatch behavior.
 
+## Wave R2 governance recovery
+- PR #73 pozostawił formalny `IA-HC-006` jako `PROPOSED / NOT ACTIVE`.
+- PR #74–#76 są istniejącym stanem `main`, lecz nie stanowią dowodu wcześniejszego authority.
+- ich zawartość przeszła świeżą weryfikację recovery: 15/15 testów celowanych i 103/103 pełnej regresji — PASS;
+- R2-C semantic status gate jest naprawiany w recovery PR;
+- PR #77 pozostaje `OPEN / REBASE AND TDD REVERIFICATION REQUIRED`;
+- R2 closure nie jest ustanowione.
+
 ## Explicit unresolved dependencies
 - `edge_host = EDGE_HOST_REQUIRED / NOT YET SELECTED` for physical deployment; the R2 local runtime package does not select a physical host.
 - `native_dtools_artifact = REQUIRED / NOT YET EVIDENCED`.
 - `HW-A1 = WAITING FOR PHYSICAL HARDWARE`.
 - `HW-A2 = NOT STARTED / NOT PASS`.
 - `HW-A3 = NOT STARTED / NOT PASS`.
-- R2 formal closure/reconciliation remains pending Project Owner approval after final diff.
+- R2 governance recovery i formalne closure pozostają otwarte.
 
 ## Selected bench hardware target
 - Kinco GL100E, 10.1 inch, 1024×600;
