@@ -2,7 +2,10 @@ from datetime import datetime, timezone
 import importlib
 import unittest
 
-from tests.job_fixtures import closed_job_fixture, open_job_fixture
+try:
+    from tests.job_fixtures import closed_job_fixture, open_job_fixture
+except ModuleNotFoundError:
+    from job_fixtures import closed_job_fixture, open_job_fixture
 
 
 def require_symbol(case: unittest.TestCase, symbol: str):

@@ -137,6 +137,10 @@ are bound by `HC-IA-HC-007-S1-ACTIVATION-001`; runtime remains not started.
   rejection;
 - status: `OWNER MERGE REQUIRED`; later settlement PDF, semantic HMI,
   integration and closure increments remain pending.
+- S1-2 final settlement summary: `SettlementDocument` preserves stored closed
+  settlement lines and total, `format_pln` uses integer grosz, and the shared
+  deterministic local renderer produces a PDF marked `NIE JEST FAKTURĄ`;
+  evidence: `tests.test_job_settlement_report`; status `OWNER MERGE REQUIRED`.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.
