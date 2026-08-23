@@ -69,6 +69,14 @@ Legend: `IMPLEMENTED`, `PARTIAL`, `DEFERRED`, `BLOCKED`.
 | REQ-HC-JOB-PRICE-A1-002 | IMPLEMENTED FOR SYNTHETIC SCOPE | `test_first_completed_cow_freezes_all_prices`; `test_open_correct_restart_complete_freeze_and_close` |
 | REQ-HC-JOB-PRICE-A1-003 | IMPLEMENTED FOR SYNTHETIC SCOPE | domain retry/conflict tests plus schema-v2 audit round-trip and corruption tests |
 | REQ-HC-JOB-PRICE-A1-004 | IMPLEMENTED FOR SYNTHETIC SCOPE | immutable versioned snapshot tests and `test_open_correct_restart_complete_freeze_and_close` |
+| REQ-HC-JOB-STAT-S1-001 | IMPLEMENTED FOR SYNTHETIC SCOPE | `test_restart_preserves_counts_materials_total_and_pdf`; durable unique completed-session links and idempotent retry |
+| REQ-HC-JOB-STAT-S1-002 | IMPLEMENTED FOR SYNTHETIC SCOPE | `test_restart_preserves_counts_materials_total_and_pdf`; persisted `BLOCK` usage aggregated from canonical job snapshots |
+| REQ-HC-JOB-STAT-S1-003 | IMPLEMENTED FOR SYNTHETIC SCOPE | `tests.test_job_statistics`; inclusive date/operator/farm/state filters |
+| REQ-HC-JOB-STAT-S1-004 | IMPLEMENTED FOR SYNTHETIC SCOPE | `test_restart_preserves_counts_materials_total_and_pdf`; statistics and totals reproduced after restart from `LocalJobStore` |
+| REQ-HC-JOB-CLOSE-S1-001 | IMPLEMENTED FOR SYNTHETIC SCOPE | domain closing-gate tests plus `test_restart_preserves_counts_materials_total_and_pdf` with durable session reconciliation |
+| REQ-HC-JOB-CLOSE-S1-002 | IMPLEMENTED FOR SYNTHETIC SCOPE | `tests.test_job_settlement_report` and `test_restart_preserves_counts_materials_total_and_pdf`; stored lines and dominant `RAZEM NETTO` |
+| REQ-HC-JOB-CLOSE-S1-003 | IMPLEMENTED FOR SYNTHETIC SCOPE | `test_restart_preserves_counts_materials_total_and_pdf`; closed schema-v2 snapshot reproduces identical settlement after restart |
+| REQ-HC-JOB-CLOSE-S1-004 | IMPLEMENTED FOR SYNTHETIC SCOPE | `test_restart_preserves_counts_materials_total_and_pdf`; deterministic local PDF marked as not an invoice |
 
 ## R0 closures represented by this matrix
 - AUD-HC-003: corrected by R0-B valid PDF renderer.
@@ -81,3 +89,8 @@ This matrix does not convert PARTIAL/DEFERRED/BLOCKED requirements to implemente
 `REQ-HC-002-A1` evidence remains local and synthetic/test-only. The mapping does
 not claim a finished GUI, physical GL100E acceptance, Generation 2, real data,
 device access, deployment or closed-settlement correction.
+
+`REQ-HC-002-S1` evidence remains local and synthetic/test-only. It does not
+claim a finished GUI or DTools artifact, physical GL100E acceptance, invoicing,
+VAT, accounting, payments, Generation 2, real data, device access, deployment
+or correction of a closed settlement.

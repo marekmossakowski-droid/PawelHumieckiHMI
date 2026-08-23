@@ -176,7 +176,7 @@ def main() -> int:
         require(statistics_activation, "e51bee95058c6fc4d9766af1467ac31202efc584", "IA-HC-007-S1 activation", errors)
         require(statistics_activation, "RUNTIME NOT STARTED", "IA-HC-007-S1 activation", errors)
     require(current, "`IA-HC-007-S1`: `APPROVED / ACTIVE", "CURRENT_STATE", errors)
-    require(current, "`IA-HC-007-S1 runtime`: `S1-1/S1-2 MERGED / VERIFIED; S1-3 BOUNDED SYNTHETIC IMPLEMENTATION / OWNER MERGE REQUIRED`", "CURRENT_STATE", errors)
+    require(current, "`IA-HC-007-S1 runtime`: `S1-1/S1-2/S1-3 MERGED / VERIFIED; S1-4 BOUNDED SYNTHETIC IMPLEMENTATION / OWNER MERGE REQUIRED`", "CURRENT_STATE", errors)
     require(trace, "| HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | APPROVED / ACTIVE PROSPECTIVELY |", "HC-TRACE-001", errors)
 
     for marker in (
