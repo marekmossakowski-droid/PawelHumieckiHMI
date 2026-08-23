@@ -1,4 +1,6 @@
-from hoofcare.domain.jobs import Job
+from datetime import datetime
+
+from hoofcare.domain.jobs import Job, PriceField
 from hoofcare.domain.session import Session, SessionState
 from hoofcare.persistence.job_store import LocalJobStore
 from hoofcare.persistence.local_store import LocalSessionStore
@@ -20,6 +22,30 @@ class JobService:
         self.sessions.save(session)
         current = self.jobs.load(job_id)
         updated = current.record_completed_session(session, event_id)
+        self.jobs.save(updated)
+        return updated
+
+    def correct_price(
+        self,
+        job_id: str,
+        event_id: str,
+        operator_id: str,
+        corrected_at: datetime,
+        reason: str,
+        field: PriceField,
+        new_value_grosz: int,
+        material_code: str | None = None,
+    ) -> Job:
+        current = self.jobs.load(job_id)
+        updated = current.correct_price(
+            event_id,
+            operator_id,
+            corrected_at,
+            reason,
+            field,
+            new_value_grosz,
+            material_code,
+        )
         self.jobs.save(updated)
         return updated
 
