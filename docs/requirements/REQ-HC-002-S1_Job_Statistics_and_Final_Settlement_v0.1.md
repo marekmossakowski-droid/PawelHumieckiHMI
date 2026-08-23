@@ -2,7 +2,7 @@
 
 ## Status
 
-`PROPOSED / NOT BASELINED — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / BASELINED — PROJECT OWNER APPROVED VIA PR #94; ACTIVATION RECORDED BY HC-IA-HC-007-S1-ACTIVATION-001`
 
 ## Purpose
 
@@ -73,4 +73,3 @@ clients; no correction of a closed settlement; no network/cloud,
 synchronization, device/camera/RFID/KVK/machine I/O, control, hydraulics or
 PLC/safety mutation; no invoicing, VAT, accounting, payments, production
 authentication, deployment, signing, release or public distribution.
-
