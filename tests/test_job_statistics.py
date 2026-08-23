@@ -1,1 +1,78 @@
-ZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZSwgZGF0ZXRpbWUsIHRpbWV6b25lCmZyb20gZGVjaW1hbCBpbXBvcnQgRGVjaW1hbAppbXBvcnQgaW1wb3J0bGliCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aApmcm9tIHRlbXBmaWxlIGltcG9ydCBUZW1wb3JhcnlEaXJlY3RvcnkKaW1wb3J0IHVuaXR0ZXN0Cgpmcm9tIGhvb2ZjYXJlLmRvbWFpbi5qb2JzIGltcG9ydCBKb2IsIEpvYlByaWNpbmdTbmFwc2hvdCwgSm9iU3RhdGUsIE1hdGVyaWFsUmF0ZQpmcm9tIGhvb2ZjYXJlLnBlcnNpc3RlbmNlLmpvYl9zdG9yZSBpbXBvcnQgTG9jYWxKb2JTdG9yZQpmcm9tIHRlc3RzLmpvYl9maXh0dXJlcyBpbXBvcnQgY29tcGxldGVkX3Nlc3Npb24KCgpkZWYgcmVxdWlyZV9zeW1ib2woY2FzZTogdW5pdHRlc3QuVGVzdENhc2UsIHN5bWJvbDogc3RyKToKICAgIHRyeToKICAgICAgICBtb2R1bGUgPSBpbXBvcnRsaWIuaW1wb3J0X21vZHVsZSgiaG9vZmNhcmUuYXBwbGljYXRpb24uam9iX3N0YXRpc3RpY3MiKQogICAgZXhjZXB0IE1vZHVsZU5vdEZvdW5kRXJyb3I6CiAgICAgICAgY2FzZS5mYWlsKCJob29mY2FyZS5hcHBsaWNhdGlvbi5qb2Jfc3RhdGlzdGljcyBtdXN0IGV4aXN0IikKICAgIGNhc2UuYXNzZXJ0VHJ1ZShoYXNhdHRyKG1vZHVsZSwgc3ltYm9sKSwgZiJ7c3ltYm9sfSBtdXN0IGV4aXN0IikKICAgIHJldHVybiBnZXRhdHRyKG1vZHVsZSwgc3ltYm9sKQoKCmRlZiBtYWtlX2pvYihqb2JfaWQ6IHN0ciwgZmFybV9pZDogc3RyLCBvcGVyYXRvcl9pZDogc3RyLCBvcGVuZWQ6IGRhdGV0aW1lLCBjb3dzOiBpbnQsIGNsb3NlOiBib29sKSAtPiBKb2I6CiAgICBqb2IgPSBKb2Iub3BlbigKICAgICAgICBqb2JfaWQsCiAgICAgICAgZmFybV9pZCwKICAgICAgICBvcGVyYXRvcl9pZCwKICAgICAgICBvcGVuZWQsCiAgICAgICAgSm9iUHJpY2luZ1NuYXBzaG90KDM1MDAsIChNYXRlcmlhbFJhdGUoIkJMT0NLIiwgIktsb2NlayIsICJzenQuIiwgMjYwMCwgMCksKSksCiAgICAgICAgY293cywKICAgICkKICAgIGZvciBpbmRleCBpbiByYW5nZShjb3dzKToKICAgICAgICBzZXNzaW9uID0gY29tcGxldGVkX3Nlc3Npb24oZiJ7am9iX2lkfS1DT1cte2luZGV4fSIsIGYie2pvYl9pZH0tU0VTU0lPTi17aW5kZXh9IikKICAgICAgICBqb2IgPSBqb2IucmVjb3JkX2NvbXBsZXRlZF9zZXNzaW9uKHNlc3Npb24sIGYie2pvYl9pZH0tQ09NUExFVEUte2luZGV4fSIpCiAgICBpZiBjb3dzOgogICAgICAgIGpvYiA9IGpvYi5yZWNvcmRfbWF0ZXJpYWwoIk1BVC0iICsgam9iX2lkLCBqb2IuY29tcGxldGVkX3Nlc3Npb25faWRzWzBdLCAiQkxPQ0siLCBEZWNpbWFsKCIxIikpCiAgICByZXR1cm4gam9iLmNsb3NlKG9wZW5lZC5yZXBsYWNlKGhvdXI9MTgpLCAoKSkgaWYgY2xvc2UgZWxzZSBqb2IKCgpjbGFzcyBKb2JTdGF0aXN0aWNzVGVzdHModW5pdHRlc3QuVGVzdENhc2UpOgogICAgZGVmIHNldFVwKHNlbGYpOgogICAgICAgIHNlbGYuU3RhdGlzdGljc0ZpbHRlciA9IHJlcXVpcmVfc3ltYm9sKHNlbGYsICJTdGF0aXN0aWNzRmlsdGVyIikKICAgICAgICBzZWxmLmRlcml2ZSA9IHJlcXVpcmVfc3ltYm9sKHNlbGYsICJkZXJpdmVfam9iX3N0YXRpc3RpY3MiKQoKICAgIGRlZiB0ZXN0X3N0YXRpc3RpY3NfZGVyaXZlX2Zyb21fam9ic19yZWxvYWRlZF9hZnRlcl9yZXN0YXJ0KHNlbGYpOgogICAgICAgIHdpdGggVGVtcG9yYXJ5RGlyZWN0b3J5KCkgYXMgZGlyZWN0b3J5OgogICAgICAgICAgICBzdG9yZSA9IExvY2FsSm9iU3RvcmUoUGF0aChkaXJlY3RvcnkpKQogICAgICAgICAgICBzdG9yZS5zYXZlKG1ha2Vfam9iKCJKMSIsICJGMSIsICJwYXdlbCIsIGRhdGV0aW1lKDIwMjYsIDgsIDIyLCA4LCB0emluZm89dGltZXpvbmUudXRjKSwgMiwgVHJ1ZSkpCiAgICAgICAgICAgIHN0b3JlLnNhdmUobWFrZV9qb2IoIkoyIiwgIkYyIiwgInBhd2VsIiwgZGF0ZXRpbWUoMjAyNiwgOCwgMjMsIDgsIHR6aW5mbz10aW1lem9uZS51dGMpLCAxLCBGYWxzZSkpCiAgICAgICAgICAgIHJlbG9hZGVkID0gTG9jYWxKb2JTdG9yZShQYXRoKGRpcmVjdG9yeSkpLmxpc3Rfam9icygpCgogICAgICAgIHN0YXRzID0gc2VsZi5kZXJpdmUocmVsb2FkZWQsIHNlbGYuU3RhdGlzdGljc0ZpbHRlcihkYXRlKDIwMjYsIDgsIDIyKSwgZGF0ZSgyMDI2LCA4LCAyMykpKQogICAgICAgIHNlbGYuYXNzZXJ0RXF1YWwoKHN0YXRzLmNvbXBsZXRlZF9jb3dzLCBzdGF0cy5vcGVuX2pvYnMsIHN0YXRzLmNsb3NlZF9qb2JzKSwgKDMsIDEsIDEpKQogICAgICAgIHNlbGYuYXNzZXJ0RXF1YWwoc3RhdHMudG90YWxfbmV0X2dyb3N6LCA5NjAwKQogICAgICAgIHNlbGYuYXNzZXJ0RXF1YWwoc3RhdHMuYWRkaXRpb25hbF9tYXRlcmlhbF9xdWFudGl0aWVzWzBdLmNvZGUsICJCTE9DSyIpCiAgICAgICAgc2VsZi5hc3NlcnRFcXVhbChzdGF0cy5hZGRpdGlvbmFsX21hdGVyaWFsX3F1YW50aXRpZXNbMF0ucXVhbnRpdHksIERlY2ltYWwoIjIiKSkKCiAgICBkZWYgdGVzdF9maWx0ZXJzX2FyZV9pbmNsdXNpdmVfYW5kX2NvbXBvc2FibGUoc2VsZik6CiAgICAgICAgam9icyA9ICgKICAgICAgICAgICAgbWFrZV9qb2IoIkoxIiwgIkYxIiwgInBhd2VsIiwgZGF0ZXRpbWUoMjAyNiwgOCwgMjIsIDgsIHR6aW5mbz10aW1lem9uZS51dGMpLCAyLCBUcnVlKSwKICAgICAgICAgICAgbWFrZV9qb2IoIkoyIiwgIkYxIiwgIm90aGVyIiwgZGF0ZXRpbWUoMjAyNiwgOCwgMjMsIDgsIHR6aW5mbz10aW1lem9uZS51dGMpLCAzLCBUcnVlKSwKICAgICAgICAgICAgbWFrZV9qb2IoIkozIiwgIkYyIiwgInBhd2VsIiwgZGF0ZXRpbWUoMjAyNiwgOCwgMjQsIDgsIHR6aW5mbz10aW1lem9uZS51dGMpLCA0LCBUcnVlKSwKICAgICAgICApCiAgICAgICAgcXVlcnkgPSBzZWxmLlN0YXRpc3RpY3NGaWx0ZXIoZGF0ZSgyMDI2LCA4LCAyMiksIGRhdGUoMjAyNiwgOCwgMjMpLCBvcGVyYXRvcl9pZD0icGF3ZWwiLCBmYXJtX2lkPSJGMSIsIHN0YXRlPUpvYlN0YXRlLkNMT1NFRCkKICAgICAgICBzdGF0cyA9IHNlbGYuZGVyaXZlKGpvYnMsIHF1ZXJ5KQogICAgICAgIHNlbGYuYXNzZXJ0RXF1YWwoKHN0YXRzLmNvbXBsZXRlZF9jb3dzLCBzdGF0cy5jbG9zZWRfam9icywgc3RhdHMudG90YWxfbmV0X2dyb3N6KSwgKDIsIDEsIDk2MDApKQoKICAgIGRlZiB0ZXN0X29wZW5fam9iX25ldmVyX2ludmVudHNfYV9uZXRfdG90YWwoc2VsZik6CiAgICAgICAgam9iID0gbWFrZV9qb2IoIkoxIiwgIkYxIiwgInBhd2VsIiwgZGF0ZXRpbWUoMjAyNiwgOCwgMjMsIDgsIHR6aW5mbz10aW1lem9uZS51dGMpLCAyLCBGYWxzZSkKICAgICAgICBzdGF0cyA9IHNlbGYuZGVyaXZlKChqb2IsKSwgc2VsZi5TdGF0aXN0aWNzRmlsdGVyKGRhdGUoMjAyNiwgOCwgMjMpLCBkYXRlKDIwMjYsIDgsIDIzKSkpCiAgICAgICAgc2VsZi5hc3NlcnRFcXVhbChzdGF0cy50b3RhbF9uZXRfZ3Jvc3osIDApCgogICAgZGVmIHRlc3RfaW52YWxpZF9kYXRlX3JhbmdlX2lzX3JlamVjdGVkKHNlbGYpOgogICAgICAgIHdpdGggc2VsZi5hc3NlcnRSYWlzZXNSZWdleChWYWx1ZUVycm9yLCAiZGF0ZSByYW5nZSIpOgogICAgICAgICAgICBzZWxmLlN0YXRpc3RpY3NGaWx0ZXIoZGF0ZSgyMDI2LCA4LCAyNCksIGRhdGUoMjAyNiwgOCwgMjMpKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICB1bml0dGVzdC5tYWluKCkK
+from datetime import date, datetime, timezone
+from decimal import Decimal
+import importlib
+from pathlib import Path
+from tempfile import TemporaryDirectory
+import unittest
+
+from hoofcare.domain.jobs import Job, JobPricingSnapshot, JobState, MaterialRate
+from hoofcare.persistence.job_store import LocalJobStore
+from tests.job_fixtures import completed_session
+
+
+def require_symbol(case: unittest.TestCase, symbol: str):
+    try:
+        module = importlib.import_module("hoofcare.application.job_statistics")
+    except ModuleNotFoundError:
+        case.fail("hoofcare.application.job_statistics must exist")
+    case.assertTrue(hasattr(module, symbol), f"{symbol} must exist")
+    return getattr(module, symbol)
+
+
+def make_job(job_id: str, farm_id: str, operator_id: str, opened: datetime, cows: int, close: bool) -> Job:
+    job = Job.open(
+        job_id,
+        farm_id,
+        operator_id,
+        opened,
+        JobPricingSnapshot(3500, (MaterialRate("BLOCK", "Klocek", "szt.", 2600, 0),)),
+        cows,
+    )
+    for index in range(cows):
+        session = completed_session(f"{job_id}-COW-{index}", f"{job_id}-SESSION-{index}")
+        job = job.record_completed_session(session, f"{job_id}-COMPLETE-{index}")
+    if cows:
+        job = job.record_material("MAT-" + job_id, job.completed_session_ids[0], "BLOCK", Decimal("1"))
+    return job.close(opened.replace(hour=18), ()) if close else job
+
+
+class JobStatisticsTests(unittest.TestCase):
+    def setUp(self):
+        self.StatisticsFilter = require_symbol(self, "StatisticsFilter")
+        self.derive = require_symbol(self, "derive_job_statistics")
+
+    def test_statistics_derive_from_jobs_reloaded_after_restart(self):
+        with TemporaryDirectory() as directory:
+            store = LocalJobStore(Path(directory))
+            store.save(make_job("J1", "F1", "pawel", datetime(2026, 8, 22, 8, tzinfo=timezone.utc), 2, True))
+            store.save(make_job("J2", "F2", "pawel", datetime(2026, 8, 23, 8, tzinfo=timezone.utc), 1, False))
+            reloaded = LocalJobStore(Path(directory)).list_jobs()
+
+        stats = self.derive(reloaded, self.StatisticsFilter(date(2026, 8, 22), date(2026, 8, 23)))
+        self.assertEqual((stats.completed_cows, stats.open_jobs, stats.closed_jobs), (3, 1, 1))
+        self.assertEqual(stats.total_net_grosz, 9600)
+        self.assertEqual(stats.additional_material_quantities[0].code, "BLOCK")
+        self.assertEqual(stats.additional_material_quantities[0].quantity, Decimal("2"))
+
+    def test_filters_are_inclusive_and_composable(self):
+        jobs = (
+            make_job("J1", "F1", "pawel", datetime(2026, 8, 22, 8, tzinfo=timezone.utc), 2, True),
+            make_job("J2", "F1", "other", datetime(2026, 8, 23, 8, tzinfo=timezone.utc), 3, True),
+            make_job("J3", "F2", "pawel", datetime(2026, 8, 24, 8, tzinfo=timezone.utc), 4, True),
+        )
+        query = self.StatisticsFilter(date(2026, 8, 22), date(2026, 8, 23), operator_id="pawel", farm_id="F1", state=JobState.CLOSED)
+        stats = self.derive(jobs, query)
+        self.assertEqual((stats.completed_cows, stats.closed_jobs, stats.total_net_grosz), (2, 1, 9600))
+
+    def test_open_job_never_invents_a_net_total(self):
+        job = make_job("J1", "F1", "pawel", datetime(2026, 8, 23, 8, tzinfo=timezone.utc), 2, False)
+        stats = self.derive((job,), self.StatisticsFilter(date(2026, 8, 23), date(2026, 8, 23)))
+        self.assertEqual(stats.total_net_grosz, 0)
+
+    def test_invalid_date_range_is_rejected(self):
+        with self.assertRaisesRegex(ValueError, "date range"):
+            self.StatisticsFilter(date(2026, 8, 24), date(2026, 8, 23))
+
+
+if __name__ == "__main__":
+    unittest.main()
