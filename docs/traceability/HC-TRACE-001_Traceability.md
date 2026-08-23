@@ -135,16 +135,27 @@ are bound by `HC-IA-HC-007-S1-ACTIVATION-001`; runtime remains not started.
 - evidence: `tests.test_job_statistics` covers durable restart, inclusive
   operator/farm/date/state filters, open-job zero-net behavior and date-range
   rejection;
-- status: `OWNER MERGE REQUIRED`; later settlement PDF, semantic HMI,
-  integration and closure increments remain pending.
+- status: `MERGED / VERIFIED`.
 - S1-2 final settlement summary: `SettlementDocument` preserves stored closed
   settlement lines and total, `format_pln` uses integer grosz, and the shared
   deterministic local renderer produces a PDF marked `NIE JEST FAKTURĄ`;
-  evidence: `tests.test_job_settlement_report`; status `OWNER MERGE REQUIRED`.
+  evidence: `tests.test_job_settlement_report`; status `MERGED / VERIFIED`.
 - S1-3 semantic HMI views: `daily_work_view` exposes counts and material
   quantities without price bindings; `closed_job_summary_view` exposes stored
   settlement lines and the dominant formatted net total without recalculation;
-  evidence: `tests.test_job_statistics_hmi`; status `OWNER MERGE REQUIRED`.
+  evidence: `tests.test_job_statistics_hmi`; status `MERGED / VERIFIED`.
+- S1-4 restart integration and requirement traceability:
+  `SyntheticJobSettlementScenario` exercises durable completion, idempotent
+  retry, additional materials, store/service restart, close, derived daily
+  statistics, semantic HMI views and deterministic local PDF from one canonical
+  synthetic job;
+  evidence: `test_restart_preserves_counts_materials_total_and_pdf` and the
+  requirement-level S1 mapping; status `OWNER MERGE REQUIRED`.
+
+The S1 evidence remains bounded to local synthetic/test-only behavior. Finished
+GUI/DTools and physical GL100E acceptance remain partial; Generation 2 and all
+excluded financial, device, network, deployment and real-data surfaces remain
+deferred or unauthorized.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.
