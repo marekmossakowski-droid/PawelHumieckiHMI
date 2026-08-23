@@ -32,7 +32,7 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | HC-ADR-009 | Client generations and adaptive presentation | ADR-HC-009 | APPROVED DESIGN CONTENT / NO IMPLEMENTATION AUTHORITY |
 | HC-IMP-UX-001 | Role menu and job settlement implementation plan | IMP-UX-HC-001 | APPROVED / ACTIVE |
 | HC-IA-007 | Job settlement authority | IA-HC-007 | APPROVED / ACTIVE |
-| HC-REQ-002-A1 | Zootechnician pricing access and freeze | REQ-HC-002-A1 | PROPOSED / BASELINE APPROVAL REQUIRED |
+| HC-REQ-002-A1 | Zootechnician pricing access and freeze | REQ-HC-002-A1 | APPROVED / BASELINED CONTENT / NOT MERGED |
 | HC-IA-007-A1 | Zootechnician pricing authority amendment | IA-HC-007-A1 | PROPOSED / NOT ACTIVE |
 | HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | WAITING FOR PHYSICAL HARDWARE |
 
@@ -91,6 +91,11 @@ No runtime implementation is claimed by the activation package. PR #77 and R2 cl
 
 The proposal does not authorize runtime implementation, Generation 2,
 closed-settlement corrections, real data, device access or deployment.
+
+Content decision: Project Owner approved `REQ-HC-002-A1` and the written
+design on PR #86 exact head `c651534ca6fafd037d4887b2b8face2aea158753` and
+authorized preparation of the TDD plan only. Merge and `IA-HC-007-A1`
+activation remain pending.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.

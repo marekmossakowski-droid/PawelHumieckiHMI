@@ -2,10 +2,12 @@
 
 ## Status
 
-`PROPOSED — PROJECT OWNER BASELINE APPROVAL REQUIRED`
+`APPROVED / BASELINED — PROJECT OWNER CONTENT DECISION 2026-08-23`
 
 Niniejszy dodatek precyzuje `REQ-HC-002 v0.1` zgodnie z kanonicznym
-`ADR-HC-009`. Nie zmienia historycznych wymagań ani nie aktywuje implementacji.
+`ADR-HC-009`. Project Owner zatwierdził treść na exact headzie PR #86
+`c651534ca6fafd037d4887b2b8face2aea158753`. Decyzja nie zezwoliła na merge,
+nie aktywowała `IA-HC-007-A1` i nie rozpoczęła implementacji runtime.
 
 ## 1. Rola Pawła
 

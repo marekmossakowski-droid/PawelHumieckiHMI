@@ -2,7 +2,12 @@
 
 ## Status
 
-`APPROVED DESIGN DIRECTION / WRITTEN SPEC REVIEW REQUIRED`
+`APPROVED DESIGN / IMPLEMENTATION PLAN AUTHORIZED — RUNTIME NOT AUTHORIZED`
+
+Project Owner zatwierdził written spec na exact headzie PR #86
+`c651534ca6fafd037d4887b2b8face2aea158753` i zezwolił wyłącznie na
+autonomiczne przygotowanie planu TDD. Merge, aktywacja authority i runtime
+pozostają osobnymi bramkami.
 
 ## Cel
 
