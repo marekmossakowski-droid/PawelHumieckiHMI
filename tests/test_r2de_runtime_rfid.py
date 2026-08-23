@@ -1,6 +1,8 @@
 import json
+import os
+import subprocess
+import sys
 import tempfile
-import tomllib
 import unittest
 from pathlib import Path
 
@@ -23,6 +25,20 @@ class R2DERuntimeAndRfidTests(unittest.TestCase):
             encoding="utf-8",
         )
         return config_path
+
+    def _run_module(self, config_path: Path) -> subprocess.CompletedProcess[str]:
+        env = os.environ.copy()
+        src_path = str((Path(__file__).parent.parent / "src").resolve())
+        env["PYTHONPATH"] = os.pathsep.join(
+            value for value in (src_path, env.get("PYTHONPATH")) if value
+        )
+        return subprocess.run(
+            [sys.executable, "-m", "hoofcare.runtime", str(config_path)],
+            check=False,
+            capture_output=True,
+            text=True,
+            env=env,
+        )
 
     def test_bench_runtime_has_local_config_schema_and_reproducible_launch(self):
         from hoofcare.runtime.bench import BenchRuntimeConfig, launch_bench_runtime
@@ -50,9 +66,24 @@ class R2DERuntimeAndRfidTests(unittest.TestCase):
             self.assertEqual(first["report_dir"], second["report_dir"])
             self.assertTrue(second["runtime_ready"])
 
-    def test_package_declares_local_bench_console_entrypoint(self):
-        payload = tomllib.loads(Path("pyproject.toml").read_text(encoding="utf-8"))
-        self.assertEqual(payload["project"]["scripts"]["hoofcare-bench"], "hoofcare.runtime.__main__:main")
+    def test_package_module_entrypoint_launches_local_bench(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            completed = self._run_module(self._write_config(Path(tmp)))
+
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        self.assertTrue(json.loads(completed.stdout)["runtime_ready"])
+
+    def test_package_module_entrypoint_reports_invalid_config_without_traceback(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            config_path = self._write_config(Path(tmp))
+            payload = json.loads(config_path.read_text(encoding="utf-8"))
+            payload["data_dir"] = 42
+            config_path.write_text(json.dumps(payload), encoding="utf-8")
+            completed = self._run_module(config_path)
+
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertIn("ERROR: bench runtime configuration invalid:", completed.stderr)
+        self.assertNotIn("Traceback", completed.stderr)
 
     def test_bench_runtime_rejects_network_or_kvk_enablement(self):
         from hoofcare.runtime.bench import BenchRuntimeConfig
