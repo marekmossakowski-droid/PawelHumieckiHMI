@@ -12,7 +12,7 @@
 
 `WAVE R2 GOVERNANCE RECOVERY = CLOSED / MERGED / VERIFIED`
 
-`WAVE R2 REMEDIATION = ACTIVE / R2-D/E REBASE AND REVERIFICATION REQUIRED`
+`WAVE R2 REMEDIATION = R2-D/E REVERIFIED / PR #77 OWNER MERGE APPROVAL REQUIRED`
 
 `F75 / ISOLATED BENCH HARDWARE ASSEMBLY = ACTIVE`
 
@@ -36,6 +36,7 @@ Compatibility marker for canonical governance CI: `CURRENT STEP = HW-A1 — GOOD
 - `AUD-HC-007`–`AUD-HC-014`: `CLOSED / VERIFIED`.
 - `IMP-HC-005`: `APPROVED / RECOVERY ACTIVE`.
 - `IA-HC-006`: `APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001`.
+- `AUD-HC-024`–`AUD-HC-025`: `R2-D/E REVERIFIED / PR #77 OWNER MERGE APPROVAL REQUIRED`.
 
 Compatibility marker retained: `WAVE R0 SOFTWARE/DOCUMENTATION REMEDIATION = CLOSURE READY / OWNER MERGE REQUIRED`.
 Compatibility marker retained: `IMP-HC-003 = FULFILLED FOR AUTHORIZED R0 SCOPE — CLOSURE PENDING OWNER MERGE`.
@@ -55,7 +56,8 @@ Compatibility marker retained: `IA-HC-005` remains active until `HC-R1-CLOSURE-0
 - PR #74–#76 są istniejącym stanem `main`, lecz nie stanowią dowodu wcześniejszego authority.
 - ich zawartość przeszła świeżą weryfikację recovery: 15/15 testów celowanych i 103/103 pełnej regresji — PASS;
 - R2-C semantic status gate jest naprawiany w recovery PR;
-- PR #77 pozostaje `OPEN / REBASE AND TDD REVERIFICATION REQUIRED`;
+- PR #77 jest `OPEN / RECONCILED WITH MAIN / TDD REVERIFIED / OWNER MERGE APPROVAL REQUIRED`;
+- corrected TDD lineage: RED `277dcf1f4c289ad2917e5da9df109e61c4705642` → GREEN `d6c7c4a3ae62c876901f74faa52f0a40c08c4476`;
 - R2 closure nie jest ustanowione.
 
 ## Explicit unresolved dependencies

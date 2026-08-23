@@ -1,7 +1,7 @@
 # HC-TRACE-001 — Traceability
 
 ## Status
-`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / IA-HC-006 ACTIVE / R0 CLOSED / R1 CLOSED / R2 GOVERNANCE RECOVERY CLOSED / HW-A1 CURRENT`
+`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / IA-HC-006 ACTIVE / R0 CLOSED / R1 CLOSED / R2-D/E REVERIFIED / R2 CLOSURE OPEN / HW-A1 CURRENT`
 
 Compatibility marker for canonical governance CI: `HW-A1 CURRENT`.
 Canonical IA-HC-003 activation merge compatibility marker: `52d65b18f966f553501a7829855f23b7390762a6`.
@@ -21,7 +21,7 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | HC-IA-002 | Physical prototype authority | IA-HC-002 | FULFILLED |
 | HC-IMP-002 | Isolated bench hardware assembly plan | IMP-HC-002 | APPROVED / ACTIVE |
 | HC-IA-003 | Isolated bench hardware assembly authority | IA-HC-003 | APPROVED / ACTIVE |
-| HC-AUDIT-001 | Full software/documentation audit | 25 findings / R0-R2 | MERGED / R0 CLOSED / R1 CLOSED / R2-D/E REVERIFICATION REQUIRED |
+| HC-AUDIT-001 | Full software/documentation audit | 25 findings / R0-R2 | MERGED / R0 CLOSED / R1 CLOSED / R2-D/E REVERIFIED / R2 CLOSURE OPEN |
 | HC-IMP-003 | Wave R0 remediation plan | IMP-HC-003 | FULFILLED FOR AUTHORIZED R0 SCOPE |
 | HC-IA-004 | Wave R0 remediation authority | IA-HC-004 | FULFILLED FOR AUTHORIZED R0 SCOPE |
 | HC-IMP-004 | Wave R1 data integrity/provenance plan | IMP-HC-004 | FULFILLED FOR AUTHORIZED R1 SCOPE |
@@ -58,11 +58,12 @@ R1 closure gate: PR #71 merge `cbacafb9b09fa4530649d27b1b376659217939bb`.
 | R2-A | AUD-HC-018/019 | PR #74 / merge `9330a129ec37ac3f9d09b03e424981b9f2089075` | CONTENT REVERIFIED / GOVERNANCE GAP RECORDED |
 | R2-B | AUD-HC-020/021 | PR #75 / merge `0a7795c41ac2b2416906869180289cdab2f53464` | CONTENT REVERIFIED / GOVERNANCE GAP RECORDED |
 | R2-C | AUD-HC-022/023 | PR #76 / merge `61de55a84319a2ba29a21dda5387a603381873f8` | CONTENT REVERIFIED / SEMANTIC-GATE REPAIR IN RECOVERY |
-| R2-D/E | AUD-HC-024/025 | PR #77 | OPEN / REBASE AND TDD REVERIFICATION REQUIRED |
+| R2-D/E | AUD-HC-024/025 | PR #77; corrected RED `277dcf1f4c289ad2917e5da9df109e61c4705642` → GREEN `d6c7c4a3ae62c876901f74faa52f0a40c08c4476` | RECONCILED / TDD REVERIFIED / OWNER MERGE APPROVAL REQUIRED |
 
 Recovery record: `HC-IA-HC-006-RECOVERY-ACTIVATION-001`.
 Nie ustanawia retroaktywnego authority. R2 closure pozostaje otwarte.
 Post-merge reconciliation: `HC-R2-GOVERNANCE-POST-MERGE-RECON-001`.
+R2-D/E revalidation record: `HC-R2-DE-TDD-REVERIFICATION-001`.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.
