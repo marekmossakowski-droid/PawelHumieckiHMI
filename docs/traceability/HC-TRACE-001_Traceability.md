@@ -35,9 +35,10 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | HC-REQ-002-A1 | Zootechnician pricing access and freeze | REQ-HC-002-A1 | APPROVED / BASELINED / MERGED |
 | HC-IA-007-A1 | Zootechnician pricing authority amendment | IA-HC-007-A1 | APPROVED / ACTIVE |
 | HC-CLOSE-002-A1 | Bounded pricing-access closure | HC-REQ-HC-002-A1-CLOSURE-001 | CLOSURE READY / OWNER MERGE REQUIRED |
-| HC-PLAN-STAT-001 | Job statistics and final settlement plan | 2026-08-23-job-statistics-final-settlement | PROPOSED / NOT ACTIVE |
+| HC-PLAN-STAT-001 | Job statistics and final settlement plan | 2026-08-23-job-statistics-final-settlement | FULFILLED FOR AUTHORIZED S1 SCOPE / CLOSURE READY |
 | HC-REQ-002-S1 | Job statistics and final settlement requirements | REQ-HC-002-S1 | APPROVED / BASELINED |
-| HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | APPROVED / ACTIVE PROSPECTIVELY |
+| HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | APPROVED / ACTIVE / FULFILLMENT READY |
+| HC-CLOSE-002-S1 | Bounded statistics and settlement closure | HC-REQ-HC-002-S1-CLOSURE-001 | CLOSURE READY / OWNER MERGE REQUIRED |
 | HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | WAITING FOR PHYSICAL HARDWARE |
 
 ## Wave R0 lineage
@@ -150,7 +151,12 @@ are bound by `HC-IA-HC-007-S1-ACTIVATION-001`; runtime remains not started.
   statistics, semantic HMI views and deterministic local PDF from one canonical
   synthetic job;
   evidence: `test_restart_preserves_counts_materials_total_and_pdf` and the
-  requirement-level S1 mapping; status `OWNER MERGE REQUIRED`.
+  requirement-level S1 mapping; status `MERGED / REPOSITORY VERIFIED`.
+
+Closure record `HC-REQ-HC-002-S1-CLOSURE-001` binds PR #96–#99 lineage and
+the final PR #99 Repository Verification. Controlled merge and Repository
+Verification of that record will establish bounded S1 closure and fulfillment
+without extending runtime authority.
 
 The S1 evidence remains bounded to local synthetic/test-only behavior. Finished
 GUI/DTools and physical GL100E acceptance remain partial; Generation 2 and all
