@@ -141,6 +141,10 @@ are bound by `HC-IA-HC-007-S1-ACTIVATION-001`; runtime remains not started.
   settlement lines and total, `format_pln` uses integer grosz, and the shared
   deterministic local renderer produces a PDF marked `NIE JEST FAKTURĄ`;
   evidence: `tests.test_job_settlement_report`; status `OWNER MERGE REQUIRED`.
+- S1-3 semantic HMI views: `daily_work_view` exposes counts and material
+  quantities without price bindings; `closed_job_summary_view` exposes stored
+  settlement lines and the dominant formatted net total without recalculation;
+  evidence: `tests.test_job_statistics_hmi`; status `OWNER MERGE REQUIRED`.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.
