@@ -50,6 +50,8 @@ def main() -> int:
     statistics_authority_path = Path("governance/IA-HC-007-S1_Job_Statistics_and_Final_Settlement_Authority_v0.1.md")
     statistics_decision_path = Path("docs/decisions/HC-REQ-HC-002-S1-PREPARATION-DECISION-001.md")
     statistics_activation_path = Path("governance/HC-IA-HC-007-S1-ACTIVATION-001.md")
+    statistics_closure_path = Path("docs/closure/HC-REQ-HC-002-S1-CLOSURE-001.md")
+    statistics_closure = statistics_closure_path.read_text(encoding="utf-8") if statistics_closure_path.is_file() else ""
 
     expected_plan_status = "APPROVED / RECOVERY ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
     expected_authority_status = "APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
@@ -144,11 +146,11 @@ def main() -> int:
     if not statistics_plan_path.is_file():
         errors.append("job statistics and final settlement plan missing")
     else:
-        require(statistics_plan, "PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL AND IMPLEMENTATION AUTHORITY REQUIRED", "job statistics plan", errors)
+        require(statistics_plan, "FULFILLED FOR AUTHORIZED S1 SCOPE — CLOSURE READY / PROJECT OWNER MERGE REQUIRED", "job statistics plan", errors)
         require(statistics_plan, "RAZEM NETTO", "job statistics plan", errors)
         require(statistics_plan, "no VAT, accounting or payment", "job statistics plan", errors)
     require(current, "`REQ-HC-002-A1 closure`: `CLOSURE READY", "CURRENT_STATE", errors)
-    require(current, "`Job statistics and final settlement plan`: `PROPOSED / NOT ACTIVE", "CURRENT_STATE", errors)
+    require(current, "`Job statistics and final settlement plan`: `FULFILLED FOR AUTHORIZED S1 SCOPE — CLOSURE READY`", "CURRENT_STATE", errors)
     for path, label in (
         (statistics_requirement_path, "REQ-HC-002-S1"),
         (statistics_authority_path, "IA-HC-007-S1"),
@@ -176,8 +178,16 @@ def main() -> int:
         require(statistics_activation, "e51bee95058c6fc4d9766af1467ac31202efc584", "IA-HC-007-S1 activation", errors)
         require(statistics_activation, "RUNTIME NOT STARTED", "IA-HC-007-S1 activation", errors)
     require(current, "`IA-HC-007-S1`: `APPROVED / ACTIVE", "CURRENT_STATE", errors)
-    require(current, "`IA-HC-007-S1 runtime`: `S1-1/S1-2/S1-3 MERGED / VERIFIED; S1-4 BOUNDED SYNTHETIC IMPLEMENTATION / OWNER MERGE REQUIRED`", "CURRENT_STATE", errors)
-    require(trace, "| HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | APPROVED / ACTIVE PROSPECTIVELY |", "HC-TRACE-001", errors)
+    if not statistics_closure_path.is_file():
+        errors.append("REQ-HC-002-S1 closure record missing")
+    else:
+        require(statistics_closure, "CLOSURE READY — PROJECT OWNER MERGE REQUIRED", "HC-REQ-HC-002-S1-CLOSURE-001", errors)
+        require(statistics_closure, "5c7ac7811fcb524191f226acecfc54f5bb921064", "HC-REQ-HC-002-S1-CLOSURE-001", errors)
+        require(statistics_closure, "53c4dbefad383446d4f64fffa52817f690777ec4", "HC-REQ-HC-002-S1-CLOSURE-001", errors)
+    require(current, "`IA-HC-007-S1 runtime`: `S1-1/S1-2/S1-3/S1-4 MERGED / REPOSITORY VERIFIED — CLOSURE READY`", "CURRENT_STATE", errors)
+    require(current, "`REQ-HC-002-S1 closure`: `CLOSURE READY — PROJECT OWNER MERGE REQUIRED`", "CURRENT_STATE", errors)
+    require(trace, "| HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | APPROVED / ACTIVE / FULFILLMENT READY |", "HC-TRACE-001", errors)
+    require(trace, "| HC-CLOSE-002-S1 | Bounded statistics and settlement closure | HC-REQ-HC-002-S1-CLOSURE-001 | CLOSURE READY / OWNER MERGE REQUIRED |", "HC-TRACE-001", errors)
 
     for marker in (
         "Kinco GL100E",

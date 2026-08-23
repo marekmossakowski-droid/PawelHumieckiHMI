@@ -12,11 +12,12 @@
 
 ## Status and authority
 
-`PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL AND IMPLEMENTATION AUTHORITY REQUIRED`
+`FULFILLED FOR AUTHORIZED S1 SCOPE — CLOSURE READY / PROJECT OWNER MERGE REQUIRED`
 
-This plan does not activate runtime work. Each task requires a clean assertion
-RED, remote test-only checkpoint, minimal GREEN, full regression, Draft PR and
-exact-head owner approval before merge.
+Runtime wykonano prospektywnie pod aktywnym `IA-HC-007-S1` w czterech
+kontrolowanych inkrementach S1-1..S1-4. Każdy inkrement zachował clean assertion
+RED, zdalny test-only checkpoint, minimalny GREEN, pełną regresję, Draft PR,
+zgodę Project Ownera na exact head, kontrolowany merge i Repository Verification.
 
 ## Global Constraints
 
