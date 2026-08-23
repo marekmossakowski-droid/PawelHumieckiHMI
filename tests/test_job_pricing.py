@@ -22,7 +22,7 @@ class JobPricingTests(unittest.TestCase):
         )
 
     def test_material_line_uses_decimal_half_up_to_grosz(self):
-        rate = self.MaterialRate("BLOCK", "Klocek", "szt.", 1855, 2, False, True)
+        rate = self.MaterialRate("BLOCK", "Klocek", "szt.", 1855, 3, False, True)
 
         self.assertEqual(rate.line_total_grosz(Decimal("1.235")), 2291)
 
