@@ -127,6 +127,17 @@ Preparation decision `HC-REQ-HC-002-S1-PREPARATION-DECISION-001` permitted only
 the Draft authority package. Project Owner approval and verified PR #94 merge
 are bound by `HC-IA-HC-007-S1-ACTIVATION-001`; runtime remains not started.
 
+## REQ-HC-002-S1 implementation evidence
+
+- S1-1 derived statistics: `StatisticsFilter`, immutable `JobStatistics` and
+  `derive_job_statistics` aggregate only canonical `Job` snapshots, including
+  records reloaded through `LocalJobStore`;
+- evidence: `tests.test_job_statistics` covers durable restart, inclusive
+  operator/farm/date/state filters, open-job zero-net behavior and date-range
+  rejection;
+- status: `OWNER MERGE REQUIRED`; later settlement PDF, semantic HMI,
+  integration and closure increments remain pending.
+
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.
 A native DTools project/export remains `NATIVE_DTOOLS_ARTIFACT_REQUIRED / NOT YET EVIDENCED` until generated with the real Kinco toolchain and evidenced before HW-A3 PASS.

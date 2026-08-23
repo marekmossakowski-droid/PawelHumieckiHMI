@@ -7,7 +7,10 @@ import unittest
 
 from hoofcare.domain.jobs import Job, JobPricingSnapshot, JobState, MaterialRate
 from hoofcare.persistence.job_store import LocalJobStore
-from tests.job_fixtures import completed_session
+try:
+    from tests.job_fixtures import completed_session
+except ModuleNotFoundError:
+    from job_fixtures import completed_session
 
 
 def require_symbol(case: unittest.TestCase, symbol: str):
