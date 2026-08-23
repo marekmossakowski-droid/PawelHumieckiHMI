@@ -98,8 +98,20 @@ Content decision: Project Owner approved `REQ-HC-002-A1` and the written
 design on PR #86 exact head `c651534ca6fafd037d4887b2b8face2aea158753` and
 authorized preparation of the TDD plan only. Merge and `IA-HC-007-A1`
 activation were subsequently completed by controlled merge and Repository
-Verification recorded in `HC-IA-HC-007-A1-ACTIVATION-001`; runtime remains
-`NOT STARTED`.
+Verification recorded in `HC-IA-HC-007-A1-ACTIVATION-001`. Runtime is now
+implemented for the bounded local synthetic/test-only A1 slice, with final
+integration evidence pending controlled merge and Repository Verification.
+
+## REQ-HC-002-A1 implementation evidence
+
+- A1-1: immutable versioned pricing snapshot, audit, retry conflict and freeze;
+- A1-2: local schema-v2 atomic persistence and fail-closed audit validation;
+- A1-3: durable application correction use case;
+- A1-4: semantic price visibility/editability and separate GL100E profile;
+- A1-5: `test_open_correct_restart_complete_freeze_and_close` plus requirement-level mapping.
+
+This evidence does not claim a finished GUI/DTools project, physical acceptance,
+Generation 2, real data, device access, deployment or closed-settlement correction.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.
