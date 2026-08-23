@@ -1,7 +1,9 @@
 # IMP-HC-005 — Wave R2 UX, Observability and Engineering Quality v0.1
 
 ## Status
-`PROPOSED — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / RECOVERY ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001`
+
+Plan jest wykonywany w trybie governance recovery. Prospektywne `IA-HC-006` zaczyna obowiązywać dopiero po kontrolowanym merge rekordu recovery i Repository Verification; nie autoryzuje retroaktywnie PR #74–#76.
 
 ## Goal
 Close `AUD-HC-018` through `AUD-HC-025` using bounded local synthetic/test-only changes before claiming bench runtime maturity.

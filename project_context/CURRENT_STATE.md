@@ -10,6 +10,8 @@
 
 `WAVE R1 DATA INTEGRITY AND CLINICAL PROVENANCE = CLOSED / IMPLEMENTED / VERIFIED / RECONCILED`
 
+`WAVE R2 GOVERNANCE RECOVERY = APPROVED / ACTIVATION PENDING CONTROLLED MERGE`
+
 `F75 / ISOLATED BENCH HARDWARE ASSEMBLY = ACTIVE`
 
 `CURRENT PHYSICAL STEP = HW-A1 — GOODS-IN VERIFICATION / WAITING FOR PHYSICAL HARDWARE`
@@ -28,6 +30,8 @@ Compatibility marker for canonical governance CI: `CURRENT STEP = HW-A1 — GOOD
 - `IMP-HC-004`: `FULFILLED FOR AUTHORIZED R1 SCOPE`.
 - `IA-HC-005`: `FULFILLED FOR AUTHORIZED R1 SCOPE`.
 - `AUD-HC-007`–`AUD-HC-014`: `CLOSED / VERIFIED`.
+- `IMP-HC-005`: `APPROVED / RECOVERY ACTIVE`.
+- `IA-HC-006`: `APPROVED / ACTIVATION PENDING CONTROLLED MERGE OF HC-IA-HC-006-RECOVERY-ACTIVATION-001`.
 
 Compatibility marker retained: `WAVE R0 SOFTWARE/DOCUMENTATION REMEDIATION = CLOSURE READY / OWNER MERGE REQUIRED`.
 Compatibility marker retained: `IMP-HC-003 = FULFILLED FOR AUTHORIZED R0 SCOPE — CLOSURE PENDING OWNER MERGE`.
@@ -42,13 +46,21 @@ Compatibility marker retained: `IA-HC-005` remains active until `HC-R1-CLOSURE-0
 - R1-D/E: domain invariants and operation/resource-scoped idempotency isolation.
 - R1-F/G/H: canonical lesion/treatment/material/media records, explicit media provenance and report derivation from committed canonical clinical data.
 
+## Wave R2 governance recovery
+- PR #73 pozostawił formalny `IA-HC-006` jako `PROPOSED / NOT ACTIVE`.
+- PR #74–#76 są istniejącym stanem `main`, lecz nie stanowią dowodu wcześniejszego authority.
+- ich zawartość przeszła świeżą weryfikację recovery: 15/15 testów celowanych i 103/103 pełnej regresji — PASS;
+- R2-C semantic status gate jest naprawiany w recovery PR;
+- PR #77 pozostaje `OPEN / MERGE BLOCKED BY GOVERNANCE RECOVERY`;
+- R2 closure nie jest ustanowione.
+
 ## Explicit unresolved dependencies
 - `edge_host = EDGE_HOST_REQUIRED / NOT YET SELECTED`.
 - `native_dtools_artifact = REQUIRED / NOT YET EVIDENCED`.
 - `HW-A1 = WAITING FOR PHYSICAL HARDWARE`.
 - `HW-A2 = NOT STARTED / NOT PASS`.
 - `HW-A3 = NOT STARTED / NOT PASS`.
-- R2 audit findings remain open.
+- R2 governance recovery i formalne closure pozostają otwarte.
 
 ## Selected bench hardware target
 - Kinco GL100E, 10.1 inch, 1024×600;
