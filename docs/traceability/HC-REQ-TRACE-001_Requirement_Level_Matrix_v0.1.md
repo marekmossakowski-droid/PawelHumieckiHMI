@@ -3,7 +3,7 @@
 ## Status
 `ACTIVE / R0 RECONCILIATION`
 
-Legend: `IMPLEMENTED`, `PARTIAL`, `DEFERRED`, `BLOCKED`.
+Legend: `IMPLEMENTED`, `PARTIAL`, `PROPOSED`, `DEFERRED`, `BLOCKED`.
 
 | Requirement | Status | Primary evidence / disposition |
 |---|---|---|
@@ -77,6 +77,29 @@ Legend: `IMPLEMENTED`, `PARTIAL`, `DEFERRED`, `BLOCKED`.
 | REQ-HC-JOB-CLOSE-S1-002 | IMPLEMENTED FOR SYNTHETIC SCOPE | `tests.test_job_settlement_report` and `test_restart_preserves_counts_materials_total_and_pdf`; stored lines and dominant `RAZEM NETTO` |
 | REQ-HC-JOB-CLOSE-S1-003 | IMPLEMENTED FOR SYNTHETIC SCOPE | `test_restart_preserves_counts_materials_total_and_pdf`; closed schema-v2 snapshot reproduces identical settlement after restart |
 | REQ-HC-JOB-CLOSE-S1-004 | IMPLEMENTED FOR SYNTHETIC SCOPE | `test_restart_preserves_counts_materials_total_and_pdf`; deterministic local PDF marked as not an invoice |
+| REQ-HC-G1-NAV-001 | PROPOSED / NOT IMPLEMENTED | canonical route graph planned in G1-1 |
+| REQ-HC-G1-NAV-002 | PROPOSED / NOT IMPLEMENTED | deterministic transition and recovery guards planned in G1-1 |
+| REQ-HC-G1-NAV-003 | PROPOSED / NOT IMPLEMENTED | full GL100E geometry coverage planned in G1-5 |
+| REQ-HC-G1-JOB-001 | PROPOSED / NOT IMPLEMENTED | job-opening GUI projection planned in G1-2 |
+| REQ-HC-G1-JOB-002 | PROPOSED / NOT IMPLEMENTED | canonical pricing visibility and eligibility planned in G1-2 |
+| REQ-HC-G1-JOB-003 | PROPOSED / NOT IMPLEMENTED | active-job dashboard planned in G1-2 |
+| REQ-HC-G1-TREAT-001 | PROPOSED / NOT IMPLEMENTED | complete local treatment wizard planned in G1-3 |
+| REQ-HC-G1-TREAT-002 | PROPOSED / NOT IMPLEMENTED | canonical completion/persistence binding planned in G1-3 |
+| REQ-HC-G1-TREAT-003 | PROPOSED / NOT IMPLEMENTED | additional-material treatment view planned in G1-3 |
+| REQ-HC-G1-TREAT-004 | PROPOSED / NOT IMPLEMENTED | fail-closed recovery view planned in G1-3 |
+| REQ-HC-G1-STAT-001 | PROPOSED / NOT IMPLEMENTED | work statistics projection planned in G1-4 |
+| REQ-HC-G1-STAT-002 | PROPOSED / NOT IMPLEMENTED | stored settlement view planned in G1-4 |
+| REQ-HC-G1-STAT-003 | PROPOSED / NOT IMPLEMENTED | local history/report surfaces planned in G1-4 |
+| REQ-HC-G1-ADMIN-001 | PROPOSED / NOT IMPLEMENTED | synthetic owner-zone gate planned in G1-1 |
+| REQ-HC-G1-ADMIN-002 | PROPOSED / NOT IMPLEMENTED | capability-bound admin views planned in G1-4 |
+| REQ-HC-G1-ADMIN-003 | PROPOSED / NOT IMPLEMENTED | operator independence negative tests planned in G1-1/G1-2 |
+| REQ-HC-G1-ADAPT-001 | PROPOSED / NOT IMPLEMENTED | semantic/device separation planned across G1-1..G1-5 |
+| REQ-HC-G1-ADAPT-002 | PROPOSED / NOT IMPLEMENTED | GL100E profile planned in G1-5 |
+| REQ-HC-G1-ADAPT-003 | PROPOSED / NOT IMPLEMENTED | Generation 2 exclusion enforced by G1 governance tests |
+| REQ-HC-G1-DTOOLS-001 | PROPOSED / NOT IMPLEMENTED | native DTools evidence planned in G1-5 |
+| REQ-HC-G1-DTOOLS-002 | PROPOSED / NOT IMPLEMENTED | fail-closed binding manifest planned in G1-5 |
+| REQ-HC-G1-DTOOLS-003 | PROPOSED / NOT IMPLEMENTED | offline DTools compile evidence planned in G1-5 |
+| REQ-HC-G1-DTOOLS-004 | PROPOSED / NOT IMPLEMENTED | physical upload and acceptance remain separately blocked |
 
 ## R0 closures represented by this matrix
 - AUD-HC-003: corrected by R0-B valid PDF renderer.
@@ -94,3 +117,7 @@ device access, deployment or closed-settlement correction.
 claim a finished GUI or DTools artifact, physical GL100E acceptance, invoicing,
 VAT, accounting, payments, Generation 2, real data, device access, deployment
 or correction of a closed settlement.
+
+`REQ-HC-003-G1` remains proposed and not implemented. Its rows describe the
+approved preparation package and planned evidence only; they do not activate
+`IA-HC-008`, create a native DTools artifact or establish physical readiness.

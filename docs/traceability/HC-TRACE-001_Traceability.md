@@ -35,10 +35,14 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | HC-REQ-002-A1 | Zootechnician pricing access and freeze | REQ-HC-002-A1 | APPROVED / BASELINED / MERGED |
 | HC-IA-007-A1 | Zootechnician pricing authority amendment | IA-HC-007-A1 | APPROVED / ACTIVE |
 | HC-CLOSE-002-A1 | Bounded pricing-access closure | HC-REQ-HC-002-A1-CLOSURE-001 | CLOSURE READY / OWNER MERGE REQUIRED |
-| HC-PLAN-STAT-001 | Job statistics and final settlement plan | 2026-08-23-job-statistics-final-settlement | FULFILLED FOR AUTHORIZED S1 SCOPE / CLOSURE READY |
-| HC-REQ-002-S1 | Job statistics and final settlement requirements | REQ-HC-002-S1 | APPROVED / BASELINED |
-| HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | APPROVED / ACTIVE / FULFILLMENT READY |
-| HC-CLOSE-002-S1 | Bounded statistics and settlement closure | HC-REQ-HC-002-S1-CLOSURE-001 | CLOSURE READY / OWNER MERGE REQUIRED |
+| HC-PLAN-STAT-001 | Job statistics and final settlement plan | 2026-08-23-job-statistics-final-settlement | FULFILLED FOR AUTHORIZED S1 SCOPE |
+| HC-REQ-002-S1 | Job statistics and final settlement requirements | REQ-HC-002-S1 | CLOSED / IMPLEMENTED / VERIFIED / RECONCILED |
+| HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | FULFILLED FOR AUTHORIZED S1 SCOPE |
+| HC-CLOSE-002-S1 | Bounded statistics and settlement closure | HC-REQ-HC-002-S1-CLOSURE-001 | MERGED / REPOSITORY VERIFIED |
+| HC-REQ-003-G1 | Complete Generation 1 HMI GUI and DTools requirements | REQ-HC-003-G1 | PROPOSED / NOT BASELINED |
+| HC-UX-002 | Generation 1 complete HMI and DTools design | UX-HC-002 | DRAFT / CONTENT APPROVAL REQUIRED |
+| HC-PLAN-G1 | Generation 1 HMI GUI and DTools plan | 2026-08-24-generation-1-hmi-gui-dtools | PROPOSED / NOT ACTIVE |
+| HC-IA-008 | Generation 1 HMI GUI and DTools authority | IA-HC-008 | PROPOSED / NOT ACTIVE |
 | HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | WAITING FOR PHYSICAL HARDWARE |
 
 ## Wave R0 lineage
@@ -154,14 +158,30 @@ are bound by `HC-IA-HC-007-S1-ACTIVATION-001`; runtime remains not started.
   requirement-level S1 mapping; status `MERGED / REPOSITORY VERIFIED`.
 
 Closure record `HC-REQ-HC-002-S1-CLOSURE-001` binds PR #96–#99 lineage and
-the final PR #99 Repository Verification. Controlled merge and Repository
-Verification of that record will establish bounded S1 closure and fulfillment
-without extending runtime authority.
+the final PR #99 Repository Verification. PR #100 approved head
+`f13975221d19692b7d715a1ee71575a75614b3c6` was controlled-merged as
+`d2af53d739403ff6f4199fabe43159cb3de10317`; Repository Verification confirmed
+exact tree `d28f73b0731917bd3777d198c5210071c9a613d8` and 155/155 tests. Therefore
+`REQ-HC-002-S1` is closed for the bounded synthetic scope and `IA-HC-007-S1`
+is fulfilled for its authorized scope.
 
 The S1 evidence remains bounded to local synthetic/test-only behavior. Finished
 GUI/DTools and physical GL100E acceptance remain partial; Generation 2 and all
 excluded financial, device, network, deployment and real-data surfaces remain
 deferred or unauthorized.
+
+## Generation 1 GUI/DTools package proposal
+
+Preparation decision `HC-REQ-HC-003-G1-PREPARATION-DECISION-001` permits only
+the Draft documentation package. `REQ-HC-003-G1`, `UX-HC-002`, the six-slice
+TDD plan and `IA-HC-008` remain proposed or draft. No implementation authority
+is active and runtime is not started.
+
+The package binds the complete local zootechnician workflow, role surfaces,
+adaptive presentation and GL100E/DTools realization to existing canonical job,
+pricing, statistics, settlement and clinical services. `1024×600` remains a
+device profile. `EDGE_HOST_REQUIRED / NOT YET SELECTED`, native DTools evidence,
+HW-A1 and HW-A3 remain independent gates.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.
