@@ -27,6 +27,8 @@ def main() -> int:
 
     current = Path("project_context/CURRENT_STATE.md").read_text(encoding="utf-8")
     trace = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
+    requirement_trace_path = Path("docs/traceability/HC-REQ-TRACE-001_Requirement_Level_Matrix_v0.1.md")
+    requirement_trace = requirement_trace_path.read_text(encoding="utf-8") if requirement_trace_path.is_file() else ""
     plan = Path("planning/IMP-HC-005_Wave_R2_UX_Observability_and_Engineering_Quality_v0.1.md").read_text(encoding="utf-8")
     authority = Path("governance/IA-HC-006_Wave_R2_UX_Observability_and_Engineering_Quality_Authority_v0.1.md").read_text(encoding="utf-8")
     recovery_path = Path("governance/HC-IA-HC-006-RECOVERY-ACTIVATION-001.md")
@@ -52,6 +54,11 @@ def main() -> int:
     statistics_activation_path = Path("governance/HC-IA-HC-007-S1-ACTIVATION-001.md")
     statistics_closure_path = Path("docs/closure/HC-REQ-HC-002-S1-CLOSURE-001.md")
     statistics_closure = statistics_closure_path.read_text(encoding="utf-8") if statistics_closure_path.is_file() else ""
+    gen1_decision_path = Path("docs/decisions/HC-REQ-HC-003-G1-PREPARATION-DECISION-001.md")
+    gen1_requirement_path = Path("docs/requirements/REQ-HC-003_Generation_1_Complete_HMI_GUI_and_DTools_v0.1.md")
+    gen1_design_path = Path("docs/design/UX-HC-002_Generation_1_Complete_HMI_GUI_and_DTools_v0.1.md")
+    gen1_plan_path = Path("docs/superpowers/plans/2026-08-24-generation-1-hmi-gui-dtools.md")
+    gen1_authority_path = Path("governance/IA-HC-008_Generation_1_HMI_GUI_and_DTools_Authority_v0.1.md")
 
     expected_plan_status = "APPROVED / RECOVERY ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
     expected_authority_status = "APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
@@ -150,7 +157,7 @@ def main() -> int:
         require(statistics_plan, "RAZEM NETTO", "job statistics plan", errors)
         require(statistics_plan, "no VAT, accounting or payment", "job statistics plan", errors)
     require(current, "`REQ-HC-002-A1 closure`: `CLOSURE READY", "CURRENT_STATE", errors)
-    require(current, "`Job statistics and final settlement plan`: `FULFILLED FOR AUTHORIZED S1 SCOPE — CLOSURE READY`", "CURRENT_STATE", errors)
+    require(current, "`Job statistics and final settlement plan`: `FULFILLED FOR AUTHORIZED S1 SCOPE`", "CURRENT_STATE", errors)
     for path, label in (
         (statistics_requirement_path, "REQ-HC-002-S1"),
         (statistics_authority_path, "IA-HC-007-S1"),
@@ -177,17 +184,66 @@ def main() -> int:
         require(statistics_activation, "97e33d09128f13383e4a57fa2de0217bebef4b19", "IA-HC-007-S1 activation", errors)
         require(statistics_activation, "e51bee95058c6fc4d9766af1467ac31202efc584", "IA-HC-007-S1 activation", errors)
         require(statistics_activation, "RUNTIME NOT STARTED", "IA-HC-007-S1 activation", errors)
-    require(current, "`IA-HC-007-S1`: `APPROVED / ACTIVE", "CURRENT_STATE", errors)
+    require(current, "`IA-HC-007-S1`: `FULFILLED FOR AUTHORIZED S1 SCOPE`", "CURRENT_STATE", errors)
     if not statistics_closure_path.is_file():
         errors.append("REQ-HC-002-S1 closure record missing")
     else:
         require(statistics_closure, "CLOSURE READY — PROJECT OWNER MERGE REQUIRED", "HC-REQ-HC-002-S1-CLOSURE-001", errors)
         require(statistics_closure, "5c7ac7811fcb524191f226acecfc54f5bb921064", "HC-REQ-HC-002-S1-CLOSURE-001", errors)
         require(statistics_closure, "53c4dbefad383446d4f64fffa52817f690777ec4", "HC-REQ-HC-002-S1-CLOSURE-001", errors)
-    require(current, "`IA-HC-007-S1 runtime`: `S1-1/S1-2/S1-3/S1-4 MERGED / REPOSITORY VERIFIED — CLOSURE READY`", "CURRENT_STATE", errors)
-    require(current, "`REQ-HC-002-S1 closure`: `CLOSURE READY — PROJECT OWNER MERGE REQUIRED`", "CURRENT_STATE", errors)
-    require(trace, "| HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | APPROVED / ACTIVE / FULFILLMENT READY |", "HC-TRACE-001", errors)
-    require(trace, "| HC-CLOSE-002-S1 | Bounded statistics and settlement closure | HC-REQ-HC-002-S1-CLOSURE-001 | CLOSURE READY / OWNER MERGE REQUIRED |", "HC-TRACE-001", errors)
+    require(current, "`REQ-HC-002-S1`: `CLOSED / IMPLEMENTED / VERIFIED / RECONCILED FOR BOUNDED SYNTHETIC SCOPE`", "CURRENT_STATE", errors)
+    require(current, "`IA-HC-007-S1 runtime`: `S1-1/S1-2/S1-3/S1-4 MERGED / REPOSITORY VERIFIED`", "CURRENT_STATE", errors)
+    require(current, "`REQ-HC-002-S1 closure`: `MERGED / REPOSITORY VERIFIED VIA PR #100`", "CURRENT_STATE", errors)
+    require(trace, "| HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | FULFILLED FOR AUTHORIZED S1 SCOPE |", "HC-TRACE-001", errors)
+    require(trace, "| HC-CLOSE-002-S1 | Bounded statistics and settlement closure | HC-REQ-HC-002-S1-CLOSURE-001 | MERGED / REPOSITORY VERIFIED |", "HC-TRACE-001", errors)
+
+    for path, label in (
+        (gen1_decision_path, "HC-REQ-HC-003-G1-PREPARATION-DECISION-001"),
+        (gen1_requirement_path, "REQ-HC-003-G1"),
+        (gen1_design_path, "UX-HC-002"),
+        (gen1_plan_path, "Generation 1 GUI/DTools plan"),
+        (gen1_authority_path, "IA-HC-008"),
+    ):
+        if not path.is_file():
+            errors.append(f"{label} surface missing")
+    if gen1_decision_path.is_file():
+        gen1_decision = gen1_decision_path.read_text(encoding="utf-8")
+        require(gen1_decision, "RUNTIME NOT AUTHORIZED", "Generation 1 preparation decision", errors)
+        require(gen1_decision, "d2af53d739403ff6f4199fabe43159cb3de10317", "Generation 1 preparation decision", errors)
+    if gen1_requirement_path.is_file():
+        gen1_requirement = gen1_requirement_path.read_text(encoding="utf-8")
+        require(gen1_requirement, "PROPOSED / NOT BASELINED / IMPLEMENTATION NOT AUTHORIZED", "REQ-HC-003-G1", errors)
+        require(gen1_requirement, "REQ-HC-G1-DTOOLS-004", "REQ-HC-003-G1", errors)
+        if not requirement_trace_path.is_file():
+            errors.append("HC-REQ-TRACE-001 surface missing for REQ-HC-003-G1")
+        else:
+            require(requirement_trace, "| REQ-HC-G1-DTOOLS-004 | PROPOSED / NOT IMPLEMENTED |", "HC-REQ-TRACE-001", errors)
+    if gen1_design_path.is_file():
+        gen1_design = gen1_design_path.read_text(encoding="utf-8")
+        require(gen1_design, "EDGE_HOST_REQUIRED / NOT YET SELECTED", "UX-HC-002", errors)
+        require(gen1_design, "1024×600", "UX-HC-002", errors)
+    if gen1_plan_path.is_file():
+        gen1_plan = gen1_plan_path.read_text(encoding="utf-8")
+        require(gen1_plan, "clean assertion RED", "Generation 1 GUI/DTools plan", errors)
+        require(gen1_plan, "Task G1-6", "Generation 1 GUI/DTools plan", errors)
+    if gen1_authority_path.is_file():
+        gen1_authority = gen1_authority_path.read_text(encoding="utf-8")
+        if status_line(gen1_authority) != "PROPOSED / NOT ACTIVE":
+            errors.append("IA-HC-008 status conflict: expected 'PROPOSED / NOT ACTIVE'")
+        require(gen1_authority, "grants no implementation authority", "IA-HC-008", errors)
+        for forbidden_boundary in (
+            "Generation 2",
+            "real data",
+            "network/cloud",
+            "KVK I/O",
+            "PLC/safety mutation",
+            "invoicing",
+            "public distribution",
+        ):
+            require(gen1_authority, forbidden_boundary, "IA-HC-008", errors)
+    require(current, "`REQ-HC-003-G1`: `PROPOSED / NOT BASELINED`", "CURRENT_STATE", errors)
+    require(current, "`IA-HC-008`: `PROPOSED / NOT ACTIVE`", "CURRENT_STATE", errors)
+    require(trace, "| HC-IA-008 | Generation 1 HMI GUI and DTools authority | IA-HC-008 | PROPOSED / NOT ACTIVE |", "HC-TRACE-001", errors)
 
     for marker in (
         "Kinco GL100E",
