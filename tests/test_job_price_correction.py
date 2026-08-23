@@ -2,7 +2,10 @@ from datetime import datetime, timezone
 import importlib
 import unittest
 
-from tests.job_fixtures import completed_session, open_job_fixture
+try:
+    from tests.job_fixtures import completed_session, open_job_fixture
+except ModuleNotFoundError:
+    from job_fixtures import completed_session, open_job_fixture
 
 
 CORRECTED_AT = datetime(2026, 8, 23, 8, 30, tzinfo=timezone.utc)

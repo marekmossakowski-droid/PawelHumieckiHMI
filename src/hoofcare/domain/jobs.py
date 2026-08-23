@@ -103,6 +103,23 @@ class JobState(str, Enum):
     CLOSED = "CLOSED"
 
 
+class PriceField(str, Enum):
+    COW_UNIT_PRICE = "COW_UNIT_PRICE"
+    MATERIAL_UNIT_PRICE = "MATERIAL_UNIT_PRICE"
+
+
+@dataclass(frozen=True)
+class PriceCorrection:
+    event_id: str
+    operator_id: str
+    corrected_at: datetime
+    reason: str
+    field: PriceField
+    material_code: str | None
+    old_value_grosz: int
+    new_value_grosz: int
+
+
 @dataclass(frozen=True)
 class CompletedSessionLink:
     event_id: str
@@ -149,6 +166,8 @@ class Job:
     completed_links: tuple[CompletedSessionLink, ...] = ()
     usages: tuple[MaterialUsage, ...] = ()
     closed_settlement: Settlement | None = None
+    pricing_version: int = 1
+    price_corrections: tuple[PriceCorrection, ...] = ()
 
     @classmethod
     def open(
@@ -180,6 +199,10 @@ class Job:
     @property
     def completed_cows(self) -> int:
         return len(self.completed_links)
+
+    @property
+    def pricing_frozen(self) -> bool:
+        return bool(self.completed_links)
 
     @property
     def completed_session_ids(self) -> tuple[str, ...]:
@@ -254,6 +277,88 @@ class Job:
     def add_local_material(self, rate: MaterialRate) -> "Job":
         self._require_open()
         return replace(self, pricing=self.pricing.with_local_material(rate))
+
+    def correct_price(
+        self,
+        event_id: str,
+        operator_id: str,
+        corrected_at: datetime,
+        reason: str,
+        field: PriceField,
+        new_value_grosz: int,
+        material_code: str | None = None,
+    ) -> "Job":
+        self._require_open()
+        if self.pricing_frozen:
+            raise ValueError("pricing is frozen")
+        normalized_event_id = _text("event_id", event_id)
+        normalized_operator_id = _text("operator_id", operator_id)
+        normalized_reason = _text("reason", reason)
+        if not isinstance(corrected_at, datetime) or corrected_at.tzinfo is None:
+            raise ValueError("corrected_at must be timezone-aware")
+        if not isinstance(field, PriceField):
+            raise ValueError("field must be a PriceField")
+        if type(new_value_grosz) is not int or new_value_grosz < 0:
+            raise ValueError("new value must be non-negative integer grosze")
+
+        normalized_material_code: str | None = None
+        if field is PriceField.COW_UNIT_PRICE:
+            if material_code is not None:
+                raise ValueError("cow price correction cannot name a material")
+        else:
+            if material_code is None:
+                raise ValueError("material price correction requires material code")
+            normalized_material_code = _text("material_code", material_code)
+
+        for existing in self.price_corrections:
+            if existing.event_id != normalized_event_id:
+                continue
+            if (
+                existing.operator_id == normalized_operator_id
+                and existing.corrected_at == corrected_at
+                and existing.reason == normalized_reason
+                and existing.field is field
+                and existing.material_code == normalized_material_code
+                and existing.new_value_grosz == new_value_grosz
+            ):
+                return self
+            raise ValueError("correction event payload conflict")
+
+        if field is PriceField.COW_UNIT_PRICE:
+            old_value_grosz = self.pricing.cow_unit_price_grosz
+            changed_pricing = replace(
+                self.pricing,
+                cow_unit_price_grosz=new_value_grosz,
+            )
+        else:
+            assert normalized_material_code is not None
+            existing_rate = self.pricing.rate(normalized_material_code)
+            old_value_grosz = existing_rate.unit_price_grosz
+            changed_rate = replace(existing_rate, unit_price_grosz=new_value_grosz)
+            changed_pricing = replace(
+                self.pricing,
+                additional_materials=tuple(
+                    changed_rate if rate.code == normalized_material_code else rate
+                    for rate in self.pricing.additional_materials
+                ),
+            )
+
+        correction = PriceCorrection(
+            normalized_event_id,
+            normalized_operator_id,
+            corrected_at,
+            normalized_reason,
+            field,
+            normalized_material_code,
+            old_value_grosz,
+            new_value_grosz,
+        )
+        return replace(
+            self,
+            pricing=changed_pricing,
+            pricing_version=self.pricing_version + 1,
+            price_corrections=self.price_corrections + (correction,),
+        )
 
     def close(
         self,
