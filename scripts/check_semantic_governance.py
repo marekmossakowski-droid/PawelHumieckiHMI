@@ -9,6 +9,19 @@ def require(text: str, marker: str, surface: str, errors: list[str]) -> None:
         errors.append(f"{surface} missing semantic marker: {marker}")
 
 
+def status_line(text: str) -> str | None:
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        if line.strip() == "## Status":
+            for candidate in lines[index + 1:]:
+                value = candidate.strip()
+                if value.startswith("`") and value.endswith("`"):
+                    return value.strip("`")
+                if value:
+                    break
+    return None
+
+
 def main() -> int:
     errors: list[str] = []
 
@@ -16,6 +29,26 @@ def main() -> int:
     trace = Path("docs/traceability/HC-TRACE-001_Traceability.md").read_text(encoding="utf-8")
     plan = Path("planning/IMP-HC-005_Wave_R2_UX_Observability_and_Engineering_Quality_v0.1.md").read_text(encoding="utf-8")
     authority = Path("governance/IA-HC-006_Wave_R2_UX_Observability_and_Engineering_Quality_Authority_v0.1.md").read_text(encoding="utf-8")
+    recovery_path = Path("governance/HC-IA-HC-006-RECOVERY-ACTIVATION-001.md")
+    recovery = recovery_path.read_text(encoding="utf-8") if recovery_path.is_file() else ""
+
+    expected_plan_status = "APPROVED / RECOVERY ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
+    expected_authority_status = "APPROVED / ACTIVATION PENDING CONTROLLED MERGE OF HC-IA-HC-006-RECOVERY-ACTIVATION-001"
+    if status_line(plan) != expected_plan_status:
+        errors.append(f"IMP-HC-005 status conflict: expected {expected_plan_status!r}, got {status_line(plan)!r}")
+    if status_line(authority) != expected_authority_status:
+        errors.append(
+            f"IA-HC-006 status conflict: expected {expected_authority_status!r}, got {status_line(authority)!r}"
+        )
+    if not recovery_path.is_file():
+        errors.append("IA-HC-006 recovery activation record missing")
+    else:
+        require(recovery, "nie nadaje authority retroaktywnie", "HC-IA-HC-006-RECOVERY-ACTIVATION-001", errors)
+        require(recovery, "PR #77 pozostaje `OPEN / MERGE BLOCKED BY GOVERNANCE RECOVERY`", "HC-IA-HC-006-RECOVERY-ACTIVATION-001", errors)
+
+    require(current, "`IMP-HC-005`: `APPROVED / RECOVERY ACTIVE`", "CURRENT_STATE", errors)
+    require(current, "`IA-HC-006`: `APPROVED / ACTIVATION PENDING CONTROLLED MERGE", "CURRENT_STATE", errors)
+    require(trace, "| HC-IA-006 | Wave R2 recovery authority | IA-HC-006 | APPROVED / ACTIVATION PENDING CONTROLLED MERGE |", "HC-TRACE-001", errors)
 
     for marker in (
         "Kinco GL100E",

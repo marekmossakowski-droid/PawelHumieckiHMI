@@ -40,7 +40,7 @@ class R2CIQualityTests(unittest.TestCase):
             authority_path = fixture_root / copied_paths[3]
             authority = authority_path.read_text(encoding='utf-8')
             authority = authority.replace(
-                'APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001',
+                'APPROVED / ACTIVATION PENDING CONTROLLED MERGE OF HC-IA-HC-006-RECOVERY-ACTIVATION-001',
                 'PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL REQUIRED',
             )
             authority_path.write_text(authority, encoding='utf-8')
