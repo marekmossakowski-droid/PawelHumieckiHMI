@@ -39,6 +39,9 @@ def main() -> int:
     job_activation = job_activation_path.read_text(encoding="utf-8") if job_activation_path.is_file() else ""
     job_reconciliation_path = Path("docs/reconciliation/HC-UX-HC-001-POST-MERGE-RECON-001.md")
     job_reconciliation = job_reconciliation_path.read_text(encoding="utf-8") if job_reconciliation_path.is_file() else ""
+    pricing_authority = Path("governance/IA-HC-007-A1_Zootechnician_Pricing_Access_Amendment_v0.1.md").read_text(encoding="utf-8")
+    pricing_activation_path = Path("governance/HC-IA-HC-007-A1-ACTIVATION-001.md")
+    pricing_activation = pricing_activation_path.read_text(encoding="utf-8") if pricing_activation_path.is_file() else ""
 
     expected_plan_status = "APPROVED / RECOVERY ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
     expected_authority_status = "APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
@@ -100,6 +103,30 @@ def main() -> int:
         "public distribution",
     ):
         require(job_authority, forbidden_boundary, "IA-HC-007", errors)
+
+    expected_pricing_authority_status = (
+        "APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-007-A1-ACTIVATION-001"
+    )
+    if status_line(pricing_authority) != expected_pricing_authority_status:
+        errors.append(
+            "IA-HC-007-A1 status conflict: expected "
+            f"{expected_pricing_authority_status!r}, got {status_line(pricing_authority)!r}"
+        )
+    if not pricing_activation_path.is_file():
+        errors.append("IA-HC-007-A1 activation record missing")
+    else:
+        require(
+            pricing_activation,
+            "MERGED / REPOSITORY VERIFIED — IA-HC-007-A1 PROSPECTIVELY ACTIVE",
+            "HC-IA-HC-007-A1-ACTIVATION-001",
+            errors,
+        )
+        require(pricing_activation, "fe5bc6f2c405415aa85251399334d5b335bddf0b", "HC-IA-HC-007-A1-ACTIVATION-001", errors)
+        require(pricing_activation, "5cde8249336e45db373fbcb165369f7f18af31c5", "HC-IA-HC-007-A1-ACTIVATION-001", errors)
+        require(pricing_activation, "1c6a2756ebb4f9c04b4ca4928b3671ea339f6b80", "HC-IA-HC-007-A1-ACTIVATION-001", errors)
+        require(pricing_activation, "RUNTIME NOT STARTED", "HC-IA-HC-007-A1-ACTIVATION-001", errors)
+    require(current, "`IA-HC-007-A1`: `APPROVED / ACTIVE", "CURRENT_STATE", errors)
+    require(trace, "| HC-IA-007-A1 | Zootechnician pricing authority amendment | IA-HC-007-A1 | APPROVED / ACTIVE |", "HC-TRACE-001", errors)
 
     for marker in (
         "Kinco GL100E",

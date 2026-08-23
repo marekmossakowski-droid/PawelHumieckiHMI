@@ -32,6 +32,8 @@ class R2CIQualityTests(unittest.TestCase):
             Path('governance/IA-HC-007_Role_Based_Jobs_Settlement_and_Statistics_Authority_v0.1.md'),
             Path('governance/HC-IA-HC-007-ACTIVATION-001.md'),
             Path('docs/reconciliation/HC-UX-HC-001-POST-MERGE-RECON-001.md'),
+            Path('governance/IA-HC-007-A1_Zootechnician_Pricing_Access_Amendment_v0.1.md'),
+            Path('governance/HC-IA-HC-007-A1-ACTIVATION-001.md'),
         )
 
         with tempfile.TemporaryDirectory() as tmp:
@@ -86,6 +88,8 @@ class R2CIQualityTests(unittest.TestCase):
             Path('governance/IA-HC-007_Role_Based_Jobs_Settlement_and_Statistics_Authority_v0.1.md'),
             Path('governance/HC-IA-HC-007-ACTIVATION-001.md'),
             Path('docs/reconciliation/HC-UX-HC-001-POST-MERGE-RECON-001.md'),
+            Path('governance/IA-HC-007-A1_Zootechnician_Pricing_Access_Amendment_v0.1.md'),
+            Path('governance/HC-IA-HC-007-A1-ACTIVATION-001.md'),
         )
 
         with tempfile.TemporaryDirectory() as tmp:
@@ -126,6 +130,8 @@ class R2CIQualityTests(unittest.TestCase):
             Path('docs/reconciliation/HC-R2-GOVERNANCE-POST-MERGE-RECON-001.md'),
             Path('planning/IMP-UX-HC-001_Role_Based_Menu_Job_Settlement_and_Statistics_v0.1.md'),
             Path('governance/IA-HC-007_Role_Based_Jobs_Settlement_and_Statistics_Authority_v0.1.md'),
+            Path('governance/IA-HC-007-A1_Zootechnician_Pricing_Access_Amendment_v0.1.md'),
+            Path('governance/HC-IA-HC-007-A1-ACTIVATION-001.md'),
         )
 
         with tempfile.TemporaryDirectory() as tmp:
@@ -191,6 +197,50 @@ class R2CIQualityTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 1)
         self.assertIn('IA-HC-007 status conflict', result.stderr)
+
+    def test_semantic_governance_checker_rejects_active_ia_hc_007_a1_without_activation_record(self):
+        repository_root = Path.cwd()
+        checker = repository_root / 'scripts/check_semantic_governance.py'
+        copied_paths = (
+            Path('project_context/CURRENT_STATE.md'),
+            Path('docs/traceability/HC-TRACE-001_Traceability.md'),
+            Path('planning/IMP-HC-005_Wave_R2_UX_Observability_and_Engineering_Quality_v0.1.md'),
+            Path('governance/IA-HC-006_Wave_R2_UX_Observability_and_Engineering_Quality_Authority_v0.1.md'),
+            Path('governance/HC-IA-HC-006-RECOVERY-ACTIVATION-001.md'),
+            Path('docs/reconciliation/HC-R2-GOVERNANCE-POST-MERGE-RECON-001.md'),
+            Path('planning/IMP-UX-HC-001_Role_Based_Menu_Job_Settlement_and_Statistics_v0.1.md'),
+            Path('governance/IA-HC-007_Role_Based_Jobs_Settlement_and_Statistics_Authority_v0.1.md'),
+            Path('governance/HC-IA-HC-007-ACTIVATION-001.md'),
+            Path('docs/reconciliation/HC-UX-HC-001-POST-MERGE-RECON-001.md'),
+            Path('governance/IA-HC-007-A1_Zootechnician_Pricing_Access_Amendment_v0.1.md'),
+        )
+
+        with tempfile.TemporaryDirectory() as tmp:
+            fixture_root = Path(tmp)
+            for relative_path in copied_paths:
+                destination = fixture_root / relative_path
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(repository_root / relative_path, destination)
+
+            authority_path = fixture_root / copied_paths[-1]
+            authority_path.write_text(
+                authority_path.read_text(encoding='utf-8').replace(
+                    'PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL REQUIRED',
+                    'APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-007-A1-ACTIVATION-001',
+                ),
+                encoding='utf-8',
+            )
+
+            result = subprocess.run(
+                [sys.executable, str(checker)],
+                cwd=fixture_root,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+        self.assertEqual(result.returncode, 1)
+        self.assertIn('IA-HC-007-A1 activation record missing', result.stderr)
 
     def test_coverage_runner_exists(self):
         self.assertTrue(Path('scripts/run_coverage.py').is_file())
