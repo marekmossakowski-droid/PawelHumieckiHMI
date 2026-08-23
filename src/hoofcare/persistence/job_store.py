@@ -15,6 +15,8 @@ from hoofcare.domain.jobs import (
     JobState,
     MaterialRate,
     MaterialUsage,
+    PriceCorrection,
+    PriceField,
     Settlement,
     SettlementLine,
 )
@@ -68,6 +70,20 @@ def _serialize_job(job: Job) -> dict[str, Any]:
         "opened_at": job.opened_at.isoformat(),
         "planned_cows": job.planned_cows,
         "state": job.state.value,
+        "pricing_version": job.pricing_version,
+        "price_corrections": [
+            {
+                "event_id": correction.event_id,
+                "operator_id": correction.operator_id,
+                "corrected_at": correction.corrected_at.isoformat(),
+                "reason": correction.reason,
+                "field": correction.field.value,
+                "material_code": correction.material_code,
+                "old_value_grosz": correction.old_value_grosz,
+                "new_value_grosz": correction.new_value_grosz,
+            }
+            for correction in job.price_corrections
+        ],
         "pricing": {
             "cow_unit_price_grosz": job.pricing.cow_unit_price_grosz,
             "additional_materials": [
@@ -183,6 +199,69 @@ def _deserialize_job(payload: dict[str, Any]) -> Job:
     linked_ids = {link.session_id for link in links}
     if any(usage.session_id not in linked_ids for usage in usages):
         raise ValueError("material usage references an unlinked session")
+    pricing_version = payload["pricing_version"]
+    if type(pricing_version) is not int or pricing_version < 1:
+        raise ValueError("pricing version must be a positive integer")
+    corrections_payload = payload["price_corrections"]
+    if not isinstance(corrections_payload, list):
+        raise ValueError("price corrections must be a list")
+    corrections: list[PriceCorrection] = []
+    event_ids: set[str] = set()
+    price_chain: dict[tuple[PriceField, str | None], int] = {}
+    for item in corrections_payload:
+        if not isinstance(item, dict):
+            raise ValueError("price correction must be an object")
+        event_id = item["event_id"]
+        operator_id = item["operator_id"]
+        reason = item["reason"]
+        if not isinstance(event_id, str) or not event_id.strip():
+            raise ValueError("correction event_id must be non-empty text")
+        if event_id in event_ids:
+            raise ValueError("correction event IDs must be unique")
+        event_ids.add(event_id)
+        if not isinstance(operator_id, str) or not operator_id.strip():
+            raise ValueError("correction operator_id must be non-empty text")
+        if not isinstance(reason, str) or not reason.strip():
+            raise ValueError("correction reason must be non-empty text")
+        field = PriceField(item["field"])
+        material_code = item["material_code"]
+        if field is PriceField.COW_UNIT_PRICE:
+            if material_code is not None:
+                raise ValueError("cow correction cannot name a material")
+        elif not isinstance(material_code, str) or not material_code.strip():
+            raise ValueError("material correction requires material code")
+        old_value = item["old_value_grosz"]
+        new_value = item["new_value_grosz"]
+        if type(old_value) is not int or old_value < 0:
+            raise ValueError("old correction value must be integer grosze")
+        if type(new_value) is not int or new_value < 0:
+            raise ValueError("new correction value must be integer grosze")
+        key = (field, material_code)
+        if key in price_chain and price_chain[key] != old_value:
+            raise ValueError("price correction history is discontinuous")
+        price_chain[key] = new_value
+        corrections.append(
+            PriceCorrection(
+                event_id=event_id.strip(),
+                operator_id=operator_id.strip(),
+                corrected_at=_aware_datetime(item["corrected_at"]),
+                reason=reason.strip(),
+                field=field,
+                material_code=material_code.strip() if material_code is not None else None,
+                old_value_grosz=old_value,
+                new_value_grosz=new_value,
+            )
+        )
+    if len(corrections) != pricing_version - 1:
+        raise ValueError("pricing version and correction history conflict")
+    for (field, material_code), expected_value in price_chain.items():
+        active_value = (
+            pricing.cow_unit_price_grosz
+            if field is PriceField.COW_UNIT_PRICE
+            else pricing.rate(material_code).unit_price_grosz
+        )
+        if active_value != expected_value:
+            raise ValueError("active pricing and correction history conflict")
     return Job(
         job_id=base.job_id,
         farm_id=base.farm_id,
@@ -194,11 +273,13 @@ def _deserialize_job(payload: dict[str, Any]) -> Job:
         completed_links=links,
         usages=usages,
         closed_settlement=settlement,
+        pricing_version=pricing_version,
+        price_corrections=tuple(corrections),
     )
 
 
 class LocalJobStore:
-    SNAPSHOT_SCHEMA_VERSION = 1
+    SNAPSHOT_SCHEMA_VERSION = 2
 
     def __init__(self, root: Path) -> None:
         self.root = Path(root)
