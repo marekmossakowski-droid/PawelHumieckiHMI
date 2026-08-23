@@ -3,7 +3,7 @@ import unittest
 
 
 class Generation1HmiGuiPackageGovernanceTests(unittest.TestCase):
-    def test_generation_1_gui_package_is_complete_and_remains_inactive(self):
+    def test_generation_1_gui_package_is_complete_and_activation_gated(self):
         surfaces = {
             "decision": Path(
                 "docs/decisions/HC-REQ-HC-003-G1-PREPARATION-DECISION-001.md"
@@ -39,7 +39,7 @@ class Generation1HmiGuiPackageGovernanceTests(unittest.TestCase):
             decision,
         )
         self.assertIn("d2af53d739403ff6f4199fabe43159cb3de10317", decision)
-        self.assertIn("PROPOSED / NOT BASELINED / IMPLEMENTATION NOT AUTHORIZED", requirements)
+        self.assertIn("APPROVED / BASELINED — EFFECTIVE AFTER MERGE", requirements)
         for requirement_id in (
             "REQ-HC-G1-NAV-001",
             "REQ-HC-G1-JOB-001",
@@ -56,8 +56,8 @@ class Generation1HmiGuiPackageGovernanceTests(unittest.TestCase):
         self.assertIn("G1-1", plan)
         self.assertIn("G1-6", plan)
         self.assertIn("clean assertion RED", plan)
-        self.assertIn("PROPOSED / NOT ACTIVE", authority)
-        self.assertIn("grants no implementation authority", authority)
+        self.assertIn("APPROVED / ACTIVE — PROSPECTIVELY AFTER MERGE", authority)
+        self.assertIn("Przed merge i Repository Verification", authority)
         for forbidden_boundary in (
             "Generation 2",
             "real data",
@@ -69,10 +69,10 @@ class Generation1HmiGuiPackageGovernanceTests(unittest.TestCase):
         ):
             self.assertIn(forbidden_boundary, authority)
 
-        self.assertIn("`REQ-HC-003-G1`: `PROPOSED / NOT BASELINED`", current)
-        self.assertIn("`IA-HC-008`: `PROPOSED / NOT ACTIVE`", current)
+        self.assertIn("`REQ-HC-003-G1`: `APPROVED / BASELINED PROSPECTIVELY", current)
+        self.assertIn("`IA-HC-008`: `ACTIVATION READY", current)
         self.assertIn(
-            "| HC-IA-008 | Generation 1 HMI GUI and DTools authority | IA-HC-008 | PROPOSED / NOT ACTIVE |",
+            "| HC-IA-008 | Generation 1 HMI GUI and DTools authority | IA-HC-008 | ACTIVATION READY / OWNER MERGE REQUIRED |",
             trace,
         )
 

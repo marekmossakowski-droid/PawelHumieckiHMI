@@ -39,10 +39,10 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | HC-REQ-002-S1 | Job statistics and final settlement requirements | REQ-HC-002-S1 | CLOSED / IMPLEMENTED / VERIFIED / RECONCILED |
 | HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | FULFILLED FOR AUTHORIZED S1 SCOPE |
 | HC-CLOSE-002-S1 | Bounded statistics and settlement closure | HC-REQ-HC-002-S1-CLOSURE-001 | MERGED / REPOSITORY VERIFIED |
-| HC-REQ-003-G1 | Complete Generation 1 HMI GUI and DTools requirements | REQ-HC-003-G1 | PROPOSED / NOT BASELINED |
-| HC-UX-002 | Generation 1 complete HMI and DTools design | UX-HC-002 | DRAFT / CONTENT APPROVAL REQUIRED |
-| HC-PLAN-G1 | Generation 1 HMI GUI and DTools plan | 2026-08-24-generation-1-hmi-gui-dtools | PROPOSED / NOT ACTIVE |
-| HC-IA-008 | Generation 1 HMI GUI and DTools authority | IA-HC-008 | PROPOSED / NOT ACTIVE |
+| HC-REQ-003-G1 | Complete Generation 1 HMI GUI and DTools requirements | REQ-HC-003-G1 | BASELINE READY / OWNER MERGE REQUIRED |
+| HC-UX-002 | Generation 1 complete HMI and DTools design | UX-HC-002 | APPROVED / BASELINE READY |
+| HC-PLAN-G1 | Generation 1 HMI GUI and DTools plan | 2026-08-24-generation-1-hmi-gui-dtools | APPROVED / ACTIVATION MERGE REQUIRED |
+| HC-IA-008 | Generation 1 HMI GUI and DTools authority | IA-HC-008 | ACTIVATION READY / OWNER MERGE REQUIRED |
 | HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | WAITING FOR PHYSICAL HARDWARE |
 
 ## Wave R0 lineage
@@ -172,10 +172,14 @@ deferred or unauthorized.
 
 ## Generation 1 GUI/DTools package proposal
 
-Preparation decision `HC-REQ-HC-003-G1-PREPARATION-DECISION-001` permits only
-the Draft documentation package. `REQ-HC-003-G1`, `UX-HC-002`, the six-slice
-TDD plan and `IA-HC-008` remain proposed or draft. No implementation authority
-is active and runtime is not started.
+Preparation decision `HC-REQ-HC-003-G1-PREPARATION-DECISION-001` permitted only
+the Draft documentation package. PR #101 approved head
+`f18df0d37df6ff241696822758e14f795107eddd` was controlled-merged as
+`eb41f067d2c0c2c4eeba98c9d8ab4cdae598c361`; Repository Verification confirmed
+tree `b25b5ff8a12f2aca37d109a72beaded3130e20ba` and 156/156 tests. Baselining
+decision `HC-REQ-HC-003-G1-BASELINE-DECISION-001` and activation record
+`HC-IA-HC-008-ACTIVATION-001` are now ready for exact-head owner approval.
+Runtime remains not started and unauthorized until their own merge and RV.
 
 The package binds the complete local zootechnician workflow, role surfaces,
 adaptive presentation and GL100E/DTools realization to existing canonical job,

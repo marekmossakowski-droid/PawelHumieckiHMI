@@ -1,5 +1,9 @@
 # Generation 1 HMI GUI and DTools Implementation Plan
 
+## Status
+
+`APPROVED / ACTIVE — EFFECTIVE AFTER MERGE AND REPOSITORY VERIFICATION OF HC-IA-HC-008-ACTIVATION-001`
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Zrealizować kompletne lokalne GUI Generacji 1 dla Pawła i właściciela oraz zweryfikowany offline projekt Kinco DTools dla GL100E bez rozszerzenia granic urządzeń, danych lub wdrożenia.

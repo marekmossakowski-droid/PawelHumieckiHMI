@@ -2,7 +2,7 @@
 
 ## Status
 
-`PROPOSED / NOT BASELINED / IMPLEMENTATION NOT AUTHORIZED`
+`APPROVED / BASELINED — EFFECTIVE AFTER MERGE AND REPOSITORY VERIFICATION OF HC-IA-HC-008-ACTIVATION-001`
 
 ## Cel i zakres
 
@@ -181,8 +181,9 @@ wybranego edge hosta, osobnego authority i Repository Verification.
 
 Każdy inkrement runtime wymaga clean assertion RED, zdalnego test-only
 checkpointu, minimalnego GREEN, testów celowanych, pełnej regresji, osobnego
-Draft PR i zgody Project Ownera na exact final head. Wymagania pozostają
-nieaktywne do baseliningu i osobnej aktywacji `IA-HC-008`.
+Draft PR i zgody Project Ownera na exact final head. Implementacja pozostaje
+zabroniona do kontrolowanego merge i Repository Verification rekordu
+`HC-IA-HC-008-ACTIVATION-001`.
 
 ## Wyłączenia
 
