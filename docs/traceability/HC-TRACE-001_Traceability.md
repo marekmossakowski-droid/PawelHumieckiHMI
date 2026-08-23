@@ -36,8 +36,8 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | HC-IA-007-A1 | Zootechnician pricing authority amendment | IA-HC-007-A1 | APPROVED / ACTIVE |
 | HC-CLOSE-002-A1 | Bounded pricing-access closure | HC-REQ-HC-002-A1-CLOSURE-001 | CLOSURE READY / OWNER MERGE REQUIRED |
 | HC-PLAN-STAT-001 | Job statistics and final settlement plan | 2026-08-23-job-statistics-final-settlement | PROPOSED / NOT ACTIVE |
-| HC-REQ-002-S1 | Job statistics and final settlement requirements | REQ-HC-002-S1 | PROPOSED / NOT BASELINED |
-| HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | PROPOSED / NOT ACTIVE |
+| HC-REQ-002-S1 | Job statistics and final settlement requirements | REQ-HC-002-S1 | APPROVED / BASELINED |
+| HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | APPROVED / ACTIVE PROSPECTIVELY |
 | HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | WAITING FOR PHYSICAL HARDWARE |
 
 ## Wave R0 lineage
@@ -123,9 +123,9 @@ Repository Verification confirmed exact tree
 A1 workstream is closure-ready, not yet canonically closed. Statistics and final
 settlement planning is documented separately as `PROPOSED / NOT ACTIVE`.
 
-Preparation decision `HC-REQ-HC-002-S1-PREPARATION-DECISION-001` permits only
-the Draft authority package. `REQ-HC-002-S1` is not baselined,
-`IA-HC-007-S1` is not active and runtime is not authorized.
+Preparation decision `HC-REQ-HC-002-S1-PREPARATION-DECISION-001` permitted only
+the Draft authority package. Project Owner approval and verified PR #94 merge
+are bound by `HC-IA-HC-007-S1-ACTIVATION-001`; runtime remains not started.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.

@@ -9,7 +9,13 @@ class StatisticsAuthorityGovernanceTests(unittest.TestCase):
         decision = Path("docs/decisions/HC-REQ-HC-002-S1-PREPARATION-DECISION-001.md")
         for path in (requirement, authority, decision):
             self.assertTrue(path.is_file(), f"required governance surface missing: {path}")
-        self.assertIn("PROPOSED / NOT ACTIVE", authority.read_text(encoding="utf-8"))
+        authority_text = authority.read_text(encoding="utf-8")
+        activation = Path("governance/HC-IA-HC-007-S1-ACTIVATION-001.md")
+        if activation.is_file():
+            self.assertIn("APPROVED / ACTIVE", authority_text)
+            self.assertIn("RUNTIME NOT STARTED", activation.read_text(encoding="utf-8"))
+        else:
+            self.assertIn("PROPOSED / NOT ACTIVE", authority_text)
         self.assertIn("RUNTIME NOT AUTHORIZED", decision.read_text(encoding="utf-8"))
 
 

@@ -2,7 +2,7 @@
 
 ## Status
 
-`PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / ACTIVE — PROSPECTIVELY AFTER MERGE AND REPOSITORY VERIFICATION OF HC-IA-HC-007-S1-ACTIVATION-001`
 
 ## Prospective scope
 
@@ -52,5 +52,6 @@ Runtime remains forbidden until all of the following occur:
 
 ## Current effect
 
-None. This document is a proposal and grants no implementation authority.
-
+Before the activation record is merged and Repository Verified, this document
+grants no implementation authority. Afterwards its effect is prospective and
+limited to the scope above.
