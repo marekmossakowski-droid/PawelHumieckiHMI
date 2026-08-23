@@ -11,8 +11,16 @@ def main(argv: list[str] | None = None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
     if len(args) != 1:
         raise SystemExit("usage: hoofcare-bench <bench-runtime.json>")
-    config = BenchRuntimeConfig.from_json_file(Path(args[0]))
-    status = launch_bench_runtime(config)
+    try:
+        config = BenchRuntimeConfig.from_json_file(Path(args[0]))
+    except (OSError, TypeError, ValueError) as exc:
+        print(f"ERROR: bench runtime configuration invalid: {exc}", file=sys.stderr)
+        return 2
+    try:
+        status = launch_bench_runtime(config)
+    except OSError as exc:
+        print(f"ERROR: bench runtime launch failed: {exc}", file=sys.stderr)
+        return 3
     print(json.dumps(status, sort_keys=True))
     return 0
 

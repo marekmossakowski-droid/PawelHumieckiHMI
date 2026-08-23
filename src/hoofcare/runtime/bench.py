@@ -17,6 +17,12 @@ class BenchRuntimeConfig:
     kvk_connected: bool = False
 
     def __post_init__(self) -> None:
+        if not isinstance(self.mode, str):
+            raise ValueError("bench runtime mode must be a string")
+        if not isinstance(self.data_dir, str) or not isinstance(self.report_dir, str):
+            raise ValueError("bench runtime directories must be strings")
+        if type(self.network_enabled) is not bool or type(self.kvk_connected) is not bool:
+            raise ValueError("bench runtime connection flags must be booleans")
         if self.mode != _ALLOWED_MODE:
             raise ValueError("bench runtime mode must be SYNTHETIC_TEST_ONLY")
         if self.network_enabled:
