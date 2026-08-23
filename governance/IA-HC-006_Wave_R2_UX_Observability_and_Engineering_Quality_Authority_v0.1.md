@@ -1,10 +1,7 @@
 # IA-HC-006 — Wave R2 UX, Observability and Engineering Quality Authority v0.1
 
 ## Status
-`APPROVED / ACTIVATION PENDING CONTROLLED MERGE OF HC-IA-HC-006-RECOVERY-ACTIVATION-001`
-
-Po kontrolowanym merge i Repository Verification status przechodzi na:
-`APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001`.
+`APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001`
 
 Aktywacja jest prospektywna. Nie nadaje authority retroaktywnie PR #74–#76; ich treść podlega świeżej weryfikacji w ramach recovery.
 

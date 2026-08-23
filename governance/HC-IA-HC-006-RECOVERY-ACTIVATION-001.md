@@ -1,7 +1,7 @@
 # HC-IA-HC-006-RECOVERY-ACTIVATION-001 — R2 Governance Recovery and Prospective Activation
 
 ## Status
-`APPROVED — PROJECT OWNER DECISION 2026-08-23 / REPOSITORY MATERIALIZATION PENDING CONTROLLED MERGE`
+`MERGED / VERIFIED — IA-HC-006 PROSPECTIVELY ACTIVE`
 
 ## Wykryta luka
 PR #73 opublikował `IMP-HC-005` i `IA-HC-006` wyłącznie jako `PROPOSED / NOT ACTIVE`. Kanoniczny dokument authority nie został następnie aktywowany przed merge PR #74, #75 i #76, mimo że opisy tych PR-ów używały określenia `under active IA-HC-006`.
@@ -47,3 +47,6 @@ Brak authority dla HW-A1/HW-A2/HW-A3 PASS, natywnego artefaktu Kinco DTools, wyb
 3. Repository Verification na kanonicznym `main`.
 
 Do tego momentu PR #77 pozostaje `OPEN / MERGE BLOCKED BY GOVERNANCE RECOVERY`.
+
+## Wynik aktywacji
+PR #78 został kontrolowanie scalony jako `f664b680a6507eac4a5ab10dcd2dc7bba4953eb3`, a Repository Verification zakończyło się PASS. `IA-HC-006 = APPROVED / ACTIVE` prospektywnie; historyczna luka PR #74–#76 pozostaje jawna.

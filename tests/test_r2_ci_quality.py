@@ -40,7 +40,7 @@ class R2CIQualityTests(unittest.TestCase):
             authority_path = fixture_root / copied_paths[3]
             authority = authority_path.read_text(encoding='utf-8')
             authority = authority.replace(
-                'APPROVED / ACTIVATION PENDING CONTROLLED MERGE OF HC-IA-HC-006-RECOVERY-ACTIVATION-001',
+                'APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001',
                 'PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL REQUIRED',
             )
             authority_path.write_text(authority, encoding='utf-8')
@@ -57,6 +57,43 @@ class R2CIQualityTests(unittest.TestCase):
                 + '\n| HC-IA-006 | Recovery authority | IA-HC-006 | APPROVED / ACTIVE |\n',
                 encoding='utf-8',
             )
+
+            result = subprocess.run(
+                [sys.executable, str(checker)],
+                cwd=fixture_root,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+        self.assertEqual(result.returncode, 1)
+        self.assertIn('IA-HC-006 status conflict', result.stderr)
+
+    def test_semantic_governance_checker_rejects_pending_ia_hc_006_after_recovery_merge(self):
+        repository_root = Path.cwd()
+        checker = repository_root / 'scripts/check_semantic_governance.py'
+        copied_paths = (
+            Path('project_context/CURRENT_STATE.md'),
+            Path('docs/traceability/HC-TRACE-001_Traceability.md'),
+            Path('planning/IMP-HC-005_Wave_R2_UX_Observability_and_Engineering_Quality_v0.1.md'),
+            Path('governance/IA-HC-006_Wave_R2_UX_Observability_and_Engineering_Quality_Authority_v0.1.md'),
+            Path('governance/HC-IA-HC-006-RECOVERY-ACTIVATION-001.md'),
+        )
+
+        with tempfile.TemporaryDirectory() as tmp:
+            fixture_root = Path(tmp)
+            for relative_path in copied_paths:
+                destination = fixture_root / relative_path
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(repository_root / relative_path, destination)
+
+            authority_path = fixture_root / copied_paths[3]
+            authority = authority_path.read_text(encoding='utf-8')
+            authority = authority.replace(
+                'APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001',
+                'APPROVED / ACTIVATION PENDING CONTROLLED MERGE OF HC-IA-HC-006-RECOVERY-ACTIVATION-001',
+            )
+            authority_path.write_text(authority, encoding='utf-8')
 
             result = subprocess.run(
                 [sys.executable, str(checker)],
