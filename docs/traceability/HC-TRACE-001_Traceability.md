@@ -1,7 +1,7 @@
 # HC-TRACE-001 — Traceability
 
 ## Status
-`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / IA-HC-006 ACTIVE / R0 CLOSED / R1 CLOSED / R2 GOVERNANCE RECOVERY CLOSED / HW-A1 CURRENT`
+`ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE CLOSED / IA-HC-003 ACTIVE / IA-HC-006 ACTIVE / IA-HC-007 ACTIVE / R0 CLOSED / R1 CLOSED / R2 GOVERNANCE RECOVERY CLOSED / HW-A1 CURRENT`
 
 Compatibility marker for canonical governance CI: `HW-A1 CURRENT`.
 Canonical IA-HC-003 activation merge compatibility marker: `52d65b18f966f553501a7829855f23b7390762a6`.
@@ -28,6 +28,9 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | HC-IA-005 | Wave R1 data integrity/provenance authority | IA-HC-005 | FULFILLED FOR AUTHORIZED R1 SCOPE |
 | HC-IMP-005 | Wave R2 UX/observability/engineering quality plan | IMP-HC-005 | APPROVED / RECOVERY ACTIVE |
 | HC-IA-006 | Wave R2 recovery authority | IA-HC-006 | APPROVED / ACTIVE |
+| HC-UX-001 | Role menu and job settlement design | UX-HC-001 / ADR-HC-008 / REQ-HC-002 | APPROVED / BASELINED V0.1 SLICE |
+| HC-IMP-UX-001 | Role menu and job settlement implementation plan | IMP-UX-HC-001 | APPROVED / ACTIVE |
+| HC-IA-007 | Job settlement authority | IA-HC-007 | APPROVED / ACTIVE |
 | HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | WAITING FOR PHYSICAL HARDWARE |
 
 ## Wave R0 lineage
@@ -63,6 +66,17 @@ R1 closure gate: PR #71 merge `cbacafb9b09fa4530649d27b1b376659217939bb`.
 Recovery record: `HC-IA-HC-006-RECOVERY-ACTIVATION-001`.
 Nie ustanawia retroaktywnego authority. R2 closure pozostaje otwarte.
 Post-merge reconciliation: `HC-R2-GOVERNANCE-POST-MERGE-RECON-001`.
+
+## UX-HC-001 authority activation
+
+- approved exact head PR #80: `8901922380a3ec342747088e5acccdcd4ca5b44d`;
+- controlled merge: `3a32e3b5b7d1f5b2693836c044ef73caa63276d3`;
+- verified tree: `fa8d5e3bdf1d71087b12472d8a649f6685ac6632`;
+- activation record: `HC-IA-HC-007-ACTIVATION-001`;
+- post-merge reconciliation: `HC-UX-HC-001-POST-MERGE-RECON-001`;
+- `IA-HC-007 = APPROVED / ACTIVE` prospectively for local synthetic/test-only `REQ-HC-002` v0.1 implementation.
+
+No runtime implementation is claimed by the activation package. PR #77 and R2 closure remain separate.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.

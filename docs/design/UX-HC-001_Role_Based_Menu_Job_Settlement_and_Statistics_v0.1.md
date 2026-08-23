@@ -2,7 +2,7 @@
 
 ## Status
 
-`APPROVED DESIGN CONTENT / DOCUMENTATION-ONLY / IMPLEMENTATION AUTHORITY REQUIRED`
+`APPROVED DESIGN CONTENT / IA-HC-007 ACTIVE FOR REQ-HC-002 V0.1 SLICE`
 
 Project Owner zatwierdził kierunek funkcjonalny obejmujący:
 
@@ -15,7 +15,7 @@ Project Owner zatwierdził kierunek funkcjonalny obejmujący:
 - ukrycie cen w trakcie właściwej pracy;
 - końcowe zestawienie z kwotą `RAZEM NETTO` w PLN.
 
-Ten dokument nie aktywuje implementacji. Obowiązujące `IA-HC-006` jest ograniczone do `AUD-HC-018`–`AUD-HC-025` i nie obejmuje nowego modułu komercyjnego rozliczania zleceń.
+PR #80 został scalony jako `3a32e3b5b7d1f5b2693836c044ef73caa63276d3` po zatwierdzeniu exact headu `8901922380a3ec342747088e5acccdcd4ca5b44d` i Repository Verification. `IA-HC-007` aktywuje wyłącznie ograniczony zakres `REQ-HC-002` v0.1; szersze funkcje opisane jako przyszłe nadal wymagają osobnych wymagań i authority. `IA-HC-006` pozostaje oddzielnie ograniczone do `AUD-HC-018`–`AUD-HC-025`.
 
 ## 1. Cel
 

@@ -2,7 +2,7 @@
 
 ## Status
 
-`PROPOSED — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / BASELINED — PROJECT OWNER APPROVED VIA PR #80`
 
 Ten pakiet materializuje pierwszą część wizji `UX-HC-001`: role, zlecenia, ceny, materiały dodatkowe, liczniki, rozliczenie i ich statystyki. Szczegółowe funkcje kontroli, analityki klinicznej i korekt rozliczeń pozostają przyszłymi przyrostami z osobnymi wymaganiami i authority.
 
