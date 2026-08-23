@@ -32,6 +32,8 @@ class R2CIQualityTests(unittest.TestCase):
             Path('governance/IA-HC-007_Role_Based_Jobs_Settlement_and_Statistics_Authority_v0.1.md'),
             Path('governance/HC-IA-HC-007-ACTIVATION-001.md'),
             Path('docs/reconciliation/HC-UX-HC-001-POST-MERGE-RECON-001.md'),
+            Path('governance/IA-HC-007-A1_Zootechnician_Pricing_Access_Amendment_v0.1.md'),
+            Path('governance/HC-IA-HC-007-A1-ACTIVATION-001.md'),
         )
 
         with tempfile.TemporaryDirectory() as tmp:
@@ -86,6 +88,8 @@ class R2CIQualityTests(unittest.TestCase):
             Path('governance/IA-HC-007_Role_Based_Jobs_Settlement_and_Statistics_Authority_v0.1.md'),
             Path('governance/HC-IA-HC-007-ACTIVATION-001.md'),
             Path('docs/reconciliation/HC-UX-HC-001-POST-MERGE-RECON-001.md'),
+            Path('governance/IA-HC-007-A1_Zootechnician_Pricing_Access_Amendment_v0.1.md'),
+            Path('governance/HC-IA-HC-007-A1-ACTIVATION-001.md'),
         )
 
         with tempfile.TemporaryDirectory() as tmp:
@@ -126,6 +130,8 @@ class R2CIQualityTests(unittest.TestCase):
             Path('docs/reconciliation/HC-R2-GOVERNANCE-POST-MERGE-RECON-001.md'),
             Path('planning/IMP-UX-HC-001_Role_Based_Menu_Job_Settlement_and_Statistics_v0.1.md'),
             Path('governance/IA-HC-007_Role_Based_Jobs_Settlement_and_Statistics_Authority_v0.1.md'),
+            Path('governance/IA-HC-007-A1_Zootechnician_Pricing_Access_Amendment_v0.1.md'),
+            Path('governance/HC-IA-HC-007-A1-ACTIVATION-001.md'),
         )
 
         with tempfile.TemporaryDirectory() as tmp:

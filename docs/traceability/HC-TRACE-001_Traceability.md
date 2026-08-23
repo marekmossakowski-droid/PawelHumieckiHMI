@@ -32,8 +32,8 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | HC-ADR-009 | Client generations and adaptive presentation | ADR-HC-009 | APPROVED DESIGN CONTENT / NO IMPLEMENTATION AUTHORITY |
 | HC-IMP-UX-001 | Role menu and job settlement implementation plan | IMP-UX-HC-001 | APPROVED / ACTIVE |
 | HC-IA-007 | Job settlement authority | IA-HC-007 | APPROVED / ACTIVE |
-| HC-REQ-002-A1 | Zootechnician pricing access and freeze | REQ-HC-002-A1 | APPROVED / BASELINED CONTENT / NOT MERGED |
-| HC-IA-007-A1 | Zootechnician pricing authority amendment | IA-HC-007-A1 | PROPOSED / NOT ACTIVE |
+| HC-REQ-002-A1 | Zootechnician pricing access and freeze | REQ-HC-002-A1 | APPROVED / BASELINED / MERGED |
+| HC-IA-007-A1 | Zootechnician pricing authority amendment | IA-HC-007-A1 | APPROVED / ACTIVE |
 | HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | WAITING FOR PHYSICAL HARDWARE |
 
 ## Wave R0 lineage
@@ -86,16 +86,20 @@ No runtime implementation is claimed by the activation package. PR #77 and R2 cl
 - ADR-HC-009 publication merge: `0e13e1d762a332b126358cd2f490d68793249755`;
 - canonical ADR blob: `fe02c1d75f58d1e48ddb2b83e321e1e1f93b3c41`;
 - `REQ-HC-002-A1` defines the proposed pre-first-completed-cow correction window;
-- `IA-HC-007-A1` remains `PROPOSED / NOT ACTIVE` until exact-head approval,
-  controlled merge, Repository Verification and a canonical activation record.
+- `IA-HC-007-A1` was `PROPOSED / NOT ACTIVE` until exact-head approval,
+  controlled merge, Repository Verification and the canonical activation record;
+  those gates are now satisfied.
 
-The proposal does not authorize runtime implementation, Generation 2,
-closed-settlement corrections, real data, device access or deployment.
+The approved authority does not claim completed runtime implementation and does
+not authorize Generation 2, closed-settlement corrections, real data, device
+access or deployment.
 
 Content decision: Project Owner approved `REQ-HC-002-A1` and the written
 design on PR #86 exact head `c651534ca6fafd037d4887b2b8face2aea158753` and
 authorized preparation of the TDD plan only. Merge and `IA-HC-007-A1`
-activation remain pending.
+activation were subsequently completed by controlled merge and Repository
+Verification recorded in `HC-IA-HC-007-A1-ACTIVATION-001`; runtime remains
+`NOT STARTED`.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.

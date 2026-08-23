@@ -2,12 +2,12 @@
 
 ## Status
 
-`PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-007-A1-ACTIVATION-001`
 
 Ten addytywny dodatek nie zmienia historycznego tekstu ani dowodów aktywacji
-`IA-HC-007`. Może obowiązywać wyłącznie prospektywnie po osobnej zgodzie
-Project Ownera na exact head, kontrolowanym merge i pozytywnej Repository
-Verification.
+`IA-HC-007`. Obowiązuje prospektywnie po zgodzie Project Ownera na exact head
+PR #86, kontrolowanym merge i pozytywnej Repository Verification zapisanych w
+`HC-IA-HC-007-A1-ACTIVATION-001`.
 
 ## Podstawa
 
@@ -15,8 +15,7 @@ Verification.
   `0e13e1d762a332b126358cd2f490d68793249755`;
 - Project Owner zatwierdził regułę zamrożenia ceny po pierwszej trwale
   ukończonej krowie;
-- `REQ-HC-002-A1` pozostaje `PROPOSED` do czasu tej samej lub późniejszej
-  jawnej decyzji baseline.
+- `REQ-HC-002-A1` jest `APPROVED / BASELINED` decyzją Project Ownera.
 
 ## Prospektywnie autoryzowany zakres
 
