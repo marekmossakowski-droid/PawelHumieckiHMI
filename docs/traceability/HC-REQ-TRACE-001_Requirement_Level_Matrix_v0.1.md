@@ -62,6 +62,13 @@ Legend: `IMPLEMENTED`, `PARTIAL`, `DEFERRED`, `BLOCKED`.
 | REQ-HC-MVP-004 | IMPLEMENTED AT DOMAIN LEVEL | duplicate event ID behavior; service-level request collision remains R1 |
 | REQ-HC-MVP-005 | PARTIAL | reference labeling policy exists; typed media provenance remains R1 |
 | REQ-HC-MVP-006 | IMPLEMENTED FOR CURRENT PUBLIC SURFACE | no KVK actuation route; broader allowlist hardening remains R2 |
+| REQ-HC-JOB-ROLE-A1-001 | PARTIAL | local synthetic open/correct/treat/close domain and application flow; final physical HMI realization remains pending |
+| REQ-HC-JOB-ROLE-A1-002 | IMPLEMENTED FOR SYNTHETIC SCOPE | `test_pawel_sees_prices_without_owner_pin_at_open_and_correction` |
+| REQ-HC-JOB-ROLE-A1-003 | IMPLEMENTED FOR SYNTHETIC SCOPE | `test_work_screen_hides_prices_and_first_cow_removes_edit_action` |
+| REQ-HC-JOB-PRICE-A1-001 | IMPLEMENTED FOR SYNTHETIC SCOPE | `test_open_correct_restart_complete_freeze_and_close`; `test_service_persists_correction_before_returning_success` |
+| REQ-HC-JOB-PRICE-A1-002 | IMPLEMENTED FOR SYNTHETIC SCOPE | `test_first_completed_cow_freezes_all_prices`; `test_open_correct_restart_complete_freeze_and_close` |
+| REQ-HC-JOB-PRICE-A1-003 | IMPLEMENTED FOR SYNTHETIC SCOPE | domain retry/conflict tests plus schema-v2 audit round-trip and corruption tests |
+| REQ-HC-JOB-PRICE-A1-004 | IMPLEMENTED FOR SYNTHETIC SCOPE | immutable versioned snapshot tests and `test_open_correct_restart_complete_freeze_and_close` |
 
 ## R0 closures represented by this matrix
 - AUD-HC-003: corrected by R0-B valid PDF renderer.
@@ -70,3 +77,7 @@ Legend: `IMPLEMENTED`, `PARTIAL`, `DEFERRED`, `BLOCKED`.
 - AUD-HC-017: requirement-level mapping established here.
 
 This matrix does not convert PARTIAL/DEFERRED/BLOCKED requirements to implemented and does not expand authority.
+
+`REQ-HC-002-A1` evidence remains local and synthetic/test-only. The mapping does
+not claim a finished GUI, physical GL100E acceptance, Generation 2, real data,
+device access, deployment or closed-settlement correction.
