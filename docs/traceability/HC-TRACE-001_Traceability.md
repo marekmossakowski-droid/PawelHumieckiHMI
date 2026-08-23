@@ -29,8 +29,11 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | HC-IMP-005 | Wave R2 UX/observability/engineering quality plan | IMP-HC-005 | APPROVED / RECOVERY ACTIVE |
 | HC-IA-006 | Wave R2 recovery authority | IA-HC-006 | APPROVED / ACTIVE |
 | HC-UX-001 | Role menu and job settlement design | UX-HC-001 / ADR-HC-008 / REQ-HC-002 | APPROVED / BASELINED V0.1 SLICE |
+| HC-ADR-009 | Client generations and adaptive presentation | ADR-HC-009 | APPROVED DESIGN CONTENT / NO IMPLEMENTATION AUTHORITY |
 | HC-IMP-UX-001 | Role menu and job settlement implementation plan | IMP-UX-HC-001 | APPROVED / ACTIVE |
 | HC-IA-007 | Job settlement authority | IA-HC-007 | APPROVED / ACTIVE |
+| HC-REQ-002-A1 | Zootechnician pricing access and freeze | REQ-HC-002-A1 | PROPOSED / BASELINE APPROVAL REQUIRED |
+| HC-IA-007-A1 | Zootechnician pricing authority amendment | IA-HC-007-A1 | PROPOSED / NOT ACTIVE |
 | HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | WAITING FOR PHYSICAL HARDWARE |
 
 ## Wave R0 lineage
@@ -77,6 +80,17 @@ Post-merge reconciliation: `HC-R2-GOVERNANCE-POST-MERGE-RECON-001`.
 - `IA-HC-007 = APPROVED / ACTIVE` prospectively for local synthetic/test-only `REQ-HC-002` v0.1 implementation.
 
 No runtime implementation is claimed by the activation package. PR #77 and R2 closure remain separate.
+
+## ADR-HC-009 reconciliation proposal
+
+- ADR-HC-009 publication merge: `0e13e1d762a332b126358cd2f490d68793249755`;
+- canonical ADR blob: `fe02c1d75f58d1e48ddb2b83e321e1e1f93b3c41`;
+- `REQ-HC-002-A1` defines the proposed pre-first-completed-cow correction window;
+- `IA-HC-007-A1` remains `PROPOSED / NOT ACTIVE` until exact-head approval,
+  controlled merge, Repository Verification and a canonical activation record.
+
+The proposal does not authorize runtime implementation, Generation 2,
+closed-settlement corrections, real data, device access or deployment.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.
