@@ -34,6 +34,8 @@ Compatibility marker retained: `ACTIVE — BENCH MVP CLOSED / PHYSICAL PROTOTYPE
 | HC-IA-007 | Job settlement authority | IA-HC-007 | APPROVED / ACTIVE |
 | HC-REQ-002-A1 | Zootechnician pricing access and freeze | REQ-HC-002-A1 | APPROVED / BASELINED / MERGED |
 | HC-IA-007-A1 | Zootechnician pricing authority amendment | IA-HC-007-A1 | APPROVED / ACTIVE |
+| HC-CLOSE-002-A1 | Bounded pricing-access closure | HC-REQ-HC-002-A1-CLOSURE-001 | CLOSURE READY / OWNER MERGE REQUIRED |
+| HC-PLAN-STAT-001 | Job statistics and final settlement plan | 2026-08-23-job-statistics-final-settlement | PROPOSED / NOT ACTIVE |
 | HC-HW-A1 | Goods-in verification | IMP-HC-002 / HW-A1 | WAITING FOR PHYSICAL HARDWARE |
 
 ## Wave R0 lineage
@@ -112,6 +114,12 @@ integration evidence pending controlled merge and Repository Verification.
 
 This evidence does not claim a finished GUI/DTools project, physical acceptance,
 Generation 2, real data, device access, deployment or closed-settlement correction.
+
+PR #92 was controlled-merged as `8e2b2ed97f73d4f0c7015b189f7f9889e39df3ab`;
+Repository Verification confirmed exact tree
+`5cc3f0e8c8fc3ff0181258f2610b04b207784e87` and 139/139 tests. The bounded
+A1 workstream is closure-ready, not yet canonically closed. Statistics and final
+settlement planning is documented separately as `PROPOSED / NOT ACTIVE`.
 
 ## DTools / GL100E truth
 `GL100E-DTOOLS-SPEC-001` defines the exact 1024×600 realization specification.

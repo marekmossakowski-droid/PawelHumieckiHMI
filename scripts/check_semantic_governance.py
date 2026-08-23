@@ -42,6 +42,10 @@ def main() -> int:
     pricing_authority = Path("governance/IA-HC-007-A1_Zootechnician_Pricing_Access_Amendment_v0.1.md").read_text(encoding="utf-8")
     pricing_activation_path = Path("governance/HC-IA-HC-007-A1-ACTIVATION-001.md")
     pricing_activation = pricing_activation_path.read_text(encoding="utf-8") if pricing_activation_path.is_file() else ""
+    pricing_closure_path = Path("docs/closure/HC-REQ-HC-002-A1-CLOSURE-001.md")
+    pricing_closure = pricing_closure_path.read_text(encoding="utf-8") if pricing_closure_path.is_file() else ""
+    statistics_plan_path = Path("docs/superpowers/plans/2026-08-23-job-statistics-final-settlement.md")
+    statistics_plan = statistics_plan_path.read_text(encoding="utf-8") if statistics_plan_path.is_file() else ""
 
     expected_plan_status = "APPROVED / RECOVERY ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
     expected_authority_status = "APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
@@ -127,6 +131,20 @@ def main() -> int:
         require(pricing_activation, "RUNTIME NOT STARTED", "HC-IA-HC-007-A1-ACTIVATION-001", errors)
     require(current, "`IA-HC-007-A1`: `APPROVED / ACTIVE", "CURRENT_STATE", errors)
     require(trace, "| HC-IA-007-A1 | Zootechnician pricing authority amendment | IA-HC-007-A1 | APPROVED / ACTIVE |", "HC-TRACE-001", errors)
+    if not pricing_closure_path.is_file():
+        errors.append("REQ-HC-002-A1 closure record missing")
+    else:
+        require(pricing_closure, "CLOSURE READY — PROJECT OWNER MERGE REQUIRED", "HC-REQ-HC-002-A1-CLOSURE-001", errors)
+        require(pricing_closure, "8e2b2ed97f73d4f0c7015b189f7f9889e39df3ab", "HC-REQ-HC-002-A1-CLOSURE-001", errors)
+        require(pricing_closure, "5cc3f0e8c8fc3ff0181258f2610b04b207784e87", "HC-REQ-HC-002-A1-CLOSURE-001", errors)
+    if not statistics_plan_path.is_file():
+        errors.append("job statistics and final settlement plan missing")
+    else:
+        require(statistics_plan, "PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL AND IMPLEMENTATION AUTHORITY REQUIRED", "job statistics plan", errors)
+        require(statistics_plan, "RAZEM NETTO", "job statistics plan", errors)
+        require(statistics_plan, "no VAT, accounting or payment", "job statistics plan", errors)
+    require(current, "`REQ-HC-002-A1 closure`: `CLOSURE READY", "CURRENT_STATE", errors)
+    require(current, "`Job statistics and final settlement plan`: `PROPOSED / NOT ACTIVE", "CURRENT_STATE", errors)
 
     for marker in (
         "Kinco GL100E",
