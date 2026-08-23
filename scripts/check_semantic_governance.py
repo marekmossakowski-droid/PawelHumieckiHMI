@@ -46,6 +46,9 @@ def main() -> int:
     pricing_closure = pricing_closure_path.read_text(encoding="utf-8") if pricing_closure_path.is_file() else ""
     statistics_plan_path = Path("docs/superpowers/plans/2026-08-23-job-statistics-final-settlement.md")
     statistics_plan = statistics_plan_path.read_text(encoding="utf-8") if statistics_plan_path.is_file() else ""
+    statistics_requirement_path = Path("docs/requirements/REQ-HC-002-S1_Job_Statistics_and_Final_Settlement_v0.1.md")
+    statistics_authority_path = Path("governance/IA-HC-007-S1_Job_Statistics_and_Final_Settlement_Authority_v0.1.md")
+    statistics_decision_path = Path("docs/decisions/HC-REQ-HC-002-S1-PREPARATION-DECISION-001.md")
 
     expected_plan_status = "APPROVED / RECOVERY ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
     expected_authority_status = "APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
@@ -145,6 +148,28 @@ def main() -> int:
         require(statistics_plan, "no VAT, accounting or payment", "job statistics plan", errors)
     require(current, "`REQ-HC-002-A1 closure`: `CLOSURE READY", "CURRENT_STATE", errors)
     require(current, "`Job statistics and final settlement plan`: `PROPOSED / NOT ACTIVE", "CURRENT_STATE", errors)
+    for path, label in (
+        (statistics_requirement_path, "REQ-HC-002-S1"),
+        (statistics_authority_path, "IA-HC-007-S1"),
+        (statistics_decision_path, "HC-REQ-HC-002-S1-PREPARATION-DECISION-001"),
+    ):
+        if not path.is_file():
+            errors.append(f"{label} surface missing")
+    if statistics_requirement_path.is_file():
+        statistics_requirement = statistics_requirement_path.read_text(encoding="utf-8")
+        require(statistics_requirement, "PROPOSED / NOT BASELINED", "REQ-HC-002-S1", errors)
+        require(statistics_requirement, "RAZEM NETTO", "REQ-HC-002-S1", errors)
+    if statistics_authority_path.is_file():
+        statistics_authority = statistics_authority_path.read_text(encoding="utf-8")
+        require(statistics_authority, "PROPOSED / NOT ACTIVE", "IA-HC-007-S1", errors)
+        require(statistics_authority, "grants no implementation authority", "IA-HC-007-S1", errors)
+    if statistics_decision_path.is_file():
+        statistics_decision = statistics_decision_path.read_text(encoding="utf-8")
+        require(statistics_decision, "RUNTIME NOT AUTHORIZED", "statistics preparation decision", errors)
+        require(statistics_decision, "5a83b305ae35c4550909c5ac717a75d2fa71e3f1", "statistics preparation decision", errors)
+    require(current, "`IA-HC-007-S1`: `PROPOSED / NOT ACTIVE", "CURRENT_STATE", errors)
+    require(current, "`IA-HC-007-S1 runtime`: `NOT AUTHORIZED / NOT STARTED`", "CURRENT_STATE", errors)
+    require(trace, "| HC-IA-007-S1 | Job statistics and final settlement authority | IA-HC-007-S1 | PROPOSED / NOT ACTIVE |", "HC-TRACE-001", errors)
 
     for marker in (
         "Kinco GL100E",
