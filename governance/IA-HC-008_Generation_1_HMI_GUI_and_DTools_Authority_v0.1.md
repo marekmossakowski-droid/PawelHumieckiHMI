@@ -2,7 +2,7 @@
 
 ## Status
 
-`PROPOSED / NOT ACTIVE`
+`APPROVED / ACTIVE — PROSPECTIVELY AFTER MERGE AND REPOSITORY VERIFICATION OF HC-IA-HC-008-ACTIVATION-001`
 
 ## Prospektywny zakres
 
@@ -59,5 +59,6 @@ Runtime pozostaje zabroniony, dopóki łącznie nie wystąpią:
 
 ## Bieżący skutek
 
-This proposal grants no implementation authority. Samo opublikowanie pakietu
-nie zezwala na implementację GUI ani projektu Kinco DTools.
+Przed merge i Repository Verification rekordu aktywacji dokument nie udziela
+implementation authority. Po tej bramce jego skutek jest prospektywny i
+ograniczony do zakresu powyżej.

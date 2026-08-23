@@ -59,6 +59,8 @@ def main() -> int:
     gen1_design_path = Path("docs/design/UX-HC-002_Generation_1_Complete_HMI_GUI_and_DTools_v0.1.md")
     gen1_plan_path = Path("docs/superpowers/plans/2026-08-24-generation-1-hmi-gui-dtools.md")
     gen1_authority_path = Path("governance/IA-HC-008_Generation_1_HMI_GUI_and_DTools_Authority_v0.1.md")
+    gen1_baseline_path = Path("docs/decisions/HC-REQ-HC-003-G1-BASELINE-DECISION-001.md")
+    gen1_activation_path = Path("governance/HC-IA-HC-008-ACTIVATION-001.md")
 
     expected_plan_status = "APPROVED / RECOVERY ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
     expected_authority_status = "APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
@@ -212,7 +214,7 @@ def main() -> int:
         require(gen1_decision, "d2af53d739403ff6f4199fabe43159cb3de10317", "Generation 1 preparation decision", errors)
     if gen1_requirement_path.is_file():
         gen1_requirement = gen1_requirement_path.read_text(encoding="utf-8")
-        require(gen1_requirement, "PROPOSED / NOT BASELINED / IMPLEMENTATION NOT AUTHORIZED", "REQ-HC-003-G1", errors)
+        require(gen1_requirement, "APPROVED / BASELINED — EFFECTIVE AFTER MERGE", "REQ-HC-003-G1", errors)
         require(gen1_requirement, "REQ-HC-G1-DTOOLS-004", "REQ-HC-003-G1", errors)
         if not requirement_trace_path.is_file():
             errors.append("HC-REQ-TRACE-001 surface missing for REQ-HC-003-G1")
@@ -220,17 +222,20 @@ def main() -> int:
             require(requirement_trace, "| REQ-HC-G1-DTOOLS-004 | PROPOSED / NOT IMPLEMENTED |", "HC-REQ-TRACE-001", errors)
     if gen1_design_path.is_file():
         gen1_design = gen1_design_path.read_text(encoding="utf-8")
+        require(gen1_design, "APPROVED / BASELINED — EFFECTIVE AFTER MERGE", "UX-HC-002", errors)
         require(gen1_design, "EDGE_HOST_REQUIRED / NOT YET SELECTED", "UX-HC-002", errors)
         require(gen1_design, "1024×600", "UX-HC-002", errors)
     if gen1_plan_path.is_file():
         gen1_plan = gen1_plan_path.read_text(encoding="utf-8")
+        require(gen1_plan, "APPROVED / ACTIVE — EFFECTIVE AFTER MERGE", "Generation 1 GUI/DTools plan", errors)
         require(gen1_plan, "clean assertion RED", "Generation 1 GUI/DTools plan", errors)
         require(gen1_plan, "Task G1-6", "Generation 1 GUI/DTools plan", errors)
     if gen1_authority_path.is_file():
         gen1_authority = gen1_authority_path.read_text(encoding="utf-8")
-        if status_line(gen1_authority) != "PROPOSED / NOT ACTIVE":
-            errors.append("IA-HC-008 status conflict: expected 'PROPOSED / NOT ACTIVE'")
-        require(gen1_authority, "grants no implementation authority", "IA-HC-008", errors)
+        expected_gen1_status = "APPROVED / ACTIVE — PROSPECTIVELY AFTER MERGE AND REPOSITORY VERIFICATION OF HC-IA-HC-008-ACTIVATION-001"
+        if status_line(gen1_authority) != expected_gen1_status:
+            errors.append(f"IA-HC-008 status conflict: expected {expected_gen1_status!r}")
+        require(gen1_authority, "Przed merge i Repository Verification", "IA-HC-008", errors)
         for forbidden_boundary in (
             "Generation 2",
             "real data",
@@ -241,9 +246,23 @@ def main() -> int:
             "public distribution",
         ):
             require(gen1_authority, forbidden_boundary, "IA-HC-008", errors)
-    require(current, "`REQ-HC-003-G1`: `PROPOSED / NOT BASELINED`", "CURRENT_STATE", errors)
-    require(current, "`IA-HC-008`: `PROPOSED / NOT ACTIVE`", "CURRENT_STATE", errors)
-    require(trace, "| HC-IA-008 | Generation 1 HMI GUI and DTools authority | IA-HC-008 | PROPOSED / NOT ACTIVE |", "HC-TRACE-001", errors)
+    if not gen1_baseline_path.is_file():
+        errors.append("REQ-HC-003-G1 baseline decision missing")
+    else:
+        gen1_baseline = gen1_baseline_path.read_text(encoding="utf-8")
+        require(gen1_baseline, "eb41f067d2c0c2c4eeba98c9d8ab4cdae598c361", "REQ-HC-003-G1 baseline", errors)
+        require(gen1_baseline, "b25b5ff8a12f2aca37d109a72beaded3130e20ba", "REQ-HC-003-G1 baseline", errors)
+    if not gen1_activation_path.is_file():
+        errors.append("IA-HC-008 activation record missing")
+    else:
+        gen1_activation = gen1_activation_path.read_text(encoding="utf-8")
+        require(gen1_activation, "f18df0d37df6ff241696822758e14f795107eddd", "IA-HC-008 activation", errors)
+        require(gen1_activation, "eb41f067d2c0c2c4eeba98c9d8ab4cdae598c361", "IA-HC-008 activation", errors)
+        require(gen1_activation, "b25b5ff8a12f2aca37d109a72beaded3130e20ba", "IA-HC-008 activation", errors)
+        require(gen1_activation, "RUNTIME NOT STARTED", "IA-HC-008 activation", errors)
+    require(current, "`REQ-HC-003-G1`: `APPROVED / BASELINED PROSPECTIVELY", "CURRENT_STATE", errors)
+    require(current, "`IA-HC-008`: `ACTIVATION READY", "CURRENT_STATE", errors)
+    require(trace, "| HC-IA-008 | Generation 1 HMI GUI and DTools authority | IA-HC-008 | ACTIVATION READY / OWNER MERGE REQUIRED |", "HC-TRACE-001", errors)
 
     for marker in (
         "Kinco GL100E",
