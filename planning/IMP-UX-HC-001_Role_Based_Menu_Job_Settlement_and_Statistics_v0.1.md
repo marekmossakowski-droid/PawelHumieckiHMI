@@ -2,7 +2,7 @@
 
 ## Status
 
-`PROPOSED — PROJECT OWNER APPROVAL REQUIRED / IMPLEMENTATION BLOCKED`
+`APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-007-ACTIVATION-001`
 
 ## Cel
 
@@ -84,7 +84,7 @@ Każdy inkrement wykonuje kolejno:
 
 ## Warunek rozpoczęcia
 
-Runtime implementation pozostaje zablokowana do zatwierdzenia i aktywacji `IA-HC-007` na dokładnym repozytoryjnym artefakcie oraz pozytywnego Repository Verification po merge pakietu governance.
+Warunek rozpoczęcia został spełniony przez zatwierdzenie exact headu PR #80, kontrolowany merge `3a32e3b5b7d1f5b2693836c044ef73caa63276d3`, Repository Verification oraz kanoniczny rekord `HC-IA-HC-007-ACTIVATION-001`. Runtime może być realizowany wyłącznie w ograniczonym zakresie `IA-HC-007`, inkrementami TDD i z osobnym exact-head approval każdego merge.
 
 ## Warunek zakończenia
 

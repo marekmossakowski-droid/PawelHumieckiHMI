@@ -33,6 +33,12 @@ def main() -> int:
     recovery = recovery_path.read_text(encoding="utf-8") if recovery_path.is_file() else ""
     reconciliation_path = Path("docs/reconciliation/HC-R2-GOVERNANCE-POST-MERGE-RECON-001.md")
     reconciliation = reconciliation_path.read_text(encoding="utf-8") if reconciliation_path.is_file() else ""
+    job_plan = Path("planning/IMP-UX-HC-001_Role_Based_Menu_Job_Settlement_and_Statistics_v0.1.md").read_text(encoding="utf-8")
+    job_authority = Path("governance/IA-HC-007_Role_Based_Jobs_Settlement_and_Statistics_Authority_v0.1.md").read_text(encoding="utf-8")
+    job_activation_path = Path("governance/HC-IA-HC-007-ACTIVATION-001.md")
+    job_activation = job_activation_path.read_text(encoding="utf-8") if job_activation_path.is_file() else ""
+    job_reconciliation_path = Path("docs/reconciliation/HC-UX-HC-001-POST-MERGE-RECON-001.md")
+    job_reconciliation = job_reconciliation_path.read_text(encoding="utf-8") if job_reconciliation_path.is_file() else ""
 
     expected_plan_status = "APPROVED / RECOVERY ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
     expected_authority_status = "APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-006-RECOVERY-ACTIVATION-001"
@@ -57,6 +63,43 @@ def main() -> int:
     require(current, "`IMP-HC-005`: `APPROVED / RECOVERY ACTIVE`", "CURRENT_STATE", errors)
     require(current, "`IA-HC-006`: `APPROVED / ACTIVE", "CURRENT_STATE", errors)
     require(trace, "| HC-IA-006 | Wave R2 recovery authority | IA-HC-006 | APPROVED / ACTIVE |", "HC-TRACE-001", errors)
+
+    expected_job_plan_status = "APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-007-ACTIVATION-001"
+    expected_job_authority_status = "APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-007-ACTIVATION-001"
+    if status_line(job_plan) != expected_job_plan_status:
+        errors.append(
+            f"IMP-UX-HC-001 status conflict: expected {expected_job_plan_status!r}, got {status_line(job_plan)!r}"
+        )
+    if status_line(job_authority) != expected_job_authority_status:
+        errors.append(
+            f"IA-HC-007 status conflict: expected {expected_job_authority_status!r}, got {status_line(job_authority)!r}"
+        )
+    if not job_activation_path.is_file():
+        errors.append("IA-HC-007 activation record missing")
+    else:
+        require(job_activation, "MERGED / REPOSITORY VERIFIED — IA-HC-007 PROSPECTIVELY ACTIVE", "HC-IA-HC-007-ACTIVATION-001", errors)
+        require(job_activation, "8901922380a3ec342747088e5acccdcd4ca5b44d", "HC-IA-HC-007-ACTIVATION-001", errors)
+        require(job_activation, "3a32e3b5b7d1f5b2693836c044ef73caa63276d3", "HC-IA-HC-007-ACTIVATION-001", errors)
+    if not job_reconciliation_path.is_file():
+        errors.append("IA-HC-007 post-merge reconciliation record missing")
+    else:
+        require(job_reconciliation, "REPOSITORY VERIFIED / IA-HC-007 PROSPECTIVELY ACTIVE", "HC-UX-HC-001-POST-MERGE-RECON-001", errors)
+        require(job_reconciliation, "3a32e3b5b7d1f5b2693836c044ef73caa63276d3", "HC-UX-HC-001-POST-MERGE-RECON-001", errors)
+
+    require(current, "`IMP-UX-HC-001`: `APPROVED / ACTIVE`", "CURRENT_STATE", errors)
+    require(current, "`IA-HC-007`: `APPROVED / ACTIVE", "CURRENT_STATE", errors)
+    require(trace, "| HC-IA-007 | Job settlement authority | IA-HC-007 | APPROVED / ACTIVE |", "HC-TRACE-001", errors)
+    require(job_authority, "REQ-HC-002", "IA-HC-007", errors)
+    for forbidden_boundary in (
+        "real-farm",
+        "live RFID",
+        "real KVK I/O",
+        "PLC/safety mutation",
+        "network/cloud",
+        "invoicing",
+        "public distribution",
+    ):
+        require(job_authority, forbidden_boundary, "IA-HC-007", errors)
 
     for marker in (
         "Kinco GL100E",

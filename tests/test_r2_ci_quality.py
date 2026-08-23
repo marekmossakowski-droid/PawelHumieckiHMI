@@ -28,6 +28,10 @@ class R2CIQualityTests(unittest.TestCase):
             Path('docs/traceability/HC-TRACE-001_Traceability.md'),
             Path('planning/IMP-HC-005_Wave_R2_UX_Observability_and_Engineering_Quality_v0.1.md'),
             Path('governance/IA-HC-006_Wave_R2_UX_Observability_and_Engineering_Quality_Authority_v0.1.md'),
+            Path('planning/IMP-UX-HC-001_Role_Based_Menu_Job_Settlement_and_Statistics_v0.1.md'),
+            Path('governance/IA-HC-007_Role_Based_Jobs_Settlement_and_Statistics_Authority_v0.1.md'),
+            Path('governance/HC-IA-HC-007-ACTIVATION-001.md'),
+            Path('docs/reconciliation/HC-UX-HC-001-POST-MERGE-RECON-001.md'),
         )
 
         with tempfile.TemporaryDirectory() as tmp:
@@ -78,6 +82,10 @@ class R2CIQualityTests(unittest.TestCase):
             Path('planning/IMP-HC-005_Wave_R2_UX_Observability_and_Engineering_Quality_v0.1.md'),
             Path('governance/IA-HC-006_Wave_R2_UX_Observability_and_Engineering_Quality_Authority_v0.1.md'),
             Path('governance/HC-IA-HC-006-RECOVERY-ACTIVATION-001.md'),
+            Path('planning/IMP-UX-HC-001_Role_Based_Menu_Job_Settlement_and_Statistics_v0.1.md'),
+            Path('governance/IA-HC-007_Role_Based_Jobs_Settlement_and_Statistics_Authority_v0.1.md'),
+            Path('governance/HC-IA-HC-007-ACTIVATION-001.md'),
+            Path('docs/reconciliation/HC-UX-HC-001-POST-MERGE-RECON-001.md'),
         )
 
         with tempfile.TemporaryDirectory() as tmp:
@@ -132,6 +140,14 @@ class R2CIQualityTests(unittest.TestCase):
                 plan_path.read_text(encoding='utf-8').replace(
                     'PROPOSED — PROJECT OWNER APPROVAL REQUIRED / IMPLEMENTATION BLOCKED',
                     'APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-007-ACTIVATION-001',
+                ),
+                encoding='utf-8',
+            )
+            authority_path = fixture_root / copied_paths[7]
+            authority_path.write_text(
+                authority_path.read_text(encoding='utf-8').replace(
+                    'APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-007-ACTIVATION-001',
+                    'PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL REQUIRED',
                 ),
                 encoding='utf-8',
             )

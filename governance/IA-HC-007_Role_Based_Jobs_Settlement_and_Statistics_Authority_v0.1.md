@@ -2,13 +2,13 @@
 
 ## Status
 
-`PROPOSED / NOT ACTIVE — PROJECT OWNER APPROVAL REQUIRED`
+`APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA HC-IA-HC-007-ACTIVATION-001`
 
-## Proposed authorized scope
+## Authorized scope
 
 Bounded local synthetic/test-only implementation of `UX-HC-001` and `REQ-HC-002` according to `ADR-HC-008` and `IMP-UX-HC-001`.
 
-If separately approved and activated, permitted changes are limited to:
+Permitted changes are limited to:
 
 - local job/pricing/material/settlement domain models;
 - integer-grosz PLN calculations and decimal quantities;
@@ -33,7 +33,7 @@ If separately approved and activated, permitted changes are limited to:
 
 ## Explicit exclusions
 
-This proposed authority does not authorize:
+This authority does not authorize:
 
 - real-farm, real-client, real-animal, real-operator or real-price data;
 - live RFID or physical camera/device access;
@@ -52,16 +52,9 @@ This proposed authority does not authorize:
 
 Any requirement for real identities/data, external connectivity, financial system integration, device access, machine effect or production credentials is outside this authority and must stop for a separate Project Owner decision.
 
-## Proposed activation condition
+## Activation evidence
 
-`IA-HC-007` may become active only after:
-
-1. Project Owner explicitly approves this exact authority content and its exact repository head;
-2. the approved authority artifact is merged through expected-head protection;
-3. Repository Verification confirms the exact merge on canonical `main`;
-4. canonical traceability records `IA-HC-007 = APPROVED / ACTIVE` prospectively.
-
-No chat instruction or generic autonomy statement alone activates this authority.
+Project Owner zatwierdził exact head PR #80 `8901922380a3ec342747088e5acccdcd4ca5b44d` oraz prospektywną aktywację po Repository Verification. Kontrolowany merge utworzył `3a32e3b5b7d1f5b2693836c044ef73caa63276d3`; canonical `main`, rodzice, tree `fa8d5e3bdf1d71087b12472d8a649f6685ac6632` i pełne kontrole zostały zweryfikowane. Szczegóły utrwala `HC-IA-HC-007-ACTIVATION-001` i post-merge reconciliation.
 
 ## Completion condition
 
