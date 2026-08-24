@@ -46,6 +46,20 @@ class WorkflowStep(str, Enum):
     TREATMENT = "TREATMENT"
 
 
+class TreatmentStep(str, Enum):
+    IDENTITY = "IDENTITY"
+    LIMB_CLAW = "LIMB_CLAW"
+    ZONE_LESION = "ZONE_LESION"
+    TREATMENT = "TREATMENT"
+    MATERIALS = "MATERIALS"
+    FOLLOW_UP = "FOLLOW_UP"
+    SUMMARY = "SUMMARY"
+
+
+def complete_synthetic_wizard() -> tuple[TreatmentStep, ...]:
+    return tuple(TreatmentStep)
+
+
 @dataclass(frozen=True)
 class DashboardView:
     banner: str

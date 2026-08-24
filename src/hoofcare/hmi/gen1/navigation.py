@@ -88,6 +88,7 @@ _TRANSITIONS: dict[Gen1Route, dict[str, Gen1Route]] = {
     Gen1Route.FOLLOW_UP: {"next": Gen1Route.COW_SUMMARY, "back": Gen1Route.MATERIALS},
     Gen1Route.COW_SUMMARY: {
         "complete_cow": Gen1Route.ANIMAL_IDENTITY,
+        "open_reconciliation": Gen1Route.RECONCILIATION,
         "back": Gen1Route.FOLLOW_UP,
     },
     Gen1Route.WORK_STATISTICS: {

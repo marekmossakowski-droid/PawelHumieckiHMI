@@ -78,6 +78,17 @@ class Generation1NavigationTests(unittest.TestCase):
             self.assertEqual(decision.destination, destination)
             route = destination
 
+    def test_blocked_summary_can_open_explicit_reconciliation(self):
+        module = self.navigation()
+
+        decision = module.next_route(
+            module.NavigationContext(module.Gen1Route.COW_SUMMARY),
+            "open_reconciliation",
+        )
+
+        self.assertEqual(decision.kind, module.RouteDecisionKind.ALLOW)
+        self.assertEqual(decision.destination, module.Gen1Route.RECONCILIATION)
+
     def test_route_catalog_contains_every_approved_generation_1_screen(self):
         module = self.navigation()
 
