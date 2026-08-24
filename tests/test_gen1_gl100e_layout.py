@@ -13,6 +13,11 @@ class Generation1Gl100eLayoutTests(unittest.TestCase):
 
         profile = module.Gl100eProfile.default()
         self.assertEqual((profile.width, profile.height), (1024, 600))
+        self.assertTrue(hasattr(profile, "visual_system_id"), "visual system ID is required")
+        self.assertEqual(profile.visual_system_id, "UX-HC-002-A1/G1-LIGHT-A")
+        self.assertEqual(profile.color_tokens["surface.canvas"], "#F2F4F7")
+        self.assertEqual(profile.color_tokens["action.primary"], "#1477FF")
+        self.assertEqual(profile.color_tokens["assist.violet"], "#665CF6")
         self.assertEqual(
             {screen.route for screen in profile.screens},
             set(Gen1Route),

@@ -1,5 +1,5 @@
 from copy import deepcopy
-from importlib import import_module
+from importlib.util import module_from_spec, spec_from_file_location
 import json
 from pathlib import Path
 import unittest
@@ -7,14 +7,25 @@ import unittest
 from hoofcare.hmi.gen1.navigation import Gen1Route
 
 
-MANIFEST = Path("dtools/gl100e/manifest.json")
+ROOT = Path(__file__).resolve().parents[1]
+MANIFEST = ROOT / "dtools" / "gl100e" / "manifest.json"
+VALIDATOR = ROOT / "scripts" / "check_gen1_dtools_manifest.py"
+
+
+def load_validator():
+    spec = spec_from_file_location("check_gen1_dtools_manifest", VALIDATOR)
+    if spec is None or spec.loader is None:
+        raise ModuleNotFoundError
+    module = module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 class Generation1DToolsManifestTests(unittest.TestCase):
     def setUp(self):
         try:
-            self.validator = import_module("scripts.check_gen1_dtools_manifest")
-        except ModuleNotFoundError:
+            self.validator = load_validator()
+        except (FileNotFoundError, ModuleNotFoundError):
             self.fail("scripts.check_gen1_dtools_manifest must exist")
         self.assertTrue(MANIFEST.is_file(), "GL100E manifest must exist")
         self.data = json.loads(MANIFEST.read_text(encoding="utf-8"))
@@ -27,6 +38,31 @@ class Generation1DToolsManifestTests(unittest.TestCase):
         )
         self.assertEqual(self.data["profile_id"], "gl100e-landscape-v1")
         self.assertEqual(self.data["canvas"], {"width": 1024, "height": 600})
+        self.assertIn("visual_system", self.data, "visual system manifest is required")
+        self.assertEqual(
+            self.data["visual_system"],
+            {
+                "id": "UX-HC-002-A1/G1-LIGHT-A",
+                "source_blob": "8bf33ec97cd98d015545cd2720d39765510a6b9d",
+                "font_family": "Arial",
+                "minimum_text_px": 18,
+                "color_tokens": {
+                    "surface.canvas": "#F2F4F7",
+                    "surface.card": "#FFFFFF",
+                    "surface.selected": "#E8F1FF",
+                    "text.primary": "#17212B",
+                    "text.secondary": "#5F6B7A",
+                    "action.primary": "#1477FF",
+                    "action.disabled": "#C7CDD5",
+                    "status.success": "#168A5B",
+                    "status.warning": "#A85F00",
+                    "status.blocked": "#C9363E",
+                    "assist.teal": "#168F84",
+                    "assist.violet": "#665CF6",
+                    "border.subtle": "#D8DEE6",
+                },
+            },
+        )
         self.assertEqual(
             self.data["native_artifact"]["status"],
             "NATIVE_DTOOLS_ARTIFACT_REQUIRED",
@@ -77,6 +113,10 @@ class Generation1DToolsManifestTests(unittest.TestCase):
         forbidden = deepcopy(self.data)
         forbidden["screens"][0]["widgets"][0]["binding"]["binding_id"] = "KVK.control"
         cases.append((forbidden, "forbidden binding"))
+
+        visual_drift = deepcopy(self.data)
+        visual_drift["visual_system"]["color_tokens"]["action.primary"] = "#000000"
+        cases.append((visual_drift, "visual system differs"))
 
         for manifest, message in cases:
             with self.subTest(message=message):

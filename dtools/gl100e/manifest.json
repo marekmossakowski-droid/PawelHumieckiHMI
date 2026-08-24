@@ -1,0 +1,1551 @@
+{
+  "schema_version": 1,
+  "manifest_id": "hoofcare-g1-gl100e-v1",
+  "profile_id": "gl100e-landscape-v1",
+  "canvas": {
+    "width": 1024,
+    "height": 600
+  },
+  "visual_system": {
+    "id": "UX-HC-002-A1/G1-LIGHT-A",
+    "source_blob": "8bf33ec97cd98d015545cd2720d39765510a6b9d",
+    "font_family": "Arial",
+    "minimum_text_px": 18,
+    "color_tokens": {
+      "surface.canvas": "#F2F4F7",
+      "surface.card": "#FFFFFF",
+      "surface.selected": "#E8F1FF",
+      "text.primary": "#17212B",
+      "text.secondary": "#5F6B7A",
+      "action.primary": "#1477FF",
+      "action.disabled": "#C7CDD5",
+      "status.success": "#168A5B",
+      "status.warning": "#A85F00",
+      "status.blocked": "#C9363E",
+      "assist.teal": "#168F84",
+      "assist.violet": "#665CF6",
+      "border.subtle": "#D8DEE6"
+    }
+  },
+  "safety_scope": {
+    "data": "SYNTHETIC_TEST_ONLY",
+    "device_access": false,
+    "edge_host": "EDGE_HOST_REQUIRED_NOT_YET_SELECTED"
+  },
+  "native_artifact": {
+    "status": "NATIVE_DTOOLS_ARTIFACT_REQUIRED",
+    "artifact_path": null,
+    "dtools_version": null,
+    "sha256": null,
+    "built_at_utc": null,
+    "compile_log_path": null
+  },
+  "screens": [
+    {
+      "screen_id": "G1-00",
+      "route_id": "G1-00",
+      "label_pl": "Start i odzyskiwanie",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-00.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-open_dashboard",
+          "label_pl": "Pulpit",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 148,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_dashboard",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_dashboard",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-open_reconciliation",
+          "label_pl": "Uzgodnij",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 396,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_reconciliation",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_reconciliation",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-open_diagnostics",
+          "label_pl": "Diagnostyka",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 644,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_diagnostics",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_diagnostics",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-10",
+      "route_id": "G1-10",
+      "label_pl": "Pulpit Pawła",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-10.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-new_job",
+          "label_pl": "Nowe zlecenie",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 24,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.new_job",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.new_job",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-resume_job",
+          "label_pl": "Wznów pracę",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.resume_job",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.resume_job",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-open_statistics",
+          "label_pl": "Statystyki",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_statistics",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_statistics",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-open_owner_pin",
+          "label_pl": "Właściciel",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 768,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_owner_pin",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_owner_pin",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-20",
+      "route_id": "G1-20",
+      "label_pl": "Wybór zlecenia",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-20.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-open_job_pricing",
+          "label_pl": "Dalej",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_job_pricing",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_job_pricing",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-21",
+      "route_id": "G1-21",
+      "label_pl": "Otwarcie i ceny",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-21.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-confirm_job",
+          "label_pl": "Zatwierdź",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.confirm_job",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.confirm_job",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-22",
+      "route_id": "G1-22",
+      "label_pl": "Korekta ceny",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-22.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-save_correction",
+          "label_pl": "Zapisz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.save_correction",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.save_correction",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Anuluj",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-30",
+      "route_id": "G1-30",
+      "label_pl": "Identyfikacja zwierzęcia",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-30.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-next",
+          "label_pl": "Dalej",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.next",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.next",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-cancel",
+          "label_pl": "Anuluj",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.cancel",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.cancel",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-31",
+      "route_id": "G1-31",
+      "label_pl": "Kończyna i racica",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-31.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-next",
+          "label_pl": "Dalej",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.next",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.next",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-32",
+      "route_id": "G1-32",
+      "label_pl": "Strefa i zmiana",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-32.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-next",
+          "label_pl": "Dalej",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.next",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.next",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-33",
+      "route_id": "G1-33",
+      "label_pl": "Zabieg",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-33.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-next",
+          "label_pl": "Dalej",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.next",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.next",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-34",
+      "route_id": "G1-34",
+      "label_pl": "Materiały",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-34.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-next",
+          "label_pl": "Dalej",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.next",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.next",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-35",
+      "route_id": "G1-35",
+      "label_pl": "Termin kontroli",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-35.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-next",
+          "label_pl": "Dalej",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.next",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.next",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-36",
+      "route_id": "G1-36",
+      "label_pl": "Podsumowanie krowy",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-36.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-complete_cow",
+          "label_pl": "Ukończ",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 148,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.complete_cow",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.complete_cow",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-open_reconciliation",
+          "label_pl": "Uzgodnij",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 396,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_reconciliation",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_reconciliation",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 644,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-40",
+      "route_id": "G1-40",
+      "label_pl": "Statystyki pracy",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-40.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-open_history",
+          "label_pl": "Historia",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_history",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_history",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Pulpit",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-41",
+      "route_id": "G1-41",
+      "label_pl": "Historia zleceń",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-41.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-open_settlement",
+          "label_pl": "Rozliczenie",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_settlement",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_settlement",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-42",
+      "route_id": "G1-42",
+      "label_pl": "Zamknięcie zlecenia",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-42.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-correct_price",
+          "label_pl": "Korekta ceny",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 148,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.correct_price",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.correct_price",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-confirm_close",
+          "label_pl": "Zamknij",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 396,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.confirm_close",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.confirm_close",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 644,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-43",
+      "route_id": "G1-43",
+      "label_pl": "Zamknięte rozliczenie",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-43.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-open_history",
+          "label_pl": "Historia",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_history",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_history",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Pulpit",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-50",
+      "route_id": "G1-50",
+      "label_pl": "PIN właściciela",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-50.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-unlock",
+          "label_pl": "Odblokuj",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.unlock",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.unlock",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-cancel",
+          "label_pl": "Anuluj",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.cancel",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.cancel",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-51",
+      "route_id": "G1-51",
+      "label_pl": "Pulpit właściciela",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-51.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-open_owner_admin",
+          "label_pl": "Administracja",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 24,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_owner_admin",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_owner_admin",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-open_history",
+          "label_pl": "Historia",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 272,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_history",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_history",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-open_diagnostics",
+          "label_pl": "Diagnostyka",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 520,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_diagnostics",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_diagnostics",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Pulpit Pawła",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 768,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-52",
+      "route_id": "G1-52",
+      "label_pl": "Administracja lokalna",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-52.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 396,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-53",
+      "route_id": "G1-53",
+      "label_pl": "Diagnostyka",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-53.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 396,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    },
+    {
+      "screen_id": "G1-60",
+      "route_id": "G1-60",
+      "label_pl": "Uzgodnienie i błąd",
+      "widgets": [
+        {
+          "widget_id": "view-status",
+          "label_pl": "Stan ekranu",
+          "widget_type": "TEXT",
+          "primary_action": false,
+          "geometry": {
+            "x": 24,
+            "y": 96,
+            "width": 976,
+            "height": 96
+          },
+          "binding": {
+            "binding_id": "view.G1-60.status",
+            "value_type": "STRING",
+            "direction": "READ",
+            "available_when": "ALWAYS",
+            "missing_data": "NIEDOSTĘPNE"
+          }
+        },
+        {
+          "widget_id": "action-retry",
+          "label_pl": "Ponów",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 148,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.retry",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.retry",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-open_diagnostics",
+          "label_pl": "Diagnostyka",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 396,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.open_diagnostics",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.open_diagnostics",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        },
+        {
+          "widget_id": "action-back",
+          "label_pl": "Wstecz",
+          "widget_type": "BUTTON",
+          "primary_action": true,
+          "geometry": {
+            "x": 644,
+            "y": 536,
+            "width": 232,
+            "height": 64
+          },
+          "binding": {
+            "binding_id": "action.back",
+            "value_type": "EVENT",
+            "direction": "COMMAND_REQUEST",
+            "use_case_id": "navigation.back",
+            "available_when": "VIEW_MODEL_ALLOWS",
+            "missing_data": "DISABLED"
+          }
+        }
+      ]
+    }
+  ]
+}
