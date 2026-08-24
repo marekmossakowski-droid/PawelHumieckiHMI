@@ -86,4 +86,3 @@ Decyzja nie:
 - nie ustanawia production authentication, uploadu na fizyczny panel,
   deploymentu, signing, release ani public distribution;
 - nie zmienia `EDGE_HOST_REQUIRED`, HW-A1/HW-A2/HW-A3, PR #77 ani R2.
-
