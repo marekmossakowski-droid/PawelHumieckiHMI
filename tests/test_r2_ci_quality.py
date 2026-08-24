@@ -13,6 +13,15 @@ class R2CIQualityTests(unittest.TestCase):
         self.assertIn('python -m compileall -q src tests scripts', workflow)
         self.assertIn('python scripts/run_coverage.py', workflow)
 
+    def test_runtime_ci_installs_bounded_capture_dependency_before_full_discovery(self):
+        workflow = Path('.github/workflows/runtime-ci.yml').read_text(encoding='utf-8')
+
+        install = workflow.index('python -m pip install')
+        discovery = workflow.index('python -m unittest discover -s tests -v')
+
+        self.assertLess(install, discovery)
+        self.assertIn('"Pillow>=11,<13"', workflow[install:discovery])
+
     def test_docs_ci_runs_semantic_governance_checker(self):
         workflow = Path('.github/workflows/docs-ci.yml').read_text(encoding='utf-8')
         self.assertIn('python scripts/check_semantic_governance.py', workflow)

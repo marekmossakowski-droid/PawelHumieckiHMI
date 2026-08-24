@@ -1,0 +1,19 @@
+from __future__ import annotations
+
+from typing import Protocol
+
+from .model import WindowSnapshot
+
+
+class DToolsBackend(Protocol):
+    def snapshot(self) -> WindowSnapshot: ...
+
+    def capture(self) -> bytes: ...
+
+    def perform_named_step(self, name: str) -> None: ...
+
+    def activate(self, control_id: str) -> None: ...
+
+    def set_text(self, control_id: str, value: str) -> None: ...
+
+    def send_shortcut(self, shortcut_id: str) -> None: ...

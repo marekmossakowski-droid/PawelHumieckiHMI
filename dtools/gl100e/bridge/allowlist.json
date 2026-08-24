@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "project_name": "HoofCare_GL100E_G1",
+  "executable_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "allowed_targets": {
+    "inspect": [
+      "inspect"
+    ],
+    "capture": [
+      "capture"
+    ],
+    "activate": [
+      "bitmap_component",
+      "edit_graphics",
+      "import_graphics"
+    ],
+    "open_menu": [
+      "components.graph_and_animation.bitmap",
+      "draw.load_image"
+    ],
+    "set_text": [
+      "new_graphics_name"
+    ],
+    "send_shortcut": [
+      "escape"
+    ],
+    "run_step": [
+      "open_bitmap_component",
+      "open_bitmap_editor",
+      "load_g1_00_bitmap",
+      "verify_bitmap_loaded"
+    ],
+    "request_save": [
+      "request_save"
+    ],
+    "emergency_stop": [
+      "emergency_stop"
+    ]
+  },
+  "preconditions": {
+    "open_bitmap_component": "main_editor",
+    "open_bitmap_editor": "bitmap_component_dialog_open",
+    "load_g1_00_bitmap": "bitmap_editor_open",
+    "verify_bitmap_loaded": "g1_00_bitmap_visible"
+  },
+  "postconditions": {
+    "open_bitmap_component": "bitmap_component_dialog_open",
+    "open_bitmap_editor": "bitmap_editor_open",
+    "load_g1_00_bitmap": "g1_00_bitmap_visible",
+    "verify_bitmap_loaded": "g1_00_bitmap_visible"
+  }
+}
