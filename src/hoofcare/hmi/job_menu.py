@@ -13,6 +13,7 @@ from hoofcare.reporting.settlement import SettlementDocument, format_pln
 class JobScreenStage(str, Enum):
     OPEN = "OPEN"
     PRICE_CORRECTION = "PRICE_CORRECTION"
+    ACTIVE_WORK = "ACTIVE_WORK"
     TREATMENT = "TREATMENT"
     SUMMARY = "SUMMARY"
 
@@ -105,9 +106,13 @@ def job_menu_view(job: Job, stage: JobScreenStage) -> JobMenuView:
     )
 
     if stage is JobScreenStage.OPEN:
-        actions = ("set_prices", "open_job")
+        actions = ("open_job",)
+        if price_edit_allowed:
+            actions = ("set_prices",) + actions
     elif stage is JobScreenStage.PRICE_CORRECTION:
         actions = ("correct_price", "back") if price_edit_allowed else ("back",)
+    elif stage is JobScreenStage.ACTIVE_WORK:
+        actions = ("new_cow", "resume_cow", "materials", "more")
     elif stage is JobScreenStage.TREATMENT:
         actions = ("record_treatment", "add_material", "complete_cow")
     else:
