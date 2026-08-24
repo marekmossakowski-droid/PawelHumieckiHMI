@@ -5,6 +5,7 @@ import importlib
 import unittest
 
 from hoofcare.application.job_statistics import StatisticsFilter, derive_job_statistics
+from hoofcare.domain.jobs import Job, JobPricingSnapshot, MaterialRate
 
 try:
     from tests.job_fixtures import completed_session, open_job_fixture
@@ -106,6 +107,37 @@ class Gen1JobViewsTests(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, "statistics do not match job"):
             self.project_active_job(job, unrelated_statistics)
+
+    def test_active_projection_rejects_matching_quantity_with_wrong_material_metadata(self):
+        job = active_job_fixture()
+        unrelated_job = Job.open(
+            "UNRELATED-JOB",
+            "UNRELATED-FARM",
+            "other-operator",
+            job.opened_at,
+            JobPricingSnapshot(
+                9999,
+                (MaterialRate("BLOCK", "Inny materiał", "kg", 1, 0),),
+            ),
+            999,
+        )
+        for index in range(1, 3):
+            unrelated_job = unrelated_job.record_completed_session(
+                completed_session(
+                    f"UNRELATED-COW-{index}",
+                    f"UNRELATED-SESSION-{index}",
+                ),
+                f"UNRELATED-COMPLETION-{index}",
+            )
+        unrelated_job = unrelated_job.record_material(
+            "UNRELATED-MATERIAL",
+            "UNRELATED-SESSION-1",
+            "BLOCK",
+            Decimal("2"),
+        )
+
+        with self.assertRaisesRegex(ValueError, "statistics do not match job"):
+            self.project_active_job(job, statistics_for(unrelated_job))
 
     def test_projections_reject_wrong_input_types(self):
         job = open_job_fixture()
