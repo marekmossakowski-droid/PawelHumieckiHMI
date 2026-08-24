@@ -60,16 +60,21 @@ def project_active_job(job: Job, statistics: JobStatistics) -> ActiveJobView:
     if job.state is not JobState.OPEN:
         raise ValueError("active job must be open")
     menu = job_menu_view(job, JobScreenStage.ACTIVE_WORK)
-    statistic_quantities = tuple(
-        (item.code, item.quantity)
-        for item in statistics.additional_material_quantities
+    canonical_quantities = tuple(
+        MaterialQuantity(
+            code,
+            job.pricing.rate(code).unit,
+            job.pricing.rate(code).quantity_scale,
+            quantity,
+        )
+        for code, quantity in menu.material_quantities
     )
     if (
         statistics.completed_cows != job.completed_cows
         or statistics.open_jobs != 1
         or statistics.closed_jobs != 0
         or statistics.total_net_grosz != 0
-        or statistic_quantities != menu.material_quantities
+        or statistics.additional_material_quantities != canonical_quantities
     ):
         raise ValueError("statistics do not match job")
 
