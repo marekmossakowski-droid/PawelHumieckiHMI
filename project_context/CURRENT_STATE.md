@@ -46,10 +46,11 @@ Compatibility marker for canonical governance CI: `CURRENT STEP = HW-A1 — GOOD
 - `IA-HC-007-S1`: `FULFILLED FOR AUTHORIZED S1 SCOPE`.
 - `IA-HC-007-S1 runtime`: `S1-1/S1-2/S1-3/S1-4 MERGED / REPOSITORY VERIFIED`.
 - `REQ-HC-002-S1 closure`: `MERGED / REPOSITORY VERIFIED VIA PR #100`.
-- `REQ-HC-003-G1`: `APPROVED / BASELINED PROSPECTIVELY AFTER ACTIVATION RECORD MERGE AND RV`.
-- `UX-HC-002`: `APPROVED / BASELINED PROSPECTIVELY AFTER ACTIVATION RECORD MERGE AND RV`.
-- `IA-HC-008`: `ACTIVATION READY / PROJECT OWNER EXACT-HEAD MERGE REQUIRED`.
-- `Generation 1 GUI/DTools runtime`: `AUTHORIZED ONLY AFTER ACTIVATION RECORD MERGE AND RV / NOT STARTED`.
+- `REQ-HC-003-G1`: `APPROVED / BASELINED`.
+- `UX-HC-002`: `APPROVED / BASELINED`.
+- `IA-HC-008`: `APPROVED / ACTIVE — PROJECT OWNER APPROVED VIA PR #102`.
+- `Generation 1 GUI runtime`: `G1-1..G1-5 MERGED / VERIFIED; G1-6 IMPLEMENTED / FINAL MERGE APPROVAL PENDING`.
+- `Generation 1 bounded closure`: `21/23 REQUIREMENTS EVIDENCED / DTOOLS-001 AND DTOOLS-003 BLOCKED`.
 
 Compatibility marker retained: `WAVE R0 SOFTWARE/DOCUMENTATION REMEDIATION = CLOSURE READY / OWNER MERGE REQUIRED`.
 Compatibility marker retained: `IMP-HC-003 = FULFILLED FOR AUTHORIZED R0 SCOPE — CLOSURE PENDING OWNER MERGE`.
@@ -57,6 +58,16 @@ Compatibility marker retained: `IA-HC-004` remains active until `HC-R0-CLOSURE-0
 Compatibility marker retained: `WAVE R1 DATA INTEGRITY AND CLINICAL PROVENANCE = CLOSURE READY / OWNER MERGE REQUIRED`.
 Compatibility marker retained: `IMP-HC-004 = FULFILLED FOR AUTHORIZED R1 SCOPE — CLOSURE PENDING OWNER MERGE`.
 Compatibility marker retained: `IA-HC-005` remains active until `HC-R1-CLOSURE-001` controlled merge + Repository Verification.
+
+## Generation 1 current evidence
+- G1-1 Application shell / route graph / owner boundary: merged and verified.
+- G1-2 Job opening, pricing and active-work projections: merged and verified.
+- G1-3 Complete treatment wizard: merged and verified.
+- G1-4 Statistics, history, settlement, reports and owner-admin projections: merged and verified.
+- G1-5 GL100E profile, manifest and bounded read-only DTools bridge: merged and verified for repository/synthetic scope.
+- G1-6 fresh RED `acd924888953427f66309e8847e0fed550b64456` → GREEN `784fe3635077e45c5fc0a30dd72eb7a049676b64`; `runtime-ci #508` and `docs-ci #397` PASS.
+- G1-6 validates two unique completed synthetic cows across local restart, canonical `RAZEM NETTO: 122,00 zł`, hidden routine prices, owner-session expiry and offline no-device manifest status.
+- Full native DTools project and zero-error offline compile evidence are not yet present; therefore full `REQ-HC-003-G1` closure is not established.
 
 ## Wave R1 verified results
 - R1-A: persistence path safety.
@@ -75,6 +86,7 @@ Compatibility marker retained: `IA-HC-005` remains active until `HC-R1-CLOSURE-0
 ## Explicit unresolved dependencies
 - `edge_host = EDGE_HOST_REQUIRED / NOT YET SELECTED`.
 - `native_dtools_artifact = REQUIRED / NOT YET EVIDENCED`.
+- `native_dtools_offline_compile = REQUIRED / NOT YET EVIDENCED`.
 - `HW-A1 = WAITING FOR PHYSICAL HARDWARE`.
 - `HW-A2 = NOT STARTED / NOT PASS`.
 - `HW-A3 = NOT STARTED / NOT PASS`.
