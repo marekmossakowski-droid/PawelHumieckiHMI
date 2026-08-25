@@ -53,9 +53,13 @@ class BenchMvpScenario:
         session_id = create.data["session_id"]
 
         rfid_observation = self._rfid.read()
-        resolved_id = animal_id if rfid_observation.kind == "RFID_OBSERVATION" else None
-        if resolved_id is None:
+        if rfid_observation.kind != "RFID_OBSERVATION" or not isinstance(rfid_observation.value, str):
             raise ValueError("identity unavailable")
+        resolved_id = rfid_observation.value.strip()
+        if not resolved_id:
+            raise ValueError("identity unavailable")
+        if animal_id and animal_id != resolved_id:
+            raise ValueError("RFID identity mismatch")
 
         identity = self._service.resolve_identity(
             session_id,
