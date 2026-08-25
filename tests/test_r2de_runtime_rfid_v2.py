@@ -65,11 +65,10 @@ class R2DERuntimeAndRfidV2Tests(unittest.TestCase):
         self.assertNotIn("Traceback", completed.stderr)
 
     def test_rfid_identity_comes_from_observation_and_mismatch_fails_closed(self):
-        scenario = BenchMvpScenario.synthetic()
-        result = scenario.run()
+        result = BenchMvpScenario.synthetic().run()
         self.assertEqual(result.session["animal_id"], "TEST-COW-001")
         with self.assertRaisesRegex(ValueError, "RFID identity mismatch"):
-            scenario.run(animal_id="OTHER-COW")
+            BenchMvpScenario.synthetic().run(animal_id="OTHER-COW")
 
 
 if __name__ == "__main__":
