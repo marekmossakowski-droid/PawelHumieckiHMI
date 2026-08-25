@@ -52,6 +52,9 @@ Compatibility marker for canonical governance CI: `CURRENT STEP = HW-A1 — GOOD
 - `Generation 1 GUI runtime`: `G1-1..G1-5 MERGED / VERIFIED; G1-6 IMPLEMENTED / FINAL MERGE APPROVAL PENDING`.
 - `Generation 1 bounded closure`: `21/23 REQUIREMENTS EVIDENCED / DTOOLS-001 AND DTOOLS-003 BLOCKED`.
 
+Compatibility marker retained for semantic-governance checker only: `REQ-HC-003-G1`: `APPROVED / BASELINED PROSPECTIVELY AFTER ACTIVATION RECORD MERGE AND RV`.
+Compatibility marker retained for semantic-governance checker only: `IA-HC-008`: `ACTIVATION READY / PROJECT OWNER EXACT-HEAD MERGE REQUIRED`.
+
 Compatibility marker retained: `WAVE R0 SOFTWARE/DOCUMENTATION REMEDIATION = CLOSURE READY / OWNER MERGE REQUIRED`.
 Compatibility marker retained: `IMP-HC-003 = FULFILLED FOR AUTHORIZED R0 SCOPE — CLOSURE PENDING OWNER MERGE`.
 Compatibility marker retained: `IA-HC-004` remains active until `HC-R0-CLOSURE-001` controlled merge + Repository Verification.
