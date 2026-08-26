@@ -64,6 +64,9 @@ jobs:
           retention-days: 7
           path: |
             dist/HoofCare.DToolsBridge
+            dtools/gl100e/bridge/allowlist.json
+            Install-HoofCare-DToolsBridge.cmd
             scripts/windows/dtools_bridge/Install-DToolsBridge.ps1
+            scripts/windows/dtools_bridge/Upgrade-DToolsBridge.ps1
             scripts/windows/dtools_bridge/Run-DToolsBridge.cmd
             scripts/windows/dtools_bridge/Run-DToolsBridge-Automation.cmd
