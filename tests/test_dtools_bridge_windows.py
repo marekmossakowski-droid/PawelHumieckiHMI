@@ -112,6 +112,7 @@ class WindowsBackendTests(unittest.TestCase):
                 "connect_test_emulator",
                 "snapshot",
                 "capture",
+                "diagnostic_texts",
                 "perform_named_step",
                 "activate",
                 "set_text",

@@ -197,6 +197,22 @@ class WindowsDToolsBackend:
         image.save(payload, format="PNG")
         return payload.getvalue()
 
+    def diagnostic_texts(self) -> tuple[str, ...]:
+        """Read visible UI labels for bounded diagnostic classification."""
+        values: list[str] = []
+        for window in self._win32_application.windows():
+            if not window.is_visible():
+                continue
+            try:
+                candidates = window.texts()
+            except (AttributeError, RuntimeError):
+                continue
+            for candidate in candidates:
+                text = str(candidate).strip()
+                if text:
+                    values.append(text)
+        return tuple(values)
+
     def perform_named_step(self, name: str) -> None:
         steps: dict[str, Callable[[], None]] = {
             "open_bitmap_component": lambda: self._select_menu(
@@ -205,6 +221,7 @@ class WindowsDToolsBackend:
             "open_bitmap_editor": lambda: self.activate("edit_graphics"),
             "load_g1_00_bitmap": self._load_g1_00_bitmap,
             "verify_bitmap_loaded": lambda: None,
+            "compile_offline": lambda: self._select_menu("Tools->Compile All"),
             "components.graph_and_animation.bitmap": lambda: self._select_menu(
                 "Components->Graph And Animation->Bitmap"
             ),

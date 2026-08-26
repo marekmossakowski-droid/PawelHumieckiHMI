@@ -7,6 +7,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 BRIDGE = ROOT / "dtools" / "gl100e" / "bridge"
 SCRIPTS = ROOT / "scripts" / "windows" / "dtools_bridge"
+RUNTIME_WORKFLOW = ROOT / ".github" / "workflows" / "runtime-ci.yml"
+ONE_CLICK_UPGRADE = ROOT / "Install-HoofCare-DToolsBridge.cmd"
 
 
 class DToolsBridgePackageTests(unittest.TestCase):
@@ -66,6 +68,17 @@ class DToolsBridgePackageTests(unittest.TestCase):
 
         self.assertIn("--read-only", payload)
 
+    def test_separate_automation_launcher_enables_named_compile_without_raw_execution(self):
+        payload = (SCRIPTS / "Run-DToolsBridge-Automation.cmd").read_text(
+            "ascii"
+        )
+        installer = (SCRIPTS / "Install-DToolsBridge.ps1").read_text("ascii")
+
+        self.assertNotIn("--read-only", payload)
+        self.assertIn("HoofCare.DToolsBridge.exe", payload)
+        self.assertNotIn("%*", payload)
+        self.assertIn("Run-DToolsBridge-Automation.cmd", installer)
+
     def test_powershell_scripts_are_ascii_safe_for_windows_powershell_51(self):
         for script in SCRIPTS.glob("*.ps1"):
             with self.subTest(script=script.name):
@@ -77,6 +90,28 @@ class DToolsBridgePackageTests(unittest.TestCase):
         python_path = payload.index("$Python =", create_venv)
 
         self.assertIn("$LASTEXITCODE", payload[create_venv:python_path])
+
+    def test_windows_ci_builds_and_publishes_installable_bridge(self):
+        payload = RUNTIME_WORKFLOW.read_text("utf-8")
+
+        self.assertIn("Build installable DTools Bridge", payload)
+        self.assertIn("Build-DToolsBridge.ps1", payload)
+        self.assertIn("actions/upload-artifact@v4", payload)
+        self.assertIn("HoofCare-DToolsBridge-Windows", payload)
+        self.assertIn("dist/HoofCare.DToolsBridge", payload)
+        self.assertIn("dtools/gl100e/bridge/allowlist.json", payload)
+        self.assertIn("Install-HoofCare-DToolsBridge.cmd", payload)
+        self.assertIn("Upgrade-DToolsBridge.ps1", payload)
+
+    def test_one_click_upgrade_preserves_existing_configuration(self):
+        launcher = ONE_CLICK_UPGRADE.read_text("ascii")
+        upgrader = (SCRIPTS / "Upgrade-DToolsBridge.ps1").read_text("ascii")
+
+        self.assertIn("Upgrade-DToolsBridge.ps1", launcher)
+        self.assertIn("config.json", upgrader)
+        self.assertIn("EXISTING_CONFIG_REQUIRED", upgrader)
+        self.assertNotIn("Remove-Item", upgrader)
+        self.assertIn("UPGRADE_OK", upgrader)
 
     @unittest.skipUnless(sys.platform == "win32", "Windows packaging only")
     def test_installer_validate_mode_makes_no_installation_changes(self):

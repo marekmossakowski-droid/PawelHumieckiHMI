@@ -1,11 +1,22 @@
-# Kinco DTools Bridge v0.1.10 — uruchomienie na Windows 11
+# Kinco DTools Bridge v0.2.0 — uruchomienie na Windows 11
 
 Zakres tego prototypu to wyłącznie lokalny, syntetyczny projekt
 `HoofCare_GL100E_G1`. Bridge nie udostępnia narzędzi PLC, KVK, urządzeń,
 transferu, uploadu ani downloadu projektu.
 
 Zainstalowany launcher uruchamia Bridge wyłącznie z `--read-only` i udostępnia
-trzy narzędzia: `dtools_status`, `dtools_inspect` oraz `dtools_capture`.
+cztery narzędzia: `dtools_status`, `dtools_inspect`, `dtools_capture` oraz
+`dtools_diagnose`.
+
+Osobny launcher `Run-DToolsBridge-Automation.cmd` udostępnia nazwane operacje
+mutujące zatwierdzone w aktywnym authority, w tym bezparametrowe
+`dtools_compile_offline`. Operacja wybiera wyłącznie `Tools -> Compile All`;
+nie ma parametrów ścieżki, surowych klawiszy ani funkcji transferu na panel.
+
+Proces MCP rejestruje katalog narzędzi przed próbą połączenia z oknem DTools.
+Jeżeli DTools nie jest jeszcze otwarty albo dokładne okno projektu nie zostało
+odnalezione, `dtools_status` zwraca kontrolowany stan `DTOOLS_NOT_FOUND`, a
+serwer pozostaje uruchomiony i może ponowić połączenie przy kolejnym odczycie.
 
 ## 1. Zbuduj pakiet
 
@@ -51,6 +62,10 @@ codex mcp add hoofcare-dtools -- "$env:LOCALAPPDATA\HoofCare\DToolsBridge\Run-DT
 codex mcp list
 ```
 
+Dla zatwierdzonej sesji tworzenia projektu i kompilacji użyj jako polecenia
+serwera `Run-DToolsBridge-Automation.cmd` zamiast launchera read-only. Tryb
+automatyzacji rejestruje `Ctrl+Alt+F12` jako lokalny, terminalny stop awaryjny.
+
 Po dodaniu uruchom ponownie klienta i sprawdź `/mcp`. ChatGPT w przeglądarce
 nie odczytuje lokalnej konfiguracji MCP; bezpośrednie sterowanie w v0.1 wymaga
 klienta działającego na tym samym Windows.
@@ -65,6 +80,15 @@ i wykonaj wyłącznie:
 1. `dtools_status`;
 2. `dtools_inspect`;
 3. `dtools_capture`.
+4. `dtools_diagnose`.
+
+`dtools_diagnose` nie uruchamia kompilacji ani nie zmienia projektu. Odczytuje
+stan zidentyfikowanego okna, inwentaryzuje dozwolone pliki testowego projektu,
+oblicza ich SHA-256 i zapisuje pakiet
+`logs\handoff\ai-programmer-dtools-handoff.json`. Pakiet wskazuje najwcześniejszy
+etap blokady i jest punktem wejścia dla AI Programmera. Widoczne `Error 0` nie
+jest samo w sobie dowodem udanej kompilacji: wymagany pozostaje natywny wynik i
+pełny log osobno autoryzowanego builda offline.
 
 Narzędzie `dtools_request_save` nie jest dostępne w katalogu read-only. Globalny
 skrót awaryjny nie jest rejestrowany w tym trybie, ponieważ launcher nie

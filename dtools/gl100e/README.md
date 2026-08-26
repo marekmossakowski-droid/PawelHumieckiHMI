@@ -19,7 +19,7 @@ DTools i nie wolno przedstawiać go jako projektu skompilowanego.
 
 ## Pliki wejściowe
 
-- `manifest.json` — kanoniczna lista 20 ekranów, widgetów, bindingów i geometrii;
+- `manifest.json` — kanoniczna lista 21 ekranów, widgetów, bindingów i geometrii;
 - `../../docs/design/UX-HC-002-A1_iOS_Industrial_Visual_System_v0.1.md` —
   baselined system wizualny `G1-LIGHT-A`, exact source blob
   `8bf33ec97cd98d015545cd2720d39765510a6b9d`;
@@ -33,7 +33,7 @@ DTools i nie wolno przedstawiać go jako projektu skompilowanego.
 1. Uruchomić zainstalowany Kinco DTools i zapisać dokładny numer wersji.
 2. Utworzyć nowy projekt dla dokładnego modelu `Kinco GL100E`, płótno
    `1024×600`.
-3. Utworzyć 20 ekranów zgodnie z `screens[].screen_id` i `route_id`.
+3. Utworzyć 21 ekranów zgodnie z `screens[].screen_id` i `route_id`.
 4. Dla każdego ekranu odwzorować `widgets[]`, polskie etykiety i geometrię
    `x/y/width/height` bez modyfikowania bindingów.
 5. Zastosować font, minimalny rozmiar tekstu i pełną paletę z sekcji
@@ -41,7 +41,8 @@ DTools i nie wolno przedstawiać go jako projektu skompilowanego.
 6. Bindingi `READ` odwzorować jako prezentacyjne zmienne testowe. Bindingi
    `COMMAND_REQUEST` połączyć wyłącznie z lokalną nawigacją ekranów.
 7. Nie dodawać urządzeń, adresów PLC/Modbus, KVK, sieci, live RFID ani kamery.
-8. Uruchomić pełny build/compile offline i wymagać `0 errors`.
+8. Uruchomić `Tools -> Compile All` i wymagać `Error 0` oraz dokładnie jednego
+   natywnego artefaktu `.pkg` albo `.pkgx`.
 9. Zapisać natywny projekt z rozszerzeniem nadanym przez DTools — nie zmieniać
    rozszerzenia i nie tworzyć tekstowego zamiennika.
 
@@ -54,7 +55,7 @@ Należy przekazać jeden katalog lub ZIP zawierający:
 - plik tekstowy z dokładnym numerem wersji DTools;
 - zrzut ekranu ustawień modelu `GL100E / 1024×600`;
 - zrzut ekranu wyniku kompilacji;
-- zrzuty wszystkich 20 ekranów.
+- zrzuty wszystkich 21 ekranów.
 
 Po otrzymaniu pakietu repozytorium zapisze jego rzeczywiste ścieżki, SHA-256 i
 timestamp UTC w `native_artifact` manifestu. Dopiero wtedy status może przejść
