@@ -53,3 +53,17 @@ jobs:
             tests.test_dtools_bridge_server `
             tests.test_dtools_bridge_windows `
             tests.test_dtools_bridge_package -v
+      - name: Build installable DTools Bridge
+        shell: pwsh
+        run: ./scripts/windows/dtools_bridge/Build-DToolsBridge.ps1
+      - name: Publish installable DTools Bridge
+        uses: actions/upload-artifact@v4
+        with:
+          name: HoofCare-DToolsBridge-Windows
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            dist/HoofCare.DToolsBridge
+            scripts/windows/dtools_bridge/Install-DToolsBridge.ps1
+            scripts/windows/dtools_bridge/Run-DToolsBridge.cmd
+            scripts/windows/dtools_bridge/Run-DToolsBridge-Automation.cmd

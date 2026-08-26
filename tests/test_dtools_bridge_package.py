@@ -7,6 +7,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 BRIDGE = ROOT / "dtools" / "gl100e" / "bridge"
 SCRIPTS = ROOT / "scripts" / "windows" / "dtools_bridge"
+RUNTIME_WORKFLOW = ROOT / ".github" / "workflows" / "runtime-ci.yml"
 
 
 class DToolsBridgePackageTests(unittest.TestCase):
@@ -88,6 +89,15 @@ class DToolsBridgePackageTests(unittest.TestCase):
         python_path = payload.index("$Python =", create_venv)
 
         self.assertIn("$LASTEXITCODE", payload[create_venv:python_path])
+
+    def test_windows_ci_builds_and_publishes_installable_bridge(self):
+        payload = RUNTIME_WORKFLOW.read_text("utf-8")
+
+        self.assertIn("Build installable DTools Bridge", payload)
+        self.assertIn("Build-DToolsBridge.ps1", payload)
+        self.assertIn("actions/upload-artifact@v4", payload)
+        self.assertIn("HoofCare-DToolsBridge-Windows", payload)
+        self.assertIn("dist/HoofCare.DToolsBridge", payload)
 
     @unittest.skipUnless(sys.platform == "win32", "Windows packaging only")
     def test_installer_validate_mode_makes_no_installation_changes(self):
