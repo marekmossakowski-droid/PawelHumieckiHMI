@@ -3,9 +3,13 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 import sys
+from typing import Callable
 
 from hoofcare.dtools_bridge.audit import AuditLog
+from hoofcare.dtools_bridge.backend import DToolsBackend
 from hoofcare.dtools_bridge.controller import BridgeController
+from hoofcare.dtools_bridge.deferred_backend import DeferredDToolsBackend
+from hoofcare.dtools_bridge.diagnostics import DToolsDiagnosticCollector
 from hoofcare.dtools_bridge.policy import ActionPolicy
 from hoofcare.dtools_bridge.server import create_server
 from hoofcare.dtools_bridge.session import SessionGuard
@@ -13,6 +17,20 @@ from hoofcare.dtools_bridge.windows_backend import (
     EmergencyHotkey,
     WindowsDToolsBackend,
 )
+
+
+def build_backend(
+    *,
+    project_name: str,
+    executable_path: str | Path,
+    executable_sha256: str,
+    connect_exact: Callable[[str, str | Path, str], DToolsBackend],
+) -> DeferredDToolsBackend:
+    return DeferredDToolsBackend(
+        lambda: connect_exact(
+            project_name, executable_path, executable_sha256
+        )
+    )
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -54,14 +72,25 @@ def main(argv: list[str] | None = None) -> int:
         executable_sha256=args.executable_sha256,
         project_name=args.project,
     )
-    backend = WindowsDToolsBackend.connect_exact(
-        args.project, executable_path, args.executable_sha256
+    backend = build_backend(
+        project_name=args.project,
+        executable_path=executable_path,
+        executable_sha256=args.executable_sha256,
+        connect_exact=WindowsDToolsBackend.connect_exact,
     )
     audit = AuditLog(logs)
     controller = BridgeController(
         backend=backend, policy=policy, session=session, audit=audit
     )
-    server = create_server(controller, read_only=args.read_only)
+    diagnostics = DToolsDiagnosticCollector(
+        project_directory=project_directory,
+        output_directory=logs / "handoff",
+    )
+    server = create_server(
+        controller,
+        read_only=args.read_only,
+        diagnostics=diagnostics,
+    )
     hotkey = None
     if not args.read_only:
         hotkey = EmergencyHotkey()

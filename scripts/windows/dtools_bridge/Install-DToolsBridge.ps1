@@ -68,6 +68,7 @@ try {
     Copy-Item -Path (Join-Path $SourceDirectory "*") -Destination $InstallRoot -Recurse -Force
     Copy-Item -LiteralPath (Join-Path $RepositoryRoot "dtools\gl100e\bridge\allowlist.json") -Destination (Join-Path $InstallRoot "allowlist.json") -Force
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot "Run-DToolsBridge.cmd") -Destination (Join-Path $InstallRoot "Run-DToolsBridge.cmd") -Force
+    Copy-Item -LiteralPath (Join-Path $PSScriptRoot "Run-DToolsBridge-Automation.cmd") -Destination (Join-Path $InstallRoot "Run-DToolsBridge-Automation.cmd") -Force
     New-Item -ItemType Directory -Path (Join-Path $InstallRoot "logs") -Force | Out-Null
     @{
         project = $ProjectName

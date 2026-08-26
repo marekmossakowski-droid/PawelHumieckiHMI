@@ -7,6 +7,7 @@ from typing import Any
 from mcp.server import MCPServer
 
 from .controller import BridgeController
+from .diagnostics import DToolsDiagnosticCollector
 from .model import ActionKind, ActionRequest
 from .session import SessionError
 
@@ -35,17 +36,21 @@ class StepId(StrEnum):
     OPEN_BITMAP_EDITOR = "open_bitmap_editor"
     LOAD_G1_00_BITMAP = "load_g1_00_bitmap"
     VERIFY_BITMAP_LOADED = "verify_bitmap_loaded"
+    COMPILE_OFFLINE = "compile_offline"
     DENIED_DOWNLOAD_PROJECT = "download_project"
 
 
 def create_server(
-    controller: BridgeController, *, read_only: bool = False
+    controller: BridgeController,
+    *,
+    read_only: bool = False,
+    diagnostics: DToolsDiagnosticCollector,
 ) -> MCPServer:
     server = MCPServer(
         name="hoofcare-kinco-dtools-bridge",
         title="HoofCare Kinco DTools Bridge",
         description="Bounded synthetic/test-only GL100E UI automation bridge.",
-        version="0.1.0",
+        version="0.2.0",
         instructions=(
             "Use only named tools for the synthetic HoofCare_GL100E_G1 project. "
             "No PLC, KVK, device, transfer, upload or download actions exist."
@@ -71,6 +76,14 @@ def create_server(
         structured_output=True,
     )
     def dtools_status() -> dict[str, Any]:
+        connection_status = getattr(
+            controller.backend, "connection_status", None
+        )
+        if connection_status is not None:
+            connection = connection_status()
+            if not connection["available"]:
+                connection["bridge_state"] = controller.session.state.value
+                return connection
         payload = execute(ActionRequest(ActionKind.INSPECT, "inspect"))
         payload["bridge_state"] = controller.session.state.value
         return payload
@@ -90,6 +103,20 @@ def create_server(
     )
     def dtools_capture() -> dict[str, Any]:
         return execute(ActionRequest(ActionKind.CAPTURE, "capture"))
+
+    @server.tool(
+        name="dtools_diagnose",
+        description="Create a read-only DTools compilation handoff for AI Programmer.",
+        structured_output=True,
+    )
+    def dtools_diagnose() -> dict[str, Any]:
+        snapshot = controller.backend.snapshot()
+        read_texts = getattr(controller.backend, "diagnostic_texts", None)
+        visible_texts = () if read_texts is None else read_texts()
+        return diagnostics.collect(
+            snapshot=snapshot,
+            visible_texts=visible_texts,
+        )
 
     if read_only:
         return server
@@ -139,6 +166,19 @@ def create_server(
     )
     def dtools_run_step(step: StepId) -> dict[str, Any]:
         return execute(ActionRequest(ActionKind.RUN_STEP, step.value))
+
+    @server.tool(
+        name="dtools_compile_offline",
+        description=(
+            "Compile all files in the approved local project; never transfers "
+            "anything to a panel or device."
+        ),
+        structured_output=True,
+    )
+    def dtools_compile_offline() -> dict[str, Any]:
+        return execute(
+            ActionRequest(ActionKind.RUN_STEP, StepId.COMPILE_OFFLINE.value)
+        )
 
     @server.tool(
         name="dtools_request_save",

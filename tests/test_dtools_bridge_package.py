@@ -66,6 +66,17 @@ class DToolsBridgePackageTests(unittest.TestCase):
 
         self.assertIn("--read-only", payload)
 
+    def test_separate_automation_launcher_enables_named_compile_without_raw_execution(self):
+        payload = (SCRIPTS / "Run-DToolsBridge-Automation.cmd").read_text(
+            "ascii"
+        )
+        installer = (SCRIPTS / "Install-DToolsBridge.ps1").read_text("ascii")
+
+        self.assertNotIn("--read-only", payload)
+        self.assertIn("HoofCare.DToolsBridge.exe", payload)
+        self.assertNotIn("%*", payload)
+        self.assertIn("Run-DToolsBridge-Automation.cmd", installer)
+
     def test_powershell_scripts_are_ascii_safe_for_windows_powershell_51(self):
         for script in SCRIPTS.glob("*.ps1"):
             with self.subTest(script=script.name):

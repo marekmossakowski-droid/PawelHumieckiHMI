@@ -28,7 +28,8 @@
       "open_bitmap_component",
       "open_bitmap_editor",
       "load_g1_00_bitmap",
-      "verify_bitmap_loaded"
+      "verify_bitmap_loaded",
+      "compile_offline"
     ],
     "request_save": [
       "request_save"
@@ -41,12 +42,14 @@
     "open_bitmap_component": "main_editor",
     "open_bitmap_editor": "bitmap_component_dialog_open",
     "load_g1_00_bitmap": "bitmap_editor_open",
-    "verify_bitmap_loaded": "g1_00_bitmap_visible"
+    "verify_bitmap_loaded": "g1_00_bitmap_visible",
+    "compile_offline": "main_editor"
   },
   "postconditions": {
     "open_bitmap_component": "bitmap_component_dialog_open",
     "open_bitmap_editor": "bitmap_editor_open",
     "load_g1_00_bitmap": "g1_00_bitmap_visible",
-    "verify_bitmap_loaded": "g1_00_bitmap_visible"
+    "verify_bitmap_loaded": "g1_00_bitmap_visible",
+    "compile_offline": "main_editor"
   }
 }
